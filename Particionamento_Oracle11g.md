@@ -145,8 +145,7 @@ CREATE TABLE sales_hash
    s_custid     NUMBER,
    s_totalprice NUMBER)
 
-/* Definição do campo chave do particionamento por Hash. */
-PARTITION BY HASH(s_productid) 
+PARTITION BY HASH(s_productid) /* Definição do campo chave do particionamento por Hash. */ 
 ( PARTITION p1 TABLESPACE tbs1
 , PARTITION p2 TABLESPACE tbs2
 , PARTITION p3 TABLESPACE tbs3
@@ -172,8 +171,7 @@ CREATE TABLE accounts
 , status         VARCHAR2(1)
 )
 
-/* Definição do campo chave do particionamento por Lista. */
-PARTITION BY LIST (region)
+PARTITION BY LIST (region) /* Definição do campo chave do particionamento por Lista. */
 ( PARTITION p_northwest VALUES ('OR', 'WA')
 , PARTITION p_southwest VALUES ('AZ', 'UT', 'NM')
 , PARTITION p_northeast VALUES ('NY', 'VM', 'NJ')
@@ -271,6 +269,7 @@ Abaixo segue um exemplo de um erro ocasionado por uma atualização no campo cha
 ```sql
 ERROR at line 1:
 ORA-14402: updating partition key column would cause a partition change
+
 Sintaxe para habilitar o ROW MOVEMENT:
 SQL> ALTER TABLE <table_name> ENABLE ROW MOVEMENT;
 ```
@@ -403,10 +402,10 @@ mas os dados LOB não. Por exemplo, o registro de um empregado pode conter uma f
 Tabelas são particionadas, normalmente, por serem muito grandes. Gerar estatísticas globais para objetos extensos é uma tarefa demorada. Estatísticas globais são as mais importantes mas também são as que levam mais tempo para serem coletadas porque para isso é necessário um full table scan. Entretanto, no Oracle 11g este problema foi resolvido com a introdução de estatísticas globais incrementais. Este recurso, permite que novas estatísticas sejam geradas apenas para novas partições da
 tabela. É recomendado habilitar a coleta incremental quando os dados são inseridos em novas partições e as partições antigas permanecem estáticas ou são pouco alteradas. Para utilização das estatísticas incrementais, as seguintes condições devem ser verdadeiras:
 
-- O valor do parâmetro 'INCREMENTAL' da tabela particionada deve estar configurado para 'TRUE'. (O default é 'FALSE'). 
--   •O valor do parâmetro 'PUBLISH' da tabela deve estar configurado para 'TRUE'. (O default é 'TRUE').
--   •A coleta de estatísticas da tabela deve ser feita com o valor 'AUTO_SAMPLE_SIZE' para o parâmetro 'ESTIMATE_PERCENT'. (O default é 'AUTO_SAMPLE_SIZE').
--   •A coleta de estatísticas da tabela deve ser feita com o valor 'AUTO' para o parâmetro 'GRANULARITY'. (O default é 'AUTO').
+-    O valor do parâmetro 'INCREMENTAL' da tabela particionada deve estar configurado para 'TRUE'. (O default é 'FALSE'). 
+-    O valor do parâmetro 'PUBLISH' da tabela deve estar configurado para 'TRUE'. (O default é 'TRUE').
+-    A coleta de estatísticas da tabela deve ser feita com o valor 'AUTO_SAMPLE_SIZE' para o parâmetro 'ESTIMATE_PERCENT'. (O default é 'AUTO_SAMPLE_SIZE').
+-    A coleta de estatísticas da tabela deve ser feita com o valor 'AUTO' para o parâmetro 'GRANULARITY'. (O default é 'AUTO').
 
 Para descobrir os valores atuais da tabela para os parâmetros 'INCREMENTAL' e 'PUBLISH', utilize as queries abaixo:
 
@@ -458,11 +457,11 @@ Instância do banco de dados > Advisor Central > Supervisores de SQL > Superviso
 
 Tabelas particionadas, como qualquer outra tabela, podem ser indexadas para melhor desempenho. É possível indexar a tabela inteira (índice global) e indexar as partições (índice local). Ao criar um índice global, deve-se escolher entre criar um índice particionado global ou um índice não particionado global.
 
-Índices Locais: são índices criados em cada partição da tabela. Este índice é particionado seguindo os mesmos critérios de particionamento da tabela. Não é possível adicionar ou remover partições neste índice. As partições do índice são criadas ou removidas automaticamente conforme novas partições são inseridas ou removidas da tabela. Um índice local não precisa incluir a chave do particionamento na lista de colunas indexadas. Por serem mais fáceis de administrar, índices locais são comumente utilizados em ambientes de data warehouse (OLAP).
+- Índices Locais: são índices criados em cada partição da tabela. Este índice é particionado seguindo os mesmos critérios de particionamento da tabela. Não é possível adicionar ou remover partições neste índice. As partições do índice são criadas ou removidas automaticamente conforme novas partições são inseridas ou removidas da tabela. Um índice local não precisa incluir a chave do particionamento na lista de colunas indexadas. Por serem mais fáceis de administrar, índices locais são comumente utilizados em ambientes de data warehouse (OLAP).
 
-Índices Não Particionados Globais: é um índice que abrange a tabela inteira. É o índice comum utilizado em tabelas não particionadas. Em um índice não particionado global, manutenção e disponibilidade são sacrificadas em nome da performance transacional. Por este motivo, este tipo de índice tende a ser mais utilizado por aplicações OLTP.
+- Índices Não Particionados Globais: é um índice que abrange a tabela inteira. É o índice comum utilizado em tabelas não particionadas. Em um índice não particionado global, manutenção e disponibilidade são sacrificadas em nome da performance transacional. Por este motivo, este tipo de índice tende a ser mais utilizado por aplicações OLTP.
 
-Índices Particionados Globais: assim como um índice não particionado global, um índice global abrange a tabela inteira mas são particionados utilizando outros métodos e chaves de particionamento diferentes dos da tabela a que pertencem. Índices globais só podem ser particionados pelos métodos de faixa ou hash. Por exemplo, uma tabela pode estar particionada pelo método lista e ter um índice global particionado por faixa.
+- Índices Particionados Globais: assim como um índice não particionado global, um índice global abrange a tabela inteira mas são particionados utilizando outros métodos e chaves de particionamento diferentes dos da tabela a que pertencem. Índices globais só podem ser particionados pelos métodos de faixa ou hash. Por exemplo, uma tabela pode estar particionada pelo método lista e ter um índice global particionado por faixa.
 
 Abaixo seguem algumas regras gerais para auxiliar na escolha de um índice
 
@@ -506,6 +505,7 @@ Duas vantagens na atualização automática de índices:
 Algumas considerações ao utilizar atualização automática de índices (UPDATE_INDEXES):
 
 - Operações de DDL na partição levarão mais tempo porque índices antes marcados como UNUSABLE serão atualizados. É recomendado utilizar a atualização automática de índices quando o tamanho da partição é menos que 5% do tamanho da tabela.
+
 - Operações como DROP, TRUNCATE e EXCHANGE não serão tão rápidas como antes, é recomendado fazer uma medição dos tempos da operação DDL com a atualização automática dos índices contra o tempo de rebuild manual de todos os índices da tabela após uma alteração.
 
 Conclusão
