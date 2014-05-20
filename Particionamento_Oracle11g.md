@@ -125,7 +125,8 @@ STORE IN (tbs1,tbs2,tbs3,tbs4) /*Futuras partições serão armazenadas nestas
 ```
 \setstretch{1.5}
 
-### Particionamento por Hash (hash partitioning)
+Particionamento por Hash (hash partitioning)
+============================================
 
 Algumas vezes não é óbvio em qual partição os dados devem residir, embora a chave de particionamento possa ser identificada. Ao contrário de agrupar dados similares, pode ser desejável distribuir esses dados de maneira uniforme mas que não correspondam a uma regra de negócio. No particionamento por Hash, uma linha da tabela é alocada em determinada partição baseada no resultado de um algoritmo de hash que tem como parâmetro a chave do particionamento. Este método é utilizado quando a intenção é distribuir os dados randomicamente e balanceadamente entre as partições, o que pode melhorar a performance evitando gargalos de I/O.
 
@@ -154,7 +155,8 @@ PARTITION BY HASH(s_productid) /* Definição do campo chave do particionamento 
 ```
 \setstretch{1.5}
 
-### Particionamento por Lista (list partitioning)
+Particionamento por Lista (list partitioning)
+=============================================
 
 Devemos utilizar o particionamento por Lista quando temos um conjunto bem definido de valores pelos quais podemos mapear os dados em partições da tabela. No exemplo abaixo, todos os clientes dos estados de Oregon e Washington são armazenados em uma partição e os clientes de outros estados são armazenados em partições diferentes. Consultas que utilizem como filtro a região, acessarão somente a partição ou as partições necessárias obtendo assim um ganho na performance.
 
@@ -184,7 +186,8 @@ PARTITION BY LIST (region) /* Definição do campo chave do particionamento por 
 
 Diferente do particionamento por Faixa e Hash, para o particionamento do tipo Lista não é suportado mais de uma coluna como chave do particionamento. Se uma tabela é particionada utilizado o método de lista, a chave do particionamento só pode consistir em apenas uma única coluna.
 
-### Particionamento Composto (composite partitioning)
+Particionamento Composto (composite partitioning)
+=================================================
 
 Particionamento composto permite obter benefícios do particionamento em duas dimensões, combinando diferentes técnicas de particionamento. Primeiro, a tabela é particionada pelo primeiro método de distribuição de dados e depois cada partição é subdividida em subpartições, utilizando um segundo método de distribuição de dados. Todas as subpartições juntas, de determinada partição, representam um subconjunto lógico dos dados. Por exemplo, uma tabela particionada pelo método composto faixa-hash, primeiro é particionada por faixa e depois cada partição individual é subparticionada utilizando a técnica de particionamento hash.
 
@@ -276,11 +279,12 @@ SQL> ALTER TABLE <table_name> ENABLE ROW MOVEMENT;
 ```
 \setstretch{1.5}
 
-### Extensões de particionamento no Oracle 11g
+Extensões de particionamento no Oracle 11g
+===========================================
 
 Além do particionamento por Intervalo, já abordado anteriormente neste artigo, duas outras novas extensões do particionamento merecem destaque:
 
-Particionamento REF
+###Particionamento REF
 
 O Oracle Database 11g permite particionar uma tabela aproveitando um relacionamento pai-filho existente. A estratégia de particionamento da tabela pai é herdada pela tabela filho sem a necessidade de armazenar as colunas de chave de particionamento da tabela pai na tabela filho. Sem o Particionamento REF seria necessário duplicar todas as colunas de chave de particionamento da tabela pai para a tabela filho para poder aproveitar a mesma estratégia de particionamento. O Particionamento REF permite particionar naturalmente as tabelas conforme o modelo de dados lógicos sem necessidade de armazenar as colunas de chave de particionamento, reduzindo assim a sobrecarga manual de desnormalização e economizando espaço.
 
@@ -357,7 +361,8 @@ utilizada como chave do particionamento por lista. */
 
 \setstretch{1.5}
 
-### Comandos SQL a serem evitados
+Comandos SQL a serem evitados
+==============================
 
 Existem diversos casos em que o otimizador não consegue obter vantagem do sistema de particionamento da tabela. Um dos mais comuns é quando existe uma função em cima de uma coluna chave do particionamento. Tomando como exemplo o particionamento por Hash, método bastante utilizado atualmente na Dataprev, será mostrado abaixo alguns comandos SQL que ignoram o particionamento, degradando a performance da consulta.
 
@@ -393,12 +398,14 @@ SQL> SELECT pf.id_pessoa_fisica
 
 Em linhas gerais, não se deve utilizar funções implícitas ou explícitas em colunas particionadas. Se suas consultas utilizam chamadas a funções deste tipo, considere utilizar um particionamento baseado em coluna virtual para melhor performance.
 
-### Particionando dados do tipo LOB
+Particionando dados do tipo LOB
+================================
 
 Dados não estruturados, como imagens e documentos, que são armazenados em colunas do tipo LOB, também podem ser particionados. Quando uma tabela é particionada, os dados residem nas tablespaces de suas respectivas partições. As colunas do tipo LOB, podem ser armazenadas em uma tablespace própria. Esta técnica é bastante útil pois permite que dados do tipo LOB sejam armazenados separadamente dos dados principais. Isto é benéfico se esses dados principais sofrem bastante atualizações
 mas os dados LOB não. Por exemplo, o registro de um empregado pode conter uma foto, que é improvável que mude com muita frequência. Entretanto, os dados pessoais do empregado, como endereço, departamento, gerente e etc, podem ser alterados com certa frequência. Esta abordagem também significa que dispositivos de armazenamentos mais baratos podem ser utilizados para abrigar os dados LOB e dispositivos mais rápidos e caros podem ser utilizados para armazenar o restante dos dados do empregado.
 
-### Estatísticas incrementais para objetos particionados
+Estatísticas incrementais para objetos particionados
+=====================================================
 
 Tabelas são particionadas, normalmente, por serem muito grandes. Gerar estatísticas globais para objetos extensos é uma tarefa demorada. Estatísticas globais são as mais importantes mas também são as que levam mais tempo para serem coletadas porque para isso é necessário um full table scan. Entretanto, no Oracle 11g este problema foi resolvido com a introdução de estatísticas globais incrementais. Este recurso, permite que novas estatísticas sejam geradas apenas para novas partições da
 tabela. É recomendado habilitar a coleta incremental quando os dados são inseridos em novas partições e as partições antigas permanecem estáticas ou são pouco alteradas. Para utilização das estatísticas incrementais, as seguintes condições devem ser verdadeiras:
@@ -446,7 +453,8 @@ SQL> EXEC dbms_stats.set_table_prefs('MY_SCHEMA', 'MY_TABLE', 'ESTIMATE_PERCENT'
 
 Feito isso, ao contrário de percorrer toda a tabela como antes, o Oracle gerará novas estatísticas apenas para novas partições e atualizará as estatísticas globais da tabela apenas com os dados das partições afetadas.
 
-### Supervisor de Partição (Partition Advisor)
+Supervisor de Partição (Partition Advisor)
+==========================================
 
 A partir do Oracle Database 11g release 2, o SQL Access Advisor foi aprimorado para gerar recomendações de particionamento baseado na análise de desempenho de consultas SQL. Com essa extensão, os clientes podem receber recomendações específicas para um particionamento mais eficiente e observar os possíveis ganhos na performance caso as orientações sejam implementadas.
 
@@ -454,7 +462,8 @@ O supervisor de partição pode ser acessado a partir do Enterprise Manager:
 
 Instância do banco de dados > Advisor Central > Supervisores de SQL > Supervisor de Acesso SQL
 
-### Particionamento de índices
+Particionamento de índices
+===========================
 
 Tabelas particionadas, como qualquer outra tabela, podem ser indexadas para melhor desempenho. É possível indexar a tabela inteira (índice global) e indexar as partições (índice local). Ao criar um índice global, deve-se escolher entre criar um índice particionado global ou um índice não particionado global.
 
