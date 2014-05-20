@@ -2,10 +2,7 @@
 date: 19 de maio de 2014
 tipo_artigo: Artigo técnico de Infraestrutura de TIC
 title: 'Boas práticas para particionamento de estruturas no Oracle 11g'
-abstract: 'Neste artigo será abordado um conjunto de boas práticas para o
-particionamento de tabelas e índices no Oracle 11g. Também serão
-abordadas as diversas técnicas e extensões do particionamento, algumas
-exclusivas do Oracle 11g, e seus respectivos cenários de aplicação.'
+abstract: 'Neste artigo será abordado um conjunto de boas práticas para o particionamento de tabelas e índices no Oracle 11g. Também serão abordadas as diversas técnicas e extensões do particionamento, algumas exclusivas do Oracle 11g, e seus respectivos cenários de aplicação.'
 author:
 - affiliation: DEQI/DIMC
   name: Tiago Marra
@@ -23,136 +20,48 @@ tags:
 - Otimização
 ...
 
- 
-
- 
-
 Desafios
 ========
- 
 
-Consolidar e descrever as boas práticas atuais do particionamento para o
-SGBD Oracle bem como analisar e detalhar as diferentes técnicas de
-particionamento disponíveis.
-
- 
-
- 
+Consolidar e descrever as boas práticas atuais do particionamento para o SGBD Oracle bem como analisar e detalhar as diferentes técnicas de particionamento disponíveis.
 
 Benefícios e/ou recomendações
 =============================
- 
 
-Este artigo poderá ser utilizado como um guia ou referência rápida para
-o particionamento ou reparticionamento de estruturas no Oracle 11g.
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
+Este artigo poderá ser utilizado como um guia ou referência rápida para o particionamento ou reparticionamento de estruturas no Oracle 11g.
 
 Introdução
 ==========
- 
 
-O particionamento de estruturas (tabelas e índices) no Oracle é uma
-funcionalidade que vem evoluindo desde o Oracle 8.0 (lançado em 1997).
-Seguindo o princípio de dividir e conquistar, esta técnica consiste em
-dividir grandes tabelas ou índices em partições menores. O
-particionamento é transparente para o usuário e aplicação, mantendo uma
-visão lógica unificada dos dados.
+O particionamento de estruturas (tabelas e índices) no Oracle é uma funcionalidade que vem evoluindo desde o Oracle 8.0 (lançado em 1997). Seguindo o princípio de dividir e conquistar, esta técnica consiste em dividir grandes tabelas ou índices em partições menores. O particionamento é transparente para o usuário e aplicação, mantendo uma visão lógica unificada dos dados.
 
 ![Particionamento de tabelas](imagens/table-partitioning.png)
 
 Pré Requisitos para utilizar o particionamento no Oracle 11g
 
 - Banco de dados Oracle Enterprise Edition;
-
 - Licença Oracle Partitioning (ela não vem junto com o banco de dados);
-
 - A funcionalidade Oracle Partitioning deve estar ativada.
 
 Verificando se um banco de dados Oracle possui o particionamento ativado
 
 Caso a query abaixo retorne 'TRUE', o particionamento está ativado:
 
-SQL\> select \* from v\$option where parameter='Partitioning';
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
+```sql
+SQL> select * from v\$option where parameter='Partitioning';
+```
 
 Alguns exemplos de quando particionar
 
- 
 
 - Tabelas
-
--   •Estruturas acima de 2 GB já devem ser consideradas candidatas ao
-    particionamento. 
-
--   •Tabelas que sejam propensas a grande crescimento. 
-
--   •Tabelas que possuam dados históricos que sejam pouco acessados ou
-    não possam ser alterados.  
-
--   •Quando o conteúdo da tabela precisa ser distribuído entre
-    diferentes storages. 
-
- 
+  - Estruturas acima de 2 GB já devem ser consideradas candidatas ao particionamento. 
+  - Tabelas que sejam propensas a grande crescimento. 
+  - Tabelas que possuam dados históricos que sejam pouco acessados ou não possam ser alterados.  
+  - Quando o conteúdo da tabela precisa ser distribuído entre diferentes storages. 
 
 - Índices:
-
--   •Quando operações de manutenção, como reconstrução do índice
+- Quando operações de manutenção, como reconstrução do índice
     (rebuild), levam muito tempo para serem concluídas e por isso
     torna-se necessário executar estas operações em apenas partes dos
     dados do índice sem indisponibilizar ou precisar tratar a estrutura
