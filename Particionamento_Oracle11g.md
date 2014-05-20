@@ -73,7 +73,8 @@ Vantagens
 
 - **Redução de custos**: o particionamento pode reduzir drasticamente o custo total da propriedade dos dados. Com uma abordagem de “arquivamento em camadas”, mantém online nas camadas mais caras as informações importantes e mais acessadas e as informações mais antigas, nos dispositivos de baixo custo.
 
-### Particionamento por Faixa e Intervalo (range/interval partitioning)
+Particionamento por Faixa e Intervalo (range/interval partitioning)
+===================================================================
 
 É útil quando os dados podem ser facilmente divididos em faixas de valores. Como por exemplo dados organizados por data. Cada partição da tabela representa sua respectiva faixa de valores, e apenas dados que atendam a esses valores poderão ser inseridos dentro daquela específica partição. Particionamento por Intervalo é uma extensão do particionamento por Faixa, introduzida no Oracle 11g, no qual a partir de um determinado ponto as partições são criadas automaticamente e definidas por este intervalo conforme novos dados são inseridos na tabela.
 
