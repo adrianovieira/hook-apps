@@ -48,7 +48,7 @@ Verificando se um banco de dados Oracle possui o particionamento ativado
 Caso a query abaixo retorne 'TRUE', o particionamento está ativado:
 
 ```sql
-SQL> select * from v$option where parameter='Partitioning';
+SQL> SELECT * FROM v$option WHERE parameter='Partitioning';
 ```
 
 Alguns exemplos de quando particionar
@@ -371,9 +371,9 @@ SQL> SELECT pf.id_pessoa_fisica
            FROM auditorias_pf pf
            WHERE pf.id_pessoa_fisica BETWEEN 1 AND 3;
 
-SQL> Select pf.id_pessoa_fisica
-           From auditorias_pf pf
-           Where pf.id_pessoa_fisica >= 2;
+SQL> SELECT pf.id_pessoa_fisica
+           FROM auditorias_pf pf
+           WHERE pf.id_pessoa_fisica >= 2;
 ```
 
 \setstretch{1.5}
@@ -383,9 +383,9 @@ A consulta abaixo, ilustra outro caso em que o particionamento é ignorado. Agor
 \setstretch{1}
 
 ```sql
-SQL> Select pf.id_pessoa_fisica
-           From auditorias_pf pf
-           Where TO_CHAR(pf.id_pessoa_fisica) = 2;
+SQL> SELECT pf.id_pessoa_fisica
+           FROM auditorias_pf pf
+           WHERE TO_CHAR(pf.id_pessoa_fisica) = 2;
 ```
 
 \setstretch{1.5}
@@ -412,9 +412,9 @@ Para descobrir os valores atuais da tabela para os parâmetros 'INCREMENTAL' e '
 \setstretch{1}
 
 ```sql
-SQL> select DBMS_STATS.GET_PREFS('INCREMENTAL','<schema_name>','<table_name>') from dual;
+SQL> SELECT DBMS_STATS.GET_PREFS('INCREMENTAL','<schema_name>','<table_name>') FROM dual;
 
-SQL> select DBMS_STATS.GET_PREFS('PUBLISH','<schema_name>','<table_name>') from dual;
+SQL> SELECT DBMS_STATS.GET_PREFS('PUBLISH','<schema_name>','<table_name>') FROM dual;
 ```
 
 \setstretch{1.5}
@@ -424,9 +424,9 @@ Os comandos abaixo, configuram os parâmetros 'INCREMENTAL' e 'PUBLISH' conforme
 \setstretch{1}
 
 ```sql
-SQL> exec DBMS_STATS.SET_TABLE_PREFS ('<owner_name>', '<table_name>','INCREMENTAL', 'TRUE');
+SQL> EXEC DBMS_STATS.SET_TABLE_PREFS ('<owner_name>', '<table_name>','INCREMENTAL', 'TRUE');
 
-SQL> exec DBMS_STATS.SET_TABLE_PREFS ('<owner_name>', '<table_name>','PUBLISH', 'TRUE');
+SQL> EXEC DBMS_STATS.SET_TABLE_PREFS ('<owner_name>', '<table_name>','PUBLISH', 'TRUE');
 ```
 
 \setstretch{1.5}
@@ -436,9 +436,9 @@ Se os valores padrões dos parâmetos 'ESTIMATE_PERCENT' e 'GRANULARITY' foram a
 \setstretch{1}
 
 ```sql
-SQL> exec dbms_stats.set_table_prefs('MY_SCHEMA', 'MY_TABLE', 'GRANULARITY', 'AUTO');
+SQL> EXEC dbms_stats.set_table_prefs('MY_SCHEMA', 'MY_TABLE', 'GRANULARITY', 'AUTO');
 
-SQL> exec dbms_stats.set_table_prefs('MY_SCHEMA', 'MY_TABLE', 'ESTIMATE_PERCENT', DBMS_STATS.AUTO_SAMPLE_SIZE);
+SQL> EXEC dbms_stats.set_table_prefs('MY_SCHEMA', 'MY_TABLE', 'ESTIMATE_PERCENT', DBMS_STATS.AUTO_SAMPLE_SIZE);
 ```
 
 \setstretch{1.5}
@@ -494,7 +494,7 @@ TRUNCATE
 Exemplo:
 
 ```sql
-ALTER TABLE <TABLE_NAME> <PARTITION SPECIFICATION> UPDATE INDEXES
+SQL> ALTER TABLE <TABLE_NAME> <PARTITION SPECIFICATION> UPDATE INDEXES
 ```
 
 Duas vantagens na atualização automática de índices:
