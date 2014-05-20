@@ -284,7 +284,7 @@ Extensões de particionamento no Oracle 11g
 
 Além do particionamento por Intervalo, já abordado anteriormente neste artigo, duas outras novas extensões do particionamento merecem destaque:
 
-###Particionamento REF
+### Particionamento REF
 
 O Oracle Database 11g permite particionar uma tabela aproveitando um relacionamento pai-filho existente. A estratégia de particionamento da tabela pai é herdada pela tabela filho sem a necessidade de armazenar as colunas de chave de particionamento da tabela pai na tabela filho. Sem o Particionamento REF seria necessário duplicar todas as colunas de chave de particionamento da tabela pai para a tabela filho para poder aproveitar a mesma estratégia de particionamento. O Particionamento REF permite particionar naturalmente as tabelas conforme o modelo de dados lógicos sem necessidade de armazenar as colunas de chave de particionamento, reduzindo assim a sobrecarga manual de desnormalização e economizando espaço.
 
