@@ -442,11 +442,11 @@ Para descobrir os valores atuais da tabela para os parâmetros 'INCREMENTAL' e '
 \setstretch{1}
 
 ```sql
-SQL> SELECT DBMS_STATS.GET_PREFS('INCREMENTAL','<schema_name>','<table_name>') 
-     FROM dual;
+SQL> SELECT DBMS_STATS.GET_PREFS('INCREMENTAL','<schema_name>'
+   ,'<table_name>') FROM dual;
 
-SQL> SELECT DBMS_STATS.GET_PREFS('PUBLISH','<schema_name>','<table_name>') 
-     FROM dual;
+SQL> SELECT DBMS_STATS.GET_PREFS('PUBLISH','<schema_name>'
+   ,'<table_name>') FROM dual;
 ```
 
 \setstretch{1.5}
