@@ -94,104 +94,38 @@ Este processo ocorre através da ação de três jobs criados após a configura�
 ​4. Pontos de atenção
 ====================
 
-        Para a implementação do Log Shipping é importante estar atento
-com relação a recursos físicos para garantir que a sequência das etapas
-funcione de forma satisfatória. Abaixo alguns itens que são de boa
-prática observar:
+Para a implementação do Log Shipping é importante estar atento com relação a recursos físicos para garantir que a sequência das etapas funcione de forma satisfatória. Abaixo alguns itens que são de boa prática observar:
 
--   •Rede – deve-se verificar a disponibilidade da rede  para o processo
-    de backup dos arquivos de log do servidor primário para a área
-    compartilhada, e desta para o servidor secundário. O tempo de cópia
-    não deve exceder o intervalo do job de backup, evitando falhas no
-    arquivamento dos logs; 
+- Rede – deve-se verificar a disponibilidade da rede  para o processo de backup dos arquivos de log do servidor primário para a área compartilhada, e desta para o servidor secundário. O tempo de cópia não deve exceder o intervalo do job de backup, evitando falhas no arquivamento dos logs;
+- Performance do servidor – monitorar os servidores principal e secundário, desde a geração dos backups dos logs de transação, até a restauração dos mesmos no ambiente de contingência, é trivial para que não se tenha problemas com relação ao intervalo de execução dos backups, correndo risco de resultar em falhas;
+- Disco – Deve-se ter em mente que é fundamental reservar espaço em disco para que não haja falhas no processo de backup e cópia destes arquivos para o destino. Configure adequadamente o tempo de retenção dos logs obsoletos para que o próprio Log Shipping apague estes arquivos de tempos em tempos.
 
--   •Performance do servidor – monitorar os servidores principal e
-    secundário, desde a geração dos backups dos logs de transação, até a
-    restauração dos mesmos no ambiente de contingência, é trivial para
-    que não se tenha problemas com relação ao intervalo de execução dos
-    backups, correndo risco de resultar em falhas; 
-
--   •Disco – Deve-se ter em mente que é fundamental reservar espaço em
-    disco para que não haja falhas no processo de backup e cópia destes
-    arquivos para o destino. Configure adequadamente o tempo de retenção
-    dos logs obsoletos para que o próprio Log Shipping apague estes
-    arquivos de tempos em tempos. 
-
-    É essencial que os discos contenham o mesmo espaço em disco nos
-    servidores primário e secundários para que não haja falha na
-    restauração do arquivo de log no servidor secundário. Qualquer
-    acréscimo de espaço em disco no servidor primário deve ser replicado
-    para o servidor secundário; 
-
--   •Localização do servidor de monitoramento – Apesar de não ser
-    obrigatório, para segurança, é importante que se mantenha este
-    servidor opcional fora do ambiente onde residam o principal e
-    secundário. Assim se assegura preservar o histórico de backups,
-    restores e alertas. 
+  É essencial que os discos contenham o mesmo espaço em disco nos servidores primário e secundários para que não haja falha na restauração do arquivo de log no servidor secundário. Qualquer acréscimo de espaço em disco no servidor primário deve ser replicado para o servidor secundário;
+- Localização do servidor de monitoramento – Apesar de não ser obrigatório, para segurança, é importante que se mantenha este servidor opcional fora do ambiente onde residam o principal e secundário. Assim se assegura preservar o histórico de backups, restores e alertas. 
 
 ​5. Configuração
 ===============
 
-        Para o funcionamento do Log Shipping os servidores e instâncias
-devem possuir algumas características:
+Para o funcionamento do Log Shipping os servidores e instâncias devem possuir algumas características:
 
--   •A edição do SQL Server deve suportar o Log Shipping; 
-
--   •Os servidores envolvidos na montagem do Log Shipping devem possuir
-    a mesma configuração com relação a case sensitive; 
-
--   •As bases de dados utilizados devem usar a opção de recovery model
-    setado para FULL ou BULK\_LOGGED, pois dessa maneira os logs das
-    alterações serão gerados para que seja viável a restauração na base
-    secundária; 
-
--   •Para habilitar o Log Shipping é necessário que o usuário do banco
-    possua a server role SYSADMIN em ambas as instâncias; 
-
--   •Com relação às permissões em diretórios da rede, para a execução da
-    job de backup e de restore, é necessário permissão de
-    leitura/escrita nos diretórios correspondentes. Por padrão, são
-    usadas as contas dos serviços do SQL Server e do SQL Server Agent na
-    execução das jobs e, sendo assim, estas permissões devem ser
-    delegadas a estas contas de domínio. 
-
--   •As instâncias SQL devem se enxergar, isto é, devem estar no mesmo
-    domínio de rede para que possa haver a configuração do Log Shipping.
-     
+- A edição do SQL Server deve suportar o Log Shipping;
+- Os servidores envolvidos na montagem do Log Shipping devem possuir a mesma configuração com relação a case sensitive;
+- As bases de dados utilizados devem usar a opção de recovery model setado para FULL ou BULK\_LOGGED, pois dessa maneira os logs das alterações serão gerados para que seja viável a restauração na base secundária;
+- Para habilitar o Log Shipping é necessário que o usuário do banco possua a server role SYSADMIN em ambas as instâncias;
+- Com relação às permissões em diretórios da rede, para a execução da job de backup e de restore, é necessário permissão de leitura/escrita nos diretórios correspondentes. Por padrão, são usadas as contas dos serviços do SQL Server e do SQL Server Agent na execução das jobs e, sendo assim, estas permissões devem ser delegadas a estas contas de domínio.
+- As instâncias SQL devem se enxergar, isto é, devem estar no mesmo domínio de rede para que possa haver a configuração do Log Shipping.
 
 5.1 Integridade e Confiabilidade
 --------------------------------
 
-        São recomendadas algumas boas práticas no intuito de auxiliar a
-integridade e confiabilidade da configuração do Log Shipping:
+São recomendadas algumas boas práticas no intuito de auxiliar a integridade e confiabilidade da configuração do Log Shipping:
 
--   •No caso de interrupções no processo de restore por falha de
-    qualquer natureza, garanta que os backups dos logs de transação
-    sejam preservados até que o problema seja identificado e corrigido; 
-
--   •Os backups dos logs de transação podem ser utilizados para uma
-    restauração até um determinado instante anterior a um erro grave que
-    ocorreu no BD, caso seja necessário; 
-
--   •No caso de uma base com extrema utilização para escritas, as
-    transações podem gerar logs muito grandes, o que deve ser
-    considerado quando for definido o tamanho do espaço em disco
-    necessário para os arquivos de backup; 
-
--   •O tamanho dos arquivos de backup, a velocidade da rede e o
-    intervalo de tempo para as restaurações fazem parte do planejamento
-    de uma solução de Log Shipping. Testes devem ser feitos para que a
-    configuração seja adequadamente implementada; 
-
--   •Em uma base onde existe a solução de Log Shipping configurada, não
-    se deve gerar backups de log sem utilizar os jobs de backup já
-    implementados. Se ocorrer um backup de log sem passar pelo Job,
-    haverá quebra de log sequence number (LSN) e será necessário
-    reconfigurar o Log Shipping; 
-
--   •Se houver necessidade da existência do servidor de monitoramento,
-    este deve ser adicionado durante a configuração inicial. Não será
-    possível adicioná-lo após o término da configuração. 
+- No caso de interrupções no processo de restore por falha de qualquer natureza, garanta que os backups dos logs de transação sejam preservados até que o problema seja identificado e corrigido;
+- Os backups dos logs de transação podem ser utilizados para uma restauração até um determinado instante anterior a um erro grave que ocorreu no BD, caso seja necessário;
+- No caso de uma base com extrema utilização para escritas, as transações podem gerar logs muito grandes, o que deve ser considerado quando for definido o tamanho do espaço em disco necessário para os arquivos de backup;
+- O tamanho dos arquivos de backup, a velocidade da rede e o intervalo de tempo para as restaurações fazem parte do planejamento de uma solução de Log Shipping. Testes devem ser feitos para que a configuração seja adequadamente implementada;
+- Em uma base onde existe a solução de Log Shipping configurada, não se deve gerar backups de log sem utilizar os jobs de backup já implementados. Se ocorrer um backup de log sem passar pelo Job, haverá quebra de log sequence number (LSN) e será necessário reconfigurar o Log Shipping;
+- Se houver necessidade da existência do servidor de monitoramento, este deve ser adicionado durante a configuração inicial. Não será possível adicioná-lo após o término da configuração. 
 
 ​6. Conclusão
 ============
