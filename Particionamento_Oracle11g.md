@@ -43,6 +43,7 @@ Pré Requisitos para utilizar o particionamento no Oracle 11g
 - Licença Oracle Partitioning (ela não vem junto com o banco de dados);
 - A funcionalidade Oracle Partitioning deve estar ativada.
 
+
 Verificando se um banco de dados Oracle possui o particionamento ativado
 
 Caso a query abaixo retorne 'TRUE', o particionamento está ativado:
@@ -476,8 +477,11 @@ Tabelas particionadas, como qualquer outra tabela, podem ser indexadas para melh
 Abaixo seguem algumas regras gerais para auxiliar na escolha de um índice
 
 1. Se a chave do particionamento da tabela é um subconjunto dos campos do índice, o índice local é recomendado. Se este não é o caso, verifique se a regra 2 se aplica.
+
 2. Se o índice é unique e não contém a chave de particionamento da tabela, o índice global é recomendado. Se este não é o caso, verifique se a regra 3 se aplica.
+
 3. Se a prioridade é facilidade e eficiência na manutenção do índice, o índice local é recomendado. Se este não é o caso, verifique se a regra 4 se aplica.
+
 4. Se a aplicação é OLTP e os usuários necessitam de um tempo de resposta rápido, um índice global é recomendado. Se o ambiente é OLAP e os usuários estão mais interessados em resultados analíticos, um índice local é recomendado.
 
 ### Manutenção de índices em tabelas particionadas
@@ -510,6 +514,7 @@ SQL> ALTER TABLE <table_name> <partition_specification> UPDATE INDEXES
 Duas vantagens na atualização automática de índices:
 
 - O índice é atualizado com a operação na tabela pai, dessa forma não é necessário que seja reconstruído depois da operação DDL na tabela.
+
 - O índice permanece disponível e online durante a operação, não afetando aplicações.
 
 Algumas considerações ao utilizar atualização automática de índices (UPDATE_INDEXES):
