@@ -24,30 +24,13 @@ tags:
 ​1. Introdução
 =============
 
-        A importância de se prevenir quedas em ambientes de produção,
-evitando paradas e descontentamentos dos mais variados tipos de
-usuários, faz com que, cada vez mais, se invista em recursos de alta
-disponibilidade visando garantir a contingência e continuidade do
-negócio (PCN).
+A importância de se prevenir quedas em ambientes de produção, evitando paradas e descontentamentos dos mais variados tipos de usuários, faz com que, cada vez mais, se invista em recursos de alta disponibilidade visando garantir a contingência e continuidade do negócio (PCN).
 
-        Para que o PCN seja atendido faz-se necessária a definição de
-alternativas eficazes para que exista transparência no acesso aos dados
-por parte dos sistemas existentes na empresa e em caso de problema no
-servidor, permitindo que o trabalho prossiga regularmente.
+Para que o PCN seja atendido faz-se necessária a definição de alternativas eficazes para que exista transparência no acesso aos dados por parte dos sistemas existentes na empresa e em caso de problema no servidor, permitindo que o trabalho prossiga regularmente.
 
-        A alta disponibilidade está relacionada com ambientes críticos,
-de modo que a operação de uma empresa não seja prejudicada em caso de
-falhas, permitindo continuidade do negócio. Uma solução de alta
-disponibilidade mascara os efeitos de uma falha de hardware ou software
-e mantém a disponibilidade dos aplicativos, de modo a minimizar o tempo
-de inatividade percebido pelos usuários.
+A alta disponibilidade está relacionada com ambientes críticos, de modo que a operação de uma empresa não seja prejudicada em caso de falhas, permitindo continuidade do negócio. Uma solução de alta disponibilidade mascara os efeitos de uma falha de hardware ou software e mantém a disponibilidade dos aplicativos, de modo a minimizar o tempo de inatividade percebido pelos usuários.
 
-        Uma das soluções de alta disponibilidade nativas do SGBD MSSQL
-Server é a replicação de dados através de Log Shipping, no qual
-focaremos neste documento. Este, além de prover alta disponibilidade,
-também pode ser utilizado para manter uma cópia fiel do ambiente de
-produção, visando realização de consultas e geração de relatórios que
-muitas vezes sobrecarregam o servidor principal.
+Uma das soluções de alta disponibilidade nativas do SGBD MSSQL Server é a replicação de dados através de Log Shipping, no qual focaremos neste documento. Este, além de prover alta disponibilidade, também pode ser utilizado para manter uma cópia fiel do ambiente de produção, visando realização de consultas e geração de relatórios que muitas vezes sobrecarregam o servidor principal.
 
 Desafios
 ===========
