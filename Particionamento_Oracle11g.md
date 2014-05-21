@@ -56,6 +56,10 @@ Caso a query abaixo retorne 'TRUE', o particionamento está ativado:
 SQL> SELECT * FROM v$option WHERE parameter='Partitioning';
 ```
 
+
+
+
+
 Alguns exemplos de quando particionar
 
 - Tabelas
@@ -63,6 +67,7 @@ Alguns exemplos de quando particionar
   - Tabelas que sejam propensas a grande crescimento. 
   - Tabelas que possuam dados históricos que sejam pouco acessados ou não possam ser alterados.  
   - Quando o conteúdo da tabela precisa ser distribuído entre diferentes storages. 
+
 - Índices:
   - Quando operações de manutenção, como reconstrução do índice (rebuild), levam muito tempo para serem concluídas e por isso torna-se necessário executar estas operações em apenas partes dos dados do índice sem indisponibilizar ou precisar tratar a estrutura inteira, economizando tempo e recursos.                 
 
@@ -97,36 +102,45 @@ CREATE TABLE salestable
    s_totalprice NUMBER)
 PARTITION BY RANGE(s_saledate)   /*Campo chave do particionamento.*/
 
-INTERVAL(NUMTOYMINTERVAL(1,'MONTH'))  /*Definição de como serão os intervalos de futuras partições. */
+INTERVAL(NUMTOYMINTERVAL(1,'MONTH'))  /*Definição de como serão os 
+intervalos de futuras partições. */
 
-STORE IN (tbs1,tbs2,tbs3,tbs4) /*Futuras partições serão armazenadas nestas
- tablespaces especificadas, de maneira circular.*/
+STORE IN (tbs1,tbs2,tbs3,tbs4) /*Futuras partições serão armazenadas 
+nestas tablespaces especificadas, de maneira circular.*/
 
-(PARTITION sal05q1 VALUES LESS THAN (TO_DATE('01-APR-2005', 'DD-MON-YYYY'))
-   TABLESPACE tbs1,   /*Esta partição só aceita registros anteriores a 01/04/2005 e
-    será armazenada na tablespace tbs1.*/
+(PARTITION sal05q1 
+ VALUES LESS THAN (TO_DATE('01-APR-2005', 'DD-MON-YYYY'))
+ TABLESPACE tbs1,   /*Esta partição só aceita registros 
+ anteriores a 01/04/2005 e será armazenada na tablespace tbs1.*/
 
-  PARTITION sal05q2 VALUES LESS THAN (TO_DATE('01-JUL-2005','DD-MON-YYYY'))
-   TABLESPACE tbs2,   /*Esta partição só aceita registros anteriores a 01/07/2005 e
-    será armazenada na tablespace tbs2.*/
+  PARTITION sal05q2 
+  VALUES LESS THAN (TO_DATE('01-JUL-2005','DD-MON-YYYY'))
+  TABLESPACE tbs2,   /*Esta partição só aceita registros 
+  anteriores a 01/07/2005 e será armazenada na tablespace tbs2.*/
 
-  PARTITION sal05q3 VALUES LESS THAN (TO_DATE('01-OCT-2005', 'DD-MON-YYYY'))
+  PARTITION sal05q3 
+  VALUES LESS THAN (TO_DATE('01-OCT-2005', 'DD-MON-YYYY'))
    TABLESPACE tbs3,
 
-  PARTITION sal05q4 VALUES LESS THAN (TO_DATE('01-JAN-2006', 'DD-MON-YYYY'))
+  PARTITION sal05q4 
+  VALUES LESS THAN (TO_DATE('01-JAN-2006', 'DD-MON-YYYY'))
    TABLESPACE tbs4,
 
-  PARTITION sal06q1 VALUES LESS THAN (TO_DATE('01-APR-2006', 'DD-MON-YYYY'))
-   TABLESPACE tbs1,
+  PARTITION sal06q1 
+  VALUES LESS THAN (TO_DATE('01-APR-2006', 'DD-MON-YYYY'))
+  TABLESPACE tbs1,
 
-  PARTITION sal06q2 VALUES LESS THAN (TO_DATE('01-JUL-2006', 'DD-MON-YYYY'))
-   TABLESPACE tbs2,
+  PARTITION sal06q2 
+  VALUES LESS THAN (TO_DATE('01-JUL-2006', 'DD-MON-YYYY'))
+  TABLESPACE tbs2,
 
-  PARTITION sal06q3 VALUES LESS THAN (TO_DATE('01-OCT-2006', 'DD-MON-YYYY'))
-   TABLESPACE tbs3,
+  PARTITION sal06q3 
+  VALUES LESS THAN (TO_DATE('01-OCT-2006', 'DD-MON-YYYY'))
+  TABLESPACE tbs3,
 
-  PARTITION sal06q4 VALUES LESS THAN (TO_DATE('01-JAN-2007', 'DD-MON-YYYY'))
-   TABLESPACE tbs4);
+  PARTITION sal06q4 
+  VALUES LESS THAN (TO_DATE('01-JAN-2007', 'DD-MON-YYYY'))
+  TABLESPACE tbs4);
 ```
 \setstretch{1.5}
 
@@ -152,7 +166,8 @@ CREATE TABLE sales_hash
    s_custid     NUMBER,
    s_totalprice NUMBER)
 
-PARTITION BY HASH(s_productid) /* Definição do campo chave do particionamento por Hash. */ 
+PARTITION BY HASH(s_productid) /* Definição do campo chave 
+do particionamento por Hash. */ 
 ( PARTITION p1 TABLESPACE tbs1
 , PARTITION p2 TABLESPACE tbs2
 , PARTITION p3 TABLESPACE tbs3
@@ -179,7 +194,8 @@ CREATE TABLE accounts
 , status         VARCHAR2(1)
 )
 
-PARTITION BY LIST (region) /* Definição do campo chave do particionamento por Lista. */
+PARTITION BY LIST (region) /* Definição do campo chave do particionamento 
+por Lista. */
 ( PARTITION p_northwest VALUES ('OR', 'WA')
 , PARTITION p_southwest VALUES ('AZ', 'UT', 'NM')
 , PARTITION p_northeast VALUES ('NY', 'VM', 'NJ')
@@ -302,7 +318,8 @@ Exemplo 5:
 
 CREATE TABLE orders (
    order_id    NUMBER PRIMARY KEY,
-   order_date  DATE NOT NULL, / * Coluna chave do particionamento da tabela pai.*/
+   order_date  DATE NOT NULL, / * Coluna chave do particionamento 
+da tabela pai.*/
    customer_id NUMBER NOT NULL,
    shipper_id  NUMBER)
 
@@ -425,9 +442,11 @@ Para descobrir os valores atuais da tabela para os parâmetros 'INCREMENTAL' e '
 \setstretch{1}
 
 ```sql
-SQL> SELECT DBMS_STATS.GET_PREFS('INCREMENTAL','<schema_name>','<table_name>') FROM dual;
+SQL> SELECT DBMS_STATS.GET_PREFS('INCREMENTAL','<schema_name>','<table_name>') 
+     FROM dual;
 
-SQL> SELECT DBMS_STATS.GET_PREFS('PUBLISH','<schema_name>','<table_name>') FROM dual;
+SQL> SELECT DBMS_STATS.GET_PREFS('PUBLISH','<schema_name>','<table_name>') 
+     FROM dual;
 ```
 
 \setstretch{1.5}
@@ -437,9 +456,11 @@ Os comandos abaixo, configuram os parâmetros 'INCREMENTAL' e 'PUBLISH' conforme
 \setstretch{1}
 
 ```sql
-SQL> EXEC DBMS_STATS.SET_TABLE_PREFS ('<schema_name>','<table_name>','INCREMENTAL','TRUE');
+SQL> EXEC DBMS_STATS.SET_TABLE_PREFS ('<schema_name>','<table_name>',
+    'INCREMENTAL','TRUE');
 
-SQL> EXEC DBMS_STATS.SET_TABLE_PREFS ('<schema_name>','<table_name>','PUBLISH','TRUE');
+SQL> EXEC DBMS_STATS.SET_TABLE_PREFS ('<schema_name>','<table_name>',
+     'PUBLISH','TRUE');
 ```
 
 \setstretch{1.5}
@@ -449,9 +470,11 @@ Se os valores padrões dos parâmetos 'ESTIMATE_PERCENT' e 'GRANULARITY' foram a
 \setstretch{1}
 
 ```sql
-SQL> EXEC dbms_stats.set_table_prefs('<schema_name>','<table_name>','GRANULARITY','AUTO');
+SQL> EXEC dbms_stats.set_table_prefs('<schema_name>','<table_name>',
+     'GRANULARITY','AUTO');
 
-SQL> EXEC dbms_stats.set_table_prefs('<schema_name>','<table_name>','ESTIMATE_PERCENT',DBMS_STATS.AUTO_SAMPLE_SIZE);
+SQL> EXEC dbms_stats.set_table_prefs('<schema_name>','<table_name>',
+     'ESTIMATE_PERCENT',DBMS_STATS.AUTO_SAMPLE_SIZE);
 ```
 
 \setstretch{1.5}
