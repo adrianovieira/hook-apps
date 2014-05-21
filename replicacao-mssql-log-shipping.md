@@ -30,7 +30,7 @@ Para que o PCN seja atendido faz-se necessária a definição de alternativas ef
 
 A alta disponibilidade está relacionada com ambientes críticos, de modo que a operação de uma empresa não seja prejudicada em caso de falhas, permitindo continuidade do negócio. Uma solução de alta disponibilidade mascara os efeitos de uma falha de hardware ou software e mantém a disponibilidade dos aplicativos, de modo a minimizar o tempo de inatividade percebido pelos usuários.
 
-Uma das soluções de alta disponibilidade nativas do SGBD MSSQL Server é a replicação de dados através de Log Shipping, no qual focaremos neste documento. Este, além de prover alta disponibilidade, também pode ser utilizado para manter uma cópia fiel do ambiente de produção, visando realização de consultas e geração de relatórios que muitas vezes sobrecarregam o servidor principal.
+Uma das soluções de alta disponibilidade, nativas do SGBD MSSQL Server&trade;, é a replicação de dados através de Log Shipping, no qual focaremos neste documento. Este, além de prover alta disponibilidade, também pode ser utilizado para manter uma cópia fiel do ambiente de produção, visando realização de consultas e geração de relatórios que muitas vezes sobrecarregam o servidor principal.
 
 Desafios
 ===========
@@ -42,9 +42,9 @@ Benefícios e/ou recomendações
 ​3. Log Shipping
 ===============
 
-Através do Log Shipping, uma base de dados é mantida atualizada no servidor secundário e servirá de contingência caso haja problemas no servidor principal. Em caso de problemas no servidor primário, somente será possível a realização de um failover manual para que a base replicada se torne a instância principal.
+Através do Log Shipping, uma base de dados é mantida atualizada no servidor secundário e servirá de contingência caso haja problemas no servidor principal. Em caso de problemas no servidor primário, somente será possível a realização de um *failover* manual para que a base replicada se torne a instância principal.
 
-As remessas de logs de transação gerados a partir do servidor principal são configuradas através de jobs do SQL Server Agent, permitindo que se definam agendamentos tanto para o backup dos logs, quanto para o restore na base secundária.
+As remessas de logs de transação gerados a partir do servidor principal são configuradas através de jobs do SQL Server Agent&trade;, permitindo que se definam agendamentos tanto para o backup dos logs, quanto para o restore na base secundária.
 
 No momento em que são gerados os backups de log, é possível habilitar a compactação dos arquivos, pensando na redução de seu tamanho físico, para que haja diminuição do tráfego na rede no momento em que estes forem enviados ao servidor secundário. Neste caso, é importante lembrar que haverá aumento na utilização de CPU do servidor principal durante o processo de compactação dos arquivos. Qualquer versão do SQL Server poderá descompactar esses arquivos, porém, se o secundário se tornar principal, não será possível compactar os logs de transação caso a versão utilizada não seja compatível com esta funcionalidade. Caso isto aconteça, dever-se-á acrescentar espaço em disco para os novos backups (tendo em vista que estes não estarão mais compactados).
 
@@ -61,7 +61,7 @@ A tecnologia de Log Shipping é composta basicamente por três elementos:
 
 O servidor primário é responsável por enviar os logs para um ou mais servidores. Nele é armazenada toda a configuração do Log Shipping. Qualquer modificação na configuração do Log Shipping deve ser feita na base de dados primária, bem como a sua exclusão.
 
-O servidor secundário tem a função de receber os logs de transação e aplicar sobre a base secundária, através de arquivos restaurados automaticamente pelos Jobs configurados a partir do servidor principal. Esta base mantém a consistência e similaridade com a base primária, pois os logs são enviados de forma ordenada, mantendo o LSN^[*Log Sequence Number* (LSN) - Cada registro em um log de transação no SQL Server é identificado por uma numeração, que mantém uma ordem para que possa realizar restaurações point-in-time (em um ponto específico definido), que são usadas para recuperar uma base até um determinado horário.] no momento da restauração.
+O servidor secundário tem a função de receber os logs de transação e aplicar sobre a base secundária, através de arquivos restaurados automaticamente pelos Jobs configurados a partir do servidor principal. Esta base mantém a consistência e similaridade com a base primária, pois os logs são enviados de forma ordenada, mantendo o LSN^[*Log Sequence Number* (LSN) - Cada registro em um log de transação no SQL Server é identificado por uma numeração, que mantém uma ordem para que possa realizar restaurações *point-in-time* (em um ponto específico definido), que são usadas para recuperar uma base até um determinado horário.] no momento da restauração.
 
 O servidor secundário nunca poderá ser atualizado a não ser pelas aplicações de log. Os bancos, durante a configuração do Log Shipping, deverão, obrigatoriamente, que ser configurados com a opção StandBy ou Recovery Mode. Na opção StandBy é possível a realização de consultas e, na Recovery Mode, não é possível acessar a base replicada.
 
@@ -99,7 +99,7 @@ Para a implementação do Log Shipping é importante estar atento com relação 
 - Disco – Deve-se ter em mente que é fundamental reservar espaço em disco para que não haja falhas no processo de backup e cópia destes arquivos para o destino. Configure adequadamente o tempo de retenção dos logs obsoletos para que o próprio Log Shipping apague estes arquivos de tempos em tempos.
 
   É essencial que os discos contenham o mesmo espaço em disco nos servidores primário e secundários para que não haja falha na restauração do arquivo de log no servidor secundário. Qualquer acréscimo de espaço em disco no servidor primário deve ser replicado para o servidor secundário;
-- Localização do servidor de monitoramento – Apesar de não ser obrigatório, para segurança, é importante que se mantenha este servidor opcional fora do ambiente onde residam o principal e secundário. Assim se assegura preservar o histórico de backups, restores e alertas. 
+- Localização do servidor de monitoramento – Apesar de não ser obrigatório, para segurança, é importante que se mantenha este servidor opcional fora do ambiente onde residam o principal e secundário. Assim se assegura preservar o histórico de *backups*, *restores* e alertas. 
 
 ​5. Configuração
 ===============
@@ -107,8 +107,8 @@ Para a implementação do Log Shipping é importante estar atento com relação 
 Para o funcionamento do Log Shipping os servidores e instâncias devem possuir algumas características:
 
 - A edição do SQL Server deve suportar o Log Shipping;
-- Os servidores envolvidos na montagem do Log Shipping devem possuir a mesma configuração com relação a case sensitive;
-- As bases de dados utilizados devem usar a opção de recovery model setado para FULL ou BULK\_LOGGED, pois dessa maneira os logs das alterações serão gerados para que seja viável a restauração na base secundária;
+- Os servidores envolvidos na montagem do Log Shipping devem possuir a mesma configuração com relação a *case sensitive*;
+- As bases de dados utilizados devem usar a opção de recovery model setado para FULL ou BULK_LOGGED, pois dessa maneira os logs das alterações serão gerados para que seja viável a restauração na base secundária;
 - Para habilitar o Log Shipping é necessário que o usuário do banco possua a server role SYSADMIN em ambas as instâncias;
 - Com relação às permissões em diretórios da rede, para a execução da job de backup e de restore, é necessário permissão de leitura/escrita nos diretórios correspondentes. Por padrão, são usadas as contas dos serviços do SQL Server e do SQL Server Agent na execução das jobs e, sendo assim, estas permissões devem ser delegadas a estas contas de domínio.
 - As instâncias SQL devem se enxergar, isto é, devem estar no mesmo domínio de rede para que possa haver a configuração do Log Shipping.
@@ -122,7 +122,7 @@ São recomendadas algumas boas práticas no intuito de auxiliar a integridade e 
 - Os backups dos logs de transação podem ser utilizados para uma restauração até um determinado instante anterior a um erro grave que ocorreu no BD, caso seja necessário;
 - No caso de uma base com extrema utilização para escritas, as transações podem gerar logs muito grandes, o que deve ser considerado quando for definido o tamanho do espaço em disco necessário para os arquivos de backup;
 - O tamanho dos arquivos de backup, a velocidade da rede e o intervalo de tempo para as restaurações fazem parte do planejamento de uma solução de Log Shipping. Testes devem ser feitos para que a configuração seja adequadamente implementada;
-- Em uma base onde existe a solução de Log Shipping configurada, não se deve gerar backups de log sem utilizar os jobs de backup já implementados. Se ocorrer um backup de log sem passar pelo Job, haverá quebra de log sequence number (LSN) e será necessário reconfigurar o Log Shipping;
+- Em uma base onde existe a solução de Log Shipping configurada, não se deve gerar backups de log sem utilizar os jobs de backup já implementados. Se ocorrer um backup de log sem passar pelo Job, haverá quebra de *log sequence number* (LSN) e será necessário reconfigurar o Log Shipping;
 - Se houver necessidade da existência do servidor de monitoramento, este deve ser adicionado durante a configuração inicial. Não será possível adicioná-lo após o término da configuração. 
 
 ​6. Conclusão
@@ -130,7 +130,7 @@ São recomendadas algumas boas práticas no intuito de auxiliar a integridade e 
 
 Alta disponibilidade é assunto obrigatório quando falamos em servidores corporativos de banco de dados. Em qualquer empresa é de vital importância que algumas aplicações não parem de funcionar. A queda de uma aplicação causa prejuízos que podem ser de receita, perda de SLA, aumento de custo (quando um sistema é substituído por um processo manual)  e até mesmo na imagem da empresa, entre outros.
 
-As diversas opções de alta disponibilidade da Microsoft visam atender qualquer cenário, não importa o tamanho da empresa, tamanho do banco ou tipo de aplicação. Como estas soluções são nativas do MSSQL Server, são soluções de baixo custo.
+As diversas opções de alta disponibilidade da Microsoft visam atender qualquer cenário, não importa o tamanho da empresa, tamanho do banco ou tipo de aplicação. Como estas soluções são nativas do MSSQL Server&trade;, são soluções de baixo custo.
 
 O Log Shipping é uma tecnologia de alta disponibilidade que aplica logs transacionais em uma cópia do banco de dados com certa periodicidade, garantindo uma cópia atualizada do banco de dados na rede. Embora o tempo de atraso entre a aplicação destes logs no servidor secundário possa resultar em um banco de dados desatualizado no destino, pode-se utilizar a base secundária para leitura dos dados e recuperação caso ocorra um erro humano na base principal.
 
