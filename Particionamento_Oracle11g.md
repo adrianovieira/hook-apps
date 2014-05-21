@@ -30,6 +30,8 @@ Benefícios e/ou recomendações
 
 Este artigo poderá ser utilizado como um guia ou referência rápida para o particionamento ou reparticionamento de estruturas no Oracle 11g.
 
+
+
 Introdução
 ==========
 
