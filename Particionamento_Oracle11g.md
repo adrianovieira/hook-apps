@@ -444,9 +444,9 @@ Se os valores padrões dos parâmetos 'ESTIMATE_PERCENT' e 'GRANULARITY' foram a
 \setstretch{1}
 
 ```sql
-SQL> EXEC dbms_stats.set_table_prefs('MY_SCHEMA', 'MY_TABLE', 'GRANULARITY', 'AUTO');
+SQL> EXEC dbms_stats.set_table_prefs('<schema_name>', '<table_name>', 'GRANULARITY', 'AUTO');
 
-SQL> EXEC dbms_stats.set_table_prefs('MY_SCHEMA', 'MY_TABLE', 'ESTIMATE_PERCENT', DBMS_STATS.AUTO_SAMPLE_SIZE);
+SQL> EXEC dbms_stats.set_table_prefs('<schema_name>', '<table_name>', 'ESTIMATE_PERCENT', DBMS_STATS.AUTO_SAMPLE_SIZE);
 ```
 
 \setstretch{1.5}
@@ -504,7 +504,7 @@ TRUNCATE
 Exemplo:
 
 ```sql
-SQL> ALTER TABLE <TABLE_NAME> <PARTITION SPECIFICATION> UPDATE INDEXES
+SQL> ALTER TABLE <table_name> <Partition_specification> UPDATE INDEXES
 ```
 
 Duas vantagens na atualização automática de índices:
