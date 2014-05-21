@@ -42,129 +42,54 @@ Benefícios e/ou recomendações
 ​3. Log Shipping
 ===============
 
-        Através do Log Shipping, uma base de dados é mantida atualizada
-no servidor secundário e servirá de contingência caso haja problemas no
-servidor principal. Em caso de problemas no servidor primário, somente
-será possível a realização de um failover manual para que a base
-replicada se torne a instância principal.
+Através do Log Shipping, uma base de dados é mantida atualizada no servidor secundário e servirá de contingência caso haja problemas no servidor principal. Em caso de problemas no servidor primário, somente será possível a realização de um failover manual para que a base replicada se torne a instância principal.
 
-        As remessas de logs de transação gerados a partir do servidor
-principal são configuradas através de jobs do SQL Server Agent,
-permitindo que se definam agendamentos tanto para o backup dos logs,
-quanto para o restore na base secundária.
+As remessas de logs de transação gerados a partir do servidor principal são configuradas através de jobs do SQL Server Agent, permitindo que se definam agendamentos tanto para o backup dos logs, quanto para o restore na base secundária.
 
-        No momento em que são gerados os backups de log, é possível
-habilitar a compactação dos arquivos, pensando na redução de seu tamanho
-físico, para que haja diminuição do tráfego na rede no momento em que
-estes forem enviados ao servidor secundário. Neste caso, é importante
-lembrar que haverá aumento na utilização de CPU do servidor principal
-durante o processo de compactação dos arquivos. Qualquer versão do SQL
-Server poderá descompactar esses arquivos, porém, se o secundário se
-tornar principal, não será possível compactar os logs de transação caso
-a versão utilizada não seja compatível com esta funcionalidade. Caso
-isto aconteça, dever-se-á acrescentar espaço em disco para os novos
-backups (tendo em vista que estes não estarão mais compactados).
+No momento em que são gerados os backups de log, é possível habilitar a compactação dos arquivos, pensando na redução de seu tamanho físico, para que haja diminuição do tráfego na rede no momento em que estes forem enviados ao servidor secundário. Neste caso, é importante lembrar que haverá aumento na utilização de CPU do servidor principal durante o processo de compactação dos arquivos. Qualquer versão do SQL Server poderá descompactar esses arquivos, porém, se o secundário se tornar principal, não será possível compactar os logs de transação caso a versão utilizada não seja compatível com esta funcionalidade. Caso isto aconteça, dever-se-á acrescentar espaço em disco para os novos backups (tendo em vista que estes não estarão mais compactados).
 
-        A proposta de adoção da tecnologia de Log Shipping pode ainda
-ser associada à existência de uma base para geração de consultas para
-relatórios, por exemplo, isolando estes processamentos do ambiente de
-produção, com o objetivo de evitar possíveis problemas de desempenho.
-Além disso, ainda sobre sua finalidade, é comum combinar a utilização de
-Log Shipping com outras opções de alta disponibilidade, tais como
-Clustering e Database Mirrorring, de modo que exista mais de uma base
-atualizada, garantindo contingência em um ambiente de produção.
+A proposta de adoção da tecnologia de Log Shipping pode ainda ser associada à existência de uma base para geração de consultas para relatórios, por exemplo, isolando estes processamentos do ambiente de produção, com o objetivo de evitar possíveis problemas de desempenho. Além disso, ainda sobre sua finalidade, é comum combinar a utilização de Log Shipping com outras opções de alta disponibilidade, tais como Clustering e Database Mirrorring, de modo que exista mais de uma base atualizada, garantindo contingência em um ambiente de produção.
 
 3.1 Estrutura do Log Shipping
 -----------------------------
 
 A tecnologia de Log Shipping é composta basicamente por três elementos:
 
--   •Servidor primário; 
+- Servidor primário; 
+- Servidor secundário (pode existir mais de um); 
+- Servidor monitor (opcional). 
 
--   •Servidor secundário (pode existir mais de um); 
+O servidor primário é responsável por enviar os logs para um ou mais servidores. Nele é armazenada toda a configuração do Log Shipping. Qualquer modificação na configuração do Log Shipping deve ser feita na base de dados primária, bem como a sua exclusão.
 
--   •Servidor monitor (opcional). 
+O servidor secundário tem a função de receber os logs de transação e aplicar sobre a base secundária, através de arquivos restaurados automaticamente pelos Jobs configurados a partir do servidor principal. Esta base mantém a consistência e similaridade com a base primária, pois os logs são enviados de forma ordenada, mantendo o LSN\* (Log Sequence Number) no momento da restauração.
 
-        O servidor primário é responsável por enviar os logs para um ou
-mais servidores. Nele é armazenada toda a configuração do Log Shipping.
-Qualquer modificação na configuração do Log Shipping deve ser feita na
-base de dados primária, bem como a sua exclusão.
+O servidor secundário nunca poderá ser atualizado a não ser pelas aplicações de log. Os bancos, durante a configuração do Log Shipping, deverão, obrigatoriamente, que ser configurados com a opção StandBy ou Recovery Mode. Na opção StandBy é possível a realização de consultas e, na Recovery Mode, não é possível acessar a base replicada.
 
-        O servidor secundário tem a função de receber os logs de
-transação e aplicar sobre a base secundária, através de arquivos
-restaurados automaticamente pelos Jobs configurados a partir do servidor
-principal. Esta base mantém a consistência e similaridade com a base
-primária, pois os logs são enviados de forma ordenada, mantendo o LSN\*
-(Log Sequence Number) no momento da restauração.
+O servidor monitor é utilizado para armazenar detalhes sobre a utilização do Log Shipping entre os servidores primário e secundários. As informações incluem:
 
-        O servidor secundário nunca poderá ser atualizado a não ser
-pelas aplicações de log. Os bancos, durante a configuração do Log
-Shipping, deverão, obrigatoriamente, que ser configurados com a opção
-StandBy ou Recovery Mode. Na opção StandBy é possível a realização de
-consultas e, na Recovery Mode, não é possível acessar a base replicada.
+- Quando foi realizado o último backup dos log de transação no banco primário. 
+- Quando foi realizada a última cópia e restore dos arquivos de backup no servidor secundário. 
+- Informações sobre qualquer alerta de falha de backup. 
 
-        O servidor monitor é utilizado para armazenar detalhes sobre a
-utilização do Log Shipping entre os servidores primário e secundários.
-As informações incluem:
-
--   •Quando foi realizado o último backup dos log de transação no banco
-    primário. 
-
--   •Quando foi realizada a última cópia e restore dos arquivos de
-    backup no servidor secundário. 
-
--   •Informações sobre qualquer alerta de falha de backup. 
-
-\* LSN – Cada registro em um log de transação no SQL Server é
-identificado por uma numeração, que mantém uma ordem para que possa
-realizar restaurações point-in-time (em um ponto específico definido),
-que são usadas para recuperar uma base até um determinado horário.
+\* LSN – Cada registro em um log de transação no SQL Server é identificado por uma numeração, que mantém uma ordem para que possa realizar restaurações point-in-time (em um ponto específico definido), que são usadas para recuperar uma base até um determinado horário.
 
 3.2 Funcionamento do Log Shipping
 ---------------------------------
 
-O funcionamento do Log Shipping consiste de três etapas básicas e
-fundamentais:
+O funcionamento do Log Shipping consiste de três etapas básicas e fundamentais:
 
-1.  1.Backup dos logs de transação no servidor primário. 
-
-2.  2.Cópia destes arquivos de log para o servidor secundário. 
-
-3.  3.Restauração dos logs na instância secundária. 
+1. Backup dos logs de transação no servidor primário. 
+2. Cópia destes arquivos de log para o servidor secundário. 
+3. Restauração dos logs na instância secundária. 
 
 ![estrutura e funcionamento do Log Shipping](imagens/log-shipping-estrutura.jpg)
 
-    1.  1.  1.  Este processo ocorre através da ação de três jobs
-                criados após a configuração da estrutura de Log Shipping
-                na instância primária que são executados pelo SQL Server
-                Agent. São eles:
+Este processo ocorre através da ação de três jobs criados após a configuração da estrutura de Log Shipping na instância primária que são executados pelo SQL Server Agent. São eles:
 
--   •Backup Job  - Nomeada como “Log Shipping Backup”, é responsável por
-    gerar backups dos arquivos de log, registrar histórico no servidor
-    local e no monitor, e apagar os arquivos obsoletos e informações
-    históricas. Por padrão, o intervalo para a execução deste job é de
-    15 minutos porém pode ser alterado conforme necessidade. A
-    periodicidade de exclusão dos arquivos de log já aplicados também
-    pode ser configurada. 
-
--   •Copy Job – Nomeada de “Log Shipping Copy” e criada no servidor
-    secundário, esta job copia os arquivos de backup do servidor
-    primário para um destino configurável no servidor secundário e o
-    servidor monitor 
-
--   •Restore Job – job “Log Shipping Restore” é criada e executada no(s)
-    banco de dados secundário(s) com função de restore dos arquivos de
-    log que foram copiados na execução da job especificada acima. Ele
-    grava o histórico no servidor local e monitor server, e apaga
-    arquivos e históricos antigos. O job de restore pode ter seu
-    intervalo de execução alterado, pelo administrador de banco de
-    dados, de acordo com políticas definidas e necessidades
-    específicas. 
-
--   •Alert Job - “Log Shipping Alert” criado no servidor monitor,
-    levanta alertas dos bancos primário e secundários quando um backup
-    ou operação de restore não completar com sucesso e em um intervalo
-    especificado. 
+- Backup Job  - Nomeada como “Log Shipping Backup”, é responsável por gerar backups dos arquivos de log, registrar histórico no servidor local e no monitor, e apagar os arquivos obsoletos e informações históricas. Por padrão, o intervalo para a execução deste job é de 15 minutos porém pode ser alterado conforme necessidade. A periodicidade de exclusão dos arquivos de log já aplicados também pode ser configurada.
+- Copy Job – Nomeada de “Log Shipping Copy” e criada no servidor secundário, esta job copia os arquivos de backup do servidor primário para um destino configurável no servidor secundário e o servidor monitor.
+- Restore Job – job “Log Shipping Restore” é criada e executada no(s) banco de dados secundário(s) com função de restore dos arquivos de log que foram copiados na execução da job especificada acima. Ele grava o histórico no servidor local e monitor server, e apaga arquivos e históricos antigos. O job de restore pode ter seu intervalo de execução alterado, pelo administrador de banco de dados, de acordo com políticas definidas e necessidades específicas.
+- Alert Job - “Log Shipping Alert” criado no servidor monitor, levanta alertas dos bancos primário e secundários quando um backup ou operação de restore não completar com sucesso e em um intervalo especificado. 
 
 ​4. Pontos de atenção
 ====================
