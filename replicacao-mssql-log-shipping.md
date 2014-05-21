@@ -130,25 +130,11 @@ São recomendadas algumas boas práticas no intuito de auxiliar a integridade e 
 ​6. Conclusão
 ============
 
-        Alta disponibilidade é assunto obrigatório quando falamos em
-servidores corporativos de banco de dados. Em qualquer empresa é de
-vital importância que algumas aplicações não parem de funcionar. A queda
-de uma aplicação causa prejuízos que podem ser de receita, perda de SLA,
-aumento de custo (quando um sistema é substituído por um processo
-manual)  e até mesmo na imagem da empresa, entre outros.
+Alta disponibilidade é assunto obrigatório quando falamos em servidores corporativos de banco de dados. Em qualquer empresa é de vital importância que algumas aplicações não parem de funcionar. A queda de uma aplicação causa prejuízos que podem ser de receita, perda de SLA, aumento de custo (quando um sistema é substituído por um processo manual)  e até mesmo na imagem da empresa, entre outros.
 
-        As diversas opções de alta disponibilidade da Microsoft visam
-atender qualquer cenário, não importa o tamanho da empresa, tamanho do
-banco ou tipo de aplicação. Como estas soluções são nativas do MSSQL
-Server, são soluções de baixo custo.
+As diversas opções de alta disponibilidade da Microsoft visam atender qualquer cenário, não importa o tamanho da empresa, tamanho do banco ou tipo de aplicação. Como estas soluções são nativas do MSSQL Server, são soluções de baixo custo.
 
-        O Log Shipping é uma tecnologia de alta disponibilidade que
-aplica logs transacionais em uma cópia do banco de dados com certa
-periodicidade, garantindo uma cópia atualizada do banco de dados na
-rede. Embora o tempo de atraso entre a aplicação destes logs no servidor
-secundário possa resultar em um banco de dados desatualizado no destino,
-pode-se utilizar a base secundária para leitura dos dados e recuperação
-caso ocorra um erro humano na base principal.
+O Log Shipping é uma tecnologia de alta disponibilidade que aplica logs transacionais em uma cópia do banco de dados com certa periodicidade, garantindo uma cópia atualizada do banco de dados na rede. Embora o tempo de atraso entre a aplicação destes logs no servidor secundário possa resultar em um banco de dados desatualizado no destino, pode-se utilizar a base secundária para leitura dos dados e recuperação caso ocorra um erro humano na base principal.
 
 ​7. Referências
 ==============
