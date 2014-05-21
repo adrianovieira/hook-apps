@@ -20,91 +20,9 @@ tags:
 - Resiliência
 - Tech0xA
 ...
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
-Artigo Técnico de Infraestrututa
-
-Alta Disponibilidade SQL Server – Log Shipping
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
-Autor: Patrícia de Oliveira Pinto
-
- 
-
-DIT / SUPS/ DEAT / DPJS
-
-04 / 2014
-
-Índice
-
-​1. Introdução        3
-
-​3. Log Shipping        3
-
-3.1 Estrutura do Log Shipping        4
-
-3.2 Funcionamento do Log Shipping        5
-
-​4. Pontos de atenção        7
-
-​5. Configuração        7
-
-5.1 Integridade e Confiabilidade        8
-
-​6. Conclusão        10
-
-​7. Referências        11
-
- 
 
 ​1. Introdução
+=============
 
         A importância de se prevenir quedas em ambientes de produção,
 evitando paradas e descontentamentos dos mais variados tipos de
@@ -131,7 +49,15 @@ também pode ser utilizado para manter uma cópia fiel do ambiente de
 produção, visando realização de consultas e geração de relatórios que
 muitas vezes sobrecarregam o servidor principal.
 
+Desafios
+===========
+
+Benefícios e/ou recomendações
+==========================
+
+
 ​3. Log Shipping
+===============
 
         Através do Log Shipping, uma base de dados é mantida atualizada
 no servidor secundário e servirá de contingência caso haja problemas no
@@ -166,6 +92,7 @@ Clustering e Database Mirrorring, de modo que exista mais de uma base
 atualizada, garantindo contingência em um ambiente de produção.
 
 3.1 Estrutura do Log Shipping
+-----------------------------
 
 A tecnologia de Log Shipping é composta basicamente por três elementos:
 
@@ -211,6 +138,7 @@ realizar restaurações point-in-time (em um ponto específico definido),
 que são usadas para recuperar uma base até um determinado horário.
 
 3.2 Funcionamento do Log Shipping
+---------------------------------
 
 O funcionamento do Log Shipping consiste de três etapas básicas e
 fundamentais:
@@ -256,6 +184,7 @@ fundamentais:
     especificado. 
 
 ​4. Pontos de atenção
+====================
 
         Para a implementação do Log Shipping é importante estar atento
 com relação a recursos físicos para garantir que a sequência das etapas
@@ -292,7 +221,8 @@ prática observar:
     secundário. Assim se assegura preservar o histórico de backups,
     restores e alertas. 
 
-    ​5. Configuração 
+​5. Configuração
+===============
 
         Para o funcionamento do Log Shipping os servidores e instâncias
 devem possuir algumas características:
@@ -322,6 +252,7 @@ devem possuir algumas características:
      
 
 5.1 Integridade e Confiabilidade
+--------------------------------
 
         São recomendadas algumas boas práticas no intuito de auxiliar a
 integridade e confiabilidade da configuração do Log Shipping:
@@ -355,6 +286,7 @@ integridade e confiabilidade da configuração do Log Shipping:
     possível adicioná-lo após o término da configuração. 
 
 ​6. Conclusão
+============
 
         Alta disponibilidade é assunto obrigatório quando falamos em
 servidores corporativos de banco de dados. Em qualquer empresa é de
@@ -377,6 +309,7 @@ pode-se utilizar a base secundária para leitura dos dados e recuperação
 caso ocorra um erro humano na base principal.
 
 ​7. Referências
+==============
 
 ---
 references:
