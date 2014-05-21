@@ -61,7 +61,7 @@ A tecnologia de Log Shipping é composta basicamente por três elementos:
 
 O servidor primário é responsável por enviar os logs para um ou mais servidores. Nele é armazenada toda a configuração do Log Shipping. Qualquer modificação na configuração do Log Shipping deve ser feita na base de dados primária, bem como a sua exclusão.
 
-O servidor secundário tem a função de receber os logs de transação e aplicar sobre a base secundária, através de arquivos restaurados automaticamente pelos Jobs configurados a partir do servidor principal. Esta base mantém a consistência e similaridade com a base primária, pois os logs são enviados de forma ordenada, mantendo o LSN\* (Log Sequence Number) no momento da restauração.
+O servidor secundário tem a função de receber os logs de transação e aplicar sobre a base secundária, através de arquivos restaurados automaticamente pelos Jobs configurados a partir do servidor principal. Esta base mantém a consistência e similaridade com a base primária, pois os logs são enviados de forma ordenada, mantendo o LSN^[*Log Sequence Number* (LSN) - Cada registro em um log de transação no SQL Server é identificado por uma numeração, que mantém uma ordem para que possa realizar restaurações point-in-time (em um ponto específico definido), que são usadas para recuperar uma base até um determinado horário.] no momento da restauração.
 
 O servidor secundário nunca poderá ser atualizado a não ser pelas aplicações de log. Os bancos, durante a configuração do Log Shipping, deverão, obrigatoriamente, que ser configurados com a opção StandBy ou Recovery Mode. Na opção StandBy é possível a realização de consultas e, na Recovery Mode, não é possível acessar a base replicada.
 
@@ -69,9 +69,7 @@ O servidor monitor é utilizado para armazenar detalhes sobre a utilização do 
 
 - Quando foi realizado o último backup dos log de transação no banco primário. 
 - Quando foi realizada a última cópia e restore dos arquivos de backup no servidor secundário. 
-- Informações sobre qualquer alerta de falha de backup. 
-
-\* LSN – Cada registro em um log de transação no SQL Server é identificado por uma numeração, que mantém uma ordem para que possa realizar restaurações point-in-time (em um ponto específico definido), que são usadas para recuperar uma base até um determinado horário.
+- Informações sobre qualquer alerta de falha de backup.
 
 3.2 Funcionamento do Log Shipping
 ---------------------------------
