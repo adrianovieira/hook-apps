@@ -148,19 +148,16 @@ references:
     month: 05
     year: 2014
   publisher: Microsoft
-  type: webpage
+  type: entry-encyclopedia
 
 - id: R2
   title: "About Log Shipping"
-  author:
-  - family: Saks
-    given: Kenneth
   URL: 'http://technet.microsoft.com/en-us/library/ms187103.aspx'
   accessed:
     month: 05
     year: 2014
   publisher: Microsoft
-  type: webpage
+  type: entry-encyclopedia
   
 - id: R3
   title: "Configure Log Shipping"
@@ -172,5 +169,5 @@ references:
     month: 05
     year: 2014
   publisher: Microsoft
-  type: webpage
+  type: entry-encyclopedia
 ---
