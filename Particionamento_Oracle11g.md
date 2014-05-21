@@ -571,4 +571,4 @@ Referências
 
 [http://docs.oracle.com/](http://docs.oracle.com/)
 
-Oracle Metalink
+[https://support.oracle.com/] (Oracle Metalink)
