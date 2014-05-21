@@ -1,3 +1,25 @@
+---
+remark: metadados para a ser usado pelo parser de conversão para pdf ou odt
+date: 28 de fevereiro de 2014
+tipo_artigo: Artigo técnico de Infraestrutura de TIC
+title: Alta Disponibilidade SQL Server – Log Shipping
+abstract: 'resumo'
+author:
+- affiliation: DEAT/DPJS
+  name: Patrícia de Oliveira Pinto
+responsibility:
+- affiliation: DEAT/DPJS
+  name: Ana Flavia Ribeiro de Araujo
+diretoria: 'Diretoria de Infraestrutura de TIC - DIT'
+superintendencia: 'Superintendência de Planejamento e Suporte de TIC - SUPS'
+departamento: 'Departamento de Arquitetura Técnica - DEAT'
+tags:
+- Alta disponibilidade
+- Arquitetura
+- Banco de Dados
+- Resiliência
+- Tech0xA
+...
  
 
  
@@ -356,18 +378,38 @@ caso ocorra um erro humano na base principal.
 
 ​7. Referências
 
-Soluções de alta disponibilidade – Disponível na internet em:
+---
+references:
+- id: R1
+  title: "Soluções de alta disponibilidade"
+  URL: 'http://msdn.microsoft.com/pt-br/library/ms190202.aspx'
+  accessed:
+    month: 05
+    year: 2014
+  publisher: Microsoft
+  type: webpage
 
-http://msdn.microsoft.com/pt-br/library/ms190202.aspx
-
- 
-
-About Log Shipping – Disponível na Internet em:
-
-http://technet.microsoft.com/en-us/library/ms187103.aspx
-
-Configure Log Shipping – Disponível na Internet em:
-
-http://technet.microsoft.com/en-us/library/ms190640.aspx
-
- 
+- id: R2
+  title: "About Log Shipping"
+  author:
+  - family: Saks
+    given: Kenneth
+  URL: 'http://technet.microsoft.com/en-us/library/ms187103.aspx'
+  accessed:
+    month: 05
+    year: 2014
+  publisher: Microsoft
+  type: webpage
+  
+- id: R3
+  title: "Configure Log Shipping"
+  author:
+  - family: Saks
+    given: Kenneth
+  URL: 'http://technet.microsoft.com/en-us/library/ms190640.aspx'
+  accessed:
+    month: 05
+    year: 2014
+  publisher: Microsoft
+  type: webpage
+---
