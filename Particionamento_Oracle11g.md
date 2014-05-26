@@ -573,14 +573,23 @@ Referências
 ===========
 
 [http://docs.oracle.com/cd/E11882_01/server.112/e25523/partition.htm](http://docs.oracle.com/cd/E11882_01/server.112/e25523/partition.htm)
+
 [http://docs.oracle.com/cd/E11882_01/server.112/e25523/partition.htm#CACFECJC] (http://docs.oracle.com/cd/E11882_01/server.112/e25523/partition.htm#CACFECJC)
+
 [http://docs.oracle.com/cd/E11882_01/server.112/e25523/partition.htm#BABCIFJI] (http://docs.oracle.com/cd/E11882_01/server.112/e25523/partition.htm#BABCIFJI)
+
 [http://docs.oracle.com/cd/E11882_01/server.112/e25523/partition.htm#CACJFBEB] (http://docs.oracle.com/cd/E11882_01/server.112/e25523/partition.htm#CACJFBEB)
+
 [http://docs.oracle.com/cd/E11882_01/server.112/e25523/partition.htm#i460833] (http://docs.oracle.com/cd/E11882_01/server.112/e25523/partition.htm#i460833)
+
 [http://docs.oracle.com/cd/E11882_01/server.112/e25523/partition.htm#BABJIGAI] (http://docs.oracle.com/cd/E11882_01/server.112/e25523/partition.htm#BABJIGAI)
+
 [http://www.oracle.com/technetwork/database/enterprise-edition/partitioning-11g-whitepaper-159443.pdf] (http://www.oracle.com/technetwork/database/enterprise-edition/partitioning-11g-whitepaper-159443.pdf)
+
 [http://docs.oracle.com/cd/E11882_01/server.112/e16541/part_avail.htm#CACGFIGJ] (http://docs.oracle.com/cd/E11882_01/server.112/e16541/part_avail.htm#CACGFIGJ)
+
 [http://docs.oracle.com/cd/E11882_01/server.112/e16541/part_avail.htm#CACHHFHH] (http://docs.oracle.com/cd/E11882_01/server.112/e16541/part_avail.htm#CACHHFHH)
+
 [https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=806953551049286&id=1319225.1&_afrWindowMode=0&_adf.ctrl-state=2kgju6bhd_173] (https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=806953551049286&id=1319225.1&_afrWindowMode=0&_adf.ctrl-state=2kgju6bhd_173)
 
 
