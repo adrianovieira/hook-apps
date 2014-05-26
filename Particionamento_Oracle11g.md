@@ -63,17 +63,17 @@ SQL> SELECT * FROM v$option WHERE parameter='Partitioning';
 Alguns exemplos de quando particionar
 
 - Tabelas
-  - Estruturas acima de 2 GB já devem ser consideradas candidatas ao particionamento. 
-  - Tabelas que sejam propensas a grande crescimento. 
-  - Tabelas que possuam dados históricos que sejam pouco acessados ou não possam ser alterados.  
-  - Quando o conteúdo da tabela precisa ser distribuído entre diferentes storages. 
+    - Estruturas acima de 2 GB já devem ser consideradas candidatas ao particionamento. 
+    - Tabelas que sejam propensas a grande crescimento. 
+    - Tabelas que possuam dados históricos que sejam pouco acessados ou não possam ser alterados.  
+    - Quando o conteúdo da tabela precisa ser distribuído entre diferentes storages. 
 
 - Índices:
-  - Quando operações de manutenção, como reconstrução do índice (rebuild), levam muito tempo para serem concluídas e por isso torna-se necessário executar estas operações em apenas partes dos dados do índice sem indisponibilizar ou precisar tratar a estrutura inteira, economizando tempo e recursos.                 
+    - Quando operações de manutenção, como reconstrução do índice (rebuild), levam muito tempo para serem concluídas e por isso torna-se necessário executar estas operações em apenas partes dos dados do índice sem indisponibilizar ou precisar tratar a estrutura inteira, economizando tempo e recursos.                 
 
 
 Vantagens
----------
+==========
 
 - **Gerenciamento**: o particionamento permite que operações de manipulação e manutenção de dados tais como cargas, criação e reconstrução de índices e backup/recovery sejam executadas no nível da partição e não na tabela inteira. Cada partição é tratada individualmente e tem suas próprias características de armazenamento, backup e etc. Isto reduz drasticamente o tempo e complexidade de tarefas administrativas.
 
@@ -305,7 +305,8 @@ Extensões de particionamento no Oracle 11g
 
 Além do particionamento por Intervalo, já abordado anteriormente neste artigo, duas outras novas extensões do particionamento merecem destaque:
 
-### Particionamento REF
+Particionamento REF
+-------------------
 
 O Oracle Database 11g permite particionar uma tabela aproveitando um relacionamento pai-filho existente. A estratégia de particionamento da tabela pai é herdada pela tabela filho sem a necessidade de armazenar as colunas de chave de particionamento da tabela pai na tabela filho. Sem o Particionamento REF seria necessário duplicar todas as colunas de chave de particionamento da tabela pai para a tabela filho para poder aproveitar a mesma estratégia de particionamento. O Particionamento REF permite particionar naturalmente as tabelas conforme o modelo de dados lógicos sem necessidade de armazenar as colunas de chave de particionamento, reduzindo assim a sobrecarga manual de desnormalização e economizando espaço.
 
@@ -348,7 +349,8 @@ utilizando a constraint de fk como parâmetro. */
 
 Graças ao particionamento por referência, não é necessário duplicar a coluna order_date na tabela filho (order_items) para que a mesma estratégia de particionamento seja aproveitada da tabela pai.
 
-### Particionamento baseado em coluna virtual
+Particionamento baseado em coluna virtual
+------------------------------------------
 
 Nas versões anteriores do Oracle, só era possível particionar uma tabela se a chave de particionamento existisse fisicamente na tabela. A utilização de colunas virtuais, remove essa restrição e permite que a chave de particionamento seja definida por uma expressão, utilizando uma ou mais colunas existentes na tabela, e armazenando a expressão apenas como metadados. Não é incomum ver colunas sendo sobrecarregadas com informações, por exemplo, um ID de conta de 10 dígitos pode incluir informações da agência da conta nos três primeiros dígitos. A tabela
 CONTAS contendo uma coluna ID_CONTA pode ser estendida com uma coluna virtual (derivada) AGENCIA_CONTA obtida a partir dos três primeiros dígitos da coluna ID_CONTA, que se torna a chave de particionamento dessa tabela. O Particionamento baseado em coluna virtual é suportado em todas as estratégias básicas de particionamento.
@@ -511,7 +513,8 @@ Abaixo seguem algumas regras gerais para auxiliar na escolha de um índice
 
 4. Se a aplicação é OLTP e os usuários necessitam de um tempo de resposta rápido, um índice global é recomendado. Se o ambiente é OLAP e os usuários estão mais interessados em resultados analíticos, um índice local é recomendado.
 
-### Manutenção de índices em tabelas particionadas
+Manutenção de índices em tabelas particionadas
+-----------------------------------------------
 
 Por default, as operações abaixo realizadas em partições de tabelas deixam automaticamente seus respectivos índices inutilizáveis (UNUSABLE):
 
@@ -569,6 +572,16 @@ Não há uma receita de bolo para definir estratégias de particionamento. Tudo 
 Referências
 ===========
 
-[http://docs.oracle.com/](http://docs.oracle.com/)
+[http://docs.oracle.com/cd/E11882_01/server.112/e25523/partition.htm](http://docs.oracle.com/cd/E11882_01/server.112/e25523/partition.htm)
+[http://docs.oracle.com/cd/E11882_01/server.112/e25523/partition.htm#CACFECJC] (http://docs.oracle.com/cd/E11882_01/server.112/e25523/partition.htm#CACFECJC)
+[http://docs.oracle.com/cd/E11882_01/server.112/e25523/partition.htm#BABCIFJI] (http://docs.oracle.com/cd/E11882_01/server.112/e25523/partition.htm#BABCIFJI)
+[http://docs.oracle.com/cd/E11882_01/server.112/e25523/partition.htm#CACJFBEB] (http://docs.oracle.com/cd/E11882_01/server.112/e25523/partition.htm#CACJFBEB)
+[http://docs.oracle.com/cd/E11882_01/server.112/e25523/partition.htm#i460833] (http://docs.oracle.com/cd/E11882_01/server.112/e25523/partition.htm#i460833)
+[http://docs.oracle.com/cd/E11882_01/server.112/e25523/partition.htm#BABJIGAI] (http://docs.oracle.com/cd/E11882_01/server.112/e25523/partition.htm#BABJIGAI)
+[http://www.oracle.com/technetwork/database/enterprise-edition/partitioning-11g-whitepaper-159443.pdf] (http://www.oracle.com/technetwork/database/enterprise-edition/partitioning-11g-whitepaper-159443.pdf)
+[http://docs.oracle.com/cd/E11882_01/server.112/e16541/part_avail.htm#CACGFIGJ] (http://docs.oracle.com/cd/E11882_01/server.112/e16541/part_avail.htm#CACGFIGJ)
+[http://docs.oracle.com/cd/E11882_01/server.112/e16541/part_avail.htm#CACHHFHH] (http://docs.oracle.com/cd/E11882_01/server.112/e16541/part_avail.htm#CACHHFHH)
+[https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=806953551049286&id=1319225.1&_afrWindowMode=0&_adf.ctrl-state=2kgju6bhd_173] (https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=806953551049286&id=1319225.1&_afrWindowMode=0&_adf.ctrl-state=2kgju6bhd_173)
 
-[https://support.oracle.com/] (Oracle Metalink)
+
+
