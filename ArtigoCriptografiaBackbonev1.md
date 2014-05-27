@@ -1,25 +1,19 @@
-﻿Soluções para criptografia no backbone da DATAPREV
-==================================================
-
-Resumo
-
-Este artigo descreve superficialmente as soluções prospectadas 
-que poderão ser usadas para  a implementação da criptografia 
-no backbone da Dataprev.
- 
----
-remark: metadados para a ser usado pelo parser de conversão para pdf
-date: 28 de fevereiro de 2014
+﻿---
+remark: metadados para a ser usado pelo parser de conversão para pdf ou odt
+date: 27 de maio de 2014
 tipo_artigo: Artigo técnico de Infraestrutura de TIC
-title:Soluções para criptografia no backbone da DATAPREV 
+title: Soluções para criptografia no backbone da DATAPREV
 abstract: Este artigo descreve superficialmente as soluções prospectadas que poderão ser usadas para  a implementação da criptografia no backbone da Dataprev.
 author:
 - affiliation: DSIG
   name: Diego Perini
+- affiliation: DSIG
   name: Felipe Arcieri
+- affiliation: DSIG
   name: Michel Teixeira
+- affiliation: DSIG
   name: Pedro Rozas Moreira
-
+  
 responsibility:
 - affiliation: DSIG
   name: Rodrigo Morgado
@@ -27,12 +21,11 @@ diretoria: 'Diretoria de Infraestrutura de TIC - DIT'
 superintendencia: 'Superintendência de Planejamento e Suporte de TIC - SUPS'
 departamento: 'Departamento de Suporte de TIC - DEST'
 tags:
-- Criptografia
-- Backbone 
-- GET-VPN
+- Criptografia,
+- Backbone, 
+- GET-VPN,
 - IPSEC
 ...
-
 
  
 
@@ -46,13 +39,10 @@ contratos atuais preveem atualização da taxa de transmissão para até 3
 Gbps. Os circuitos são fornecidos por 2 operadoras distintas formando um
 triângulo duplo conforme figura abaixo.
 
- 
+![](imagens/image001.jpg)
 
-![](imagens/image001.gif)
 
 Figura 1. Topologia lógica de rede do backbone da Dataprev
-
- 
 
 Para manter a comunicação segura e a confidencialidade dos dados
 trafegados entre os Centros de Processamento, foram estudadas as
@@ -78,7 +68,7 @@ PoCs:
 
 
 Nos tópicos 2 e 3 serão apresentados as soluções da Cisco e da Safenet,
-respectivamente. No tópico 4 serão feitos considerações a respeito das
+respectivamente. No tópico 4 serão feitas considerações a respeito das
 duas soluções, incluindo os pontos positivos e negativos de cada
 solução, levando em consideração o ambiente da Dataprev e o objetivo a
 ser alcançado (criptografia dos enlaces de *backbone*). Finalmente, no
@@ -177,7 +167,7 @@ permanecem inalterados no novo cabeçalho.
 
  
 
-![](imagens/image003.gif)
+![](imagens/image003.jpg)
 
 Figura 2: Preservação do Cabeçalho IP Original - GETVPN
 
@@ -272,7 +262,7 @@ A solução permite preservar as informações de VLAN ID, QinQ, MPLS, jumbo
 Na Figura 4 é possível visualizar como ficaria a integração do criptografador
 no backbone  da Dataprev.
 
-![](imagens/image006.gif)
+![](imagens/image006.jpg)
 
 Figura 4. Integração do criptografador no *backbone* da Dataprev
 
@@ -328,11 +318,10 @@ e de risco elevado;
 
 - O IPSEC introduz *overhead* nos pacotes devido à necessidade de
 cabeçalho adicional. Esse overhead varia de 5% a 50% em relação ao
-tráfego original;
+tráfego original.
 
- 
 4.2 *Safenet Ethernet Encryptor*
--------------------------------
+--------------------------------
 
 Pontos *positivos* da solução apresentada pela Safenet (L2):
 
@@ -385,7 +374,7 @@ da Dataprev. Nesta topologia, cada encriptador atuará em 2 links de
 backbone, de forma a poupar recursos financeiros e ao mesmo tempo ser
 escalável a 20 Gbps de capacidade de criptografia no backbone por CP.
 
-![](imagens/image007.gif)
+![](imagens/image007.jpg)
 
 Figura 5. Integração do criptografador no *backbone* da Dataprev
 
@@ -394,33 +383,29 @@ Figura 5. Integração do criptografador no *backbone* da Dataprev
 
 Referências
 ===========
- 
+
 <Lista referências bibliográficas, matérias na intranet, ferramentas internas etc>
 
-Troubleshooting GETVPN Deployments (BRKSEC-3051) - Cisco Live 2012
+CISCO. Cisco Vlan Mapping,2012. Disponível em: http://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst6500/ios/12-2SX/configuration/guide/book/vlans.html. Acesso em 28/03/2014
 
-Advanced IPsec with GET VPN (BRKSEC-3011) - Cisco Live 2012 Group
-Encrypted Transport VPN (GETVPN) - Cisco Design and Implementation Guide
-– Dezembro/2012
+CISCO. Group Encrypted Transport VPN (GETVPN) Design and Implementation Guide,2012. Disponível em: http://www.cisco.com/c/dam/en/us/products/collateral/security/group-encrypted-transport-vpn/GETVPN_DIG_version_1_0_External.pdf. Acesso em 28/03/2014
 
-RFC 6407 - The Group Domain of Interpretation – Outubro/2011
+CISCO. Troubleshooting GETVPN Deployments (BRKSEC-3051) - Cisco Live 2012, 2012.Disponível em: https://www.ciscolive.com/online/connect/sessionDetail.ww?SESSION_ID=4383. Acesso em 28/03/2014
 
-Data Encryption Performance: Layer 2 vs. Layer 3 Encryption in High
-Speed Point-to-Point Networks - RIT Department of Information Technology
-– Fevereiro/2009
+NETWORKCOMPUTING. When To Encrypt At Layer 2 Or Layer 3, 2010. Disponível em: http://www.networkcomputing.com/wan-security/when-to-encrypt-at-layer-2-or-layer-3/229501254. Acesso  em 28/03/2014.
 
-When To Encrypt At Layer 2 Or Layer 3:
-http://www.networkcomputing.com/wan-security/when-to-encrypt-at-layer-2-or-layer-3/229501254
-, em 28/03/2014
+RIT DEPARTMENT OF INFORMATION TECHNOLOGY. Data Encryption Performance: Layer 2 vs. Layer 3 Encryption in High Speed Point-to-Point Networks, 2009. Disponível em: https://ritdml.rit.edu/bitstream/handle/1850/992/Layer2_vs_Layer3-v2.doc. Acesso em 28/03/2014
 
-Safenet Ethernet Encryptor 10G -
-http://www.safenet-inc.com/WorkArea/DownloadAsset.aspx?id=8589939056&LangType=1033,
-em 28/03/2014
+SAFENET. Safenet Ethernet Encryptor 10G, 2011. Disponível em: http://www.safenet-inc.com/WorkArea/DownloadAsset.aspx?id=8589939056&LangType=1033. Acesso  em 28/03/2014. 
 
-Cisco Vlan Mapping -
-http://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst6500
-/ios/12-2SX/configuration /guide/book/vlans.html\#wp1044990, em
-28/03/2014
+WEIS, Brian RFC et al. 6407 - The Group Domain of Interpretation, 2011. Disponível em: http://tools.ietf.org/html/rfc6407. Acesso em 28/03/2014
+
+
+
+
+
+
+
+
  
  
----
