@@ -584,7 +584,7 @@ Referências
 
 [http://docs.oracle.com/cd/E11882_01/server.112/e25523/partition.htm#BABJIGAI] (http://docs.oracle.com/cd/E11882_01/server.112/e25523/partition.htm#BABJIGAI)
 
-[http://www.oracle.com/technetwork/database/enterprise-edition/partitioning-11g-whitepaper-159443.pdf] (http://www.oracle.com/technetwork/database/enterprise-edition/partitioning-11g-whitepaper-159443.pdf)
+Baer, Hermman. Partitioning in Oracle Database 11g. Disponível em: <(http://www.oracle.com/technetwork/database/enterprise-edition/partitioning-11g-whitepaper-159443.pdf)>. Acesso em: maio 2014.
 
 [http://docs.oracle.com/cd/E11882_01/server.112/e16541/part_avail.htm#CACGFIGJ] (http://docs.oracle.com/cd/E11882_01/server.112/e16541/part_avail.htm#CACGFIGJ)
 
