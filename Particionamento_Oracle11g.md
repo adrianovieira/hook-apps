@@ -34,6 +34,9 @@ Este artigo poderá ser utilizado como um guia ou referência rápida para o par
 
 
 
+
+
+
 Introdução
 ==========
 
@@ -590,7 +593,4 @@ Oracle. Oracle Database VLDB and Partitioning Guide. Disponível em: <http://doc
 
 Oracle. Oracle Database VLDB and Partitioning Guide. Disponível em: <http://docs.oracle.com/cd/E11882_01/server.112/e16541/part_avail.htm#CACHHFHH>. Acesso em: maio 2014. 
 
-Oracle. Collect Incremental Statistics For a Large Partitioned Table in 10g and in 11g. Disponível em: <https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=806953551049286&id=1319225.1&_afrWindowMode=0&_adf.ctrl-state=2kgju6bhd_173>. Acesso em: maio 2014. 
-
-
-
+Oracle. Collect Incremental Statistics For a Large Partitioned Table in 10g and in 11g. Disponível em: <https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=806953551049286&id=1319225.1&_afrWindowMode=0&_adf.ctrl-state=2kgju6bhd_173>. Acesso em: maio 2014.
