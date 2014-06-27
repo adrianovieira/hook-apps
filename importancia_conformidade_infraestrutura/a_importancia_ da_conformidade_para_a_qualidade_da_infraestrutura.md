@@ -21,7 +21,7 @@ Atualmente a Dataprev possui um total de 1053 servidores físicos e 1906 servido
  1. Em 09/01/2014. Fonte: Apresentação Institucional Dataprev. Disponível em <http://www-dtpnet/content/apresentacao-institucional> - Acessado em 27/03/2014
   
 
-![Figura 1](figura1.png "O Logo do Google")
+![Figura 1](imagens\Figura1.png)
 
 Figura 1: Total de servidores – Ambiente de plataforma baixa
 Fonte: Apresentação Institucional Dataprev.
@@ -88,7 +88,7 @@ ________
  _________
  _________
  _________
- ![Tabela 1](tabela1.png "O Logo do Google")
+ ![Tabela 1](imagens\Tabela1.png)
  
  ________
  ________
@@ -118,7 +118,7 @@ Em uma visão de Macroprocessos, ele está dividido em quatro etapas:
 
 Sua estrutura pode ser observada no framework abaixo:
 
-![Tabela 1](http://www.google.com/images/logo.gif "O Logo do Google")
+![Tabela 1]((imagens\Figura3.png))
 
 __________
 Figura 3: Framework de Manutenção da Conformidade
