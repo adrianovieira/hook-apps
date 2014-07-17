@@ -360,6 +360,8 @@ escalável a 20 Gbps de capacidade de criptografia no backbone por CP.
 
 ![Integração do criptografador no *backbone*](imagens/image007.jpg)
 
+\pagebreak
+
 Referências
 ===========
 
