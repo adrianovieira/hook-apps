@@ -1,4 +1,4 @@
-﻿---
+---
 remark: metadados para a ser usado pelo parser de conversão para pdf ou odt
 date: 27 de maio de 2014
 tipo_artigo: Artigo técnico de Infraestrutura de TIC
@@ -41,10 +41,7 @@ triângulo duplo conforme figura abaixo.
 
 \pagebreak
 
-![](imagens/image001.jpg)
-
-
-Figura 1. Topologia lógica de rede do backbone da Dataprev
+![Topologia lógica de rede do backbone](imagens/image001.jpg)
 
 Para manter a comunicação segura e a confidencialidade dos dados
 trafegados entre os Centros de Processamento, foram estudadas as
@@ -165,15 +162,9 @@ No IPsec tradicional os endereços da extremidade do túnel são usados
 como nova origem e destino e o pacote é então encaminhado através da
 infraestrutura pública IP. No caso do GET VPN, os pacotes de dados IPsec
 protegidos são encapsulados e os endereços IPs de origem e de destino
-permanecem inalterados no novo cabeçalho.
+permanecem inalterados no novo cabeçalho. 
 
- 
-
-![](imagens/image003.jpg)
-
-Figura 2: Preservação do Cabeçalho IP Original - GETVPN
-
- 
+![Preservação do Cabeçalho IP Original - GETVPN](imagens/image003.jpg)
 
 As vantagens da preservação do cabeçalho no túnel são: capacidade de
 rotear os pacotes criptografados utilizando a infraestrutura de
@@ -184,11 +175,7 @@ Na Figura 3 pode-se visualizar como ficaria a integração da solução GET-VPN 
 
 \pagebreak 
 
-![](imagens/image005.jpg)
-
-Figura 3. Topologia lógica da solução GET VPN integrada na rede da Dataprev.
-
-
+![Topologia lógica da solução GET VPN integrada na rede](imagens/image005.jpg)
 
 
 3. Solução *Layer 2 – Safenet Ethernet Encryptor*
@@ -264,12 +251,7 @@ A solução permite preservar as informações de VLAN ID, QinQ, MPLS, jumbo
 Na Figura 4 é possível visualizar como ficaria a integração do criptografador
 no backbone  da Dataprev.
 
-![](imagens/image006.jpg)
-
-Figura 4. Integração do criptografador no *backbone* da Dataprev
-
-
-
+![Integração do criptografador no *backbone*](imagens/image006.jpg)
 
 4. Considerações
 ================
@@ -376,12 +358,7 @@ da Dataprev. Nesta topologia, cada encriptador atuará em 2 links de
 backbone, de forma a poupar recursos financeiros e ao mesmo tempo ser
 escalável a 20 Gbps de capacidade de criptografia no backbone por CP.
 
-![](imagens/image007.jpg)
-
-Figura 5. Integração do criptografador no *backbone* da Dataprev
-
-
-
+![Integração do criptografador no *backbone*](imagens/image007.jpg)
 
 Referências
 ===========
