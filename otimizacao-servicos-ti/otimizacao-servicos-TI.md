@@ -31,7 +31,7 @@ ITIL V3
 Um dos frameworks mais respeitados e sendo um consenso a sua utilização, é o ITIL que se encontra na sua terceira versão.  Não pretendo abranger todo aspecto desta biblioteca de boas práticas que não caberia neste pequeno artigo, são cinco volumes, percorrendo de forma concisa e pontual, todo ciclo de vida do serviço.
 
 
-![Figura  1](imagens/Figura1.png "Ciclo de vida do serviço ITIL v3")
+![Figura  1](imagens/Figura1.png)
 
 **Figura  1 – Ciclo de vida do serviço ITIL v3**
 
@@ -44,7 +44,7 @@ Melhoria de Serviço Continuada (MSC)
 ===
 A Melhoria de Serviço Continuada, MSC, tem por objetivo aumentar a eficiência, maximizar a efetividade e otimizar o custo dos processos de Serviço de TI. Esta fase do ciclo de vida não pode ser vista como uma fase separada. As atividades de melhoria continuada devem ser executadas em todo o ciclo de vida.
 
-![Figura  2](imagens/Figura2.png "Melhoria de Serviço Continuada")
+![Figura  2](imagens/Figura2.png)
 
 **Figura  2 – Melhoria de Serviço Continuada**
 
@@ -56,7 +56,7 @@ Processo de Melhoria em 7 Etapas
 ===
 Apesar de ser bem explícito que o processo contém 7 etapas, temos uma atividade gerencial predecessora de suma importância, onde deve-se identificar a visão e a estratégia da organização e, como consequência, as metas táticas e operacionais. Essas informações são importantes para orientar as outras etapas do processo.    
 
-![Figura  3](imagens/Figura3.png "Fases do Processo Melhoria em 7 passos")
+![Figura  3](imagens/Figura3.png)
 
 **Figura 3 – Fases do Processo Melhoria em 7 passos**
 
@@ -93,4 +93,3 @@ A melhoria de serviço continuada. Disponível em <http://tiinteligente.blogspot
 Passos para iniciar a melhoria de serviços. Disponível em <http://www.portalgsti.com.br> Acessado em 02/06/2014
 
 CARVALHO, Melhoria de Serviço Continuada – ITIL Foundation V3 – . Disponível em <http://www.pedrofcarvalho.com.br/PDF/ITIL_MELHORIA_DE_SERVICO_CONTINUADA.pdf> - Acessado em 12/06/2014
-
