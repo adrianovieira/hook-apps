@@ -13,13 +13,7 @@ tags:
 - Qualidade
 - Conformidade
 - InfraEstrutura
-
-
-
-
-
-
-
+...
 
 Resumo
 ======
