@@ -5,7 +5,7 @@ title: A importância da conformidade para a qualidade da infraestrutura
 abstract: Este artigo apresenta os principais conceitos relacionados a conformidade e qualidade de infraestrutura
 author:
 - affiliation: DEQI/DICI
-- name: João Travessa
+  name: João Travessa
 diretoria: 'Diretoria de Infraestrutura de TIC - DIT'
 superintendencia: 'Superintendência de Planejamento e Suporte de TIC - SUPS'
 departamento: 'Departamento de Qualidade da InfraEstrutura - DEQI'
