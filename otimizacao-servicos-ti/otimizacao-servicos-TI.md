@@ -4,11 +4,13 @@ tipo_artigo: Artigo técnico de Infraestrutura de TIC
 title: Otimização de Serviços de TI - ITIL V3.
 abstract: Artigo sobre Melhoria de Serviço Continuada (MSC) e o processo de melhoria em 7 passos.
 author:
-- affiliation: SUPS
-name: Marcio Ferreira Barboza
+- affiliation: DEQI/DICI
+  name: Marcio Ferreira Barboza
+- affiliation: DEQI/DICI
+  name: Wallace Figueiredo
 diretoria: 'Diretoria de Infraestrutura de TIC - DIT'
 superintendencia: 'Superintendência de Planejamento e Suporte de TIC - SUPS'
-departamento: 'Departamento de Qualidade de Infraestrutura de TIC'
+departamento: 'Departamento de Qualidade de Infraestrutura de TIC - DEQI'
 
 tags:
 
