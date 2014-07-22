@@ -4,13 +4,11 @@ tipo_artigo: Artigo técnico de Infraestrutura de TIC
 title: Otimização de Serviços de TI - ITIL V3.
 abstract: Artigo sobre Melhoria de Serviço Continuada (MSC) e o processo de melhoria em 7 passos.
 author:
-- affiliation: DEQI/DICI
-  name: Marcio Ferreira Barboza
-- affiliation: DEQI/DICI
-  name: Wallace Figueiredo
+- affiliation: SUPS
+name: Marcio Ferreira Barboza
 diretoria: 'Diretoria de Infraestrutura de TIC - DIT'
 superintendencia: 'Superintendência de Planejamento e Suporte de TIC - SUPS'
-departamento: 'Departamento de Qualidade de Infraestrutura de TIC - DEQI'
+departamento: 'Departamento de Qualidade de Infraestrutura de TIC'
 
 tags:
 
@@ -28,12 +26,17 @@ Desafios
 Vários aspectos da gestão empresarial são abordados em diversas metodologias  e frameworks, e com a dependência cada vez maior das empresas em sistemas de informações, os serviços de TI que os sustentam, são essenciais. Gerenciar tais serviços, buscando um maior alinhamento da TI com as necessidades de negócio,  pode ser melhor conduzido com a utilização destes frameworks.
 A adoção de uma ou mais metodologias deve passar por criteriosa avaliação, verificando o que se pretende, quais as metas e objetivos a serem alcançados pela empresa.
 
+Benefícios e/ou recomendações
+===
+A Dataprev deve caminhar nesta direção, desenhar seus processos e aplicar metodologias para melhoria dos mesmos. Sob pena, caso isso não seja feito, depreciar sua força produtiva e a qualidade de seus serviços.
+      
+
 ITIL V3
 ===
 Um dos frameworks mais respeitados e sendo um consenso a sua utilização, é o ITIL que se encontra na sua terceira versão.  Não pretendo abranger todo aspecto desta biblioteca de boas práticas que não caberia neste pequeno artigo, são cinco volumes, percorrendo de forma concisa e pontual, todo ciclo de vida do serviço.
 
 
-![Figura  1](imagens/Figura1.png)
+![Ciclo de vida do serviço ITIL v3](imagens/Figura1.png)
 
 **Figura  1 – Ciclo de vida do serviço ITIL v3**
 
@@ -46,7 +49,7 @@ Melhoria de Serviço Continuada (MSC)
 ===
 A Melhoria de Serviço Continuada, MSC, tem por objetivo aumentar a eficiência, maximizar a efetividade e otimizar o custo dos processos de Serviço de TI. Esta fase do ciclo de vida não pode ser vista como uma fase separada. As atividades de melhoria continuada devem ser executadas em todo o ciclo de vida.
 
-![Figura  2](imagens/Figura2.png)
+![Melhoria de Serviço Continuada](imagens/Figura2.png)
 
 **Figura  2 – Melhoria de Serviço Continuada**
 
@@ -58,7 +61,7 @@ Processo de Melhoria em 7 Etapas
 ===
 Apesar de ser bem explícito que o processo contém 7 etapas, temos uma atividade gerencial predecessora de suma importância, onde deve-se identificar a visão e a estratégia da organização e, como consequência, as metas táticas e operacionais. Essas informações são importantes para orientar as outras etapas do processo.    
 
-![Figura  3](imagens/Figura3.png)
+![Fases do Processo Melhoria em 7 passos](imagens/Figura3.png)
 
 **Figura 3 – Fases do Processo Melhoria em 7 passos**
 
@@ -88,10 +91,60 @@ Otimização dos serviços de TI, é um trabalho constante e permanente , a cada
 Refêrencias
 ===
 
-ITIL V3 – Livro :  Melhoria Continuada do Serviço - Processos
+---
+remark: referências usadas nesse artigo
+references:
 
-A melhoria de serviço continuada. Disponível em <http://tiinteligente.blogspot.com.br> - Acessado em 12/05/2014
+- id: ITIL V3
+  title: ITIL V3 – Livro :  Melhoria Continuada do Serviço - Processos"
+  author: 
+  - family: OGC
+  publisher: OGC
+  type: book
+  issued:
+    year: 2011
+- id: A melhoria de serviço continuada
+  title: "A melhoria de serviço continuada"
+  author: 
+  - family: Breno O. Nunes
+  URL: 'http://tiinteligente.blogspot.com.br'
+  accessed:
+    month: 6
+    year: 2014
+  publisher: Dataprev
+  type: article
+  issued:
+    year: 2013
+- id: Passos para iniciar a melhoria de serviços
+  title: "Passos para iniciar a melhoria de serviços"
+  author: 
+  - family: Otávio Miller
+  URL: 'http://www.portalgsti.com.br'
+  accessed:
+    month: 4
+    year: 2014
+  type: article
+  issued:
+    year: 2014 
+- id: Melhoria de Serviço Continuada – ITIL Foundation V3
+  title: " Melhoria de Serviço Continuada – ITIL Foundation V3"
+  author: 
+  - family: CARVALHO
+  URL: 'http://www.pedrofcarvalho.com.br/PDF/ITIL_MELHORIA_DE_SERVICO_CONTINUADA.pdf'
+  accessed:
+    month: 6
+    year: 2014
+  type: article
 
-Passos para iniciar a melhoria de serviços. Disponível em <http://www.portalgsti.com.br> Acessado em 02/06/2014
+---
 
-CARVALHO, Melhoria de Serviço Continuada – ITIL Foundation V3 – . Disponível em <http://www.pedrofcarvalho.com.br/PDF/ITIL_MELHORIA_DE_SERVICO_CONTINUADA.pdf> - Acessado em 12/06/2014
+
+
+
+
+
+
+
+
+
+
