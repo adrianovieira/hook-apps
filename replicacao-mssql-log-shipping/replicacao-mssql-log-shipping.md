@@ -3,7 +3,7 @@ remark: metadados para a ser usado pelo parser de conversão para pdf ou odt
 date: 28 de fevereiro de 2014
 tipo_artigo: Artigo técnico de Infraestrutura de TIC
 title: Alta Disponibilidade SQL Server – Log Shipping
-abstract: 'resumo'
+abstract: 'alguma coisa pra gente ver'
 author:
 - affiliation: DEAT/DPJS
   name: Patrícia de Oliveira Pinto
