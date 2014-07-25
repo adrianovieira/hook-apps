@@ -1,19 +1,20 @@
-#### [Diretoria de Infraestrutura de TIC - DIT]
-##### [Superintendência de Planejamento e Suporte de TIC - SUPS]
-###### [Departamento de Arquitetura Técnica - DEAT]
-
 ---
-
-# Artigo técnico de Infraestrutura de TIC
-
-->**Introdução a Apache Cassandra com Java**<-
-
-**Autor(es):**  José Guilherme Macedo Vieira  
-**Responsável:** Cícero Vieira
-
-## Sumário
-
-Estamos na era dos bancos de dados NoSQL, que são bancos de dados que surgiram com o intuito de resolver problemas que os bancos relacionais não conseguiam de forma satisfatória. No artigo anterior, Bancos de Dados NoSQL - Aplicações com Persistência Poliglota, foi falado o conceito de NoSQL, quais os bancos se encaixam no conceito de NoSQL, citando inclusive uma série desses bancos que são utilizados por grandes empresas e também foi falado que esses bancos são apenas uma opção para resolver problemas específicos. Os detalhes de cada banco de dados não foram apresentados para não tornar o artigo muito extenso e a partir daí surgiu a motivação para criar esse artigo, com o intuito de aprofundar no NoSQL, tomando como ponto de partida o Apache Cassandra, banco NoSQL utilizado por empresas como Facebook, eBay, Netflix, Aol, Soundcloud, Adobe e até mesmo a NASA.
+remark: metadados para a ser usado pelo parser de conversão para pdf ou odt
+date: 28 de fevereiro de 2014
+tipo_artigo: Artigo técnico de Infraestrutura de TIC
+title: Introdução a Apache Cassandra com Java
+abstract: Estamos na era dos bancos de dados NoSQL, que são bancos de dados que surgiram com o intuito de resolver problemas que os bancos relacionais não conseguiam de forma satisfatória. No artigo anterior, Bancos de Dados NoSQL - Aplicações com Persistência Poliglota, foi falado o conceito de NoSQL, quais os bancos se encaixam no conceito de NoSQL, citando inclusive uma série desses bancos que são utilizados por grandes empresas e também foi falado que esses bancos são apenas uma opção para resolver problemas específicos. Os detalhes de cada banco de dados não foram apresentados para não tornar o artigo muito extenso e a partir daí surgiu a motivação para criar esse artigo, com o intuito de aprofundar no NoSQL, tomando como ponto de partida o Apache Cassandra, banco NoSQL utilizado por empresas como Facebook, eBay, Netflix, Aol, Soundcloud, Adobe e até mesmo a NASA.
+author:
+- affiliation: DIAS
+  name: José Guilherme Macedo Vieira
+responsibility:
+- affiliation: DIAS
+  name: Cícero Vieira
+diretoria: 'Diretoria de Infraestrutura de TIC - DIT'
+superintendencia: 'Superintendência de Planejamento e Suporte de TIC - SUPS'
+departamento: 'Departamento de Arquitetura Técnica - DEAT'
+tags:
+- noSQL,Cassandra,bancosdedados,database
 
 ## Desafios
 
@@ -494,12 +495,49 @@ O resultado será o seguinte:
 
 Manipular o banco de dados Cassandra é bastante fácil, principalmente quando se tem algum conhecimento prévio de SQL e dos conceitos de banco de dados relacionais. Atualmente existem diversos drivers e frameworks para se trabalhar com o Cassandra e o driver da DataStax tem se provado ser um dos mais eficientes e fáceis de se utilizar. Dessa forma, está provado que a curva de aprendizado para um desenvolvedor Java aprender a utilizar o Cassandra é bastante baixa, possibilitando a introdução desse excelente banco de dados em novos projetos e em especial os da DATAPREV.
 
-## Referências
-
-Documentação da Cassandra Query Language - [http://www.datastax.com/documentation/cql/3.1/cql/cql_intro_c.html](http://www.datastax.com/documentation/cql/3.1/cql/cql_intro_c.html)
-
-Documentação do Cassandra 2.0 - [http://www.datastax.com/documentation/cassandra/2.0/cassandra/gettingStartedCassandraIntro.html](http://www.datastax.com/documentation/cassandra/2.0/cassandra/gettingStartedCassandraIntro.html)
-
-Apresentação do JavaTwo em Taiwan - [http://pt.slideshare.net/borisyen/introduce-apache-cassandra-javatwo-taiwan-2012](http://pt.slideshare.net/borisyen/introduce-apache-cassandra-javatwo-taiwan-2012)
+---
+remark: metadados com alguns dados para listar referências bibliográficas. Use quantos identificadores (ID) necessitar para listar as diferentes referências usadas no artigo
+references:
+- id: 1
+  title: "Documentação da Cassandra Query Language" 
+  author: Datastax  
+  container-title: Banco de Dados NoSQL
+  URL: 'http://www.datastax.com/documentation/cql/3.1/cql/cql_intro_c.html'
+  accessed:
+    day: 01
+    month: 05
+    year: 2014  
+  type: website
+- id: 2
+  title: "Documentação do Cassandra 2.0" 
+  author: Datastax  
+  container-title: Banco de Dados NoSQL
+  URL: 'http://www.datastax.com/documentation/cassandra/2.0/cassandra/gettingStartedCassandraIntro.html'
+  accessed:
+    day: 01
+    month: 05
+    year: 2014  
+  type: website    
+- id: 3
+  title: "Introduce Apache Cassandra"
+  author: Boris Yen  
+  container-title: Banco de Dados NoSQL
+  URL: 'http://pt.slideshare.net/borisyen/introduce-apache-cassandra-javatwo-taiwan-2012'
+  accessed:
+    day: 01
+    month: 05
+    year: 2014  
+  type: website 
+- id: 4
+  title: "Instant Cassandra Query Language"
+  author: Amresh
+  - family: Singh    
+  container-title: Banco de Dados Cassandra
+  publisher: Packt Publishing  
+  type: livro
+  volume:1  
+  issued:
+    year: 2013
+    month: 9 
 
 
