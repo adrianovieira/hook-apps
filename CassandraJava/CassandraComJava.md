@@ -30,6 +30,8 @@ A ideia é que ao fim do artigo o leitor esta apto a:
 
 Para o leitor o principal benefício é ampliar os horizontes, ao conhecer uma tecnologia ainda pouco utilizada no Brasil e em franca expansão pelo mundo, fazendo com que novos horizontes possam se abrir a partir do conhecimento obtido. Para a DATAPREV, o principal benefício é o amadurecimento do corpo funcional em tecnologias que a empresa ainda não tem domínio, abrindo espaço para que tecnologias modernas que agreguem valor ao negócio da empresa possam ser exploradas. Devido à grande massa de dados e sistemas que a DATAPREV opera e a versatilidade de sistemas NoSQL como o Cassandra, pode levar a empresa a um outro nível de excelência nos seus produtos, com o aumento da disponibilidade, escalabilidade e performance, aumentando assim a satisfação do cliente com o serviço prestado pela empresa.
 
+O projeto Java utilizado para esse artigo está disponível em: [http://www-git/documentos/artigos/tree/CassandraJava/CassandraJava/codigo/CassandraJava](http://www-git/documentos/artigos/tree/CassandraJava/CassandraJava/codigo/CassandraJava)
+
 ## Introdução
 
 O Apache Cassandra é um sistema gerenciador de banco de dados distribuído de código aberto e foi desenvolvido no Facebook para funcionalidade de busca na caixa de entrada de mensagens. O sistema foi desenvolvido para suportar grande quantidade de dados distribuída em cluster, fornecendo assim, grande disponibilidade sem um único ponto de falha. Uma das funcionalidades interessantes do Cassandra é a possibilidade de suportar clusters em múltiplos datacenters geograficamente distribuídos, através de uma sincronização assíncrona de dados, permitindo assim, uma baixa latência de operação para todas as aplicações que o utilizam.
