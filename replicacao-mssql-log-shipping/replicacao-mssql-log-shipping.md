@@ -3,7 +3,7 @@ remark: metadados para a ser usado pelo parser de conversão para pdf ou odt
 date: 28 de fevereiro de 2014
 tipo_artigo: Artigo técnico de Infraestrutura de TIC
 title: Alta Disponibilidade SQL Server – Log Shipping
-abstract: 'alguma coisa pra gente ver'
+abstract: 'Alta disponibilidade é assunto obrigatório quando se trata de empresas de tecnologia. Esta permite com que os sistemas sejam acessados mesmo estando diante de uma queda ou desastre evolvendo um servidor de produção. Quando se trata de ambiente de banco de dados o SQL Server oferece algumas opções nativas de alta disponibilidade. O Log Shipping oferece uma replicação de banco de dados assíncrona com tempo de atualização configurável que permite manter o banco secundário como StandBy gerando um ambiente propício para geração de relatórios. Desta forma o ambiente replicado não fica subutilizado. Com o Log shipping é possível manter uma ou mais cópias de um banco, com atualização a qualquer hora do dia que poderá substituir, através de procedimento manual, um servidor de banco de dados SQL Server de produção em caso de desastre.'
 author:
 - affiliation: DEAT/DPJS
   name: Patrícia de Oliveira Pinto
