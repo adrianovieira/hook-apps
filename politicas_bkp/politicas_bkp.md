@@ -3,7 +3,7 @@ remark: metadados para a ser usado pelo parser de conversão para pdf
 date: 20 de agosto de 2014
 tipo_artigo: Artigo técnico de Infraestrutura de TIC
 title: Políticas de Backup Corporativo.
-abstract: Artigo sobre controle e melhoria sobre políticas de backup nas empresas.
+abstract: Artigo sobre as políticas e formas de backup que podem ser usados para controle e segurança no armazenamento das informações de sistemas corporativos. Estes controles são importantes para a confiabilidade das informações que estão sendo armazenadas para possíveis utilizações futuras.
 author:
 - affiliation: SUPS
   name: Leandro Brandão Marques
