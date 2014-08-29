@@ -2,7 +2,7 @@
 date: 20 de junho de 2014
 tipo_artigo: Artigo técnico de Infraestrutura de TIC
 title: Otimização de Serviços de TI - ITIL V3.
-abstract: Artigo sobre Melhoria de Serviço Continuada (MSC) e o processo de melhoria em 7 passos.
+abstract: Artigo sobre Melhoria de Serviço Continuada (MSC) e o processo de melhoria em 7 passos, que visa de uma forma metodológica melhorar os serviços de TI.  
 author:
 - affiliation: SUPS
 name: Marcio Ferreira Barboza
