@@ -3,7 +3,9 @@ remark: metadados para a ser usado pelo parser de conversão para pdf ou odt
 date: 28 de fevereiro de 2014
 tipo_artigo: Artigo técnico de Infraestrutura de TIC
 title: Alta Disponibilidade SQL Server – Log Shipping
-abstract: 'Alta disponibilidade é assunto obrigatório quando se trata de empresas de tecnologia. Esta permite com que os sistemas sejam acessados mesmo estando diante de uma queda ou desastre evolvendo um servidor de produção. Quando se trata de ambiente de banco de dados o SQL Server oferece algumas opções nativas de alta disponibilidade. O Log Shipping oferece uma replicação de banco de dados assíncrona com tempo de atualização configurável que permite manter o banco secundário como StandBy gerando um ambiente propício para geração de relatórios. Desta forma o ambiente replicado não fica subutilizado. Com o Log shipping é possível manter uma ou mais cópias de um banco, com atualização a qualquer hora do dia que poderá substituir, através de procedimento manual, um servidor de banco de dados SQL Server de produção em caso de desastre.'
+abstract: 'Alta disponibilidade é assunto obrigatório quando se trata de empresas de tecnologia. Esta permite com que os sistemas sejam acessados mesmo estando diante de uma queda ou desastre evolvendo um servidor de produção. Quando se trata de ambiente de banco de dados o SQL Server oferece algumas opções nativas de alta disponibilidade. 
+O Log Shipping oferece uma replicação de banco de dados assíncrona com tempo de atualização configurável que permite manter o banco secundário como StandBy gerando um ambiente propício para geração de relatórios. Desta forma o ambiente replicado não fica subutilizado.
+Com o Log shipping é possível manter uma ou mais cópias de um banco, com atualização a qualquer hora do dia que poderá substituir, através de procedimento manual, um servidor de banco de dados SQL Server de produção em caso de desastre.'
 author:
 - affiliation: DEAT/DPJS
   name: Patrícia de Oliveira Pinto
@@ -35,9 +37,18 @@ Uma das soluções de alta disponibilidade, nativas do SGBD MSSQL Server&trade;,
 Desafios
 ===========
 
+No mercado atual, as empresas devem atender a um público global em curto prazo. Essa disponibilidade constante para clientes e funcionários coloca ainda mais pressão sobre a plataforma de dados da empresa. As empresas não apenas precisam da disponibilidade próxima de 100% para proteger seus negócios, mas também de um TCO menor e do suporte para garantir a confiança e a segurança.
+
+A alta disponibilidade de banco de dados possibilita que haja redundância em diferentes sites, o que garante a continuidade do negócio mesmo quando há um grande desastre.
+
+Neste sentido, as empresas devem estudar a técnica que mais se adapta as suas condições e necessidades. Deve-se, entretanto, pensar na forma mais rápida de recuperação dentro destas possibilidades.
+
 Benefícios e/ou recomendações
 ==========================
 
+- Fornece uma solução de recuperação de desastres para um único banco de dados primário e um ou mais bancos de dados secundários, cada um em uma instância separada do SQL Server. 
+- Dá suporte a acesso somente leitura limitado a bancos de dados secundários (durante o intervalo entre trabalhos de restauração). 
+- Permite um atraso especificado pelo usuário entre o momento em que o servidor primário faz backup do log do banco de dados primário e quando os servidores secundários devem restaurar (aplicar) o backup do log. Um atraso mais longo pode ser útil, por exemplo, se dados forem alterados acidentalmente no banco de dados primário. Se a alteração acidental for notada rapidamente, um atraso pode permitir que você recupere dados ainda inalterados de um banco de dados secundário, antes que a alteração seja refletida lá. 
 
 ​3. Log Shipping
 ===============
