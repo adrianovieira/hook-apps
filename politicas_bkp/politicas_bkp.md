@@ -14,6 +14,7 @@ diretoria: 'Diretoria de Infraestrutura de TIC - DIT'
 superintendencia: 'Superintendência de Planejamento e Suporte de TIC - SUPS'
 departamento: 'Departamento de Qualidade de Infraestrutura de TIC'
 tags:
+
 - Tech0xA      
 - Conceitos de backup 
 - As políticas de backup corporativo
@@ -92,10 +93,11 @@ Refêrencias
 remark: referências usadas nesse artigo
 references:
 
-- id: Políticas de backup corporativo
+- id: Pinheiro2014
   title: "Políticas de backup corporativo"
   author: 
-  - family: José Mauricio Santos Pinheiro
+  - given: José Mauricio Santos
+  - family: Pinheiro
   URL: 'http://www.uenp.edu.br/index.php/graduacao-uenp/246-administrativo-e-tecnico/nucleo-tecnologia-da-informacao2/seguranca-info/430-politicas-de-backup-corporativo'
   accessed:
     month: 8
@@ -105,9 +107,10 @@ references:
   issued:
     year: 2014
 
-- id: Backup: Conceitos e tipos
+- id: Macedo2012
   title: "Backup: Conceitos e tipos"
-  author: 
+  author:
+  - given: Diego 
   - family: Macedo
   URL: 'http://www.diegomacedo.com.br/backup-conceito-e-tipos'
   accessed:
@@ -119,10 +122,11 @@ references:
     year: 2012
 
 
-- id: Conceitos básicos de backup
+- id: Calvano2012
   title: "Backup: Conceitos e tipos"
   author: 
-  - family: Italo Calvano
+  - given: Italo
+  - family: Calvano
   URL: 'http://www.linhadecodigo.com.br/artigo/1171/conceitos-basicos-de-backup.aspx'
   accessed:
     month: 8
@@ -132,9 +136,10 @@ references:
   issued:
     year: 2012
 
-- id: Significado de backup
+- id: Significado2014
   title: "Significado de backup"
-  author: 
+  author:
+  - given: Significados 
   - family: Significados
   URL: 'http://www.significados.com.br/backup'
   accessed:
