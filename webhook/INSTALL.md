@@ -24,7 +24,7 @@ Para instalação desse *Web Hook* são consideradas as seguintes premissas tecn
 
 ### Modo de acesso ao serviço
 
-O acesso a esse webhook se dará via HTTP. Assim, é necessário haver "apelido" para acesso ao serviço.
+O acesso a esse webhook se dará via HTTP (porta 80 *full-duplex*). Assim, é necessário haver "apelido" para acesso ao serviço.
 
 Exemplo para a forma de acesso:
 
