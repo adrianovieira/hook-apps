@@ -1,18 +1,24 @@
+---
+remark: A Importância da Conformidade para a Qualidade de Infraestrutura
 date: 20 de junho de 2014
 tipo_artigo: Artigo técnico de Infraestrutura de TIC
 title: A importância da conformidade para a qualidade da infraestrutura
-abstract:Atualmente, um tema em grande destaque no mercado é “Qualidade”. Gerenciar a qualidade da infraestrutura é extremamente importante em um ambiente em constante evolução, acompanhando o aumento das exigências dos clientes e a natural introdução de novas soluções no mercado.
+abstract: Atualmente, um tema em grande destaque no mercado é “Qualidade”. Gerenciar a qualidade da infraestrutura é extremamente importante em um ambiente em constante evolução, acompanhando o aumento das exigências dos clientes e a natural introdução de novas soluções no mercado.
 author:
 - affiliation: DEQI/DICI
-- name: João Travessa
+  name: João Travessa
+responsibility:
+- affiliation: DEQI/DICI
+  name: Rogério Cyrillo
 diretoria: 'Diretoria de Infraestrutura de TIC - DIT'
 superintendencia: 'Superintendência de Planejamento e Suporte de TIC - SUPS'
-departamento: 'Departamento de Qualidade da InfraEstrutura - DEQI'
+departamento: 'Departamento DEQI - Departamento de Qualidade de Infraestrutura de TIC'
 tags:
+- Tech0xA 
 - Qualidade
 - Conformidade
 - InfraEstrutura
-
+...
 
 Introdução
 ==========
@@ -138,75 +144,17 @@ Ao longo de todas as discussões realizadas durante a criação do processo de c
 
 Referências
 ===========
----
-remark: referências usadas nesse artigo
-references:
 
-- id: Apresentação Institucional
-  title: "Apresentação Institucional Dataprev – Novembro e Dezembro 2013"
-  author:
-  - family: Dataprev
-  URL: 'http://www-dtpnet/content/apresentacao-institucional'
-  accessed:
-    month: 03
-    year: 2014
-  publisher: Dataprev
-  type: webpage
-  issued:
-    year: 2014
-    month: 03
-- id: A confusão entre evidência objetiva
-  title: "A confusão entre evidência objetiva e não-conformidade pode ser o entrave para a melhoria contínua"
-  author:
-  URL: 'http://vinhabranco.com.br/?p=1189'
-  accessed:
-    month: 5
-    year: 2014
-  type: webpage
-- id: 7 ferramentas da Qualidade
-  title: "7 ferramentas da Qualidade"
-  author:
-  URL: 'http://www.citisystems.com.br/7-ferramentas-da-qualidade'
-  accessed:
-    month: 04
-    year: 2014
- type: article
- issued:
-    year: 2012
-    month: 03
-- id: A função do gerenciamento de identidades
-  title: "A função do gerenciamento de identidades e acesso para obter conformidade contínua"
-  author:
-  URL: 'http://www.ca.com/~/media/Files/whitepapers/latam/CS1933_ContinuanceCompliance_WP_0212_PTB.pdf'
-  accessed:
-    month: 04
-    year: 2014
- type: webpage
-- id: Qualidade: Uma questão de sobrevivência para as organizações
-  title: "Qualidade: Uma questão de sobrevivência para as organizações"
-  author:
-  - family: BLÖDORN, M.; SOARES
-  URL: 'http://www.bancodedadoszonasul.com.br/htmlarea/midia/artigos/68922112011112554.pdf'
-  accessed:
-    month: 04
-    year: 2014
- type: webpage
-- id:  Gestão da qualidade e as contribuições do programa 5s
-  title: " Gestão da qualidade e as contribuições do programa 5s"
-  author:
-  - family: GODOY, L.; BELINAZO, D.; PEDRAZZI
-  URL: 'http://www.abepro.org.br/biblioteca/ENEGEP2001_TR21_0144.pdf'
-  accessed:
-    month: 04
-    year: 2014
- type: article
-- id:  Fundamentos da Qualidade – INMETRO
-  title: "Fundamentos da Qualidade – INMETRO"
-  author:
-  - family: GODOY, L.; BELINAZO, D.; PEDRAZZI
-  URL: 'http://www.inmetro.gov.br/qualidade/iaac/pdf/fundamentos-qualidade.pdf'
-  accessed:
-    month: 06
-    year: 2014
- type: article
-...
+Apresentação Institucional Dataprev – Novembro e Dezembro 2013 em: <http://www-dtpnet/content/apresentacao-institucional>. Acessado  em 03/2014.
+
+A confusão entre evidência objetiva e não-conformidade pode ser o entrave para a melhoria contínua em: <http://vinhabranco.com.br/?p=1189>. Acessado em 05/2014
+
+7 ferramentas da Qualidade em: <http://www.citisystems.com.br/7-ferramentas-da-qualidade>. Acessado em 04/2014.
+
+A função do gerenciamento de identidades e acesso para obter conformidade contínua em: <http://www.ca.com/~/media/Files/whitepapers/latam/CS1933_ContinuanceCompliance_WP_0212_PTB.pdf>. Acessado em 04/2014.
+
+Qualidade: Uma questão de sobrevivência para as organizações em: <http://www.bancodedadoszonasul.com.br/htmlarea/midia/artigos/68922112011112554.pdf>. Acessado em 04/2014.
+
+Gestão da qualidade e as contribuições do programa 5s em <http://www.abepro.org.br/biblioteca/ENEGEP2001_TR21_0144.pdf>. Acessado em 04/2014.
+  
+Fundamentos da Qualidade – INMETRO em: <http://www.inmetro.gov.br/qualidade/iaac/pdf/fundamentos-qualidade.pdf>. Acessado em 06/2014
