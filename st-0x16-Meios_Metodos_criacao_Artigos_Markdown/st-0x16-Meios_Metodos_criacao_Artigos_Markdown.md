@@ -6,7 +6,6 @@
 <div class="notes">
 - As diversas extenções
 - A tentativa de unificação/padronização (CommonMark)
-- A linguagem sintática
 - Proposta geral de uso na SUPS
   - para uso também em documentações expostas no gitlab
 </div>
@@ -36,6 +35,14 @@ Haver uma forma padronizada para a estrutura e leiaute dos artigos a serem publi
 > - hands-on
 
 ## Use *Markdown* estendido
+
+<div class="notes">
+- O que é isso?
+- Pandoc
+- A linguagem sintática
+- inclusão de imagens, tabelas
+- referências e citações
+</div>
 
 > - hands-on
 
