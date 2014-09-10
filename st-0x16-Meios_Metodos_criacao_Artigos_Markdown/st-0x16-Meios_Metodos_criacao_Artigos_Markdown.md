@@ -71,6 +71,12 @@ Haver uma forma padronizada para a estrutura e leiaute dos artigos a serem publi
 
 ## Divulgar Artigos produzidos
 
+<div class="notes">
+- Divulgação na rede social coporativa (Ond@)
+- Ond@ - referência de trabalhos publicados
+- o documento PDF & artigo Ond@
+</div>
+
 > - hands-on
 
 # Próximos passos
