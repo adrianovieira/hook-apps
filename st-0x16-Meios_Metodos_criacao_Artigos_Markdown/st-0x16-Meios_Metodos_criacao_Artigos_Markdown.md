@@ -22,6 +22,13 @@ Haver uma forma padronizada para a estrutura e leiaute dos artigos a serem publi
 
 ## Estrutura padrão para criar artigos
 
+<div class="notes">
+- Metadados de autor
+- estrutura base (Introdução, desafios, benefícios, conclusão e referências)
+- metadados de referências bibliográficas
+- citações
+</div>
+
 > - hands-on
 
 # Métodos para construção até a publicação
