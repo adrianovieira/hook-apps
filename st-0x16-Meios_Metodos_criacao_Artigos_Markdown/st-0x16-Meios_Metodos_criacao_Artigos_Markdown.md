@@ -1,8 +1,4 @@
-![Sessão Técnica](images/st-0x16-markdown-abertura.png)
-
-% Meios e Métodos para criação de Documentos::Artigos em *Markdown*  
-% Adriano Vieira <adriano.vieira@dataprev.gov.br>  
-% 18 de setembro de 2014
+![](images/st-0x16-markdown-abertura.png)
 
 # Markdown? ? ? 
 
