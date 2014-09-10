@@ -11,8 +11,12 @@
  * GLOBAL STYLES
  *********************************************/
 body {
-  background: white;
-  background-color: white; }
+    background:url("../images/dataprev-backgroud_content.jpg");
+    background-position:center;
+    background-repeat: no-repeat;
+    background-size: 70%;
+    background-color: white
+  }
 
 .reveal {
   font-family: "Lato", sans-serif;
