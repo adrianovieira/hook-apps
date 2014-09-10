@@ -48,6 +48,14 @@ Haver uma forma padronizada para a estrutura e leiaute dos artigos a serem publi
 
 ## Git-SCM
 
+<div class="notes">
+- O que é isso?
+- Git e  gitlab (www-git)
+- Comandos básicos (em linha de comando)
+- Aplicações *desktop* (*SourceTree*)
+- visualizações e operações no www-git (*merge request*)
+</div>
+
 > - hands-on
 
 ## *Template* para a arte final
