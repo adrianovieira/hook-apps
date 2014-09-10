@@ -86,6 +86,7 @@ Haver uma forma padronizada para a estrutura e leiaute dos artigos a serem publi
 <div class="notes">
 - hooks
 - **webhooks**
+- possível uso de referências bibliográficas externas comuns
 </div>
 
 > - hands-on
