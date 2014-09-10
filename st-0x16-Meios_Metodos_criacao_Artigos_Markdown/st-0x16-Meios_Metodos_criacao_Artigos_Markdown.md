@@ -60,6 +60,13 @@ Haver uma forma padronizada para a estrutura e leiaute dos artigos a serem publi
 
 ## *Template* para a arte final
 
+<div class="notes">
+- O que é isso?
+- o template LaTeX e a logomarca
+- ```makefile``` & plataformas
+- conversão para PDF
+</div>
+
 > - hands-on
 
 ## Divulgar Artigos produzidos
