@@ -235,15 +235,6 @@ references:
 
   publisher: Admin Guide.
 
-  type: 
-
-  
-  issued:
-
-    year: 
-
-    month: 
-
 - id:
 
   title: "Openldap, Uma abordagem integrada"
@@ -254,30 +245,12 @@ references:
 
     given: Trigo
 
-  container-title:
-
-  URL: 
-
-  accessed:
-
-    day: 29
-
-    month: abr.
-
-    year: 2014
-
   publisher: Novatec Editora, Ltda.
 
-  type: 
-
-  
   issued:
 
     year: 2007
 
-    month:
-
-	
 - id:
 
   title: "Openldap Extreme"
@@ -288,28 +261,11 @@ references:
 
     given: Gil
 
-  container-title:
-
-  URL: 
-
-  accessed:
-
-    day: 
-
-    month: 
-
-    year: 
-
   publisher: Brasport Livros e Multimídia, Ltda.
 
-  type: 
-
-  
   issued:
 
     year: 2012
-
-    month:
 
 - id:
 
@@ -321,28 +277,11 @@ references:
 
     given: Marcos
 
-  container-title:
-
-  URL: 
-
-  accessed:
-
-    day: 
-
-    month: 
-
-    year: 
-
   publisher: Novatec Editora, Ltda.
-
-  type: 
-
   
   issued:
 
     year: 2008
-
-    month:
 
 ...
 
