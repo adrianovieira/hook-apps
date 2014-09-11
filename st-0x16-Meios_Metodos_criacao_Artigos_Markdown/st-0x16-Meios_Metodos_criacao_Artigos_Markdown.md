@@ -107,6 +107,8 @@ Mais detalhes em @ID-estruturaVieira
 
 ## *Template* para a arte final
 
+- ```make -f $TEMPLATE_DIR/makefile pdf artigo=nosql-big_data.md```
+
 <div class="notes">
 - O que é isso?
 - o template LaTeX e a logomarca
@@ -116,7 +118,11 @@ Mais detalhes em @ID-estruturaVieira
 
 >> - **hands-on**
 
-## Divulgar Artigos produzidos
+## Divulgar Artigos
+
+Onda@ Rede Social Coporativa
+
+- comunidade Portal de Tecnologia
 
 <div class="notes">
 - Divulgação na rede social coporativa (Ond@)
