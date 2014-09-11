@@ -153,6 +153,8 @@ Servidor *hook* git para automatizar ações
 ### Meios e Métodos para criação de Documentos::Artigos em *Markdown*
 - Adriano Vieira <adriano.vieira@dataprev.gov.br>
 
+Disponível em [www-git/documentos/artigos](http://www-git/documentos/artigos/)
+
 <div class="notes">
 Isso é tudo, pessoal!
 </div>
