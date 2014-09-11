@@ -3,6 +3,9 @@
 # Markdown? ? ? 
 
 ## Pandoc 
+
+Convertor de documentos
+
 <div class="notes">
 - As diversas extenções
 - A tentativa de unificação/padronização (CommonMark)
@@ -20,6 +23,11 @@ Haver uma forma padronizada para a estrutura e leiaute dos artigos a serem publi
 </div>
 
 ## Estrutura padrão para criar artigos
+
+- Metadados de autor
+- Estrutura base do artigo  
+		*"```Introdução, Desafios, Benefícios, <tópicos específicos>, Conclusão, Referências```"*
+- Metadados de referências bibliográficas
 
 <div class="notes">
 - Metadados de autor
