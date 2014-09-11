@@ -32,6 +32,8 @@ Haver uma forma padronizada para a estrutura e leiaute dos artigos a serem publi
 		*"```Introdução, Desafios, Benefícios, <tópicos específicos>, Conclusão, Referências```"*
 - Metadados de referências bibliográficas
 
+Mais detalhes em @ID-estruturaVieira
+
 <div class="notes">
 - Metadados de autor
 - estrutura base (Introdução, desafios, benefícios, conclusão e referências)
@@ -46,22 +48,24 @@ Haver uma forma padronizada para a estrutura e leiaute dos artigos a serem publi
 ## Use *Markdown* estendido
 
 - Citações
-	- @ID-estruturaVieira
+	- ```@ID-pandocRefVieira``` (@ID-pandocRefVieira)
 - Tabelas
-~~~ {.markdown}
-+----------------+--------------------------------+---------------------------+
-|**Cab 1**       |**Cab 2**                       |**Cab N**                  |
-+================+================================+===========================+
-|Conetúdo celula |Conetúdo celula                 |Conetúdo celula            |
-+----------------+--------------------------------+---------------------------+
-|Lorem ipsum     |Lorem ipsum dolor sit amet,     |Conetúdo celula            |
-|                |consectetur adipisicing elit,   |                           |
-|                |sed do eiusmod tempor incididunt|                           |
-|                |ut labore et dolore magna       |                           |
-|                |aliqua.                         |                           |
-+----------------+--------------------------------+---------------------------+
-~~~
 
+		+----------------+--------------------------------+---------------------------+
+		|**Cab 1**       |**Cab 2**                       |**Cab N**                  |
+		+================+================================+===========================+
+		|Conetúdo celula |Conetúdo celula                 |Conetúdo celula            |
+		+----------------+--------------------------------+---------------------------+
+		|Lorem ipsum     |Lorem ipsum dolor sit amet,     |Conetúdo celula            |
+		|                |consectetur adipisicing elit,   |                           |
+		|                |sed do eiusmod tempor incididunt|                           |
+		|                |ut labore et dolore magna       |                           |
+		|                |aliqua.                         |                           |
+		+----------------+--------------------------------+---------------------------+
+
+- Ferrementa de referência
+
+> - ***Pandoc***
 
 <div class="notes">
 - O que é isso?
@@ -126,6 +130,8 @@ Haver uma forma padronizada para a estrutura e leiaute dos artigos a serem publi
 <div class="notes">
 Isso é tudo, pessoal!
 </div>
+
+### Referências
 
 ---
 remark: referências usadas nesse artigo
