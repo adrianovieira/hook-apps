@@ -10,7 +10,7 @@ Convertor de documentos
 > - inclusive **de:** ```".md" =>``` **para:** ```"PDF"```
 
 <div class="notes">
-- As diversas extenções
+- As diversas extensões ou variações do *Markdown*
 - A tentativa de unificação/padronização (CommonMark)
 - Proposta geral de uso na SUPS
   - para uso também em documentações expostas no gitlab
