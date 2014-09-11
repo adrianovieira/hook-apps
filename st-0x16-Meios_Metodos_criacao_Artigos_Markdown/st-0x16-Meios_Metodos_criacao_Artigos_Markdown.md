@@ -6,6 +6,9 @@
 
 Convertor de documentos
 
+> - Diversos tipos e formatos
+> - inclusive **de:** ```".md" =>``` **para:** ```"PDF"```
+
 <div class="notes">
 - As diversas extenções
 - A tentativa de unificação/padronização (CommonMark)
