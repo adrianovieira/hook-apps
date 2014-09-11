@@ -136,6 +136,10 @@ Onda@ Rede Social Coporativa
 
 ## Ainda tem mais???
 
+Servidor *hook* git para automatizar ações
+
+- conversão para PDF
+
 <div class="notes">
 - hooks
 - **webhooks**
