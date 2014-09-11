@@ -45,6 +45,24 @@ Haver uma forma padronizada para a estrutura e leiaute dos artigos a serem publi
 
 ## Use *Markdown* estendido
 
+- Citações
+	- @ID-estruturaVieira
+- Tabelas
+~~~ {.markdown}
++----------------+--------------------------------+---------------------------+
+|**Cab 1**       |**Cab 2**                       |**Cab N**                  |
++================+================================+===========================+
+|Conetúdo celula |Conetúdo celula                 |Conetúdo celula            |
++----------------+--------------------------------+---------------------------+
+|Lorem ipsum     |Lorem ipsum dolor sit amet,     |Conetúdo celula            |
+|                |consectetur adipisicing elit,   |                           |
+|                |sed do eiusmod tempor incididunt|                           |
+|                |ut labore et dolore magna       |                           |
+|                |aliqua.                         |                           |
++----------------+--------------------------------+---------------------------+
+~~~
+
+
 <div class="notes">
 - O que é isso?
 - Pandoc
@@ -109,3 +127,35 @@ Haver uma forma padronizada para a estrutura e leiaute dos artigos a serem publi
 Isso é tudo, pessoal!
 </div>
 
+---
+remark: referências usadas nesse artigo
+references:
+- id: ID-estruturaVieira
+  title: "Estrutura padrão para criar artigos técnicos"
+  author:
+  - family: Vieira
+    given: Adriano dos Santos
+  URL: 'https://onda.byyou.com/artigos?1=1&space=portaldetecnologia-community&app_ByYouSocialArticle_articleId=1608757133'
+  accessed:
+    month: 05
+    year: 2014
+  publisher: Dataprev
+  type: webpage
+  issued:
+    year: 2014
+    month: 02
+- id: ID-pandocRefVieira
+  title: "Crie Conteúdo, não leiaute; padrões sintáticos de formatação markdown estendido & Pandoc"
+  author:
+  - family: Vieira
+    given: Adriano dos Santos
+  URL: 'https://onda.byyou.com/artigos?app_ByYouSocialArticle_articleId=1644605620&space=portaldetecnologia-community'
+  accessed:
+    month: 5
+    year: 2014
+  publisher: Dataprev
+  type: article
+  issued:
+    year: 2014
+    month: 3
+...
