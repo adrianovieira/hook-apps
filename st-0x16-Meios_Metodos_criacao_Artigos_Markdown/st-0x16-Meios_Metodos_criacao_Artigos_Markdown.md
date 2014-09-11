@@ -79,6 +79,22 @@ Mais detalhes em @ID-estruturaVieira
 
 ## Git-SCM
 
+- ```mkdir -p documentos/artigos-tecnicos/nosql-big_data/imagens```
+- ```cd documentos/artigos-tecnicos/nosql-big_data```
+- ```git init```
+- ```git remote add <upstream> http://www-git.prevnet/documentos/artigos.git```
+- ```git checkout -b nosql-big_data```
+- ```vim nosql-big_data.md```
+- ```git add nosql-big_data.md```
+- ```git commit -m "Atualiza conteúdo do tópico Desafios" nosql-big_data.md```
+- ```vim nosql-big_data.md```
+- ```git commit -m "Atualiza conteúdo do tópico Benefícios" nosql-big_data.md```
+- ```vim nosql-big_data.md```
+- ```git commit -m "Atualiza metadados Referências" nosql-big_data.md```
+- ```vim nosql-big_data.md```
+- ```git commit -m "Atualiza citações no conteúdo do tópico Benefícios" nosql-big_data.md```
+- ```git push <upstream> nosql-big_data```
+
 <div class="notes">
 - O que é isso?
 - Git e  gitlab (www-git)
