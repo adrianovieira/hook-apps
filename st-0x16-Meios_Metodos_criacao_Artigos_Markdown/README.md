@@ -3,7 +3,7 @@
 Essa apresentação requer:
 
 - ***reveal-js*** (<http://lab.hakim.se/reveal-js/>)
-- CSL de http://www-git/documentos/markdown-template
+- CSL de <http://www-git/documentos/markdown-template>
 
 ## Como gerar a apresentação?
 
