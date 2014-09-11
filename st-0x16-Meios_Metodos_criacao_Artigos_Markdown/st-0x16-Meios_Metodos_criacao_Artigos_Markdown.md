@@ -150,7 +150,7 @@ Servidor *hook* git para automatizar ações
 
 ## TAF
 
-- Meios e Métodos para criação de Documentos::Artigos em *Markdown*
+### Meios e Métodos para criação de Documentos::Artigos em *Markdown*
 - Adriano Vieira <adriano.vieira@dataprev.gov.br>
 
 <div class="notes">
