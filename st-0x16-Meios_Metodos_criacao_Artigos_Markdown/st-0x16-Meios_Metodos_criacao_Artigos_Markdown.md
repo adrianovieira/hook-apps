@@ -28,11 +28,9 @@ Haver uma forma padronizada para a estrutura e leiaute dos artigos a serem publi
 - citações
 </div>
 
-> - hands-on
+>> - **hands-on**
 
 # Métodos para construção até a publicação
-
-> - hands-on
 
 ## Use *Markdown* estendido
 
@@ -44,7 +42,7 @@ Haver uma forma padronizada para a estrutura e leiaute dos artigos a serem publi
 - referências e citações
 </div>
 
-> - hands-on
+>> - **hands-on**
 
 ## Git-SCM
 
@@ -56,7 +54,7 @@ Haver uma forma padronizada para a estrutura e leiaute dos artigos a serem publi
 - visualizações e operações no www-git (*merge request*)
 </div>
 
-> - hands-on
+>> - **hands-on**
 
 ## *Template* para a arte final
 
@@ -67,7 +65,7 @@ Haver uma forma padronizada para a estrutura e leiaute dos artigos a serem publi
 - conversão para PDF
 </div>
 
-> - hands-on
+>> - **hands-on**
 
 ## Divulgar Artigos produzidos
 
@@ -77,7 +75,7 @@ Haver uma forma padronizada para a estrutura e leiaute dos artigos a serem publi
 - o documento PDF & artigo Ond@
 </div>
 
-> - hands-on
+>> - **hands-on**
 
 # Próximos passos
 
@@ -89,8 +87,7 @@ Haver uma forma padronizada para a estrutura e leiaute dos artigos a serem publi
 - possível uso de referências bibliográficas externas comuns
 </div>
 
-> - hands-on
-
+>> - **hands-on**
 
 ## TAF
 
