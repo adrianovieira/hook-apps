@@ -54,7 +54,7 @@ Mais detalhes em @ID-estruturaVieira
 		+----------------+--------------------------------+---------------------------+
 		|**Cab 1**       |**Cab 2**                       |**Cab N**                  |
 		+================+================================+===========================+
-		|Conetúdo celula |Conetúdo celula                 |Conetúdo celula            |
+		|Conteúdo celula |Conteúdo celula                 |Conteúdo celula            |
 		+----------------+--------------------------------+---------------------------+
 		|Lorem ipsum     |Lorem ipsum dolor sit amet,     |Conetúdo celula            |
 		|                |consectetur adipisicing elit,   |                           |
@@ -71,7 +71,7 @@ Mais detalhes em @ID-estruturaVieira
 - O que é isso?
 - Pandoc
 - A linguagem sintática
-- inclusão de imagens, tabelas
+- inclusão de imagens, tabelas e múltiplas linhas em células
 - referências e citações
 </div>
 
