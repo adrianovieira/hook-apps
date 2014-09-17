@@ -46,9 +46,9 @@ Neste sentido, as empresas devem estudar a técnica que mais se adapta as suas c
 Benefícios e/ou recomendações
 ==========================
 
-- Fornece uma solução de recuperação de desastres para um único banco de dados primário e um ou mais bancos de dados secundários, cada um em uma instância separada do SQL Server. 
-- Dá suporte a acesso somente leitura limitado a bancos de dados secundários (durante o intervalo entre trabalhos de restauração). 
-- Permite um atraso especificado pelo usuário entre o momento em que o servidor primário faz backup do log do banco de dados primário e quando os servidores secundários devem restaurar (aplicar) o backup do log. Um atraso mais longo pode ser útil, por exemplo, se dados forem alterados acidentalmente no banco de dados primário. Se a alteração acidental for notada rapidamente, um atraso pode permitir que você recupere dados ainda inalterados de um banco de dados secundário, antes que a alteração seja refletida lá. 
+- Fornece uma solução de recuperação de desastres para um único banco de dados primário e um ou mais bancos de dados secundários, cada um em uma instância separada do SQL Server. @R1
+- Dá suporte a acesso somente leitura limitado a bancos de dados secundários (durante o intervalo entre trabalhos de restauração). @R1
+- Permite um atraso especificado pelo usuário entre o momento em que o servidor primário faz backup do log do banco de dados primário e quando os servidores secundários devem restaurar (aplicar) o backup do log. Um atraso mais longo pode ser útil, por exemplo, se dados forem alterados acidentalmente no banco de dados primário. Se a alteração acidental for notada rapidamente, um atraso pode permitir que você recupere dados ainda inalterados de um banco de dados secundário, antes que a alteração seja refletida lá. @R1
 
 ​3. Log Shipping
 ===============
@@ -95,10 +95,10 @@ O funcionamento do Log Shipping consiste de três etapas básicas e fundamentais
 
 Este processo ocorre através da ação de três jobs criados após a configuração da estrutura de Log Shipping na instância primária que são executados pelo SQL Server Agent. São eles:
 
-- Backup Job  - Nomeada como “Log Shipping Backup”, é responsável por gerar backups dos arquivos de log, registrar histórico no servidor local e no monitor, e apagar os arquivos obsoletos e informações históricas. Por padrão, o intervalo para a execução deste job é de 15 minutos porém pode ser alterado conforme necessidade. A periodicidade de exclusão dos arquivos de log já aplicados também pode ser configurada.
-- Copy Job – Nomeada de “Log Shipping Copy” e criada no servidor secundário, esta job copia os arquivos de backup do servidor primário para um destino configurável no servidor secundário e o servidor monitor.
-- Restore Job – job “Log Shipping Restore” é criada e executada no(s) banco de dados secundário(s) com função de restore dos arquivos de log que foram copiados na execução da job especificada acima. Ele grava o histórico no servidor local e monitor server, e apaga arquivos e históricos antigos. O job de restore pode ter seu intervalo de execução alterado, pelo administrador de banco de dados, de acordo com políticas definidas e necessidades específicas.
-- Alert Job - “Log Shipping Alert” criado no servidor monitor, levanta alertas dos bancos primário e secundários quando um backup ou operação de restore não completar com sucesso e em um intervalo especificado. 
+- Backup Job  - Nomeada como “Log Shipping Backup”, é responsável por gerar backups dos arquivos de log, registrar histórico no servidor local e no monitor, e apagar os arquivos obsoletos e informações históricas. Por padrão, o intervalo para a execução deste job é de 15 minutos porém pode ser alterado conforme necessidade. A periodicidade de exclusão dos arquivos de log já aplicados também pode ser configurada.@R1
+- Copy Job – Nomeada de “Log Shipping Copy” e criada no servidor secundário, esta job copia os arquivos de backup do servidor primário para um destino configurável no servidor secundário e o servidor monitor.@R1
+- Restore Job – job “Log Shipping Restore” é criada e executada no(s) banco de dados secundário(s) com função de restore dos arquivos de log que foram copiados na execução da job especificada acima. Ele grava o histórico no servidor local e monitor server, e apaga arquivos e históricos antigos. O job de restore pode ter seu intervalo de execução alterado, pelo administrador de banco de dados, de acordo com políticas definidas e necessidades específicas.@R1
+- Alert Job - “Log Shipping Alert” criado no servidor monitor, levanta alertas dos bancos primário e secundários quando um backup ou operação de restore não completar com sucesso e em um intervalo especificado. @R1
 
 ​4. Pontos de atenção
 ====================
@@ -151,15 +151,6 @@ O Log Shipping é uma tecnologia de alta disponibilidade que aplica logs transac
 ---
 references:
 - id: R1
-  title: "Soluções de alta disponibilidade"
-  URL: 'http://msdn.microsoft.com/pt-br/library/ms190202.aspx'
-  accessed:
-    month: 05
-    year: 2014
-  publisher: Microsoft
-  type: entry-encyclopedia
-
-- id: R2
   title: "About Log Shipping"
   URL: 'http://technet.microsoft.com/en-us/library/ms187103.aspx'
   accessed:
@@ -167,16 +158,5 @@ references:
     year: 2014
   publisher: Microsoft
   type: entry-encyclopedia
-  
-- id: R3
-  title: "Configure Log Shipping"
-  author:
-  - family: Saks
-    given: Kenneth
-  URL: 'http://technet.microsoft.com/en-us/library/ms190640.aspx'
-  accessed:
-    month: 05
-    year: 2014
-  publisher: Microsoft
-  type: entry-encyclopedia
+ 
 ---
