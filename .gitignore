@@ -219,3 +219,7 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+
+# presentation with reveal.js
+reveal.js
+index.html
