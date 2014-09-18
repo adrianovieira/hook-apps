@@ -1,5 +1,22 @@
 ![](images/st-0x16-markdown-abertura.png)
 
+# Agenda
+
+## Programação
+
+- Markdown  
+    Pandoc;
+    Desafios e Benefícios;
+    Estrutura padrão para criar artigos.
+
+- Métodos para construção até a publicação  
+    Markdown estendido;
+    Git-SCM;
+    Arte final em templates;
+    publicação na Ond@.
+
+- Próximos passos
+
 # Markdown? ? ? 
 
 ## Pandoc 
