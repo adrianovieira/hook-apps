@@ -23,8 +23,8 @@ tags:
 Introdução
 ===
 Atualmente, os sistemas corporativos requerem soluções de backup cada vez mais velozes, flexíveis e confiáveis, preparadas para atender diversas plataformas.
-A necessidade de garantir a integridade e a segurança da informação é tão grande que os profissionais de suporte não podem contar apenas com simples sistemas de armazenamento, necessitando utilizar recursos mais eficientes como os sistemas de backup corporativo, por exemplo. Adotar soluções depende de um correto planejamento tecnológico que deve ser adaptado ao foco do negócio, integrando de forma inteligente a tecnologia utilizada aos novos hardwares e softwares e que ofereçam meios para gerenciar constantemente esses componentes.
-Hoje em dia, existem serviços de backup que são disponibilizados por servidores online, como por exemplo, dropbox, icloud e google docs. O backup online tem a vantagem de permitir o acesso aos dados guardados a partir de qualquer computador com acesso à internet.
+A necessidade de garantir a integridade e a segurança da informação é tão grande que os profissionais de suporte não podem contar apenas com simples sistemas de armazenamento, necessitando utilizar recursos mais eficientes como os sistemas de backup corporativo, por exemplo. Adotar soluções depende de um correto planejamento tecnológico que deve ser adaptado ao foco do negócio, integrando de forma inteligente a tecnologia utilizada aos novos hardwares e softwares e que ofereçam meios para gerenciar constantemente esses componentes[@Pinheiro2014].
+Hoje em dia, existem serviços de backup que são disponibilizados por servidores online, como por exemplo, dropbox, icloud e google docs. O backup online tem a vantagem de permitir o acesso aos dados guardados a partir de qualquer computador com acesso à internet[@Significado2014].
 
 Desafio
 ===
@@ -40,14 +40,14 @@ Planejar uma política de backup não é simplesmente copiar dados de um “comp
 
 Benefícios e/ou recomendações
 === 
-Todos os tipos de backup devem ser testados periodicamente para garantir que os dados possam ser lidos através deles. É fato, que, às vezes, os backups executados são por algum motivo ilegíveis. O pior é que muitas vezes isto só é percebido quando os dados são perdidos e devem ser restaurados pelo backup. As razões para isto ocorrer podem variar desde alterações no alinhamento do cabeçote do drive de fita, software de backup mal configurado a um erro do operador. Independente da causa. Sem o teste periódico você não pode garantir que está gerando backups através dos quais poderá restaurar dados no futuro.
+Todos os tipos de backup devem ser testados periodicamente para garantir que os dados possam ser lidos através deles. É fato, que, às vezes, os backups executados são por algum motivo ilegíveis. O pior é que muitas vezes isto só é percebido quando os dados são perdidos e devem ser restaurados pelo backup. As razões para isto ocorrer podem variar desde alterações no alinhamento do cabeçote do drive de fita, software de backup mal configurado a um erro do operador. Independente da causa. Sem o teste periódico você não pode garantir que está gerando backups através dos quais poderá restaurar dados no futuro[@Macedo2012].
 
 A Política
 ===
 Podemos sugerir que para termos uma política de backup eficiente temos que levar em consideração pelo menos alguns pontos a seguir:
 
 **1. Quais os dados que serão armazenados?**
-Essa é a pergunta inicial a ser respondida. Uma forma de respondê-la é saber quais as informações que são mais importantes dentro da empresa ou de seu equipamento (em caso de usuários domésticos). Fazendo referência a uma empresa temos os seguintes itens a ser analisados:
+Essa é a pergunta inicial a ser respondida. Uma forma de respondê-la é saber quais as informações que são mais importantes dentro da empresa ou de seu equipamento (em caso de usuários domésticos)[@Calvano2012]. Fazendo referência a uma empresa temos os seguintes itens a ser analisados:
 
 - *Informações dos sistemas de gestão da empresa*. Normalmente são mantidos em bases de dados estruturadas e todas elas possuem opções de exportação e/ou backup dos dados. Embora sua empresa utilize sistemas hospedados “na nuvem”, deve existir a opção de exportação dos dados para não correr o risco de depender 100% da eficiência do fornecedor;
 
@@ -55,18 +55,18 @@ Essa é a pergunta inicial a ser respondida. Uma forma de respondê-la é saber 
 
 **2. Qual a frequência da operação de backup?**
 A reposta depende da frequência de alteração das informações em questão, assim vale lembrar, que algumas empresas costumam fazer a operação de backup duas vezes por dia, períodos do meio-dia e à meia-noite, por exemplo. A verdade é que o quanto antes fizermos backup de uma informação, mais fácil será obter uma cópia consistente em caso de necessidade. É importante observar que em certos casos, vale a pena manter um sistema de controle de versão dos arquivos, como fazem as softhouses. 
-Pense bem antes de responder essa pergunta! Respondê-la de forma errada pode levar a sérios prejuízos! Como, por exemplo, fazer backup de informações que estão corrompidas ou que estão muito desatualizadas causando retrabalho em caso de um recovery(restauração) dos dados.
+Pense bem antes de responder essa pergunta! Respondê-la de forma errada pode levar a sérios prejuízos! Como, por exemplo, fazer backup de informações que estão corrompidas ou que estão muito desatualizadas causando retrabalho em caso de um recovery(restauração) dos dados[@Calvano2012].
 
 **3. Quais equipamentos e tecnologias serão utilizados no backup?**
 Antigamente, existiam poucas opções aos usuários comuns ou a pequenas empresas, hoje, podemos lançar mão de fitas magnéticas de alta capacidade de armazenamento que são eficientes. Os backups em disco são rápidos e podem crescer a medida da necessidade, como exemplos, os NAS (Network Attached Storage), discos externos como pendrives, HD´s externos e as opções de backup em nuvem como o FatDrive.
 Há opções para diversas necessidades e orçamentos, escolha aquela que irá lhe trazer o melhor custo x benefício x segurança. 
-Muita atenção no seguinte: - dependendo da tecnologia eleita, talvez você tenha que ter um backup do equipamento de backup. Sugiro comprar Hard Disk´s sobressalentes! Em caso de adquirir soluções de backup, preste atenção se você não ficará “preso” para sempre a um fornecedor específico ou a uma tecnologia proprietária, nunca é demais compreender que isso não é vantagem para você ou para o seu negócio.
+Muita atenção no seguinte: - dependendo da tecnologia eleita, talvez você tenha que ter um backup do equipamento de backup. Sugiro comprar Hard Disk´s sobressalentes! Em caso de adquirir soluções de backup, preste atenção se você não ficará “preso” para sempre a um fornecedor específico ou a uma tecnologia proprietária, nunca é demais compreender que isso não é vantagem para você ou para o seu negócio[@Calvano2012].
 
 **4. Qual o volume de dados gerados por cada operação de backup e por quanto tempo meu equipamento irá suportar esse volume?**
-Responder corretamente a essa pergunta evitará o investimento desnecessário.  Sistemas de rotinas críticas fazem altos investimentos para evitar falhas, porque eles entendem o quanto custaria caso ficasse tempo demais parado e assim conseguem dimensionar os investimentos. Quanto custaria não ter acesso às informações ou perder seu trabalho? Não há uma fórmula pronta para responder essa pergunta mas um bom modelo seria acompanhar o crescimento dos arquivos de backup no tempo e fazer projeções futuras baseados no compasso desse crescimento.
+Responder corretamente a essa pergunta evitará o investimento desnecessário.  Sistemas de rotinas críticas fazem altos investimentos para evitar falhas, porque eles entendem o quanto custaria caso ficasse tempo demais parado e assim conseguem dimensionar os investimentos. Quanto custaria não ter acesso às informações ou perder seu trabalho? Não há uma fórmula pronta para responder essa pergunta mas um bom modelo seria acompanhar o crescimento dos arquivos de backup no tempo e fazer projeções futuras baseados no compasso desse crescimento[@Calvano2012].
 
 **5. Qual estratégia de backup será a mais adequada?**
-A estratégia de backup deve ser elaborada de acordo com a demanda dos dados que serão armazenados e deve ser montada de modo a ter uma facilidade de recuperação de dados em caso de falhas nos sistemas em foco. 
+A estratégia de backup deve ser elaborada de acordo com a demanda dos dados que serão armazenados e deve ser montada de modo a ter uma facilidade de recuperação de dados em caso de falhas nos sistemas em foco[@Calvano2012]. 
 
 *Apresento algumas sugestões para rotinas de backup:*
 
@@ -79,7 +79,7 @@ A estratégia de backup deve ser elaborada de acordo com a demanda dos dados que
 *Incremental* – serve para adicionar arquivos novos a partir de um backup completo. Deve ser usado para dados que não mudam com o tempo como imagens e vídeos que não são editados mas que novos são acrescentados com o tempo.
 
 **6. Quem avaliará se a política de backup está sendo seguida e qual o procedimento será usado para esta avaliação?**
-Quero frisar que não adianta ter uma política de backup perfeita se ela não é auditada. Deve existir um procedimento de checagem para ver se as políticas estão sendo efetivas ou se ajustes devem ser feitos, é necessário que restaurações de teste sejam feitas por essa auditoria. É de suma importância que a auditoria não seja feita pelo responsável pelo backup mas por outra pessoa que tenha condições de avaliá-lo.
+Quero frisar que não adianta ter uma política de backup perfeita se ela não é auditada. Deve existir um procedimento de checagem para ver se as políticas estão sendo efetivas ou se ajustes devem ser feitos, é necessário que restaurações de teste sejam feitas por essa auditoria. É de suma importância que a auditoria não seja feita pelo responsável pelo backup mas por outra pessoa que tenha condições de avaliá-lo[@Calvano2012].
 
 Conclusão
 ===
@@ -96,8 +96,8 @@ references:
 - id: Pinheiro2014
   title: "Políticas de backup corporativo"
   author: 
-  - given: José Mauricio Santos
   - family: Pinheiro
+  	given: José Mauricio Santos
   URL: 'http://www.uenp.edu.br/index.php/graduacao-uenp/246-administrativo-e-tecnico/nucleo-tecnologia-da-informacao2/seguranca-info/430-politicas-de-backup-corporativo'
   accessed:
     month: 8
@@ -110,8 +110,8 @@ references:
 - id: Macedo2012
   title: "Backup: Conceitos e tipos"
   author:
-  - given: Diego 
   - family: Macedo
+  	given: Diego 
   URL: 'http://www.diegomacedo.com.br/backup-conceito-e-tipos'
   accessed:
     month: 8
@@ -125,8 +125,8 @@ references:
 - id: Calvano2012
   title: "Backup: Conceitos e tipos"
   author: 
-  - given: Italo
   - family: Calvano
+  	given: Italo
   URL: 'http://www.linhadecodigo.com.br/artigo/1171/conceitos-basicos-de-backup.aspx'
   accessed:
     month: 8
@@ -138,9 +138,6 @@ references:
 
 - id: Significado2014
   title: "Significado de backup"
-  author:
-  - given: Significados 
-  - family: Significados
   URL: 'http://www.significados.com.br/backup'
   accessed:
     month: 8
@@ -151,6 +148,7 @@ references:
     year: 2014
 
 ---
+
 
 
 
