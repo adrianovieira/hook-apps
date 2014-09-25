@@ -5,11 +5,11 @@ tipo_artigo: Artigo técnico de Infraestrutura de TIC
 title: Políticas de Backup Corporativo.
 abstract: Artigo sobre as políticas e formas de backup que podem ser usados para controle e segurança no armazenamento das informações de sistemas corporativos. Estes controles são importantes para a confiabilidade das informações que estão sendo armazenadas para possíveis utilizações futuras.
 author:
-- affiliation: SUPS
+- affiliation: DEQI/DICI
   name: Leandro Brandão Marques
 responsibility:
-- affiliation: SUPS
-  name: Anderson Gourlart
+- affiliation: DEQI/DICI
+  name: Rogerio de Souza Braz do Canto Cyrillo
 diretoria: 'Diretoria de Infraestrutura de TIC - DIT'
 superintendencia: 'Superintendência de Planejamento e Suporte de TIC - SUPS'
 departamento: 'Departamento de Qualidade de Infraestrutura de TIC'
@@ -148,11 +148,3 @@ references:
     year: 2014
 
 ---
-
-
-
-
-
-
-
-
