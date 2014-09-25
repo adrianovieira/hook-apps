@@ -1,7 +1,11 @@
 # Artigo técnico de Infraestrutura de TIC 
 
+## Título do artigo 
+
+**Estrutura, Meios e Método padrão para criar artigos técnicos**
+
 ## Resumo
-Apresenta a estrutura padrão para artigos a serem produzidos para publicação interna com uso de textos com marcação “*Markdown/Pandoc*”. Também apresenta o método para construção até a publicação de artigos.
+Apresenta a estrutura padrão para artigos a serem produzidos para publicação interna com uso de textos com marcação “*Markdown/Pandoc*”. Também apresenta meios e métodos para construção até a publicação de artigos na Ond@.
 
 ```markdown
 remark: metadados para a ser usado pelo parser de conversão para pdf
