@@ -5,13 +5,13 @@
 **Estrutura, Meios e Método padrão para criar artigos técnicos**
 
 ## Resumo
-Apresenta a estrutura padrão para artigos a serem produzidos para publicação interna com uso de textos com marcação “*Markdown/Pandoc*”. Também apresenta meios e métodos para construção até a publicação de artigos na Ond@.
+Apresenta a estrutura padrão para artigos a serem produzidos para publicação interna com uso de textos com marcação “*Markdown/Pandoc*”. Também apresenta meios e método para construção até a publicação de artigos na Ond@.
 
 ```markdown
 remark: metadados para a ser usado pelo parser de conversão para pdf
 date: 28 de fevereiro de 2014
 title: Estrutura, Meios e Método padrão para criar artigos técnicos
-abstract: 'Apresenta a estrutura padrão para artigos a serem produzidos para publicação interna com uso de textos com marcação “*Markdown/Pandoc*”. Também apresenta o método para construção até a publicação de artigos.'
+abstract: 'Apresenta a estrutura padrão para artigos a serem produzidos para publicação interna com uso de textos com marcação “*Markdown/Pandoc*”. Também apresenta maios e método para construção até a publicação de artigos na Ond@.'
 author:
 - affiliation: SUPS
   name: Adriano dos Santos Vieira
