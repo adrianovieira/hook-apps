@@ -1,7 +1,7 @@
 WebHook
 =======
 
-Webhook simples para realizar conversão automatizada de documentos/artigos para PDF.
+***Gitlab***^[http://www.gitlab.com/] *Web Hook* para realizar conversão automatizada de documentos/artigos para PDF.
 
 Pré-requisitos
 --------------
@@ -15,6 +15,23 @@ Para instalação desse *Web Hook* são consideradas as seguintes premissas tecn
 - Parser PDF: Pandoc 0.12.3 (ou superior)
 - Utilitário construtor: GNU Make
 - Template Pandoc: <http://www-git/documentos/markdown-template>
+
+### Configuração de servidor
+
+- Memória: 4GB RAM - no mínimo
+- Armazenamento: 50GB - sem considerar necessidade do S.O.  
+  Esse armazenamento servirá para manter os arquivos a serem convertidos e os arquivos PDF gerados.
+
+### Modo de acesso ao serviço
+
+O acesso a esse webhook se dará via HTTP (porta 80 *full-duplex*). Assim, é necessário haver "apelido" para acesso ao serviço.
+
+Exemplo para a forma de acesso:
+
+- ```http://hook.www-git/artigos-webhook/```  
+  Caminho para acesso ao serviço webhook de conversão *Pandoc/markdown*.
+- ```http://hook.www-git/artigos-download/```  
+  Caminho para acesso aos artigos PDF gerados na conversão.
 
 Estrutura do diretório
 ----------------------
@@ -59,4 +76,4 @@ Instalação
      ```http://<servidor_webhook>/download/<link_artigo_PDF>```
 1. Configure web hook para o projeto  
    Esse web hook é para conversão automatizada de artigos quando for solicitado ***"merge request"*** via interface do *Gitlab*.
-   - acesse e configure o web hook em <http://www-git/documentos/artigos/hooks>
+   - acesse e configure o web hook para *merge request* do projeto em <http://www-git/documentos/artigos/hooks>
