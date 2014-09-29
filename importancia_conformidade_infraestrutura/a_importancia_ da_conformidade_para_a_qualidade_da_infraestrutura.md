@@ -1,55 +1,24 @@
 ---
+remark: A Importância da Conformidade para a Qualidade de Infraestrutura
 date: 20 de junho de 2014
 tipo_artigo: Artigo técnico de Infraestrutura de TIC
 title: A importância da conformidade para a qualidade da infraestrutura
-abstract: Este artigo apresenta os principais conceitos relacionados a conformidade e qualidade de infraestrutura
+abstract: Atualmente, um tema em grande destaque no mercado é “Qualidade”. Gerenciar a qualidade da infraestrutura é extremamente importante em um ambiente em constante evolução, acompanhando o aumento das exigências dos clientes e a natural introdução de novas soluções no mercado.
 author:
 - affiliation: DEQI/DICI
-- name: João Travessa
+  name: João Travessa
+responsibility:
+- affiliation: DEQI/DICI
+  name: Rogério Cyrillo
 diretoria: 'Diretoria de Infraestrutura de TIC - DIT'
 superintendencia: 'Superintendência de Planejamento e Suporte de TIC - SUPS'
-departamento: 'Departamento de Qualidade da InfraEstrutura - DEQI'
+departamento: 'Departamento DEQI - Departamento de Qualidade de Infraestrutura de TIC'
 tags:
+- Tech0xA 
 - Qualidade
 - Conformidade
 - InfraEstrutura
-
-
-
-
-
-
-
-
-Resumo
-======
-
-Atualmente, um tema em grande destaque no mercado é “Qualidade”. Gerenciar a qualidade da infraestrutura é extremamente importante em um ambiente em constante evolução, acompanhando o aumento das exigências dos clientes e a natural introdução de novas soluções no mercado.
-
-
-Desafios
-========
-
-Atualmente a Dataprev possui um total de 1053 servidores físicos e 1906 servidores virtuais(1) em ambientes de plataforma baixa nos mais variados sistemas operacionais e configurações espalhados pelos três centros de processamento da empresa. Com  base nessa infraestrutura, a empresa fornece aos clientes externos grande quantidade de serviços, muitos de alta complexidade.
-
- 1. Em 09/01/2014. Fonte: Apresentação Institucional Dataprev. Disponível em <http://www-dtpnet/content/apresentacao-institucional> - Acessado em 27/03/2014
-  
-
-![Figura 1](imagens/Figura1.png)
-
-Figura 1: Total de servidores – Ambiente de plataforma baixa
-Fonte: Apresentação Institucional Dataprev.
-
-
-Benefícios
-==========
-
-Manter a conformidade no parque tecnológico permite uma série de benefícios para a empresa, sendo traduzidos como valor para o cliente. Entre eles:
-
-* Reduzir riscos e aumentar a performance, uma vez que os serviços são disponibilizados em plataformas com configurações testadas e homologadas pela empresa;
-* Redução do custo de gerenciamento, já que o mesmo é diretamente proporcional às particularidades de cada ambiente;
-* Aumento da efetividade do negócio, possível através da padronização da infraestrutura, facilitando o acesso à informações estratégicas do negócio e a tomada de decisão.
-
+...
 
 Introdução
 ==========
@@ -80,6 +49,28 @@ Aqui, conformidade é definida como o grau em que o projeto e as característica
 3.MONTEIRO, L. Fundamentos da Qualidade – INMETRO. Disponível em <http://www.inmetro.gov.br/qualidade/iaac/pdf/fundamentos-qualidade.pdf> - Acessado em 12/06/2014
 
 
+Desafios
+========
+
+Atualmente a Dataprev possui um total de 1053 servidores físicos e 1906 servidores virtuais(1) em ambientes de plataforma baixa nos mais variados sistemas operacionais e configurações espalhados pelos três centros de processamento da empresa. Com  base nessa infraestrutura, a empresa fornece aos clientes externos grande quantidade de serviços, muitos de alta complexidade.
+
+ 1. Em 09/01/2014. Fonte: Apresentação Institucional Dataprev. Disponível em <http://www-dtpnet/content/apresentacao-institucional> - Acessado em 27/03/2014
+  
+
+![Total de servidores – Ambiente de plataforma baixa](imagens/Figura1.png)
+
+Figura 1: Total de servidores – Ambiente de plataforma baixa
+Fonte: Apresentação Institucional Dataprev.
+
+
+Benefícios
+==========
+
+Manter a conformidade no parque tecnológico permite uma série de benefícios para a empresa, sendo traduzidos como valor para o cliente. Entre eles:
+
+* Reduzir riscos e aumentar a performance, uma vez que os serviços são disponibilizados em plataformas com configurações testadas e homologadas pela empresa;
+* Redução do custo de gerenciamento, já que o mesmo é diretamente proporcional às particularidades de cada ambiente;
+* Aumento da efetividade do negócio, possível através da padronização da infraestrutura, facilitando o acesso à informações estratégicas do negócio e a tomada de decisão.
 
 Qualidade e Conformidade
 ========================
@@ -101,7 +92,7 @@ A identificação de uma causa raiz não é uma tarefa simples. Para realizar es
  
  
  
- ![Tabela 1](imagens/Tabela1.png)
+ ![As 7 ferramentas da Qualidade](imagens/Tabela1.png)
  
  
  
@@ -132,7 +123,7 @@ Em uma visão de Macroprocessos, ele está dividido em quatro etapas:
 
 Sua estrutura pode ser observada no framework abaixo:
 
-![Tabela 1](imagens/Figura3.png)
+![Framework de Manutenção da Conformidade](imagens/Figura3.png)
 
 
 Figura 3: Framework de Manutenção da Conformidade
@@ -151,19 +142,93 @@ O tema Qualidade se encontra em evidência em todas as esferas de discussões da
 Ao longo de todas as discussões realizadas durante a criação do processo de conformidade de configuração, a equipe de qualidade viu a importância real da documentação para a gestão do conhecimento na empresa. Por hora, vemos diversos sistemas legados sem nenhuma documentação, o que dificulta qualquer trabalho de melhoria voltado àquele produto. Da mesma forma, o tratamento de erros e desvios não pode sofrer melhorias, pois não se sabe o que já foi testado com problemas anteriores e seus resultados. É importante se remover a ideia de que a documentação é uma burocratização do processo de trabalho. O excesso de documentação é. A documentação em si é um artefato mínimo para a criação de uma base de conhecimento.
 
 
-Referências
-===========
+Refêrencias
+===
 
-Apresentação Institucional Dataprev – Novembro e Dezembro 2013. Disponível em <http://www-dtpnet/content/apresentacao-institucional> - Acessado em 27/03/2014
+---
+remark: referências usadas nesse artigo
+references:
 
-A confusão entre evidência objetiva e não-conformidade pode ser o entrave para a melhoria contínua. Disponível em <http://vinhabranco.com.br/?p=1189> - Acessado em 09/04/2014
+- id: Apresentação Institucional Dataprev – Novembro e Dezembro 2013
+  title: "Apresentação Institucional Dataprev – Novembro e Dezembro 2013"
+  author: 
+  - family: Dataprev
+  URL: 'http://www-dtpnet/content/apresentacao-institucional'
+  accessed:
+    month: 3
+    year: 2013
+  publisher: Dataprev
+  type: article
+  issued:
+    year: 2014
 
-7 ferramentas da Qualidade. Disponível em <http://www.citisystems.com.br/7-ferramentas-da-qualidade/> - Acessado em 09/04/2014
 
-A função do gerenciamento de identidades e acesso para obter conformidade contínua. Disponível em <http://www.ca.com/~/media/Files/whitepapers/latam/CS1933_ContinuanceCompliance_WP_0212_PTB.pdf> - Acessado em 09/04/2014
+- id: A confusão entre evidência
+  title: "A confusão entre evidência objetiva e não-conformidade pode ser o entrave para a melhoria contínua"
+  author: 
+  - family: Rubens Branco
+  URL: 'http://vinhabranco.com.br/?p=1189'
+  accessed:
+    month: 5
+    year: 2014
+  publisher: Vinho Branco
+  type: article
+  issued:
+    year: 2013
 
-BLÖDORN, M.; SOARES, M. Qualidade: Uma questão de sobrevivência para as organizações. Disponível em <http://www.bancodedadoszonasul.com.br/htmlarea/midia/artigos/68922112011112554.pdf> - Acessado em 14/04/2014
 
-GODOY, L.; BELINAZO, D.; PEDRAZZI, F. Gestão da qualidade e as contribuições do programa 5s. Disponível em <http://www.abepro.org.br/biblioteca/ENEGEP2001_TR21_0144.pdf> - Acessado em 14/04/2014
+- id: 7 ferramentas da Qualidade
+  title: "7 ferramentas da Qualidade"
+  author: 
+  - family: Cristiano Bertulucci Silveira 
+  URL: 'http://www.citisystems.com.br/7-ferramentas-da-qualidade'
+  accessed:
+    month: 4
+    year: 2014
+  publisher: Citisystems
+  type: article
+  issued:
+    year: 2013
 
-MONTEIRO, L. Fundamentos da Qualidade – INMETRO. Disponível em <http://www.inmetro.gov.br/qualidade/iaac/pdf/fundamentos-qualidade.pdf> - Acessado em 12/06/2014
+- id: A função do gerenciamento de identidades e acesso para obter conformidade contínua
+  title: "A função do gerenciamento de identidades e acesso para obter conformidade contínua"
+  author: 
+  - family: Computer Associates
+  URL: 'http://www.ca.com/~/media/Files/whitepapers/latam/CS1933_ContinuanceCompliance_WP_0212_PTB.pdf'
+  accessed:
+    month: 4
+    year: 2014
+  publisher: CA
+  type: article
+  issued:
+    year: 2012
+
+- id: Qualidade: Uma questão de sobrevivência para as organizações
+  title: "Qualidade: Uma questão de sobrevivência para as organizações"
+  author: 
+  - family: Milene Blödorn
+  URL: 'http://www.bancodedadoszonasul.com.br/htmlarea/midia/artigos/68922112011112554.pdf'
+  accessed:
+    month: 5
+    year: 2014
+  publisher: Universidade Luterana do Brasil
+  type: article
+  issued:
+    year: 2013
+
+- id: Fundamentos da Qualidade – INMETRO
+  title: "Fundamentos da Qualidade – INMETRO"
+  author: 
+  - family: INMETRO
+  URL: 'http://www.inmetro.gov.br/qualidade/iaac/pdf/fundamentos-qualidade.pdf'
+  accessed:
+    month: 6
+    year: 2014
+  publisher: INMETRO 
+  type: article
+  issued:
+    year: 2011
+
+
+
+
