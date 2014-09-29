@@ -89,21 +89,52 @@ Conclusão
 Otimização dos serviços de TI, é um trabalho constante e permanente , a cada novo ciclo de análise novos gargalos se apresentam. Fatores internos e externos modificam os serviços que devem estar sempre em consonância com as estratégias de negócio e com o que é esperado pelo cliente. Sistematizar esta análise, estabelecer indicadores de mensuração e melhorar os serviços é uma missão árdua que pode ser em muito minimizada adotando os processos aqui apresentados. 
 
 
-
 Refêrencias
 ===
 
-ITIL V3 – Livro :  Melhoria Continuada do Serviço - Processos"
- 
-A melhoria de serviço continuada em: <http://tiinteligente.blogspot.com.br>. Acesso em 06/2014.
- 
-Passos para iniciar a melhoria de serviços em: <http://www.portalgsti.com.br>. Acesso em 04/2014.
- 
-Melhoria de Serviço Continuada – ITIL Foundation V3 em: <http://www.pedrofcarvalho.com.br/PDF/ITIL_MELHORIA_DE_SERVICO_CONTINUADA.pdf>. Acessado em 06/2014.
+---
+remark: referências usadas nesse artigo
+references:
+
+- id: ITIL V3 – Livro :  Melhoria Continuada do Serviço - Processos
+  title: "ITIL V3 – Livro :  Melhoria Continuada do Serviço - Processos"
+  author: 
+  - family: ITIL
+  accessed:
+    month: 6
+    year: 2014
+  publisher: ITIL
+  type: Book
+  issued:
+    year: 2011
 
 
+- id: A melhoria de serviço continuada
+  title: "A melhoria de serviço continuada"
+  author: 
+  - family: Portal CGSI
+  URL: 'http://www.portalgsti.com.br'
+  accessed:
+    month: 4
+    year: 2014
+  publisher: 
+  type: article
+  issued:
+    year: 2014
 
 
+- id: Melhoria de Serviço Continuada – ITIL Foundation V3
+  title: "Melhoria de Serviço Continuada – ITIL Foundation V3"
+  author: 
+  - family: Pedro Carvalho
+  URL: 'http://www.pedrofcarvalho.com.br/PDF/ITIL_MELHORIA_DE_SERVICO_CONTINUADA.pdf'
+  accessed:
+    month: 4
+    year: 2014
+  publisher: Serpro
+  type: article
+  issued:
+    year: 2012
 
 
 
