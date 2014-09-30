@@ -50,16 +50,16 @@ Um desafio constante enfrentado pela DATAPREV é cumprir seus ANS - Acordos de N
 Base de Conhecimento - Knowledge Base (KB)
 ==========
 
-A ITIL V3 (*Information Technology Infrastructure Library* Versão 3) define *Knowledge Base*, como "um banco de dados que contém informações utilizadas pelo serviços de gerenciamento do conhecimento". Em complemento, ainda segundo a ITIL, o *Knowledge Management* - KM (Gerenciamento do Conhecimento), é definido como "um processo responsável por compartilhar perspectivas, ideias, experiências e informações, e por assegurar que esses estarão disponíveis no lugar certo e na hora certa..." 
+A ITIL V3[@ITIL_V3] (*Information Technology Infrastructure Library* Versão 3) define *Knowledge Base*, como *"um banco de dados que contém informações utilizadas pelo serviços de gerenciamento do conhecimento".* Em complemento, ainda segundo a ITIL, o *Knowledge Management* - KM (Gerenciamento do Conhecimento), é definido como *"um processo responsável por compartilhar perspectivas, ideias, experiências e informações, e por assegurar que esses estarão disponíveis no lugar certo e na hora certa..."* 
 
-O *Gartner Group*^[http://www.gartner.com], em seu glossário de TI, define *Knowledge Management* como "um processo de negócio que formaliza o gerenciamento e o uso do capital intelectual das empresas. Bases de conhecimento promovem colaboração e integração na criação, captura, organização, acesso e uso da informação..."
+O *Gartner Group*[@Gartner] ^[http://www.gartner.com], em seu glossário de TI, define *Knowledge Management* como *"um processo de negócio que formaliza o gerenciamento e o uso do capital intelectual das empresas. Bases de conhecimento promovem colaboração e integração na criação, captura, organização, acesso e uso da informação..."*
 
 Atualmente, a DATAPREV não conta com uma base de conhecimento centralizada, que facilite o acesso as informações geradas pela empresa. A utilização de bases departamentais como sites internos, planilhas e documentos armazenados em estações de trabalho, dificultam o acesso à informação e depreciam esse importante ativo da empresa. 
 
 Base de Conhecimento para Resolução de Incidentes e Problemas
 ==========
 
-Segundo a  KCS - *Knowledge-Centered Support*^[http://www.serviceinnovation.org/kcs/], temos uma relação de melhores práticas quanto a gestão do conhecimento, que devem ser observadas:
+Segundo a  KCS[@KCS] - *Knowledge-Centered Support*^[http://www.serviceinnovation.org/kcs/], temos uma relação de melhores práticas quanto a gestão do conhecimento, que devem ser observadas:
 
 - Criar conteúdo como um produto para solução de problemas;
 - Envolver o conteúdo criado em demandas e utilizá-lo;
@@ -169,7 +169,7 @@ O patrocínio na gestão da Base de Conhecimento e envolvimento de seus  *steakh
 Base de Conhecimento para Resolução de Incidentes e Problemas na DATAPREV
 ==========
 
-A partir da metodologia apresentada pelo DEQI/DIMC, o trabalho de implementação da KB continua com a operacionalização dos fluxos de vida propostos, passando pelos tipos de documentos e responsabilidades de seus usuários. O gerenciamento do conhecimento afeta diretamente a gestão de eventos e incidentes. Para reduzir o impacto nesses processos, as áreas da DIT - Diretoria de Infraestrutura de  TIC^[Tecnologia da Informação e Comunicações], foram acionadas, apontando seus documentos que serão disponibilizados na KB. Também faz parte dos entendimentos, ajustes em cerca de 300 procedimentos técnicos migrados em março/2014 da ConsoleNG, Wiki-SP e Wiki-DF, por conta de novos padrões adotados ao longo do processo, como utilização de palavras-chave, regras de formação de nomes de documentos e criação de fluxos de aprovação. Para os próximos passos, há previsão de contato e inclusão no processo de criação da KB, das áreas da DRD - Diretoria de Relacionamento, Desenvolvimento e Informações, com verificação e adição de documentos na base de conhecimento.
+A partir da metodologia apresentada pelo DEQI/DIMC, o trabalho de implementação da KB continua com a operacionalização dos fluxos de vida propostos, passando pelos tipos de documentos e responsabilidades de seus usuários. O gerenciamento do conhecimento afeta diretamente a gestão de eventos e incidentes. Para reduzir o impacto nesses processos, as áreas da DIT - Diretoria de Infraestrutura de  TIC^[Tecnologia da Informação e Comunicações], foram acionadas, apontando seus documentos que serão disponibilizados na KB. Também faz parte dos entendimentos, ajustes em cerca de 300 procedimentos técnicos migrados em março/2014 da ConsoleNG[@Console], Wiki-SP e Wiki-DF, por conta de novos padrões adotados ao longo do processo, como utilização de palavras-chave, regras de formação de nomes de documentos e criação de fluxos de aprovação. Para os próximos passos, há previsão de contato e inclusão no processo de criação da KB, das áreas da DRD - Diretoria de Relacionamento, Desenvolvimento e Informações, com verificação e adição de documentos na base de conhecimento.
 
 A ferramenta que manterá a base de conhecimento unificada na DATAPREV, será o CA SDM - *Service Desk Manager*, que é uma ferramenta ITIL *Compliance*, responsável dentre outras funções, pela manutenção do BDGC (Banco de Dados de Gerenciamento da Configuração), pela gestão de alertas e eventos, e ainda disponibiliza o módulo de Base de Conhecimento. Dessa forma, temos a garantia de uma ferramenta integrada, que facilitará o trabalho das equipes de sustentação e suporte, e outras mais que vierem a utilizar seu conteúdo. Além dos procedimentos técnicos para atendimento a incidentes, irão compor a base outros tipos de documentos como procedimentos de instalação, manuais, relatórios com informações técnicas e conhecimento sobre problemas, lições aprendidas, documentos de arquitetura e outros que possam trazer informações relevantes sobre os ambientes de TIC utilizados.
 
@@ -205,25 +205,102 @@ A Base de Conhecimento Unificada de Incidentes e Problemas de Infraestrutura ser
  
 
 Referências
-==========
-Gartner Group.
-Disponível em <http://www.gartner.com/it-glossary/km-knowledge-management/>
-Acesso em 23/07/2014
+===========
+[^1]: (texto aparece na nota de rodapÃ©, mas sem efeito final) [@KCS]
+[^2]: [@Gartner]
 
-KCS - Knowledge-Centered Support.
-Disponível em <http://www.serviceinnovation.org/kcs/>
-Acesso em 23/07/2014
+---
+references:
 
-OGC, ITIL V3 - Service Operations, 2011
+- id: Gartner
+  title: Gartner - Glossário de TI
+  author: 
+  - family: Gartner
+    given: Gartner
+  URL: 'http://http://www.gartner.com/it-glossary/km-knowledge-management'
+  accessed:
+	day:23    
+	month: 7
+    year: 2014
+  publisher: Gartner
+  type: article
+  issued:
+    year: 2014
 
-DTPNET - Melhoria Contínua de TIC.
-Disponível em <http://www-dtpnet/sites/default/files/Metodologia-Base-Conhecimento%20v2.0.pdf>
-Acesso em 21/07/2014
 
-ITS Knowledge Management Process Summary – Universidade de Michigan.
-Disponível em <http://www.mais.umich.edu/methodology/service-management/knowledge-mgmt-process-summary.pdf>
-Acesso em 24/07/2014
+- id: KCS
+  title: "KCS - Knowledge-Centered Support"
+  author: 
+    family: Gartner
+    given: 
+  URL: 'http://www.serviceinnovation.org/kcs/'
+  accessed:
+	day:23    
+	month: 7
+    year: 2014
+  publisher: KCS
+  type: article
+  issued:
+    year: 2014
 
-Sistema Console NG.
-Disponível em <http://www-consoleng/scripts/s2040005.asp>
-Acesso em 24/07/2014
+
+- id: ITIL_V3
+  title: "ITIL V3 - Service Operations"
+  author: 
+    family: ITIL
+    given: 
+  URL: 
+  accessed:
+    year: 2011
+  publisher: 
+  type: article
+  issued:
+    year: 2011
+
+- id: DTPNET
+  title: "DTPNET - Melhoria Contínua de TIC"
+  author: 
+    family: DTP
+    given: 
+  URL: 'http://www-dtpnet/sites/default/files/Metodologia-Base-Conhecimento%20v2.0.pdf'
+  accessed:
+	day:21    
+	month: 7
+    year: 2014
+  publisher: DTP
+  type: article
+  issued:
+    year: 2014
+
+- id: UM
+  title: "ITS Knowledge Management Process Summary – Universidade de Michigan"
+  author: 
+    family: UM
+    given: 
+  URL: 'http://www.mais.umich.edu/methodology/service-management/knowledge-mgmt-process-summary.pdf'
+  accessed:
+	day:24    
+	month: 7
+    year: 2014
+  publisher: UM
+  type: article
+  issued:
+    year: 2014
+
+- id: CONSOLE
+  title: "Sistema Console NG"
+  author: 
+    family: DTP
+    given: 
+  URL: 'http://www-consoleng/scripts/s2040005.asp'
+  accessed:
+	day:24    
+	month: 7
+    year: 2014
+  publisher: DTP
+  type: article
+  issued:
+    year: 2014
+
+---
+
