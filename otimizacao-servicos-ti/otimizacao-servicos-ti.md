@@ -35,7 +35,7 @@ A Dataprev deve caminhar nesta direção, desenhar seus processos e aplicar meto
 
 ITIL V3
 ===
-Um dos frameworks mais respeitados e sendo um consenso a sua utilização, é o ITIL que se encontra na sua terceira versão.  Não pretendo abranger todo aspecto desta biblioteca de boas práticas que não caberia neste pequeno artigo, são cinco volumes, percorrendo de forma concisa e pontual, todo ciclo de vida do serviço.
+Um dos frameworks mais respeitados e sendo um consenso a sua utilização, é o ITIL que se encontra na sua terceira versão.  Não pretendo abranger todo aspecto desta biblioteca de boas práticas que não caberia neste pequeno artigo, são cinco volumes, percorrendo de forma concisa e pontual, todo ciclo de vida do serviço[@ITILV32011].
 
 
 ![Ciclo de vida do serviço ITIL v3](imagens/Figura1.png)
@@ -44,7 +44,7 @@ Um dos frameworks mais respeitados e sendo um consenso a sua utilização, é o 
 
 
 Consideraremos para uma análise um pouco mais verticalizada o estágio de  Melhoria Contínua de Serviço .
-Independente de como esteja a organização em seu nível de maturidade, os processos deste estágio, aplicados nos serviços da empresa; podem, de uma forma sistemática, verificar como  estão , mensurá-los qualitativamente e otimizá-los.
+Independente de como esteja a organização em seu nível de maturidade, os processos deste estágio, aplicados nos serviços da empresa; podem, de uma forma sistemática, verificar como  estão , mensurá-los qualitativamente e otimizá-los[@MelhoriaServico].
 
 
 Melhoria de Serviço Continuada (MSC)
@@ -86,7 +86,7 @@ Apesar de ser bem explícito que o processo contém 7 etapas, temos uma atividad
 
 Conclusão
 ===
-Otimização dos serviços de TI, é um trabalho constante e permanente , a cada novo ciclo de análise novos gargalos se apresentam. Fatores internos e externos modificam os serviços que devem estar sempre em consonância com as estratégias de negócio e com o que é esperado pelo cliente. Sistematizar esta análise, estabelecer indicadores de mensuração e melhorar os serviços é uma missão árdua que pode ser em muito minimizada adotando os processos aqui apresentados. 
+Otimização dos serviços de TI, é um trabalho constante e permanente , a cada novo ciclo de análise novos gargalos se apresentam. Fatores internos e externos modificam os serviços que devem estar sempre em consonância com as estratégias de negócio e com o que é esperado pelo cliente. Sistematizar esta análise, estabelecer indicadores de mensuração e melhorar os serviços é uma missão árdua que pode ser em muito minimizada adotando os processos aqui apresentados[@Carvalho2014]. 
 
 
 Refêrencias
@@ -96,49 +96,45 @@ Refêrencias
 remark: referências usadas nesse artigo
 references:
 
-- id: ITIL V3 – Livro :  Melhoria Continuada do Serviço - Processos
+- id: ITILV32011
   title: "ITIL V3 – Livro :  Melhoria Continuada do Serviço - Processos"
   author: 
   - family: ITIL
+  - given: ITIL V3
   accessed:
     month: 6
     year: 2014
   publisher: ITIL
-  type: Book
+  type: article
   issued:
     year: 2011
 
-
-- id: A melhoria de serviço continuada
+- id: MelhoriaServico 
   title: "A melhoria de serviço continuada"
-  author: 
-  - family: Portal CGSI
+  author:
+  - family: Portal CGSI	
+  - given: Portal CGSI 
   URL: 'http://www.portalgsti.com.br'
   accessed:
     month: 4
     year: 2014
-  publisher: 
+  publisher: CGSI
   type: article
   issued:
-    year: 2014
+    year: 2013
 
-
-- id: Melhoria de Serviço Continuada – ITIL Foundation V3
+- id: Carvalho2014
   title: "Melhoria de Serviço Continuada – ITIL Foundation V3"
   author: 
-  - family: Pedro Carvalho
+  - family: Carvalho
+  - given: Pedro
   URL: 'http://www.pedrofcarvalho.com.br/PDF/ITIL_MELHORIA_DE_SERVICO_CONTINUADA.pdf'
   accessed:
     month: 4
     year: 2014
-  publisher: Serpro
+  publisher: SERPRO
   type: article
   issued:
     year: 2012
 
-
-
-
-
-
-
+---
