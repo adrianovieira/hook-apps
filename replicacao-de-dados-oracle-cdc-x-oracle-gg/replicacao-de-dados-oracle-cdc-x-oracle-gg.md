@@ -76,6 +76,7 @@ Oracle Change Data Capture
 
 O CDC – Change Data Capture do banco Oracle automatiza o processo de extração de dados existentes em um banco de dados origem (source) e sua disponibilização em um banco de dados destino (staging). Basicamente, o recurso garante a transferência apenas do que foi modificado, otimizando todo o processo, já que o volume a ser extraído/transferido é menor se considerarmos todo o conjunto de dados existente. A captura ocorre apenas para os dados modificados (através dos comandos INSERT, UPDATE e DELETE).
 Para tanto, implementa-se um modelo baseado em dois conceitos: 
+
 * Publish (publicação) - captura e disponibilização dos dados modificados. Neste contexto é criado o perfil do usuário PUBLISHER, responsável por manter a configuração do ambiente CDC (através da criação de estruturas e packages de controle) e publicar os dados no ambiente staging; 
 * Subscribe (assinatura) - disponibilização e acesso aos dados no ambiente Staging. Neste contexto é criado o perfil do usuário SUBSCRIBER, responsável por disponibilizar os dados (através das packages de controle da solução) no ambiente staging. 
 
@@ -228,18 +229,39 @@ Oracle Change Data Capture X Oracle Goldengate
 
 Para consolidação do conhecimento apresentado e verificarmos as diferenças e semelhanças encontradas entre as duas soluções, segue abaixo uma tabela que permite termos uma visão geral das mesmas:
 
-|Oracle Change Data Capture|Oracle Goldengate|
-|--------------------------|-----------------|
-|Necessita modo de archive habilitado em ambos os ambientes (origem e destino).|Necessita modo de archive habilitado em ambos os ambientes (origem e destino).|
-|Permite a utilização de 2 topologias: Um para um unidirecional e um para muitos unidirecional.|Permite a utilização de 6 topologias: Um para um unidirecional, um para muitos unidirecional, muitos para um unidirecional, um para um bidirecional, muitos para muitos bidirecional e cascata.|
-|Captura e replicação a cada transação.|Permite a captura e replicação a cada transação e captura e replicação em lotes.|
-|Funciona apenas de Oracle para Oracle.|Além de banco de dados Oracle, funciona em ambientes heterogêneos e com banco de dados de plataformas diferentes.|
-|Sincronização de comandos DDL com várias restrições.|Apenas o comando TRUNCATE não consegue ser replicado.|
-|Remoção de archives recebidos pelo destino do origem devem ser feitos manualmente em nível de Sistema Operacional.|Remoção de arquivos criados na trail do banco origem e recebidos pela trail do banco destino ocorre em nível de banco de dados com o comando PURGEOLDEXTRACTS.|
-|Tecnologia descontinuado.|Tecnologia recente e com grande potencial de investimento. Sem previsão de descontinuidade.|
-|Não possui ferramentas de monitoração.|Possui ferramentas de monitoração.|
-|Fácil aprendizado devido sua simplicidade.|Difícil aprendizado devido a grande quantidade de possibilidades de uso.|
-|Não permite o uso de paralelismo.|Permite uso de paralelismo.|
++-----------------------------------------------------------+-----------------------------------------------------------+
+|Oracle Change Data Capture                                 |Oracle Goldengate                                          |
++===========================================================+===========================================================+
+|-Necessita modo de archive habilitado em                   | -Necessita modo de archive habilitado em                    |
+|ambos os ambientes (origem e destino).                     |ambos os ambientes (origem e destino).                     |
++-----------------------------------------------------------+-----------------------------------------------------------+
+|-Permite a utilização de 2 topologias: Um para um          | -Permite a utilização de 6 topologias: Um para um           |
+|unidirecional e um para muitos unidirecional.              |unidirecional, um para muitos unidirecional, muitos para   |
+|                                                           |um unidirecional, um para um bidirecional, muitos para     |
+|                                                           |muitos bidirecional e cascata.                             |
++-----------------------------------------------------------+-----------------------------------------------------------+
+|-Captura e replicação a cada transação.                    | -Permite a captura e replicação a cada transação e captura  |
+|                                                           |e replicação em lotes.                                     |
++-----------------------------------------------------------+-----------------------------------------------------------+
+|-Funciona apenas de Oracle para Oracle.                    | -Além de banco de dados Oracle, funciona em ambientes       |
+|                                                           |heterogêneos e com bancos de dados de plataformas diferentes.       |
++-----------------------------------------------------------+-----------------------------------------------------------+
+|-Sincronização de comandos DDL com várias restrições.      | -Apenas o comando TRUNCATE não consegue ser replicado.      |
++-----------------------------------------------------------+-----------------------------------------------------------+
+|-Remoção de archives recebidos pelo destino do origem devem| -Remoção de arquivos criados na trail do banco origem e     |
+|ser feitos manualmente em nível de Sistema Operacional.    |recebidos pela trail do banco destino ocorre em nível de   |
+|                                                           |banco de dados com o comando PURGEOLDEXTRACTS.             |
++-----------------------------------------------------------+-----------------------------------------------------------+
+|-Tecnologia descontinuado.                                 | -Tecnologia recente e com grande potencial de investimento. |
+|                                                           |Sem previsão de descontinuidade.                           |
++-----------------------------------------------------------+-----------------------------------------------------------+
+|-Não possui ferramentas de monitoração.                    | -Possui ferramentas de monitoração.                         |
++-----------------------------------------------------------+-----------------------------------------------------------+
+|-Fácil aprendizado devido sua simplicidade.                | -Difícil aprendizado devido a grande quantidade de          |
+|                                                           |possibilidades de uso.                                     |
++-----------------------------------------------------------+-----------------------------------------------------------+
+|-Não permite o uso de paralelismo.                         | -Permite uso de paralelismo.                                |
++-----------------------------------------------------------+-----------------------------------------------------------+
 
 Conclusão
 =========
