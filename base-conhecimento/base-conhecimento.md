@@ -213,94 +213,78 @@ Referências
 references:
 
 - id: Gartner
-  title: Gartner - Glossário de TI
-  author: 
-  - family: Gartner
-    given: Gartner
-  URL: 'http://http://www.gartner.com/it-glossary/km-knowledge-management'
+  title: "Glossário de TI"
+  URL: 'http://www.gartner.com/it-glossary/km-knowledge-management'
   accessed:
-	day:23    
-	month: 7
+    day: 23
+    month: 7
     year: 2014
   publisher: Gartner
   type: article
   issued:
     year: 2014
 
-
 - id: KCS
   title: "KCS - Knowledge-Centered Support"
-  author: 
-    family: Gartner
-    given: 
+  author:
+  - family: Consortium for Service Innovation
+    given: KCS
   URL: 'http://www.serviceinnovation.org/kcs/'
   accessed:
-	day:23    
-	month: 7
+    day: 23
+    month: 7
     year: 2014
   publisher: KCS
   type: article
   issued:
     year: 2014
 
-
 - id: ITIL_V3
   title: "ITIL V3 - Service Operations"
   author: 
-    family: ITIL
-    given: 
-  URL: 
-  accessed:
-    year: 2011
-  publisher: 
-  type: article
+  - family: (AXELOS)
+    given: Randy Steinberg
+  publisher: TSO - The Stationery Office
+  type: book
   issued:
     year: 2011
 
 - id: DTPNET
-  title: "DTPNET - Melhoria Contínua de TIC"
-  author: 
-    family: DTP
-    given: 
-  URL: 'http://www-dtpnet/sites/default/files/Metodologia-Base-Conhecimento%20v2.0.pdf'
-  accessed:
-	day:21    
-	month: 7
-    year: 2014
-  publisher: DTP
+  title: "Modelo de Gestão da Base de Conhecimento unificada para problemas de infraestrutura e aplicações"
+  author:
+  - family: DIMC
+    given: Equipe Técnica
+  URL: "http://www-dtpnet/sites/default/files/Metodologia-Base-Conhecimento%20v2.0.pdf"
   type: article
+  publisher: Dataprev
+  issue: 2.0
   issued:
     year: 2014
 
 - id: UM
-  title: "ITS Knowledge Management Process Summary – Universidade de Michigan"
+  title: "ITS Knowledge Management Process Summary"
   author: 
-    family: UM
-    given: 
+  - family: Callihan
+    given: Lisa
   URL: 'http://www.mais.umich.edu/methodology/service-management/knowledge-mgmt-process-summary.pdf'
-  accessed:
-	day:24    
-	month: 7
-    year: 2014
-  publisher: UM
   type: article
-  issued:
+  publisher: University of Michigan
+  accessed:
+    day: 23
+    month: 7
     year: 2014
+  issued:
+     year: 2013
 
-- id: CONSOLE
+- id: Console
   title: "Sistema Console NG"
-  author: 
-    family: DTP
-    given: 
   URL: 'http://www-consoleng/scripts/s2040005.asp'
   accessed:
-	day:24    
-	month: 7
+    day: 24
+    month: 7
     year: 2014
-  publisher: DTP
-  type: article
+  publisher: Dataprev
+  type: webpage
   issued:
     year: 2014
-
 ---
-
