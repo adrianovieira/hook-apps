@@ -45,29 +45,15 @@ Introdução
 
 LDAP, Lightweight Directory Access Protocol - Protocolo Leve de Acesso a Diretórios, é um protocolo de aplicação aberto, livre de fornecedor e padrão de indústria. Em sintese, é um conjunto de regras que controla a comunicação entre serviços de diretório e seus clientes sobre uma rede de Protocolo da Internet (IP). Foi criado a partir de em um subconjunto mais simples dos padrões contidos dentro do padrão X.500, e por isso, às vezes é referenciado como X.500-lite.
 
-Segundo [@BUTCHER], o LDAP foi originalmente projetado para ser um protocolo de rede com capacidade de prover uma alternativa de acesso a serviços de diretório existentes, mas como a idéia do LDAP e as tecnologias evolvidas evoluiram, o termo tornou-se sinônimo de "Arquitetura de diretório".
+Segundo [@BUTCHER,2007], o LDAP foi originalmente projetado para ser um protocolo de rede com capacidade de prover uma alternativa de acesso a serviços de diretório existentes, mas como a idéia do LDAP e as tecnologias evolvidas evoluiram, o termo tornou-se sinônimo de "Arquitetura de diretório".
 
->>*"Serviços de Diretório desempenham papel importante no desenvolvimento de aplicações intranet e Internet permitindo o compartilhamento de informações sobre recursos de rede, tais como usuários, sistemas, serviços e etc. Como exemplos, serviços de diretório podem fornecer qualquer conjunto de registros organizado, geralmente com uma estrutura hierárquica, como um diretório de e-mail corporativo. Da mesma forma que uma lista telefônica (diretório de telefones)  que nada mais é do que uma lista de assinantes com um endereço e um número de telefone. Um diretório LDAP geralmente segue o modelo X.500 que, em linhas gerais, é uma árvore de nós, cada um consistindo de um conjunto de atributos com seus respectivos valores. O LDAP foi criado como uma alternativa ao muito mais incômodo Directory Access Protocol (DAP)"[@ADMINGUIDE].*
+>>*"Serviços de Diretório desempenham papel importante no desenvolvimento de aplicações intranet e Internet permitindo o compartilhamento de informações sobre recursos de rede, tais como usuários, sistemas, serviços e etc. Como exemplos, serviços de diretório podem fornecer qualquer conjunto de registros organizado, geralmente com uma estrutura hierárquica, como um diretório de e-mail corporativo. Da mesma forma que uma lista telefônica (diretório de telefones)  que nada mais é do que uma lista de assinantes com um endereço e um número de telefone. Um diretório LDAP geralmente segue o modelo X.500 que, em linhas gerais, é uma árvore de nós, cada um consistindo de um conjunto de atributos com seus respectivos valores. O LDAP foi criado como uma alternativa ao muito mais incômodo Directory Access Protocol (DAP)".*
 
 O LDAP é especificado em uma série de publicações de Sequência de Padronização do Internet Engineering Task Force (IETF) chamadas Request for Comments (RFCs), usando a linguagem de descrição ASN.1. A última especificação é a Versão 3, publicada como RFC 4511. Por exemplo, aqui está uma pesquisa LDAP traduzida em Português puro: "Procure no diretório de e-mails da companhia por todas as pessoas localizadas em Belém cujos nomes contêm "João" que possuem um endereço de e-mail. Por favor, retorne seus nomes completos, e-mail, título e descrição."
 
 Uma das utilizações mais comum do LDAP é fornecer um "logon único" de usuários e sistemas. Nesse processo, uma credencial é submetida à um serviço de rede, tal como uma aplicação web. Dada a validade dessa credencial, o usuário ou o sistema pode receber o direito de acesso a muitos outros sistemas compartilhados de uma só vez. Caso em que um sistema valida e autoriza o acesso aos demais recursos da rede.
 
 ![Autenticação usuário LDAP](imagens/Fig_autentic_Portal_via_LDAP.jpg)
-
-
-Objetos e esquemas LDAP
-=======================
-
-
-Em linhas gerais, um objeto no serviço LDAP, pode ser definida como um conjunto organizado de atributos que possuem seus valores multivalorados ou não, obrigatórios ou não, e  que obedecem uma regra definida por um ou mais equemas. Ainda, segundo [@GIL] cada entrada de objeto (registro) no LDAP obedece uma regra de unicidade onde garante-se a não existência de dois ou mais objetos com mesmo identificador, ora denominado DN (Distinguished Name). 
-
-Segundo [@SUNGALIA], a forma de armazenamento dos dados em um servidor de Diretório segue a hierarquia dos objetos a que pertence a entrada, onde o DN deve sempre indicar todos os ramos da árvore LDAP, desde a base até a parte final, a identificação do objeto propriamente dito. Ainda, o DN deve ser único em todo o Diretório.
-
-
-A figura abaixo ilustra alguns dos tipos de registros encontrados no serviço LDAP, assim como alguns dos seus respectivos atributos.
-
-![Exemplo de Conta LDAP](ldap_Account_example.png)
 
 
 Operações básicas da transação via LDAP
@@ -178,7 +164,7 @@ Referências
 
 remark: metadados com alguns dados para listar referências bibliográficas. Use quantos identificadores (ID) necessitar para listar as diferentes referências usadas no artigo
 references:
-- id:@ADMINGUIDE
+- id: @ADMINGUIDE
   title: "OpenLDAP Sofware 2.4 Administrator's Guide, Replication"
   author:
   - family:  Openldap.org
@@ -202,7 +188,7 @@ references:
   issued:
     year: 2007
 
-- id:@GIL
+- id:
   title: "Openldap Extreme"
   author:
   - family: Anahuac de Paula.
@@ -212,18 +198,17 @@ references:
   issued:
     year: 2012
 
-- id:@SANGAILA
+- id:[@SANGAILA,
   title: "Autenticação centralizada com Openldap"
   author:
   - family: Sangaila.
     given: Marcos
   publisher: Novatec Editora, Ltda.
-  page: 23
   type: book
   issued:
     year: 2008
 
-- id:@BUTCHER
+- id:[@BUTCHER,2007]
   title: "Mastering OpenLDAP - Configuring, Securing, and Integrating Directory Services"
   author:
   - family: Butcher.
