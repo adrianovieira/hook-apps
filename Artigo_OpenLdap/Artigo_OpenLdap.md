@@ -53,7 +53,7 @@ O LDAP é especificado em uma série de publicações de Sequência de Padroniza
 
 Uma das utilizações mais comum do LDAP é fornecer um "logon único" de usuários e sistemas. Nesse processo, uma credencial é submetida à um serviço de rede, tal como uma aplicação web. Dada a validade dessa credencial, o usuário ou o sistema pode receber o direito de acesso a muitos outros sistemas compartilhados de uma só vez. Caso em que um sistema valida e autoriza o acesso aos demais recursos da rede.
 
-![Autenticação usuário LDAP](imagens/Fig_autentic_portal_via_LDAP.png)
+![Autenticação usuário LDAP](imagens/Fig_authentific_portal_Via_LDAP.png)
 
 
 Objetos e esquemas LDAP
@@ -67,7 +67,7 @@ Segundo [@SUNGALIA], a forma de armazenamento dos dados em um servidor de Diret�
 
 A figura abaixo ilustra alguns dos tipos de registros encontrados no serviço LDAP, assim como alguns dos seus respectivos atributos.
 
-![Exemplo de Conta LDAP](imagens/ldap_Account_example.png)
+![Exemplo de Conta LDAP](imagens/Fig_ldap_Account_example.png)
 
 
 Operações básicas da transação via LDAP
