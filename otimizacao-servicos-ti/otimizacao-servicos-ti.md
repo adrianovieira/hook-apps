@@ -40,7 +40,6 @@ Um dos frameworks mais respeitados e sendo um consenso a sua utilização, é o 
 
 ![Ciclo de vida do serviço ITIL v3](imagens/Figura1.png)
 
-**Figura  1 – Ciclo de vida do serviço ITIL v3**
 
 
 Consideraremos para uma análise um pouco mais verticalizada o estágio de  Melhoria Contínua de Serviço .
@@ -53,7 +52,7 @@ A Melhoria de Serviço Continuada, MSC, tem por objetivo aumentar a eficiência,
 
 ![Melhoria de Serviço Continuada](imagens/Figura2.png)
 
-**Figura  2 – Melhoria de Serviço Continuada**
+
 
 Este estágio do ciclo de vida do serviço na documentação oficial  ITIL V3, conta com três processos:  Mensuração de Serviço, Processo de Melhoria em 7 Etapas e Relatório de Serviço. 
 Na minha opinião  os processos de Relatório de Serviço e Mensuração de Serviço  são no máximo subprocessos que poderiam esta contidos respectivamente  aos passos 4 e 5  do processo de Melhoria em 7 etapas.
@@ -65,7 +64,7 @@ Apesar de ser bem explícito que o processo contém 7 etapas, temos uma atividad
 
 ![Fases do Processo Melhoria em 7 passos](imagens/Figura3.png)
 
-**Figura 3 – Fases do Processo Melhoria em 7 passos**
+
 
 
 ##Os 7 Passos
@@ -100,7 +99,7 @@ references:
   title: "ITIL V3 – Livro :  Melhoria Continuada do Serviço - Processos"
   author: 
   - family: ITIL
-  - given: ITIL V3
+   	given: ITIL V3
   accessed:
     month: 6
     year: 2014
@@ -113,7 +112,7 @@ references:
   title: "A melhoria de serviço continuada"
   author:
   - family: Portal CGSI	
-  - given: Portal CGSI 
+  	given: Portal CGSI 
   URL: 'http://www.portalgsti.com.br'
   accessed:
     month: 4
@@ -126,8 +125,8 @@ references:
 - id: Carvalho2014
   title: "Melhoria de Serviço Continuada – ITIL Foundation V3"
   author: 
-  - family: Carvalho
-  - given: Pedro
+  - family: Carvalho  
+  	given: Pedro
   URL: 'http://www.pedrofcarvalho.com.br/PDF/ITIL_MELHORIA_DE_SERVICO_CONTINUADA.pdf'
   accessed:
     month: 4
