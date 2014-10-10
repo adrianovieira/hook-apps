@@ -2,8 +2,8 @@
 remark: metadados para a ser usado pelo parser de conversão para pdf
 date: 10 de outubro de 2015
 tipo_artigo: Artigo técnico de Infraestrutura de TIC
-title: Replicação de Sessões em IMO e SD: Do Requisito às Recomendações
-abstract: Neste artigo são discutidos diferentes aspectos em torno do requisito de se habilitar replicação de sessões nos sistemas IMO e SD.
+title: 'Replicação de Sessões em IMO e SD: Do Requisito às Recomendações'
+abstract: 'Neste artigo são discutidos diferentes aspectos em torno do requisito de se habilitar replicação de sessões nos sistemas IMO e SD.'
 author:
 - affiliation: DIAS-PB
   name: Loreno Feitosa de Oliveira
