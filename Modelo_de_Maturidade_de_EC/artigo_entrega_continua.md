@@ -580,7 +580,7 @@ Na literatura foi abordado que as categorias tem tendência de expandir na horiz
 
 Os níveis não são etapas rígidas e obrigatórias que precisam ser passadas em sequência, mas deve servir de base para a avaliação e planejamento. No entanto, é importante analisar o nível de maturidade geral da empresa e ter em mente quais mudanças deve-se priorizar entre as categorias anteriormente citadas.
 
-![](modelo.png)
+![](/imagens/modelo.png)
 <p align='center'>Modelo de Maturidade </p>
 
 
