@@ -102,7 +102,7 @@ O Openldap pode ser implementado para operar de forma estática ou dinâmica. Em
 
 A forma estática prima pela necessidade de interrupção do serviço todas as vezes que se fizerem necessárias alterações estruturantes^[Termo utilizado para referir-se aos ajustes nos arquivos de configuração e de esquema do LDAP]. Nesse modelo de operação, para cada ajuste na base de configuração do serviço, uma interrupção é executada. O serviço é reiniciado (efetivação) ^[Fase em que o serviço LDAP re-lê e valida suas configurações] tantas vezes quantas forem as subsequentes modificações.
 
-Já a forma de operação dinâmica dispença a necessidade de reiniciação do serviço, as alterações são realizadas "à quente". Ainda, o processo de replicação/atualização das bases transcorre dentro do contexto pre-definido (ativação por tempo ou evento). O "overhead" administrativo é reduzido drasticamente, pois quase inexiste a necessidade de intervenção maunal. Nesse sentido, o downtime do serviço é reduzido invariavelmente. 
+Já a forma de operação dinâmica dispensa a necessidade de reiniciação do serviço, as alterações são realizadas "à quente". Ainda, o processo de replicação/atualização das bases transcorre dentro do contexto pre-definido (ativação por tempo ou evento). O "overhead" administrativo é reduzido drasticamente, pois quase inexiste a necessidade de intervenção maunal. Nesse sentido, o downtime do serviço é reduzido invariavelmente. 
 
 Em linhas gerais, existem prós e contras para cada abordagem acima descrita, enquanto uma apresenta necessidade escalar de manutenção (operação estática - uma a uma), outra não (operação dinâmica - um para todos). Os requisitos de negócio (disponibilidade do serviço e SLA) pesam na escolha por uma abordagem ou outra.
 
@@ -131,13 +131,13 @@ Modelos de Replicação
 
 O serviço de autenticação Openldap pode ser empregado tendo como premissa vários requisitos, sendo um dos mais importantes a ser definido, o tipo de replicação de dados desejada para o ambiente: para esse, tem-se diponível os modelos de replicação simples (SMR - Single Master Replication), replicação multiplicada (MMR - Multi Master Replication) e replicação diferenciada (DMR - Delta Master Replication):
 
-- SMR - Single Master Replication: é disponibilizado um servidor Mestre responsável por efetivar todas as transações (alterações/inserções) no banco de dados LDAP. Outro fator importante a frizar, é que esse modelo tem sempre um relacionamento de 1 servidor Mestre para vários (N) servidores escravos, não há um limite a ser estabelecido para aos escravos. Esse modelo é capaz de prover balanceamento de carga no processo de autenticação de usuários e sistemas, mas não oferece uma tolerância à falhas no caso de um incidente com o seu único servidor Master. Fica claro e evidente que seu principal problema é o ponto único de falhas.
+- SMR - Single Master Replication: é disponibilizado um servidor Mestre responsável por efetivar todas as transações (alterações/inserções) no banco de dados LDAP. Outro fator importante a frisar, é que esse modelo tem sempre um relacionamento de 1 servidor Mestre para vários (N) servidores escravos, não há um limite a ser estabelecido para aos escravos. Esse modelo é capaz de prover balanceamento de carga no processo de autenticação de usuários e sistemas, mas não oferece uma tolerância à falhas no caso de um incidente com o seu único servidor Master. Fica claro e evidente que seu principal problema é o ponto único de falhas.
 
-- MMR - Multi Master Replication: o mais importante dessa abordagem é que quebra-se o paradigma da unicidade de servidores Masters. Passa a ser possível o emprego de um conjunto de servidores de escrita e/ou de leitura (autenticação). Com essa modelo, o relacionamento torna-se "N" Masters para "N" slaves. Outra caracteristica marcante desse modelo, é que passa a ser possível replicar as informações de forma bi-direcional (Master para Slaves e/ou Masters para Masters). Do ponto de vista do negócio, passa-se a ter um sistema mais tolerante à falhas, capaz de reduzir tanto o "downtime" do serviço quanto da eliminação do ponto único de falhas. Esse modelo traz uma nomenclatura diferente para o os servidores Masters e Slaves. Eles, agora, são referenciados como servidores Provider (Master) e Consumer (slaves).
+- MMR - Multi Master Replication: o mais importante dessa abordagem é que quebra-se o paradigma da unicidade de servidores Masters. Passa a ser possível o emprego de um conjunto de servidores de escrita e/ou de leitura. Com esse modelo, o relacionamento torna-se "N" Masters para "N" slaves. Outra caracteristica marcante desse modelo, é que passa a ser possível replicar as informações de forma bi-direcional (Master para Slaves e/ou Masters para Masters). Do ponto de vista do negócio, passa-se a ter um sistema mais tolerante à falhas, capaz de reduzir tanto o "downtime" do serviço quanto da eliminação do ponto único de falhas. Esse modelo traz uma nomenclatura diferente para o os servidores Masters e Slaves. Eles, agora, são referenciados como servidores Provider (Master) e Consumer (slave).
 
 - DMR - Delta Master Replication: segue basicamente as mesmas premissas do modelo SMR, entretanto este apresenta uma aproximação ao modelo MMR: a existência de mais de um servidor Master. Seu funcionamento se dá pelo apontamento de um único nó Master por vez. Em suma, nesse modelo, só um dos servidores pode exercer o papel de responsável pela escrita de dados, os outros Masters efetuam o papel de contingêncai. Outra questão importante, é que na ocorrência de uma indisponibilidade com o "atual" servidor Master, todos os outros servidores precisaram apontar para o novo Master. O que na grande maioria das vezes, manobra-se manualmente o sevidor Master de contingência para o Master principal.
 
-Em resumo, fica evidente que o cenário desejado e/ou esperado é muito importante para se definir o modelo de replicação a ser implementado. O planejamento nesse caso é fundamental, pois se esse serviço for para substanciar um negócio com elevados níveis de criticidade, a adoção do modelo errado poderá gerar muitos importunos e desgaste à organização. De maneira geral, espera-se de qualquer serviço que ele seja Confiável, Integro e Disponível (CID)^[Acrônimo utiizado para represntar a triade da Segurança da Informação].
+Em resumo, fica evidente que o cenário desejado e/ou esperado é muito importante para se definir o modelo de replicação a ser implementado. O planejamento nesse caso é fundamental, pois se esse serviço for para substanciar um negócio com elevados níveis de criticidade, a adoção do modelo errado poderá gerar muitos infortúnios e desgastes à organização. De maneira geral, espera-se que qualquer serviço seja Confiável, Integro e Disponível (CID)^[Acrônimo utiizado para represntar a triade da Segurança da Informação].
 
 
 Quadro comparativo entre os Modelos
@@ -147,19 +147,13 @@ Quadro comparativo entre os Modelos
 Para que haja sucesso na adoção da ferramenta Openldap, deve-se entender o cenário proposto e os requisitos a serem atendidos. Requisitos como disponibilidade do serviço, tempo médio entre falhas (MTBF), tempo médio entre reparo (MTTR) devem ser considerados na avaliação do modelo de replicação a ser implementado.
 
 
-+----------------------+-----------------------------+--------------------------------------------+
-|**Modelo**            |**Recursos disponíveis**     |**Facilidade**                              |
-+======================+=============================+============================================+
-|SMR - Sigle Master    |Balanceamento de carga       |Multi ponto de acesso de leitura            |
-|                      |Tolerância à falhas          |Somente leitura                             |
-|                      |Alta disponibilidade         |Ponto único de falhas - escrita             |
-|MMR - Multi Master    |Balancemento de carga        |Multi ponto de acesso de leitura e escrita  |
-|                      |Tolerância à falhas          |Para leitura e escrita                      |
-|                      |Alta disponibilidade         |Eliminação ponto único de falhas            |
-|DMR - Delta Master    |Balanceamento de carga       |Multi ponto de acesso de leitura            |
-|                      |Tolerância à falhas          |Leitura (automático), escrita (manual)      |
-|                      |Alta disponibilidade         |Ponto único de falhas - escrita             |
-+----------------------+-----------------------------+--------------------------------------------+
++===============+===============================+===============================+
+|**Modelo**     |**Balanceamento de carga**     |**Tolerância à falhas**        |
++===============+===============================+===============================+
+|**SMR**        |Somente leitura de dados       |Ponto único de falhas escrita  |
+|**MMR**        |Leitura e escrita de dados     |Leitura e escrita de dados     |
+|**DMR**        |Somente leitura de dados       |Manual para escrita de dados   |
++===============+===============================+===============================+
 
 
 Conclusão
