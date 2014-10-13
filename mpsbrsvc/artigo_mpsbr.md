@@ -118,7 +118,7 @@ Cada Atributo de Processo tem um ou vários Resultados do Atributo de Processo (
 
 #### Estrutura do Modelo ####
 
-![Estrutura do modelo](/imagens/estrutura_modelo.jpg "Estrutura do Modelo")
+![Estrutura do modelo](imagens/estrutura_modelo.jpg "Estrutura do Modelo")
 
 **ISO/IEC 12207**<br/>
 - Estabelece uma arquitetura comum para os processos do ciclo de vida do software
