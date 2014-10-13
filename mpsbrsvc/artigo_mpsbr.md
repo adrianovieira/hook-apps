@@ -1,261 +1,155 @@
 ---
-remark: metadados para a ser usado pelo parser de conversão para pdf
-date: 20 de setembro de 2014
+date: 22 de setembro de 2014
 tipo_artigo: Artigo técnico de Infraestrutura de TIC
-title: O MPS.BR e sua importância para a empresa.
-abstract: 
+title: O **MPS.BR** e sua importância para a empresa.
+abstract: Apresentar o modelo **MPS.BR** e como ele pode colaborar com a melhoria dos processos de software em nossas empresas.
 author:
 - affiliation: DIMC
   name: Daniel Gomes
 - affiliation: DIMC
-  name: Frederico Henrique Gonçalves Lima
+  name: Frederico Henrique Lima
 - affiliation: DIMC
   name: Leandro Pissurno Candido da Silva
 responsibility:
-- affiliation: DIMC
-  name: Luiz Carlos Gomes do Nascimento
+- affiliation: SUPS
+  name: Anderson Gourlart
 diretoria: 'Diretoria de Infraestrutura de TIC - DIT'
 superintendencia: 'Superintendência de Planejamento e Suporte de TIC - SUPS'
-departamento: 'Departamento de Qualidade da Infraestrutura de TIC - DEQI'
 tags:
-- Tech0xA      <= sempre colocar essa!
-- Pandoc
+- Tech0xA
 - Markdown
+- Pandoc
 - Artigos
-
----
-
+- Git
+- SCM
+- Template
+- Padrões
+- Textos
+- Produtividade
+- Escritório
+...
 
 Introdução
 ==========
-
-Muitas vezes é subestimado a importâncias dos processos dentro das organizações, descrevendo-os como um mero instrumento burocrático, criado com o intuito de controlar e que cada profissional
-está fazendo, limitando o talento dos profissionais de TI, levando-os gradualmente à perda da capacidade de criar e inovar em situações de adversidades.
-
-Na verdade, processos existem porque representam a experiência acumulada de décadas de trabalho, organizadas por empresas e profissionais que compilaram as melhores práticas para lidar mais pró-ativamente com os riscos inerentes à execução dos mais variados serviços de TI, incorporando mecanismos de controle que reduzem o nível de erros dos profissionais, levando-os de forma mais segura à finalização dos trabalhos.
-
-Os processos possibilitam que os serviços de TI sejam impessoais, ou seja, independente de quem executará os trabalhos, serão realizados as mesmas atividades, avaliados os mesmos parâmetros,
-produzidos os mesmos artefatos, gerenciados pelo mesmo conjunto de indicadores. Com este nível de padronização dos trabalhos, os projetos tornam-se mais previsíveis, possibilitando que riscos sejam monitorados  e mitigados com alto grau de precisão e controle.
-
-Sem um processo formalmente estabelecido, os profissionais buscariam caminhos diferentes para realizar as mesmas atividades, trazendo mais variáveis e incertezas no projeto, aumentando-os
-consideravelmente os riscos de insucesso. Nestas condições, a simples troca de um profissional pode desestabilizar toda uma cadeia de serviços de TI, demonstrando a fragilidade de todo o
-modelo operacional que a organização está submetida.
-
-Os processo foram modelados para conduzirem os profissionais ao caminho mais controlado e seguro, possibilitando que qualquer membro da organização, com perfil e treinamento adequado, possam atender continuamente os projetos e manter os níveis de serviços dentro de uma variabilidade aceitável.
-
-Os processos não podem ser estáticos e devem ser gradualmente aprimorados pela organização, à medida que a condução de novos projetos revelem deficiências operacionais que deveriam ser
-minimizadas, evitando gerar fontes de instabilidade e incertezas futuras.
-  
-Uma empresa busca a definição de processos corporativos, de forma a garantir que toda sua estrutura operacional esteja baseada num único modelo de trabalho, não em ilhas isoladas de
-organização. A adoção de padrões corporativos garante que uma determinada inovação ou aperfeiçoamento metodológico seja aplicado em todas unidades operacionais, viabilizando a melhoria contínua a longo prazo.
-
-Portanto, a formalização de processos dentro das estruturas de TI devem ser encarados como uma estratégia para gerenciamento de serviços cada vez mais segmentada e complexa. Não é por acaso
-que a busca pela adequação por modelos como MPS-BR, focam explicitamente na melhoria dos processos que, muitas vezes, são atropelados pela correria do dia a dia.
-
+Muitas vezes é subestimado a importâncias dos processos^[Processo (<http://http://pt.wikipedia.org/wiki/Processo>)] dentro das organizações, descrevendo-os como um mero instrumento burocrático, criado com o intuito de controlar e que cada profissional está fazendo, limitando o talento dos profissionais de TI, levando-os gradualmente à perda da capacidade de criar e inovar em situações de adversidades.<br/>
+Na verdade, processos existem porque representam a experiência acumulada de décadas de trabalho, organizadas por empresas e profissionais que compilaram as melhores práticas para lidar mais pró-ativamente com os riscos inerentes à execução dos mais variados serviços de TI, incorporando mecanismos de controle que reduzem o nível de erros dos profissionais, levando-os de forma mais segura à finalização dos trabalhos.<br/>
+Os processos possibilitam que os serviços de TI sejam impessoais, ou seja, independente de quem executará os trabalhos, serão realizados as mesmas atividades, avaliados os mesmos parâmetros, produzidos os mesmos artefatos, gerenciados pelo mesmo conjunto de indicadores. Com este nível de padronização dos trabalhos, os projetos tornam-se mais previsíveis, possibilitando que riscos sejam monitorados e mitigados com alto grau de precisão e controle.<br/>
+Sem um processo formalmente estabelecido, os profissionais buscariam caminhos diferentes para realizar as mesmas atividades, trazendo mais variáveis e incertezas no projeto, aumentando-os consideravelmente os riscos de insucesso. Nestas condições, a simples troca de um profissional pode desestabilizar toda uma cadeia de serviços de TI, demonstrando a fragilidade de todo o modelo operacional que a organização está submetida.<br/>
+Os processo foram modelados para conduzirem os profissionais ao caminho mais controlado e seguro, possibilitando que qualquer membro da organização, com perfil e treinamento adequado, possam atender continuamente os projetos e manter os níveis de serviços dentro de uma variabilidade aceitável.<br/>
+Os processos não podem ser estáticos e devem ser gradualmente aprimorados pela organização, à medida que a condução de novos projetos revelem deficiências operacionais que deveriam ser minimizadas, evitando gerar fontes de instabilidade e incertezas futuras.
+Uma empresa busca a definição de processos corporativos, de forma a garantir que toda sua estrutura operacional esteja baseada num único modelo de trabalho, não em ilhas isoladas de organização. A adoção de padrões corporativos garante que uma determinada inovação ou aperfeiçoamento metodológico seja aplicado em todas unidades operacionais, viabilizando a melhoria contínua a longo prazo.<br/>
+Portanto, a formalização de processos dentro das estruturas de TI devem ser encarados como uma estratégia para gerenciamento de serviços cada vez mais segmentada e complexa. Não é por acaso que a busca pela adequação por modelos como MPS-BR, focam explicitamente na melhoria dos processos que, muitas vezes, são atropelados pela correria do dia a dia.<br/>
 Este artigo visa prover um overview sobre o Modelo de Referência MPS para Serviços e mostrar a importância da certificação principalmente para empresas que prestam serviços de tecnologia da informação para órgãos governamentais como é o caso da Dataprev.
 
-Motivação para Implantação do Modelo
+Desafios
 ========
-
-De acordo com o diário oficial da união do dia 03/08/2007 o TCU (Tribunal de Contas da União) recomendou à Secretaria de Logística e Tecnologia da Informação (SLTI) a adoção do modelo MPS.BR, como sendo requisitos mínimos sobre a licitação e a contratação de serviços de TI.
-
-Um dos fatos que voltou a atenção para esse modelo específico foi que ele é um dos modelos que já contam com investimento público brasileiro.
-
-Esta recomendação comprova a importância que o modelo e a certificação MPS.BR vem ganhando junto ao mercado, desde a sua criação, em 2004, pela Softex.
-
-Como exemplos de de licitações que usam o modelo como critério de pontuação técnica temos as do Departamento de Engenharia e Construção do Ministério da Defesa, do Departamento de Estradas de Rodagem de Minas Gerais (DER/MG) e do Tribunal de Contas do DF.
-
-Entre as companhias vinculadas as diversas esferas do governo que possuem a certificação MPS.BR podemos citar a Prodemge (Companhia de T.I. do Estado de Minas Gerais), Prodabel (Empresa de Informática e Informação do Município de Belo Horizonte, Prodam (Empresa de Tecnologia da Informação e Comunicação do Mun. SP) dentre outras.
-
+De acordo com o **Diário Oficial da União**[D.O.U (<http://www.jusbrasil.com.br/diarios/DOU/>)] do dia 03/08/2007 o TCU (Tribunal de Contas da União) recomendou à Secretaria de Logística e Tecnologia da Informação (SLTI) a adoção do modelo MPS.BR, como sendo requisitos mínimos sobre a licitação e a contratação de serviços de TI.<br/>
+Um dos fatos que voltou a atenção para esse modelo específico foi que ele é um dos modelos que já contam com investimento público brasileiro.<br/>
+Esta recomendação comprova a importância que o modelo e a certificação MPS.BR vem ganhando junto ao mercado, desde a sua criação, em 2004, pela Softex.<br/>
+Como exemplos de de licitações que usam o modelo como critério de pontuação técnica temos as do Departamento de Engenharia e Construção do Ministério da Defesa, do Departamento de Estradas de Rodagem de Minas Gerais (DER/MG) e do Tribunal de Contas do DF.<br/>
+Entre as companhias vinculadas as diversas esferas do governo que possuem a certificação MPS.BR podemos citar a Prodemge (Companhia de T.I. do Estado de Minas Gerais), Prodabel (Empresa de Informática e Informação do Município de Belo Horizonte, Prodam (Empresa de Tecnologia da Informação e Comunicação do Mun. SP) dentre outras.<br/>
 Dessa forma nota-se a importância da adoção do modelo MPS.BR Serviços para a melhoria dos processos da DIT e por consequência a conformidade com licitações que envolvem tecnologia da informação visando novos contratos a serem firmados com a Dataprev.
 
-   
- 
 Benefícios e/ou recomendações
 =============================
+Para se alcançar níveis mais altos de maturidade no **CMMI**^[@WikipediaCMMI] é necessário muito tempo e esforço juntamente com um alto custo. O custo para realizar o processo de certificação no CMMI será gasto algo em torno de US$1.000.000,00 enquanto uma certificação **MPS.BR**^[@WikipediaMPSBR] custa em média de R$70.000,00. Além disso pode-se citar outros benefícios como:<br/>
+- Melhoria de processos mais gradual.<br/>
+- Com mais níveis que o CMMI o MPS.BR torna as melhorias mais fáceis de serem alcançadas.<br/>
+- Totalmente compatível com o CMMI e normas internacionais ISO.<br/>
+- Muitas licitações governamentais já exigem níveis de maturidade MPS.BR.<br/>
 
-Para se alcançar níveis mais altos de maturidade no CMMI é necessário muito tempo e esforço juntamente com um alto custo. O custo para realizar o processo de certificação no CMMI será gasto algo em torno de US$1.000.000,00 enquanto uma certificação MPS.BR custa por voltar de R$70.000,00. Além disso pode-se citar outros benefícios como:
+O Modelo de Referência MPS.BR para Serviços (MR-MPS-SV)
+=======================================================
 
-- Melhoria de processos mais gradual.
-
-
-- Com mais níveis que o CMMI o MPS.BR torna as melhorias mais fáceis de serem alcançadas.
-
-
-- Totalmente compatível com o CMMI e normas internacionais ISO.
-
-
-- Muitas licitações governamentais já exigem níveis de maturidade MPS.BR.
-
-
-Tópicos do artigo
-=================
-
-Conceitos
-=========
-### Serviço:
-
->“Um produto que é intangível e não armazenável” (CMMI-SVC 2010)
-
->“Uma forma de entregar valor aos clientes, facilitando os resultados que os clientes desejam atingir sem ter a propriedade de custos e riscos específicos” (ITILv2011)
-
->“Meio de entregar valor para o cliente por meio da facilitação de resultados que o cliente deseja atingir” (ISO/IEC 20000-1:2011)
-
-
-### Serviço de TI:
-
->“Um serviço fornecido por um provedor de serviços de TI. Um serviço de TI é constituído por uma combinação de tecnologia da informação, pessoas e processos.” (ITILv2011)
-
-### Provedor de Serviços de TI:
-
->“Um provedor de serviços que provê serviços de TI para clientes internos ou externos” (ITILv2011)
-
-### Componente do Serviço:
-
->“É uma parte do serviço final ou algo usado no seu desenvolvimento (por exemplo um subproduto, um processo, uma ferramenta) que faz parte da entrega. Os componentes são integrados em sucessivos níveis para compor o serviço final” (CMMI-SVC 2010)
-
->“Unidade de serviço que, quando combinada com outras unidades, irá entregar um serviço completo.” (ISO/IEC 20000-1:2011)
-
-### Gerenciamento de Serviços:
-
->“Um conjunto de capacidades organizacionais especializadas para prover valor aos clientes na forma de serviços.” (ITILv2011)
-
->“Conjunto de capacidades e processos para dirigir e controlar as atividades e recursos do provedor para o projeto, transição, entrega e melhoria dos serviços para atender aos requisitos dos serviços.” (ISO/IEC 20000-1:2011)
-
-### Provedor de Serviços:
-
->“Uma organização que provê serviços para um ou mais clientes internos ou externos.” (ITILv2011)
-
->“Organização ou parte de uma organização que gerencia ou entrega serviços ao cliente” (ISO/IEC 20000-1:2011)
-
-### Sistema de Gerenciamento de Serviços:
-
->“Uma combinação integrada e interdependente dos recursos e componentes que satisfazem os requisitos do serviço.” (CMMI-SVC 2010)
-
->“Sistema de gerenciamento para dirigir e controlar as atividades de gerenciamento de serviços de um provedor de serviços.” (ISO/IEC 20000-1:2011)
-
-### Gerenciamento de Serviços de TI (GSTI):
-
->“A implementação e o gerenciamento de serviços de TI de qualidade que atendem às necessidades do negócio. O gerenciamento de serviços de TI é executado por provedores de serviços de TI por meio de uma combinação adequada de pessoas, processos e tecnologia da informação” (ITILv2011)
-
-### Acordo de Nível de Serviço (ANS):
-
->“Um acordo documentado entre o provedor de serviços e o cliente que identifica os serviços e as metas dos serviços” (ISO/IEC 20000-1:2011)
-
->“Um acordo entre um provedor de serviços de TI e um ciente. Um SLA descreve o serviço de TI, documenta as metas de nível de serviço e especifica as responsabilidades do provedor de serviços de TI e do cliente. Um único SLA pode cobrir diversos serviços de TI ou diversos clientes.” (ITILv2011)
-
-### Incidente:
-
->“A indicação de uma interferência real ou potencial na execução normal de um serviço” (ISO/IEC 20000-1:2011) 
-
->“Uma interrupção não planejada ou a redução da qualidade de um serviço de TI. A falha de um item de configuração que ainda não afetou o serviço também é um incidente.” (ITILv2011)
-
-### Problema:
-
->“A causa de um ou mais incidentes. A causa normalmente não é conhecida no momento do registro do problema e o processo de gerenciamento de problema é responsável pela investigação posterior.” (ITILv2011)
-
->“Causa raiz de um ou mais incidentes.” (ISO/IEC 20000-1:2011)
-
-### Orçamento e Contabilização de Serviços:
-
->“A gestão orçamentária e contábil dos elementos envolvidos na prestação de serviços“(ISO/IEC 20000-1:2011)
-
-### Relato de Serviços:
-
->“Geração de informações sobre os serviços prestados conforme as necessidades dos envolvidos” (ISO/IEC 20000-1:2011)
-
-### Requisito de Serviço:
-
->“Uma condição ou capacidade exigida para solucionar um problema ou atingir um objetivo” (ISO/IEC 20000-1:2011)
-
->“Um projeto é um empreendimento temporário conduzido para gerar um produto, serviço ou resultado específico.”
-
-### Operação
-
->“Uma operação é uma função organizacional que realiza a execução contínua de atividades que produzem o mesmo produto ou fornecem o mesmo serviço repetidamente.” (PMBOK 5ª edição 2012)
-
-O modelo MPS.BR para Serviços (MR-MPS-SV)
-=========================================
-
-Com base na necessidade de um modelo de maturidade que fosse especificamente focado em empresas prestadoras de serviços, o Modelo de referência para Serviços foi criado para propiciar a melhoria nos processo em empresas prestadoras de serviços de TI aonde a qualidade é um fator de sucesso e por isso a adoção de um modelo baseado em padrões internacionalmente reconhecidos é essencial.
-
-Ele vem para apoiar a melhoria dos processos de serviços como também para oferecer uma avaliação que certifique que a empresa tem adesão a melhores práticas de gestão dos processos para o cliente.
-
+Com base na necessidade de um modelo de maturidade que fosse especificamente focado em empresas prestadoras de serviços, o Modelo de referência para Serviços foi criado para propiciar a melhoria nos processo em empresas prestadoras de serviços de TI aonde a qualidade é um fator de sucesso e por isso a adoção de um modelo baseado em padrões internacionalmente reconhecidos é essencial.<br/>
+Ele vem para apoiar a melhoria dos processos de serviços como também para oferecer uma avaliação que certifique que a empresa tem adesão a melhores práticas de gestão dos processos para o cliente.<br/>
 Baseado nas práticas ITIL, na Norma Internacional ISO/IEC 20000 e no modelo CMMI-SVC e serve para melhorar tanto os processos de serviços quanto o desempenho nos negócios das organizações públicas e privadas de qualquer porte.
 
-Estrutura do Modelo
-------------------
+### Conceitos ###
+
+**Serviço**<br/>
+“Um produto que é intangível e não armazenável” (CMMI-SVC 2010)<br/>
+“Uma forma de entregar valor aos clientes, facilitando os resultados que os clientes desejam atingir sem ter a propriedade de custos e riscos específicos” (ITILv2011)<br/>
+“Meio de entregar valor para o cliente por meio da facilitação de resultados que o cliente deseja atingir” (ISO/IEC 20000-1:2011)<br/>
+**Serviço de TI**<br/>
+“Um serviço fornecido por um provedor de serviços de TI. Um serviço de TI é constituído por uma combinação de tecnologia da informação, pessoas e processos.” (ITILv2011)<br/>
+**Provedor de Serviços de TI**<br/>
+“Um provedor de serviços que provê serviços de TI para clientes internos ou externos” (ITILv2011)<br/>
+**Componente do Serviço**<br/>
+“É uma parte do serviço final ou algo usado no seu desenvolvimento (por exemplo um subproduto, um processo, uma ferramenta) que faz parte da entrega. Os componentes são integrados em sucessivos níveis para compor o serviço final” (CMMI-SVC 2010)<br/>
+“Unidade de serviço que, quando combinada com outras unidades, irá entregar um serviço completo.” (ISO/IEC 20000-1:2011)<br/>
+**Gerenciamento de Serviços**<br/>
+“Um conjunto de capacidades organizacionais especializadas para prover valor aos clientes na forma de serviços.” (ITILv2011)<br/>
+“Conjunto de capacidades e processos para dirigir e controlar as atividades e recursos do provedor para o projeto, transição, entrega e melhoria dos serviços para atender aos requisitos dos serviços.” (ISO/IEC 20000-1:2011)<br/>
+**Provedor de Serviços**<br/>
+“Uma organização que provê serviços para um ou mais clientes internos ou externos.” (ITILv2011)<br/>
+“Organização ou parte de uma organização que gerencia ou entrega serviços ao cliente” (ISO/IEC 20000-1:2011)<br/>
+**Sistema de Gerenciamento de Serviços**<br/>
+“Uma combinação integrada e interdependente dos recursos e componentes que satisfazem os requisitos do serviço.” (CMMI-SVC 2010)<br/>
+“Sistema de gerenciamento para dirigir e controlar as atividades de gerenciamento de serviços de um provedor de serviços.” (ISO/IEC 20000-1:2011)<br/>
+**Gerenciamento de Serviços de TI (GSTI)**<br/>
+“A implementação e o gerenciamento de serviços de TI de qualidade que atendem às necessidades do negócio. O gerenciamento de serviços de TI é executado por provedores de serviços de TI por meio de uma combinação adequada de pessoas, processos e tecnologia da informação” (ITILv2011)<br/>
+**Acordo de Nível de Serviço (ANS)**<br/>
+“Um acordo documentado entre o provedor de serviços e o cliente que identifica os serviços e as metas dos serviços” (ISO/IEC 20000-1:2011)<br/>
+“Um acordo entre um provedor de serviços de TI e um ciente. Um SLA descreve o serviço de TI, documenta as metas de nível de serviço e especifica as responsabilidades do provedor de serviços de TI e do cliente. Um único SLA pode cobrir diversos serviços de TI ou diversos clientes.” (ITILv2011)<br/>
+**Incidente**<br/>
+“A indicação de uma interferência real ou potencial na execução normal de um serviço” (ISO/IEC 20000-1:2011)<br/>
+“Uma interrupção não planejada ou a redução da qualidade de um serviço de TI. A falha de um item de configuração que ainda não afetou o serviço também é um incidente.” (ITILv2011)<br/>
+**Problema**<br/>
+“A causa de um ou mais incidentes. A causa normalmente não é conhecida no momento do registro do problema e o processo de gerenciamento de problema é responsável pela investigação posterior.” (ITILv2011)<br/>
+“Causa raiz de um ou mais incidentes.” (ISO/IEC 20000-1:2011)<br/>
+**Orçamento e Contabilização de Serviços**<br/>
+“A gestão orçamentária e contábil dos elementos envolvidos na prestação de serviços“(ISO/IEC 20000-1:2011)<br/>
+**Relato de Serviços**<br/>
+“Geração de informações sobre os serviços prestados conforme as necessidades dos envolvidos” (ISO/IEC 20000-1:2011)<br/>
+**Requisito de Serviço**<br/>
+“Uma condição ou capacidade exigida para solucionar um problema ou atingir um objetivo” (ISO/IEC 20000-1:2011)<br/>
+“Um projeto é um empreendimento temporário conduzido para gerar um produto, serviço ou resultado específico.”<br/>
+**Operação**<br/>
+Uma operação é uma função organizacional que realiza a execução contínua de atividades que produzem o mesmo produto ou fornecem o mesmo serviço repetidamente.” (PMBOK 5ª edição 2012)<br/>
+**Capacidade do processo**<br/>
+Uma caracterização da habilidade do processo atingir aos objetivos de negócio atuais ou futuros.<br/>
+**Atributo de processo (AP)**<br/>
+Uma característica mensurável da capacidade do processo aplicável a qualquer processo<br/>
+Cada Atributo de Processo tem um ou vários Resultados do Atributo de Processo (RAP)<br/>
+**Resultados esperados dos atributos do processo (RAP)**<br/>
+- Um resultado observável do sucesso do alcance do propósito do processo<br/>
+
+
+#### Estrutura do Modelo ####
+
 ![Estrutura do modelo](/imagens/estrutura_modelo.jpg "Estrutura do Modelo")
 
-Componentes
------------
-
-### ISO/IEC 12207
+**ISO/IEC 12207**<br/>
 - Estabelece uma arquitetura comum para os processos do ciclo de vida do software
 
-###  CMMI-DEV
-
+**CMMI-DEV**<br/>
 - Todos os requisitos das áreas de processo do CMMI-DEV estão presentes no MPS.BR
 - O MPS.BR contém mais áreas de processo, logo é mais completo.
 
-### ISO/IEC 15504
+**ISO/IEC 15504**<br/>
 - Norma para avaliação e melhoria de processos de software
 
-### Modelo de Referência (MR-MPS)
+**Modelo de Referência (MR-MPS)**<br/>
 - Contém os requisitos que os processos das organizações devem atender para estar em conformidade com o modelo
 - Descrito pelo Guia Geral
 
-### Método de Avaliação (MA-MPS)
+**Método de Avaliação (MA-MPS)**<br/>
 - Orienta a execução de uma avaliação de conformidade ao modelo
 - Descrito pelo Guia de Avaliação
-### Modelo de Negócio (MN-MPS)
+
+**Modelo de Negócio (MN-MPS)**<br/>
 - Descreve regras de negócio para a implementação do modelo
 
-Documentos Complementares
--------------------------
-### Guia de Aquisição
+**Documentos Complementares**<br/>
+**Guia de Aquisição**<br/>
 - Contém boas práticas para aquisição de software e serviços correlatos
 
-### Guia de Implementação
+**Guia de Implementação**<br/>
 - Sugere formas de implementar cada um dos níveis do MR-MPS
 
-Estes documentos são de caráter informativo e não contém requisitos do modelo
 
-
-Métodos de Avaliação
---------------------
-
-
-1. Contratar a Avaliação
-
-	Objetivo: pesquisar instituições avaliadoras e estabelecer um contrato para realizar avaliação
-2. Preparar a realização da avaliação
-	
-	Objetivo: obter autorização e realizar uma avaliação que permita verificar que a empresa está pronta para ser avaliada no nível de maturidade pretendido
-
-3. Conduzir a avaliação final
-
-	Objetivo: Realizar a avaliação final e comunicar os seus resultados. Além disso, avaliar a execução do próprio processo de avaliação
-
-4. Documentar os resultados da avaliação
-
-	Objetivo: reunir a documentação da avaliação final e enviar os resultados à base de dados da SOFTEX
-
-MR-MPS: Conceitos Básicos
--------------------------
-### Capacidade do processo
-- Uma caracterização da habilidade do processo atingir aos objetivos de negócio atuais ou futuros
-
-### Atributo de processo (AP)
-- Uma característica mensurável da capacidade do processo aplicável a qualquer processo
-- Cada Atributo de Processo tem um ou vários Resultados do Atributo de Processo (RAP)
-
-### Resultados esperados dos atributos do processo (RAP)
-- Um resultado observável do sucesso do alcance do propósito do processo
-
-Relacionamento entre Atributos de Processo (AP) & Resultados esperados dos Atributos de Processo (RAP)
----------------------
-
+##### Relacionamento entre Atributos de Processo (AP) & Resultados esperados dos Atributos de Processo (RAP) #####
 
 | Atributo de Processo                                        | Mede o quanto...                                                                                                                                                                                                     | Exemplos de resultados esperados                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 |-------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -274,11 +168,11 @@ Relacionamento entre Atributos de Processo (AP) & Resultados esperados dos Atrib
 ³ O RAP 9 tem exigências diferentes para os Níveis G e F e para os níveis posteriores.<br/>
 ⁴ O RAP 10 tem exigências diferentes para o Nivel G e para os níveis posteriores.<br/>
 
-Níveis de Maturidade
---------------------
+
+#### Níveis de Maturidade ####
 Estabelecem patamares de evolução dos processos, caracterizando estágios de melhoria dos processos.
 Cada um dos níveis possui um perfil de processos que indica onde a organização deve concentrar esforços.
-### O progresso se dá alcançando:
+**O progresso se dá alcançando**
 - O propósito de cada processo do nível.
 - Os resultados esperados destes processos.
 - Os RAP de cada Atributo de Processo do nível.
@@ -405,7 +299,7 @@ Atributos de Processo acrescentados:
 * AP 5.2 – O processo é otimizado continuamente Obs.: Estes dois atributos de processo tratam do conteúdo dos processos "Implantação de inovações na organização" e "Análise e resolução de causas", do CMMI.
 
 Descrição detalhada dos processos
-=================================	
+================================= 
 Nessa seção os processos são descritos em termos de propósito e resultados esperados. Os processos estão descritos ordenados pelo nível de maturidade de forma crescente, sendo que cada nível inclui os processos do nível anterior.
 
 
@@ -776,92 +670,58 @@ Este nível não possui processos específicos.
 
 Conclusão
 =========
- 
-Um dos grandes diferencias presentes na proposta do MPS.BR é o fato de seus custos serem acessíveis às empresas nacionais, principalmente as de pequeno e médio portes, contribuindo para a promoção da melhoria de processos de software de acordo com os padrões de qualidade aceitos internacionalmente(@ISO-IEC).
 
+Um dos grandes diferencias presentes na proposta do MPS.BR é o fato de seus custos serem acessíveis às empresas nacionais, principalmente as de pequeno e médio portes, contribuindo para a promoção da melhoria de processos de software de acordo com os padrões de qualidade aceitos internacionalmente.<br/>
 O aumento da competitividade no mercado de software e serviços de TI fez que com que as empresas motivassem para a necessidade de obter maior qualidade dos produtos e serviços oferecidos, bem como a satisfação dos clientes com os resultados entregues. E essa qualidade pode ser obitda por meio da implementação de processos seguindo as sugestões dos guias de implementação do
-MPS.BR.
-
-Uma das principais dificuldades frequentemente encontradas na implementação do programa de melhoria, está relacionado à cultura da empresa e de seus colaboradores, pois a implementação de 
-mudanças acaba gerando certo desconforto. Para superar esta dificuldade, é necessário que a empresa convença seus colaboradores da sua importância dentro do processo e apresente os benefícios 
-e melhorias das condições de trabalho.
-
-A avaliação de maturidade do modelo MPS deve ser realizada por uma equipe composta por membros internos  (representantes da unidade organizacional) e membros externos (avaliador líder, avaliadores adjuntos da Instituição Avaliadora e, opcionalmente, avaliadores em formação indicados pela SOFTEX). A duração da avaliação e a quantidade  (mínima e máxima) de avaliadores são proporcionais à capacidade exigida para cada nível de maturidade. Uma avaliação pode durar de um a cinco dias, e contar com uma equipe de três a nove avaliadores.
+MPS.BR.<br/>
+Uma das principais dificuldades frequentemente encontradas na implementação do programa de melhoria, está relacionado à cultura da empresa e de seus colaboradores, pois a implementação de mudanças acaba gerando certo desconforto. Para superar esta dificuldade, é necessário que a empresa convença seus colaboradores da sua importância dentro do processo e apresente os benefícios e melhorias das condições de trabalho.<br/>
+A avaliação de maturidade do modelo MPS deve ser realizada por uma equipe composta por membros internos  (representantes da unidade organizacional) e membros externos (avaliador líder, avaliadores adjuntos da Instituição Avaliadora e, opcionalmente, avaliadores em formação indicados pela SOFTEX). A duração da avaliação e a quantidade  (mínima e máxima) de avaliadores são proporcionais à capacidade exigida para cada nível de maturidade. Uma avaliação pode durar de um a cinco dias, e contar com uma equipe de três a nove avaliadores.<br/>
 A avaliação tem validade por dois anos. Ao final desses dois anos, a empresa deverá passar por nova avaliação para manter a maturidade adaquirida já avaliada ou evoluir o nível de maturidade.
 
 Referências
 ===========
+[^1]: (texto aparece na nota de rodapé, mas sem efeito final) [@pandocDocConv2014]
+[^2]: [@QuickMarkdownExample2013]
 
-Livros:
-
-1. ISO/IEC 20000-1:2011
-2. ITIL (Information Technology Infrastructure Library) V3 rev.2011
-3. Implantando a Governança de Ti - da Estratégia À Gestão Dos Processos e Serviços - 4ª Ed.
-
-Notícias:
-
-1. Referência: http://imasters.com.br/artigo/5376/software/a-importancia-dos-processos-em-ti/ Autor: Alexandre Bartie
-
-Documentos:
-
-1. D.O.U. (Diário Oficial da União) do dia 03/08/2007 pág. 66. Acessado em 20/09/2014. disponível em: http://pesquisa.in.gov.br/imprensa/jsp/visualiza/index.jsp?jornal=1&pagina=66&data=03/08/2007 
-2. MPS - Melhoria de Processo de Software e Serviços - Guia Geral MPS de Serviços
-3. PMI – A Guide to The Project Management Body of Knowledge, 5th ed., 2012
-
- 
-Caso no desenvolvimento do texto tenha sido usado o recurso de "citações" (ex: @ID-Citacao ou variações) não será necessário listar, pois o "Pandoc" identificará e listará com base nos metadados de referências criados no fim do arquivo.
- 
 ---
-remark: metadados com alguns dados para listar referências bibliográficas. Use quantos identificadores (ID) necessitar para listar as diferentes referências usadas no artigo
-
 references:
-- id: ISO20000
-  title: "Norma ISO 20000"
-  author:
-  - family: Sobrenome
-    given: Nome parcial (sem o Sobrenome)
-  container-title: area de conhecimento ou assunto
-  URL: 'http://www.endereço-na-web.com'
+- id: Governança_de_TI
+  title: "Implantando a Governança de TI: da Estratégia à Gestão de Processos e Serviços"
+  volume: "4ª Edição"
+  publisher: BRASPORT
+  history: BRASPORT
+  locators: Rio de Janeiro
+  extra: Rio de Janeiro
+  type: book
+  year: 2014
+  issue: 4
+
+- id: WikipediaMPSBR
+  title: "Melhoria de Processos do Software Brasileiro"
+  translator: S.l.
+  booktitle: "Wikipedia: A Enciclopédia Livre"
+  container-title: Modelo de Maturidade
+  URL: 'http://http://pt.wikipedia.org/wiki/Melhoria_de_Processos_do_Software_Brasileiro'
   accessed:
-    day: dia de acesso
-    month: mês de acesso
-    year: ano de acesso
-  publisher: Editor responsável
-  page: páginas usadas
-  type: tipo de referencia usada (book, article, article-newspaper, website, thesis etc)
-  volume: volume da referência usada
-  issue: número da edição ou tiragem
+    day: 22
+    month: 8
+    year: 2014
+  publisher: Wikimedia
+  type: entry-encyclopedia
+  year: 2014
+
+- id: WikipediaCMMI
+  title: "Modelo Integrado de Maturidade e de Capacidade"
+  translator: S.l.
+  container-title: Modelo de Maturidade
+  URL: 'http://pt.wikipedia.org/wiki/CMMI'
+  accessed:
+    day: 24
+    month: 8
+    year: 2014
+  publisher: Wikipedia
+  type: webpage
   issued:
-    year: ano publicação
-    month: mês de publicação
-
-- id: PMI
-  title: "Project Management"
-  translator: S.l.
-  booktitle: "Project Management Institute"
-  container-title: Text formatting
-  URL: 'http://pmi.org'
-  accessed:
-    day: 22
-    month: 2
     year: 2014
-  publisher: Wikimedia
-  type: entry-encyclopedia
-  year: 2014
-
-
-- id: D.O.U
-  title: "Diário Oficial da União"
-  translator: S.l.
-  booktitle: "Wikipedia: The Free Encyclopedia"
-  container-title: Text formatting
-  URL: 'http://www.jusbrasil.com.br/'
-  accessed:
-    day: 22
-    month: 2
-    year: 2014
-  publisher: Wikimedia
-  type: entry-encyclopedia
-  year: 2014
-  
----
+    month: 3
+...
