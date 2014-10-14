@@ -62,7 +62,7 @@ Objetos e esquemas LDAP
 
 Em linhas gerais, um objeto no serviço LDAP, pode ser definida como um conjunto organizado de atributos que possuem seus valores multivalorados ou não, obrigatórios ou não, e  que obedecem uma regra definida por um ou mais equemas. Ainda, segundo [@GIL] cada entrada de objeto (registro) no LDAP obedece uma regra de unicidade onde garante-se a não existência de dois ou mais objetos com mesmo identificador, ora denominado DN (Distinguished Name). 
 
-Segundo [@SUNGALIA], a forma de armazenamento dos dados em um servidor de Diretório segue a hierarquia dos objetos a que pertence a entrada, onde o DN deve sempre indicar todos os ramos da árvore LDAP, desde a base até a parte final, a identificação do objeto propriamente dito. Ainda, o DN deve ser único em todo o Diretório.
+Segundo [@SANGAILA], a forma de armazenamento dos dados em um servidor de Diretório segue a hierarquia dos objetos a que pertence a entrada, onde o DN deve sempre indicar todos os ramos da árvore LDAP, desde a base até a parte final, a identificação do objeto propriamente dito. Ainda, o DN deve ser único em todo o Diretório.
 
 
 A figura abaixo ilustra alguns dos tipos de registros encontrados no serviço LDAP, assim como alguns dos seus respectivos atributos.
@@ -169,10 +169,9 @@ Referências
 ===========
 
 ---
-
 remark: metadados com alguns dados para listar referências bibliográficas. Use quantos identificadores (ID) necessitar para listar as diferentes referências usadas no artigo
 references:
-- id:@ADMINGUIDE
+- id: ADMINGUIDE
   title: "OpenLDAP Sofware 2.4 Administrator's Guide, Replication"
   author:
   - family:  Openldap.org
@@ -186,7 +185,7 @@ references:
   publisher: Admin Guide
   type: webpage
 
-- id:@TRIGO1
+- id: TRIGO1
   title: "Openldap, Uma abordagem integrada"
   author: 
   - family: Clodonil Honório.
@@ -196,7 +195,7 @@ references:
   issued:
     year: 2007
 
-- id:@GIL
+- id: GIL
   title: "Openldap Extreme"
   author:
   - family: Anahuac de Paula.
@@ -206,7 +205,7 @@ references:
   issued:
     year: 2012
 
-- id:@SANGAILA
+- id: SANGAILA
   title: "Autenticação centralizada com Openldap"
   author:
   - family: Sangaila.
@@ -217,13 +216,13 @@ references:
   issued:
     year: 2008
 
-- id:@BUTCHER
+- id: BUTCHER
   title: "Mastering OpenLDAP - Configuring, Securing, and Integrating Directory Services"
   author:
   - family: Butcher.
     given: Matt
   publisher: Packt Publishing Ltd.
-  type: ebook
+  type: book
   issued:
     year: 2007
 
