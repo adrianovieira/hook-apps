@@ -13,16 +13,9 @@ responsibility:
 diretoria: 'Diretoria de Infraestrutura de TIC - DIT'
 superintendencia: 'Superintendência de Planejamento e Suporte de TIC - SUPS'
 departamento: 'Departamento de Suporte de TIC - DEST'
-tags:
-- QoS
-- *'Quality of Service'*
-- *'Network'*
-- Rede
-- Latência
-- Jitter
-- Confiabilidade
-- Largura de Banda
-- *'backbone'*
+tags: 
+
+- QoS, *Quality of Service*, *Network*, Rede, Latência, Jitter, Confiabilidade, Largura de Banda, *backbone*
 ...
 
 # Introdução
@@ -378,7 +371,7 @@ O QoS auxilia os administradores de redes a manterem os níveis de serviço soli
 
 Referências
 ===========
----
+
 KUROSE, J. F., Ross, K. W.; Redes de Computadores e a Internet - Uma abordagem top-down. Pearson Addison Wesley. 3ª Ed., 2006.
 
 COMER, D. Interligação em rede com TCP/IP: Vol. 1, princípios, protocolos e arquitetura. Campus,3ª Ed. 2006
