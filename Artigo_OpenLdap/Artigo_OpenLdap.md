@@ -144,17 +144,10 @@ Quadro comparativo entre os Modelos
 ===================================
 
 
-Para que haja sucesso na adoção da ferramenta Openldap, deve-se entender o cenário proposto e os requisitos a serem atendidos. Requisitos como disponibilidade do serviço, tempo médio entre falhas (MTBF), tempo médio entre reparo (MTTR) devem ser considerados na avaliação do modelo de replicação a ser implementado.
+Para que haja sucesso na adoção da ferramenta Openldap, deve-se entender o cenário proposto e os requisitos de negócio a serem atendidos. Requisitos como disponibilidade do serviço, tempo médio entre falhas (MTBF), tempo médio entre reparo (MTTR) devem ser considerados na avaliação do modelo a ser implementado.  Abaixo, segue um quadro comparativo entres os recursos e facilidades que cada modelo pode disponibilizar:
 
 
-+===============+===============================+===============================+
-|**Modelo**     |**Balanceamento de carga**     |**Tolerância à falhas**        |
-+===============+===============================+===============================+
-|**SMR**        |Somente leitura de dados       |Ponto único de falhas escrita  |
-|**MMR**        |Leitura e escrita de dados     |Leitura e escrita de dados     |
-|**DMR**        |Somente leitura de dados       |Manual para escrita de dados   |
-+===============+===============================+===============================+
-
+![Modelos de Replicação - Comparativa de recursos vs facilidades](imagens/Fig_TabelaComparativaModelosDeReplicacao.png)
 
 Conclusão
 =========
