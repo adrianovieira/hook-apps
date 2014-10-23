@@ -42,25 +42,15 @@ De acordo com GARVIN (1987)3 define a oito dimensões que podem ser utilizadas e
 Aqui, conformidade é definida como o grau em que o projeto e as características operacionais de um produto estão de acordo com padrões pré-estabelecidos[@Confusaoevidencia2014].
 
 
-
-
-2.Crosby, P. Quality is Free (1979). New York: McGraw-Hill
-
-3.MONTEIRO, L. Fundamentos da Qualidade – INMETRO. Disponível em <http://www.inmetro.gov.br/qualidade/iaac/pdf/fundamentos-qualidade.pdf> - Acessado em 12/06/2014
-
-
 Desafios
 ========
 
-Atualmente a Dataprev possui um total de 1053 servidores físicos e 1906 servidores virtuais(1) em ambientes de plataforma baixa nos mais variados sistemas operacionais e configurações espalhados pelos três centros de processamento da empresa. Com  base nessa infraestrutura, a empresa fornece aos clientes externos grande quantidade de serviços, muitos de alta complexidade.
+Atualmente a Dataprev possui um total de 1053 servidores físicos e 1906 servidores virtuais(1) em ambientes de plataforma baixa nos mais variados sistemas operacionais e configurações espalhados pelos três centros de processamento da empresa. Com  base nessa infraestrutura, a empresa fornece aos clientes externos grande quantidade de serviços, muitos de alta complexidade[@InstitucionalDataprev2013].
 
- 1. Em 09/01/2014. Fonte: Apresentação Institucional Dataprev. Disponível em <http://www-dtpnet/content/apresentacao-institucional> - Acessado em 27/03/2014
   
 
 ![Total de servidores – Ambiente de plataforma baixa](imagens/Figura1.png)
 
-Figura 1: Total de servidores – Ambiente de plataforma baixa
-Fonte: Apresentação Institucional Dataprev[@InstitucionalDataprev2013].
 
 
 Benefícios
@@ -72,6 +62,7 @@ Manter a conformidade no parque tecnológico permite uma série de benefícios p
 * Redução do custo de gerenciamento, já que o mesmo é diretamente proporcional às particularidades de cada ambiente;
 * Aumento da efetividade do negócio, possível através da padronização da infraestrutura, facilitando o acesso à informações estratégicas do negócio e a tomada de decisão.
 
+
 Qualidade e Conformidade
 ========================
 
@@ -82,15 +73,6 @@ Neste campo de estudo, muitas vezes conformidade é confundida com evidência ob
 A identificação de uma causa raiz não é uma tarefa simples. Para realizar este diagnóstico, o analista da qualidade utiliza diversos métodos e ferramentas de análise, entre elas as clássicas “7 ferramentas da Qualidade”(5). Tanto a teoria Total Quality Managemenet (TQM) e Total Quality Control (TQC) mencionam tais ferramentas como básicas a serem utilizadas por todos os níveis de uma organização. A mais utilizada para casos similares ao exemplo citado é o Diagrama de Causa e Efeito, conhecido também como Diagrama de Ishikawa ou ainda Espinha de Peixe.
 
 
-
-
- 4.A confusão entre evidência objetiva e não-conformidade pode ser o entrave para a melhoria contínua. Disponível em <http://vinhabranco.com.br/?p=1189> - Acessado em 09/04/2014
-
- 5.As 7 Ferramentas da Qualidade foram criadas por Kaoru Ishikawa com o objetivo de ajudar as organizações a resolverem seus problemas. Segundo ele, 95% dos problemas enfrentados por uma organização podem ser resolvidos com tais ferramentes, já que as mesmas foram desenvolvidas para subsidiar a análise de informações. 7 ferramentas da Qualidade. Disponível em <http://www.citisystems.com.br/7-ferramentas-da-qualidade/> - Acessado em 09/04/2014
- 
- 
- 
- 
  
  ![As 7 ferramentas da Qualidade](imagens/Tabela1.png)
  
