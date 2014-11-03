@@ -12,7 +12,7 @@ Para instalação desse *Web Hook* são consideradas as seguintes premissas tecn
 - Serviço Web: HTTP
 - Linguagem: Python 2.7.x
 - Framework: Flask 0.10 (ou superior)
-- Parser PDF: Pandoc 0.12.3 (ou superior)
+- Parser PDF: Pandoc 1.12.3 (ou superior)
 - Utilitário construtor: GNU Make
 - Template Pandoc: <http://www-git/documentos/markdown-template>
 
