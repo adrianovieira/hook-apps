@@ -95,7 +95,7 @@ wget http://mirror.globo.com/epel/6/x86_64/epel-release-6-8.noarch.rpm
 rpm -ivh epel-release-6-8.noarch.rpm
 ```
 
-```
+```texinfo
 cat > /etc/yum.repos.d/texlive.repo <<EOF
 [texlive]
 name=texlive
@@ -105,7 +105,7 @@ gpgcheck=0
 EOF
 ```
 
-```
+```texinfo
 cat > /etc/yum.repos.d/pandoc.repo <<EOF
 [pandoc]
 name=pandoc
