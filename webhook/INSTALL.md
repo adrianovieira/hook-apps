@@ -77,3 +77,61 @@ Instalação
 1. Configure web hook para o projeto  
    Esse web hook é para conversão automatizada de artigos quando for solicitado ***"merge request"*** via interface do *Gitlab*.
    - acesse e configure o web hook para *merge request* do projeto em <http://www-git/documentos/artigos/hooks>
+   - 
+   
+### Dica: Intalar *Pandoc/Texlive* (CentOS/RHEL)
+
+Centos-7/RHEL-7
+
+```
+wget http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-2.noarch.rpm
+rpm -ivh epel-release-7-2.noarch.rpm 
+```
+
+Centos-6/RHEL-6
+
+```
+wget http://mirror.globo.com/epel/6/i386/epel-release-6-8.noarch.rpm
+rpm -ivh epel-release-6-8.noarch.rpm
+```
+
+```
+cat > /etc/yum.repos.d/texlive.repo <<EOF
+[texlive]
+name=texlive
+baseurl=http://jnovy.fedorapeople.org/texlive/2012/packages.f17/
+enabled=1
+gpgcheck=0
+EOF
+```
+
+```
+cat > /etc/yum.repos.d/pandoc.repo <<EOF
+[pandoc]
+name=pandoc
+baseurl=https://petersen.fedorapeople.org/pandoc-standalone/epel-5/x86_64/
+enabled=1
+gpgcheck=0
+EOF
+```
+
+INSTALAÇÃO DOS PACOTES
+
+```
+yum clean all
+yum install pandoc-pdf
+yum install pandoc-citeproc
+yum install texlive
+yum install texlive-texlive.infra
+yum install texlive-framed
+yum install texlive-ulem
+yum install texlive-xetex
+yum install texlive-xetex-def
+yum install texlive-mathspec
+yum install texlive-ucs
+yum install texlive-pdftex
+yum install texlive-xetex-def
+yum install texlive-euenc
+yum install texlive-xltxtra
+yum install texlive-polyglossia
+```
