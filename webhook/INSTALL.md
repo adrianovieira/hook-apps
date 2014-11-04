@@ -83,14 +83,14 @@ Instalação
 
 Centos-7/RHEL-7
 
-```
+```shell
 wget http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-2.noarch.rpm
 rpm -ivh epel-release-7-2.noarch.rpm 
 ```
 
 Centos-6/RHEL-6
 
-```
+```shell
 wget http://mirror.globo.com/epel/6/x86_64/epel-release-6-8.noarch.rpm
 rpm -ivh epel-release-6-8.noarch.rpm
 ```
@@ -117,7 +117,7 @@ EOF
 
 INSTALAÇÃO DOS PACOTES
 
-```
+```shell
 yum clean all
 yum install pandoc-pdf
 yum install pandoc-citeproc
