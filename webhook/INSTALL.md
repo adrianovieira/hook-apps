@@ -91,7 +91,7 @@ rpm -ivh epel-release-7-2.noarch.rpm
 Centos-6/RHEL-6
 
 ```
-wget http://mirror.globo.com/epel/6/i386/epel-release-6-8.noarch.rpm
+wget http://mirror.globo.com/epel/6/x86_64/epel-release-6-8.noarch.rpm
 rpm -ivh epel-release-6-8.noarch.rpm
 ```
 
