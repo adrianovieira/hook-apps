@@ -39,28 +39,18 @@ De acordo com GARVIN (1987)3 define a oito dimensões que podem ser utilizadas e
 * Qualidade percebida;
 * Conformidade.
 
-Aqui, conformidade é definida como o grau em que o projeto e as características operacionais de um produto estão de acordo com padrões pré-estabelecidos.
-
-
-
-
-2.Crosby, P. Quality is Free (1979). New York: McGraw-Hill
-
-3.MONTEIRO, L. Fundamentos da Qualidade – INMETRO. Disponível em <http://www.inmetro.gov.br/qualidade/iaac/pdf/fundamentos-qualidade.pdf> - Acessado em 12/06/2014
+Aqui, conformidade é definida como o grau em que o projeto e as características operacionais de um produto estão de acordo com padrões pré-estabelecidos[@Confusaoevidencia2014].
 
 
 Desafios
 ========
 
-Atualmente a Dataprev possui um total de 1053 servidores físicos e 1906 servidores virtuais(1) em ambientes de plataforma baixa nos mais variados sistemas operacionais e configurações espalhados pelos três centros de processamento da empresa. Com  base nessa infraestrutura, a empresa fornece aos clientes externos grande quantidade de serviços, muitos de alta complexidade.
+Atualmente a Dataprev possui um total de 1053 servidores físicos e 1906 servidores virtuais(1) em ambientes de plataforma baixa nos mais variados sistemas operacionais e configurações espalhados pelos três centros de processamento da empresa. Com  base nessa infraestrutura, a empresa fornece aos clientes externos grande quantidade de serviços, muitos de alta complexidade[@InstitucionalDataprev2013].
 
- 1. Em 09/01/2014. Fonte: Apresentação Institucional Dataprev. Disponível em <http://www-dtpnet/content/apresentacao-institucional> - Acessado em 27/03/2014
   
 
 ![Total de servidores – Ambiente de plataforma baixa](imagens/Figura1.png)
 
-Figura 1: Total de servidores – Ambiente de plataforma baixa
-Fonte: Apresentação Institucional Dataprev.
 
 
 Benefícios
@@ -72,38 +62,27 @@ Manter a conformidade no parque tecnológico permite uma série de benefícios p
 * Redução do custo de gerenciamento, já que o mesmo é diretamente proporcional às particularidades de cada ambiente;
 * Aumento da efetividade do negócio, possível através da padronização da infraestrutura, facilitando o acesso à informações estratégicas do negócio e a tomada de decisão.
 
+
 Qualidade e Conformidade
 ========================
 
-Nos Sistemas de Gestão da Qualidade, a conformidade é a característica de atendimento às especificações de produtos ou processos, que, indiretamente, reflete  no atendimento aos requisitos do cliente. Deste modo, o contrário (não-conformidade) é, então, simplesmente definido pela negativa: não atendimento ao requisito especificado. Entrando no campo de estudo da Auditoria, uma definição importante de se salientar é a evidência objetiva(4) — qualquer informação cuja veracidade pode ser comprovada com fatos, dados, medições, ensaios e documentos. 
+Nos Sistemas de Gestão da Qualidade, a conformidade é a característica de atendimento às especificações de produtos ou processos, que, indiretamente, reflete  no atendimento aos requisitos do cliente. Deste modo, o contrário (não-conformidade) é, então, simplesmente definido pela negativa: não atendimento ao requisito especificado. Entrando no campo de estudo da Auditoria, uma definição importante de se salientar é a evidência objetiva(4) — qualquer informação cuja veracidade pode ser comprovada com fatos, dados, medições, ensaios e documentos[@Qualidade2014]. 
 
 Neste campo de estudo, muitas vezes conformidade é confundida com evidência objetiva, o que indica caminhos errados para a melhoria da qualidade. Por exemplo, caso um analista realizasse uma análise da conformidade de determinado serviço e, ao perceber diferenças entre a configuração planejada e a implantada, indicasse esta diferença como uma não-conformidade, levaria o ator da correção a atuar sobre cada diferença pontualmente, corrigindo cada sintoma, sem atuar na causa raiz. Já caso o funcionário fosse experiente, sua análise deveria apontar a não-conformidade como propriamente a causa raiz, se valendo das evidências objetivas, como provas da falha.
 
 A identificação de uma causa raiz não é uma tarefa simples. Para realizar este diagnóstico, o analista da qualidade utiliza diversos métodos e ferramentas de análise, entre elas as clássicas “7 ferramentas da Qualidade”(5). Tanto a teoria Total Quality Managemenet (TQM) e Total Quality Control (TQC) mencionam tais ferramentas como básicas a serem utilizadas por todos os níveis de uma organização. A mais utilizada para casos similares ao exemplo citado é o Diagrama de Causa e Efeito, conhecido também como Diagrama de Ishikawa ou ainda Espinha de Peixe.
 
 
-
-
- 4.A confusão entre evidência objetiva e não-conformidade pode ser o entrave para a melhoria contínua. Disponível em <http://vinhabranco.com.br/?p=1189> - Acessado em 09/04/2014
-
- 5.As 7 Ferramentas da Qualidade foram criadas por Kaoru Ishikawa com o objetivo de ajudar as organizações a resolverem seus problemas. Segundo ele, 95% dos problemas enfrentados por uma organização podem ser resolvidos com tais ferramentes, já que as mesmas foram desenvolvidas para subsidiar a análise de informações. 7 ferramentas da Qualidade. Disponível em <http://www.citisystems.com.br/7-ferramentas-da-qualidade/> - Acessado em 09/04/2014
- 
- 
- 
- 
  
  ![As 7 ferramentas da Qualidade](imagens/Tabela1.png)
  
  
  
- 
-***Tabela 1: ***  As 7 ferramentas da Qualidade.
-Fonte: Citisystems
 
 
-Segundo SELEME e STADLER (2008, p.24) apud BLÖDORN e SOARES (2011), “método é 'a sequência lógica empregada para atingir o objetivo desejado, enquanto a ferramenta é o recurso utilizado no método.' O uso integrado do método e das ferramentas forma a soma sinérgica destes. Portanto, para as organizações seguirem um correto gerenciamento da qualidade é necessária a utilização conjunta de métodos e ferramentas, garantindo assim, maiores e melhores resultados”.
+Segundo SELEME e STADLER (2008, p.24) apud BLÖDORN e SOARES (2011), “método é 'a sequência lógica empregada para atingir o objetivo desejado, enquanto a ferramenta é o recurso utilizado no método.' O uso integrado do método e das ferramentas forma a soma sinérgica destes. Portanto, para as organizações seguirem um correto gerenciamento da qualidade é necessária a utilização conjunta de métodos e ferramentas, garantindo assim, maiores e melhores resultados”[@FundamentosQualidade].
 
-Deste modo, as análises da equipe da qualidade é responsável por levantar as causas geradoras de não conformidade, assim como em conjunto com as áreas operacionais, buscar a correção das mesmas, com o objetivo de se atingir um ambiente coerente aos padrões definidos. No entanto, a empresa deve não apenas identificar as falhas atuais, mas como tentar prevenir futuros “geradores de falhas”.
+Deste modo, as análises da equipe da qualidade é responsável por levantar as causas geradoras de não conformidade, assim como em conjunto com as áreas operacionais, buscar a correção das mesmas, com o objetivo de se atingir um ambiente coerente aos padrões definidos. No entanto, a empresa deve não apenas identificar as falhas atuais, mas como tentar prevenir futuros “geradores de falhas”[@7ferramentasQualidade].
 
 
 
@@ -126,12 +105,10 @@ Sua estrutura pode ser observada no framework abaixo:
 ![Framework de Manutenção da Conformidade](imagens/Figura3.png)
 
 
-Figura 3: Framework de Manutenção da Conformidade
-Fonte: O autor
 
 Cada etapa do processo possui uma abrangência de atuação, sendo a atuação da área de Qualidade ao longo de todo o processo.
 
-Inicialmente, a área de qualidade, de acordo com as necessidades estratégicas da empresa, definirá um escopo de análise da conformidade. A partir de então, o escopo será analisado, tanto com relação à configuração encontrada em produção, assim como em relação aos padrões estabelecidos, sendo estes resultados confrontados. Caso existam divergências, as áreas pertinentes serão informadas para, em conjunto com a operação, estabelecer a conformidade do escopo. Ao final do trabalho, todas as lições aprendidas no processo são documentadas para gestão do conhecimento e aprimoramento futuro.
+Inicialmente, a área de qualidade, de acordo com as necessidades estratégicas da empresa, definirá um escopo de análise da conformidade. A partir de então, o escopo será analisado, tanto com relação à configuração encontrada em produção, assim como em relação aos padrões estabelecidos, sendo estes resultados confrontados. Caso existam divergências, as áreas pertinentes serão informadas para, em conjunto com a operação, estabelecer a conformidade do escopo. Ao final do trabalho, todas as lições aprendidas no processo são documentadas para gestão do conhecimento e aprimoramento futuro[@Gerenciamentoidentidades].
 
 
 Conclusão
@@ -149,7 +126,7 @@ Refêrencias
 remark: referências usadas nesse artigo
 references:
 
-- id: Apresentação Institucional Dataprev – Novembro e Dezembro 2013
+- id: InstitucionalDataprev2013
   title: "Apresentação Institucional Dataprev – Novembro e Dezembro 2013"
   author: 
   - family: Dataprev
@@ -163,7 +140,7 @@ references:
     year: 2014
 
 
-- id: A confusão entre evidência
+- id: Confusaoevidencia2014
   title: "A confusão entre evidência objetiva e não-conformidade pode ser o entrave para a melhoria contínua"
   author: 
   - family: Rubens Branco
@@ -177,7 +154,7 @@ references:
     year: 2013
 
 
-- id: 7 ferramentas da Qualidade
+- id: 7ferramentasQualidade
   title: "7 ferramentas da Qualidade"
   author: 
   - family: Cristiano Bertulucci Silveira 
@@ -190,7 +167,7 @@ references:
   issued:
     year: 2013
 
-- id: A função do gerenciamento de identidades e acesso para obter conformidade contínua
+- id: Gerenciamentoidentidades
   title: "A função do gerenciamento de identidades e acesso para obter conformidade contínua"
   author: 
   - family: Computer Associates
@@ -203,7 +180,7 @@ references:
   issued:
     year: 2012
 
-- id: Qualidade: Uma questão de sobrevivência para as organizações
+- id: Qualidade2014
   title: "Qualidade: Uma questão de sobrevivência para as organizações"
   author: 
   - family: Milene Blödorn
@@ -216,7 +193,7 @@ references:
   issued:
     year: 2013
 
-- id: Fundamentos da Qualidade – INMETRO
+- id: FundamentosQualidade
   title: "Fundamentos da Qualidade – INMETRO"
   author: 
   - family: INMETRO
@@ -229,6 +206,7 @@ references:
   issued:
     year: 2011
 
+---
 
 
 
