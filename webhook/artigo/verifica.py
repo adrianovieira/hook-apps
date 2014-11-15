@@ -109,33 +109,3 @@ class Verifica:
 
         file.close()
 
-class VerificaTeste:
-    def teste(self):
-        artigo_verifica = Verifica('estrutura.md')
-        artigo_verifica.topicosBase('estrutura.md')
-
-        if artigo_verifica.hasIntroducao():
-               print "**Introducao**: encontrado"
-        else: 
-               print "Topico **Introducao** não encontrado"
-
-        if artigo_verifica.hasDesafios():
-               print "**Desafios**: encontrado"
-        else: 
-               print "Topico **Desafios** não encontrado"
-
-        if artigo_verifica.hasBeneficios():
-               print "**Benefícios**: encontrado"
-        else: 
-               print "Topico **Benefícios** não encontrado"
-
-        if artigo_verifica.hasConclusao():
-               print "**Conclusão**: encontrado"
-        else: 
-               print "Topico **Conclusão** não encontrado"
-
-        if artigo_verifica.hasReferencias():
-               print "**Referências**: encontrado"
-        else: 
-               print "Topico **Referências** não encontrado"
-
