@@ -4,6 +4,7 @@ def topicosBase(file_name):
 
     introducao_found = False
     desafios_found = False
+    beneficios_found = False
 
     with open(file_name) as file:
         while True:
@@ -33,15 +34,31 @@ def topicosBase(file_name):
                    if line.find('===') == 0:
                       desafios_found = True
 
+            #  verifica tópico "Benefícios"
+            if (line.find('Benefícios') <> -1) or (line.find('# Benefícios') <> -1):
+                if (line.find('# Benefícios') == 0):
+                   beneficios_found = True
+                else:
+                   line = file.readline()
+                   if not line:
+                      break
+                   if line.find('===') == 0:
+                      beneficios_found = True
+
     file.close()
 
     if introducao_found:
        print "**Introducao**: encontrado"
     else: 
-       print u"Topico **Introducao** não encontrado"
+       print "Topico **Introducao** não encontrado"
 
     if desafios_found:
        print "**Desafios**: encontrado"
     else: 
-       print u"Topico **Desafios** não encontrado"
+       print "Topico **Desafios** não encontrado"
+
+    if beneficios_found:
+       print "**Benefícios**: encontrado"
+    else: 
+       print "Topico **Benefícios** não encontrado"
 
