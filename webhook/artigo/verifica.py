@@ -1,98 +1,125 @@
 # coding: utf-8
 
-def topicosBase(file_name):
+class Verifica:
 
-    introducao_found = False
-    desafios_found = False
-    beneficios_found = False
-    conclusao_found = False
-    referencias_found = False
+    def __init__(self, __file_name=''):
+        self.__has_introducao = False
+        self.__has_desafios = False
+        self.__has_beneficios = False
+        self.__has_conclusao = False
+        self.__has_referencias = False
+        if len(__file_name) > 0:
+           self.topicosBase(__file_name)
 
-    with open(file_name) as file:
-        while True:
-            line = file.readline()
-            if not line:
-               break
+    def hasIntroducao(self):
+        return self.__has_introducao
+    def hasDesafios(self):
+        return self.__has_desafios
+    def hasBeneficios(self):
+        return self.__has_beneficios
+    def hasConclusao(self):
+        return self.__has_conclusao
+    def hasReferencias(self):
+        return self.__has_referencias
 
-            #  verifica tópico "Introdução"
-            if (line.find('Introdução') <> -1) or (line.find('# Introdução') <> -1):
-                if (line.find('# Introdução') == 0):
-                   introducao_found = True
-                else:
-                   line = file.readline()
-                   if not line:
-                      break
-                   if line.find('===') == 0:
-                      introducao_found = True
+    def topicosBase(self, file_name):
 
-            #  verifica tópico "Desafios"
-            if (line.find('Desafios') <> -1) or (line.find('# Desafios') <> -1):
-                if (line.find('# Desafios') == 0):
-                   desafios_found = True
-                else:
-                   line = file.readline()
-                   if not line:
-                      break
-                   if line.find('===') == 0:
-                      desafios_found = True
+        self.__has_introducao = False
+        self.__has_desafios = False
+        self.__has_beneficios = False
+        self.__has_conclusao = False
+        self.__has_referencias = False
 
-            #  verifica tópico "Benefícios"
-            if (line.find('Benefícios') <> -1) or (line.find('# Benefícios') <> -1):
-                if (line.find('# Benefícios') == 0):
-                   beneficios_found = True
-                else:
-                   line = file.readline()
-                   if not line:
-                      break
-                   if line.find('===') == 0:
-                      beneficios_found = True
+        with open(file_name) as file:
+            while True:  # loop para ler conteudo do arquivo
+                line = file.readline()
+                if not line:
+                   break
 
-            #  verifica tópico "Conclusão"
-            if (line.find('Conclusão') <> -1) or (line.find('# Conclusão') <> -1):
-                if (line.find('# Conclusão') == 0):
-                   conclusao_found = True
-                else:
-                   line = file.readline()
-                   if not line:
-                      break
-                   if line.find('===') == 0:
-                      conclusao_found = True
+                #  verifica tópico "Introdução"
+                if (line.find('Introdução') <> -1) or (line.find('# Introdução') <> -1):
+                    if (line.find('# Introdução') == 0):
+                       self.__has_introducao = True
+                    else:
+                       line = file.readline()
+                       if not line:
+                          break
+                       if line.find('===') == 0:
+                          self.__has_introducao = True
 
-            #  verifica tópico "Referências"
-            if (line.find('Referências') <> -1) or (line.find('# Referências') <> -1):
-                if (line.find('# Referências') == 0):
-                   referencias_found = True
-                else:
-                   line = file.readline()
-                   if not line:
-                      break
-                   if line.find('===') == 0:
-                      referencias_found = True
+                #  verifica tópico "Desafios"
+                if (line.find('Desafios') <> -1) or (line.find('# Desafios') <> -1):
+                    if (line.find('# Desafios') == 0):
+                       self.__has_desafios = True
+                    else:
+                       line = file.readline()
+                       if not line:
+                          break
+                       if line.find('===') == 0:
+                          self.__has_desafios = True
 
-    file.close()
+                #  verifica tópico "Benefícios"
+                if (line.find('Benefícios') <> -1) or (line.find('# Benefícios') <> -1):
+                    if (line.find('# Benefícios') == 0):
+                       self.__has_beneficios = True
+                    else:
+                       line = file.readline()
+                       if not line:
+                          break
+                       if line.find('===') == 0:
+                          self.__has_beneficios = True
 
-    if introducao_found:
-       print "**Introducao**: encontrado"
-    else: 
-       print "Topico **Introducao** não encontrado"
+                #  verifica tópico "Conclusão"
+                if (line.find('Conclusão') <> -1) or (line.find('# Conclusão') <> -1):
+                    if (line.find('# Conclusão') == 0):
+                       self.__has_conclusao = True
+                    else:
+                       line = file.readline()
+                       if not line:
+                          break
+                       if line.find('===') == 0:
+                          self.__has_conclusao = True
 
-    if desafios_found:
-       print "**Desafios**: encontrado"
-    else: 
-       print "Topico **Desafios** não encontrado"
+                #  verifica tópico "Referências"
+                if (line.find('Referências') <> -1) or (line.find('# Referências') <> -1):
+                    if (line.find('# Referências') == 0):
+                       self.__has_referencias = True
+                    else:
+                       line = file.readline()
+                       if not line:
+                          break
+                       if line.find('===') == 0:
+                          self.__has_referencias = True
 
-    if beneficios_found:
-       print "**Benefícios**: encontrado"
-    else: 
-       print "Topico **Benefícios** não encontrado"
+        file.close()
 
-    if conclusao_found:
-       print "**Conclusão**: encontrado"
-    else: 
-       print "Topico **Conclusão** não encontrado"
+class VerificaTeste:
+    def teste(self):
+        artigo_verifica = Verifica('estrutura.md')
+        artigo_verifica.topicosBase('estrutura.md')
 
-    if referencias_found:
-       print "**Referências**: encontrado"
-    else: 
-       print "Topico **Referências** não encontrado"
+        if artigo_verifica.hasIntroducao():
+               print "**Introducao**: encontrado"
+        else: 
+               print "Topico **Introducao** não encontrado"
+
+        if artigo_verifica.hasDesafios():
+               print "**Desafios**: encontrado"
+        else: 
+               print "Topico **Desafios** não encontrado"
+
+        if artigo_verifica.hasBeneficios():
+               print "**Benefícios**: encontrado"
+        else: 
+               print "Topico **Benefícios** não encontrado"
+
+        if artigo_verifica.hasConclusao():
+               print "**Conclusão**: encontrado"
+        else: 
+               print "Topico **Conclusão** não encontrado"
+
+        if artigo_verifica.hasReferencias():
+               print "**Referências**: encontrado"
+        else: 
+               print "Topico **Referências** não encontrado"
 
