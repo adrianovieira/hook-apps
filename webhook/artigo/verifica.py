@@ -1,5 +1,19 @@
 # coding: utf-8
 
+'''
+Class: Verifica
+description: realizar a verificação de artigos produzidos observando sua estrutura base definida
+author: Adriano dos Santos Vieira <adriano.vieira@dataprev.gov.br>
+character encoding: UTF-8
+Estrutura base:  
+- Introdução: Descreve e contextualiza o conteúdo que o artigo irá abordar atraindo a sua leitura
+- Desafios: Descreve desafios e/ou problemas que o artigo irá abordar e buscar resolver;
+- Benefícios e/ou recomendações: Descreve os principais ganhos propostos pelo artigo, como melhoria de indicadores, processo de trabalho, etc;
+- Conclusão: Apresenta o fechamento do artigo;
+- Referências: Lista de referências bibliográficas, matérias na intranet, documentos ou ferramentas internas etc.
+
+@params: (opcional) file_name = nome de arquivo markdown a ser verificado
+'''
 class Verifica:
 
     def __init__(self, __file_name=''):
@@ -22,6 +36,8 @@ class Verifica:
     def hasReferencias(self):
         return self.__has_referencias
 
+
+    # @params: file_name = nome de arquivo markdown a ser verificado
     def topicosBase(self, file_name):
 
         self.__has_introducao = False
