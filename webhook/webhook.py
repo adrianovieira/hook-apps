@@ -12,6 +12,9 @@ import gitlab
 import zipfile, StringIO
 import os, subprocess
 
+# classes e metodos relacionados a verificações em artigos
+import artigo
+
 # ipdb: inclusão desse módulo é autorealizada na função "index()"
 
 app = Flask(__name__)
@@ -336,6 +339,28 @@ def index():
       if artigoDownload_zip(webhook_data['object_attributes']['target_project_id'], \
                      webhook_data['object_attributes']['id'], \
                      webhook_data['object_attributes']['source_branch']):
+
+        # realisar verificação de topicos base do artigo
+        topicos_base_msg = 'Uma estrutura base facilita ao leitor se localizar no leitura dos artigos. Neste sentido, foi definida uma estrutura base para os artigos que está disponível em <http://www-git/documentos/artigos/blob/master/estrutura-para-criar-artigos-tecnicos/Estrutura_e_metodo_padrao_para_criar_artigos.md#estrutura-padr-o-para-criar-artigos>. Foi percebida a ausência do(s) tópico(s) a seguir:  \n' 
+        has_topicos_base = True
+        artigo = artigo.verifica.Verifica(app.artigo_path+app.artigo_name)
+        if not artigo.hasIntroducao():
+          has_topicos_base = False
+          topicos_base_msg += '- **Introdução**: Descreve e contextualiza o conteúdo que o artigo irá abordar atraindo a sua leitura  \n' 
+        if not artigo.hasDesafios():
+          has_topicos_base = False
+          topicos_base_msg += '- **Desafios**: Descreve desafios e/ou problemas que o artigo irá abordar e buscar resolver  \n' 
+        if not artigo.hasBeneficios():
+          has_topicos_base = False
+          topicos_base_msg += '- **Benefícios e/ou recomendações**: Descreve os principais ganhos propostos pelo artigo, como melhoria de indicadores, processo de trabalho, etc  \n' 
+        if not artigo.hasConclusao():
+          has_topicos_base = False
+          topicos_base_msg += '- **Conclusão**: Apresenta o fechamento do artigo  \n' 
+        if not artigo.hasReferencias():
+          has_topicos_base = False
+          topicos_base_msg += '- **Referências**: Lista de referências bibliográficas, matérias na intranet, documentos ou ferramentas internas etc  \n' 
+        if not has_topicos_base: 
+          addcommenttomergerequest(topicos_base_msg) 
 
         # realisar a conversao de artigo para PDF
         if artigoPandocParser(webhook_data['object_attributes']['target_project_id'], \
