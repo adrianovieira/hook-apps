@@ -53,8 +53,8 @@ class Verifica:
                    break
 
                 #  verifica tópico "Introdução"
-                if (line.find('Introdução') <> -1) or (line.find('# Introdução') <> -1):
-                    if (line.find('# Introdução') == 0):
+                if (line.find('Introdu') <> -1) or (line.find('# Introdu') <> -1):
+                    if (line.find('# Introdu') == 0):
                        self.__has_introducao = True
                     else:
                        line = file.readline()
@@ -75,8 +75,8 @@ class Verifica:
                           self.__has_desafios = True
 
                 #  verifica tópico "Benefícios"
-                if (line.find('Benefícios') <> -1) or (line.find('# Benefícios') <> -1):
-                    if (line.find('# Benefícios') == 0):
+                if (line.find('Benef') <> -1) or (line.find('# Benef') <> -1):
+                    if (line.find('# Benef') == 0):
                        self.__has_beneficios = True
                     else:
                        line = file.readline()
@@ -86,8 +86,8 @@ class Verifica:
                           self.__has_beneficios = True
 
                 #  verifica tópico "Conclusão"
-                if (line.find('Conclusão') <> -1) or (line.find('# Conclusão') <> -1):
-                    if (line.find('# Conclusão') == 0):
+                if (line.find('Conclus') <> -1) or (line.find('# Conclus') <> -1):
+                    if (line.find('# Conclus') == 0):
                        self.__has_conclusao = True
                     else:
                        line = file.readline()
@@ -97,8 +97,8 @@ class Verifica:
                           self.__has_conclusao = True
 
                 #  verifica tópico "Referências"
-                if (line.find('Referências') <> -1) or (line.find('# Referências') <> -1):
-                    if (line.find('# Referências') == 0):
+                if (line.find('Refer') <> -1) or (line.find('# Refer') <> -1):
+                    if (line.find('# Refer') == 0):
                        self.__has_referencias = True
                     else:
                        line = file.readline()
