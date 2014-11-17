@@ -109,9 +109,10 @@ def artigoDownload_zip(p_target_project_id, p_mergerequest_id, p_mergerequest_br
   if app.debug: print app.log_message
 
   zip_file_req_branch = requests.get(zip_file_req_branch_url)
+  #import ipdb; ipdb.set_trace() # ativação de debug interativo
   if not zip_file_req_branch.ok:
-    app.log_message = "**branch [%s]** não obtida - status: [%s]" \
-                      % p_mergerequest_branch % zip_file_req_branch.status_code
+    app.log_message = u"**branch [%s]** não obtida - status: [%s]" \
+                      % (p_mergerequest_branch, zip_file_req_branch.status_code)
     if app.debug: print app.log_message
 
   if zip_file_req_branch.ok:
