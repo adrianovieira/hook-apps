@@ -109,7 +109,6 @@ def artigoDownload_zip(p_target_project_id, p_mergerequest_id, p_mergerequest_br
   if app.debug: print app.log_message
 
   zip_file_req_branch = requests.get(zip_file_req_branch_url)
-  #import ipdb; ipdb.set_trace() # ativação de debug interativo
   if not zip_file_req_branch.ok:
     app.log_message = u"**branch [%s]** não obtida - status: [%s]" \
                       % (p_mergerequest_branch, zip_file_req_branch.status_code)
@@ -342,34 +341,40 @@ def index():
                      webhook_data['object_attributes']['source_branch']):
 
         # realisar verificação de topicos base do artigo
-        topicos_base_msg = 'Uma estrutura base facilita ao leitor se localizar no leitura dos artigos. Neste sentido, foi definida uma estrutura base para os artigos que está disponível em <http://www-git/documentos/artigos/blob/master/estrutura-para-criar-artigos-tecnicos/Estrutura_e_metodo_padrao_para_criar_artigos.md#estrutura-padr-o-para-criar-artigos>. Foi percebida a ausência do(s) tópico(s) a seguir:  \n' 
+        if app.debug: print "\nRealisando verificação de topicos base do artigo...\n"
+
+        topicos_base_msg = 'Uma estrutura base facilita ao leitor se localizar na leitura dos artigos. Neste sentido, foi definida uma estrutura base para os artigos que está disponível em <http://www-git/documentos/artigos/blob/master/estrutura-para-criar-artigos-tecnicos/Estrutura_e_metodo_padrao_para_criar_artigos.md#estrutura-padr-o-para-criar-artigos>. Foi percebida a ausência do(s) tópico(s) a seguir:  \n' 
         has_topicos_base = True
-        artigo = artigo.verifica.Verifica(app.artigo_path+app.artigo_name)
-        if not artigo.hasIntroducao():
+        artigo_verifica = artigo.verifica.Verifica(app.artigo_path+app.artigo_name+'.md')
+        if not artigo_verifica.hasIntroducao():
           has_topicos_base = False
           topicos_base_msg += '- **Introdução**: Descreve e contextualiza o conteúdo que o artigo irá abordar atraindo a sua leitura  \n' 
-        if not artigo.hasDesafios():
+        if not artigo_verifica.hasDesafios():
           has_topicos_base = False
           topicos_base_msg += '- **Desafios**: Descreve desafios e/ou problemas que o artigo irá abordar e buscar resolver  \n' 
-        if not artigo.hasBeneficios():
+        if not artigo_verifica.hasBeneficios():
           has_topicos_base = False
           topicos_base_msg += '- **Benefícios e/ou recomendações**: Descreve os principais ganhos propostos pelo artigo, como melhoria de indicadores, processo de trabalho, etc  \n' 
-        if not artigo.hasConclusao():
+        if not artigo_verifica.hasConclusao():
           has_topicos_base = False
           topicos_base_msg += '- **Conclusão**: Apresenta o fechamento do artigo  \n' 
-        if not artigo.hasReferencias():
+        if not artigo_verifica.hasReferencias():
           has_topicos_base = False
           topicos_base_msg += '- **Referências**: Lista de referências bibliográficas, matérias na intranet, documentos ou ferramentas internas etc  \n' 
         if not has_topicos_base: 
-          addcommenttomergerequest(topicos_base_msg) 
-
-        # realisar a conversao de artigo para PDF
-        if artigoPandocParser(webhook_data['object_attributes']['target_project_id'], \
-                        webhook_data['object_attributes']['id'], \
-                        app.artigo_path, app.artigo_name):
-          status = '{"status": "OK"}'
-        else:
           status = '{"status": "notOK"}'
+          app.gitlab.addcommenttomergerequest(webhook_data['object_attributes']['target_project_id'], \
+                                              webhook_data['object_attributes']['id'], \
+                                              topicos_base_msg) 
+        else:
+            # realisar a conversao de artigo para PDF
+            if app.debug: print "\nRealisando a conversao de artigo para PDF...\n"
+            if artigoPandocParser(webhook_data['object_attributes']['target_project_id'], \
+                            webhook_data['object_attributes']['id'], \
+                            app.artigo_path, app.artigo_name):
+              status = '{"status": "OK"}'
+            else:
+              status = '{"status": "notOK"}'
       else:
         status = '{"status": "notOK"}'
 
