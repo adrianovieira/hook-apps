@@ -33,9 +33,6 @@ def artigoPandocParser(p_target_project_id, p_mergerequest_id,\
 
   result = False
 
-  if app.setup['DEBUG'] == 'True' and int(app.setup['DEBUG_LEVEL']) == DEBUG_INTERATIVO:
-     import ipdb; ipdb.set_trace() # ativação de debug interativo
-
   if app.debug: print 'APP_Artigo:'
   if app.debug: print p_app_artigo_path
   if app.debug: print p_app_artigo_name
@@ -191,6 +188,8 @@ def getConfig():
   app.setup['make'] = Config.get('enviroment', 'make')
   app.setup['DEBUG'] = Config.get('enviroment', 'DEBUG')
   app.setup['DEBUG_LEVEL'] = Config.get('enviroment', 'DEBUG_LEVEL')
+  app.setup['DEBUG_HOST'] = Config.get('enviroment', 'DEBUG_HOST')
+  app.setup['DEBUG_PORT'] = int(Config.get('enviroment', 'DEBUG_PORT'))
 
   '''
   obtem dados de configuracao personalizados
@@ -222,6 +221,10 @@ def getConfig():
       app.setup['DEBUG'] = Config.get('enviroment', 'DEBUG')
     if Config.get('enviroment', 'DEBUG_LEVEL'):
       app.setup['DEBUG_LEVEL'] = Config.get('enviroment', 'DEBUG_LEVEL')
+    if Config.get('enviroment', 'DEBUG_HOST'):
+      app.setup['DEBUG_HOST'] = Config.get('enviroment', 'DEBUG_HOST')
+    if Config.get('enviroment', 'DEBUG_PORT'):
+      app.setup['DEBUG_PORT'] = int(Config.get('enviroment', 'DEBUG_PORT'))
   except:
     app.log_message = "WARNING: can't read custom-config file."
     print app.log_message
@@ -396,8 +399,11 @@ if __name__ == '__main__':
     if app.setup['production'] == 'False': # para devel ou testes
       if app.setup['DEBUG'] == 'True':
         app.debug = True
-      app.run(host='0.0.0.0')
+        if app.setup['DEBUG'] == 'True' and int(app.setup['DEBUG_LEVEL']) == DEBUG_INTERATIVO:
+           import ipdb; ipdb.set_trace() # ativação de debug interativo
+
+      app.run(host=app.setup['DEBUG_HOST'], port=app.setup['DEBUG_PORT'])
     else:
-      app.run()
+      app.run(port=3000)
   else:
     print app.log_message #"ERROR: trying to read dist-config file."
