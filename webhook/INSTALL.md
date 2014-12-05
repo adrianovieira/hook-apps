@@ -3,6 +3,8 @@ WebHook
 
 ***Gitlab***^[http://www.gitlab.com/] *Web Hook* para realizar conversão automatizada de documentos/artigos para PDF.
 
+A aplicação está disponível nesse repostiório no diretório ***webhook***.
+
 Pré-requisitos
 --------------
 
@@ -36,7 +38,7 @@ Exemplo para a forma de acesso:
 Estrutura do diretório
 ----------------------
 
-```texinfo
+```text
 README.md:                   Visão geral desse Web Hook
 INSTALL.md                   Este documento
 webhook.py                   A aplicação para Web Hook do repositório
@@ -140,9 +142,22 @@ yum install texlive-polyglossia
 
 ### Dica: Publicar a aplicação com WSGI no *apache* (CentOS-7/RHEL-7)
 
-É necessário que a aplicação ***webhook*** seja extraída do *git (www-git)* no repositório *www-git/documentos/artigos/webhook*
+É necessário que a aplicação ***webhook*** seja extraída desse repositório *git* do diretório ***webhook***.
 
-#### Dica: Intalar WSGI *apache::mod_wsgi* (CentOS/RHEL)
+#### Dica: Instalar Flask *python::flask* (CentOS/RHEL)
+
+```bash
+yum install python-Flask
+```
+
+- Instalar demais dependências da aplicação
+
+```bash
+pip install -r requirements.txt
+```
+
+
+#### Dica: Instalar WSGI *apache::mod_wsgi* (CentOS/RHEL)
 
 ```bash
 yum install mod_wsgi
