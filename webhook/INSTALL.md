@@ -82,7 +82,7 @@ Instalação
    Esse web hook é para conversão automatizada de artigos quando for solicitado ***"merge request"*** via interface do *Gitlab*.
    - acesse e configure o web hook para *merge request* do projeto em <http://www-git/documentos/artigos/hooks>
    - 
-   
+
 ### Dica: Intalar *Pandoc/Texlive* (CentOS/RHEL)
 
 Centos-7/RHEL-7
@@ -140,22 +140,23 @@ yum install texlive-xltxtra
 yum install texlive-polyglossia
 ```
 
-### Dica: Publicar a aplicação com WSGI no *apache* (CentOS-7/RHEL-7)
+### Dica: Instalar dependências para a aplicação
 
-É necessário que a aplicação ***webhook*** seja extraída desse repositório *git* do diretório ***webhook***.
-
-#### Dica: Instalar Flask *python::flask* (CentOS/RHEL)
+#### Dica: Instalar *python::flask* (CentOS/RHEL)
 
 ```bash
 yum install python-Flask
 ```
 
-- Instalar demais dependências da aplicação
+- Instalar demais dependências para a aplicação
 
 ```bash
 pip install -r requirements.txt
 ```
 
+### Dica: Publicar a aplicação com WSGI no *apache* (CentOS-7/RHEL-7)
+
+É necessário que a aplicação ***webhook*** seja extraída desse repositório *git* do diretório ***webhook***.
 
 #### Dica: Instalar WSGI *apache::mod_wsgi* (CentOS/RHEL)
 
