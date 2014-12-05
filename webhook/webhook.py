@@ -15,10 +15,6 @@ import os, subprocess
 # classes e metodos relacionados a verificações em artigos
 import artigo
 
-# ipdb: inclusão desse módulo é autorealizada na função "index()"
-
-app = Flask(__name__)
-
 '''
 artigoPandocParser: realizara a conversão do artigo para PDF
 
@@ -256,6 +252,20 @@ GL_STATUS = {
    'can_be_merged':'can_be_merged'
    }
 
+'''
+Inicia aplicação
+'''
+def __app_init():
+    global app
+    app = Flask(__name__)
+    app.setup = {} # global de configuracao
+    if not getConfig(): # obtem dados de configuracao inicial
+       print app.log_message #"ERROR: trying to read dist-config file."
+
+    return app
+
+app = __app_init()
+
 @app.route('/',methods=['GET', 'POST'])
 def index():
 
@@ -390,20 +400,16 @@ def internal_error(error):
     return '{"status": "500 error"}'
 
 '''
-Inicia aplicação
+Inicia aplicação em modo interativo (ex: python webhook.py)
 '''
-app.setup = {} # global de configuracao
-
 if __name__ == '__main__':
-  if getConfig(): # obtem dados de configuracao inicial
-    if app.setup['production'] == 'False': # para devel ou testes
-      if app.setup['DEBUG'] == 'True':
-        app.debug = True
-        if app.setup['DEBUG'] == 'True' and int(app.setup['DEBUG_LEVEL']) == DEBUG_INTERATIVO:
-           import ipdb; ipdb.set_trace() # ativação de debug interativo
+   if app.setup['production'] == 'False': # para devel ou testes
+     if app.setup['DEBUG'] == 'True':
+       app.debug = True
+       if app.setup['DEBUG'] == 'True' and int(app.setup['DEBUG_LEVEL']) == DEBUG_INTERATIVO:
+          import ipdb; ipdb.set_trace() # ativação de debug interativo
 
-      app.run(host=app.setup['DEBUG_HOST'], port=app.setup['DEBUG_PORT'])
-    else:
-      app.run(port=3000)
-  else:
-    print app.log_message #"ERROR: trying to read dist-config file."
+     app.run(host=app.setup['DEBUG_HOST'], port=app.setup['DEBUG_PORT'])
+   else:
+     app.run(host='0.0.0.0', port=5000)
+
