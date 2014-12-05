@@ -38,7 +38,7 @@ Exemplo para a forma de acesso:
 Estrutura do diretório
 ----------------------
 
-```text
+```
 README.md:                   Visão geral desse Web Hook
 INSTALL.md                   Este documento
 webhook.py                   A aplicação para Web Hook do repositório
