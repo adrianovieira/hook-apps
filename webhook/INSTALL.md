@@ -45,7 +45,9 @@ webhook-dist.cfg:            Arquivo de configuração padrão (obrigatório)
 requirements.txt:            Requisitos padrão para a aplicação
 requirements-ipdb.txt:       Requisitos para debug interativo
 teste/                       Alguns scripts NodeJS para teste de POST neste hook
-
+artigo/                      Pacote contendo funcionalidades diversas para artigos, como por exemplo: verificar a estrutura base dos artigos
+webhook-dist.wsgi            Configuração de referência para *apache::mod_wsgi*
+webhook-vhttpd-dist.conf     Configuração de referência para *apache::vhost::mod_wsgi*
 ```
 
 Instalação
