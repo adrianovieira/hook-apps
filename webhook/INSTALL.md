@@ -190,8 +190,8 @@ Copiar o arquivo ```webhook-vhttpd-dist.conf``` para ```/etc/httpd/conf.d/webhoo
 1. **Dados de acesso *VIP* a aplicação**:
 
 	```texinfo
-	#ServerName  hook.www-git 
-	#ServerAlias hook.www-git.prevnet
+	ServerName  hook.www-git 
+	ServerAlias hook.www-git.prevnet
 	```
 
 1. **Caminhos raiz onde a aplicação foi publicada**:
