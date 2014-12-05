@@ -70,7 +70,7 @@ Instalação
        ```path_tmp = /var/tmp/webhook_tmp/download```
 
        exemplo no *apache*:  
-       ```Alias /download /var/tmp/webhook_tmp/download```
+       ```Alias /artigos-download /var/tmp/webhook_tmp/artigos-download```
 
    - download será como a seguir:
      ```http://hook.www-git/artigos-download/<link_artigo_PDF>```
@@ -135,3 +135,60 @@ yum install texlive-euenc
 yum install texlive-xltxtra
 yum install texlive-polyglossia
 ```
+
+### Dica: Publicar a aplicação com WSGI no *apache* (CentOS-7/RHEL-7)
+
+É necessário que a aplicação ***webhook*** seja extraída do *git (www-git)* no repositório *www-git/documentos/artigos/webhook*
+
+#### Dica: Intalar WSGI *apache::mod_wsgi* (CentOS/RHEL)
+
+```bash
+yum install mod_wsgi
+```
+
+#### Dica: Configurar WSGI *apache::mod_wsgi* (CentOS/RHEL)
+
+Copiar o arquivo ```webhook-dist.wsgi``` para ```webhook.wsgi``` e ajustar o caminho (*path*) de onde a aplicação estiver publicada.
+
+**Exemplo:**
+```python
+de: 
+    sys.path.insert(0, '/path/to/webhook')
+
+para: 
+    sys.path.insert(0, '/var/www/webhook')
+```
+
+#### Dica: Configurar virtualhost com *apache::mod_wsgi* (CentOS/RHEL)
+
+Copiar o arquivo ```webhook-vhttpd-dist.conf``` para ```/etc/httpd/conf.d/webhook-vhttpd.conf``` e ajustar dados de configuração de publicação da aplicação. Como por exemplo:
+
+1. **Dados de usuário e grupo que rodam o** *httpserver*:
+
+	```texinfo
+	user=apache group=apache
+	```
+
+1. **Dados de acesso *VIP* a aplicação**:
+
+	```texinfo
+	#ServerName  hook.www-git 
+	#ServerAlias hook.www-git.prevnet
+	```
+
+1. **Caminhos raiz onde a aplicação foi publicada**:
+
+	```texinfo
+	de:
+		/path/to/webhook
+	para:
+		/var/www/webhook
+	```
+
+1. **Caminho onde serão armazenados para *download* os PDF gerados**:
+
+	Esse é o mesmo caminho onde a aplicação deve ser configurada para que o *parser* de conversão para PDF armazene os arquivos gerados.
+	
+	```texinfo
+	Alias /artigos-download /var/tmp/webhook_tmp/artigos-download
+	```
