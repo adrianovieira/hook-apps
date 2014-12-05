@@ -166,7 +166,7 @@ def getConfig():
   # obtem dados de configuracao padrao
   '''
   try:
-    ok = Config.read('webhook-dist.cfg')
+    ok = Config.read(os.path.dirname(os.path.abspath(__file__))+'/webhook-dist.cfg')
     if not ok: raise
   except:
     app.log_message = "ERROR: trying to read dist-config file."
@@ -191,7 +191,7 @@ def getConfig():
   obtem dados de configuracao personalizados
   '''
   try:
-    ok = Config.read('webhook.cfg')
+    ok = Config.read(os.path.dirname(os.path.abspath(__file__))+'/webhook.cfg')
     if not ok: raise
     if Config.get('enviroment', 'production'):
       app.setup['production'] = Config.get('enviroment', 'production')
