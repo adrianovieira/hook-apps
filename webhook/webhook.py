@@ -33,7 +33,7 @@ def artigoPandocParser(p_target_project_id, p_mergerequest_id,\
   if app.debug: print p_app_artigo_path
   if app.debug: print p_app_artigo_name
 
-  app.log_message = u'O artigo **%s** está sendo convertido para ***PDF***!' % p_app_artigo_name
+  app.log_message = u'O artigo **%s** esta sendo convertido para ***PDF***!' % p_app_artigo_name
   if app.debug: print app.log_message
 
   # insere comentário no merge request
@@ -50,7 +50,7 @@ def artigoPandocParser(p_target_project_id, p_mergerequest_id,\
   os.chdir(root_dir)
 
   if parse == '':
-      app.log_message = 'Ocorreu erro ( ***make*** ) na conversão do arquivo (%s) para ***PDF***!'\
+      app.log_message = 'Ocorreu erro ( ***make*** ) na conversao do arquivo (%s) para ***PDF***!'\
                         % p_app_artigo_name
 
   if "[ OK ]" in parse:
@@ -62,7 +62,7 @@ def artigoPandocParser(p_target_project_id, p_mergerequest_id,\
     app.log_message = 'O artigo (%s) foi convertido para ***[PDF](%s) ***!' % (p_app_artigo_name, link)
     result = True
   else:
-    app.log_message = u'Ocorreu erro ( ***pandoc*** ) na conversão do arquivo (%s) para ***PDF***!' % p_app_artigo_name
+    app.log_message = u'Ocorreu erro ( ***pandoc*** ) na conversao do arquivo (%s) para ***PDF***!' % p_app_artigo_name
     if app.debug: print parse
     app.gitlab.addcommenttomergerequest(p_target_project_id, \
                                         p_mergerequest_id, parse)
@@ -86,7 +86,7 @@ def artigoDownload_zip(p_target_project_id, p_mergerequest_id, p_mergerequest_br
 
   result = False
 
-  app.log_message = u"A ***branch* [%s]** e artigo serão obtidos do repositório!" \
+  app.log_message = u"A ***branch* [%s]** e artigo serao obtidos do repositorio!" \
                             % p_mergerequest_branch
 
   if app.debug: print app.log_message
@@ -133,6 +133,8 @@ def artigoDownload_zip(p_target_project_id, p_mergerequest_id, p_mergerequest_br
 
       # local para extrair arquivos (conforme ID do último commit)
       path_zip_extract = app.setup['path_tmp']+'/'+branch_info['commit']['id']
+      app.log_message = u"Extraindo **branch** em %s" % path_zip_extract
+      if app.debug: print app.log_message
 
       # extrai o zip para um diretório temporário
       zip_content.extractall(path_zip_extract)
@@ -264,6 +266,10 @@ def __app_init():
     app.setup = {} # global de configuracao
     if not getConfig(): # obtem dados de configuracao inicial
        print app.log_message #"ERROR: trying to read dist-config file."
+
+    if app.setup['production'] == 'False': # para devel ou testes
+       if app.setup['DEBUG'] == 'True':
+          app.debug = True
 
     return app
 
