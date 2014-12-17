@@ -58,7 +58,7 @@ def artigoPandocParser(p_target_project_id, p_mergerequest_id,\
     download = os.popen("mkdir -p "+download_path).read()
     download = os.popen("cp "+p_app_artigo_path+p_app_artigo_name+'.pdf'+" "\
                              +download_path)
-    link = app.setup['webhook_host_url']+'/download/'+app.artigo_branch_id+'/'+p_app_artigo_name+'.pdf'
+    link = app.setup['webhook_host_url']+'/'+app.setup['gitlab_url_download']+'/'+app.artigo_branch_id+'/'+p_app_artigo_name+'.pdf'
     app.log_message = 'O artigo (%s) foi convertido para ***[PDF](%s) ***!' % (p_app_artigo_name, link)
     result = True
   else:
@@ -175,6 +175,7 @@ def getConfig():
   app.setup['production'] = Config.get('enviroment', 'production')
   app.setup['gitlab_host'] = Config.get('enviroment', 'gitlab_host')
   app.setup['gitlab_url'] = Config.get('enviroment', 'gitlab_url')
+  app.setup['gitlab_url_download'] = Config.get('enviroment', 'gitlab_url_download')
   app.setup['gitlab_target_branch'] = Config.get('enviroment', 'gitlab_target_branch')
   app.setup['gitlab_webhook_user'] = Config.get('enviroment', 'gitlab_webhook_user')
   app.setup['gitlab_webhook_pass'] = Config.get('enviroment', 'gitlab_webhook_pass')
@@ -203,6 +204,8 @@ def getConfig():
       app.setup['gitlab_webhook_pass'] = Config.get('enviroment', 'gitlab_webhook_pass')
     if Config.get('enviroment', 'gitlab_url'):
       app.setup['gitlab_url'] = Config.get('enviroment', 'gitlab_url')
+    if Config.get('enviroment', 'gitlab_url_download'):
+      app.setup['gitlab_url_download'] = Config.get('enviroment', 'gitlab_url_download')
     if Config.get('enviroment', 'gitlab_target_branch'):
       app.setup['gitlab_target_branch'] = Config.get('enviroment', 'gitlab_target_branch')
     if Config.get('enviroment', 'path_template'):
