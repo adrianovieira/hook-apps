@@ -10,11 +10,11 @@ character encoding: UTF-8
 '''
 class VerificaMetadados:
 
-    def __init__(self, __file_name=''):
+    def __init__(self, file_name=''):
         self.__has_dados_autor= False
         self.__has_dados_referencias = False
-        if len(__file_name) > 0:
-           self.__file_name = __file_name
+        if len(file_name) > 0:
+           self.__file_name = file_name
         else:
            self.__file_name = ''
 
