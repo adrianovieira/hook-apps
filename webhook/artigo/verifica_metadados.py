@@ -5,12 +5,6 @@ Class: VerificaMetadados
 description: realizar a verificação de artigos produzidos observando existência de metadados de autor e referências bibliográficas
 author: Adriano dos Santos Vieira <adriano.vieira@dataprev.gov.br>
 character encoding: UTF-8
-Estrutura base:  
-- Introdução: Descreve e contextualiza o conteúdo que o artigo irá abordar atraindo a sua leitura
-- Desafios: Descreve desafios e/ou problemas que o artigo irá abordar e buscar resolver;
-- Benefícios e/ou recomendações: Descreve os principais ganhos propostos pelo artigo, como melhoria de indicadores, processo de trabalho, etc;
-- Conclusão: Apresenta o fechamento do artigo;
-- Referências: Lista de referências bibliográficas, matérias na intranet, documentos ou ferramentas internas etc.
 
 @params: (opcional) file_name = nome de arquivo markdown a ser verificado
 '''
@@ -36,7 +30,7 @@ class VerificaMetadados:
         self.__has_dados_autor= False
         self.__has_dados_referencias = False
 
-        if (len(file_name) = 0) and (len(self.__file_name) > 0):
+        if (len(file_name) == 0) and (len(self.__file_name) > 0):
            file_name = self.__file_name
 
         with open(file_name) as file:
