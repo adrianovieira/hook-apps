@@ -15,6 +15,7 @@ class VerificaMetadados:
         self.__has_dados_referencias = False
         if len(file_name) > 0:
            self.__file_name = file_name
+           self.verificaMetadados(self.__file_name)
         else:
            self.__file_name = ''
 
