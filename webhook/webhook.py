@@ -298,7 +298,7 @@ def index():
       if app.debug: print app.log_message
       return '{"status": "'+app.log_message+'"}'
 
-    # autentica na servidor gitlab
+    # autentica no servidor gitlab
     try:
       ok = app.gitlab.login(app.setup['gitlab_webhook_user'], app.setup['gitlab_webhook_pass'])
       if not ok: raise
@@ -362,6 +362,27 @@ def index():
                      webhook_data['object_attributes']['id'], \
                      webhook_data['object_attributes']['source_branch']):
 
+        # realisar verificação de metadados de autor e referencias bibliograficas
+        if app.debug: print "\nRealisando verificação de metadados de autor e referencias bibliograficas do artigo...\n"
+
+        metadados_msg = 'Na estrutura base há grupos de dados (metadados) que contêm atributos para facilitar a formatação do artigo. Esta estrutura está disponível em <http://www-git/documentos/artigos/blob/master/estrutura-para-criar-artigos-tecnicos/Estrutura_e_metodo_padrao_para_criar_artigos.md#estrutura-padr-o-para-criar-artigos>. Foi percebida a ausência do(s) grupo(s) de dado(s) a seguir:  \n' 
+        has_dados_autor = True
+        artigo_verifica_metadados = artigo.VerificaMetadados(app.artigo_path+app.artigo_name+'.md')
+        if not artigo_verifica_metadados.hasDadosAutor():
+          has_dados_autor = False
+          metadados_msg += '- **Metadados de autor**: Grupo de dados a ser usado para identificar o artigo' 
+
+        has_dados_referencias = True
+        if not artigo_verifica_metadados.hasDadosReferencias():
+          has_dados_referencias = False
+          metadados_msg += '- **Metadados de referências**: Grupo de dados a ser usado em citações e referências bibliográficas. Detalhes no uso de citações em: <http://www-git/documentos/artigos    /blob/master/estrutura-para-criar-artigos-tecnicos/Estrutura_e_metodo_padrao_para_criar_artigos.md#>' 
+
+        if (not has_dados_autor) or (not has_dados_referencias): 
+          status = '{"status": "notOK"}'
+          app.gitlab.addcommenttomergerequest(webhook_data['object_attributes']['target_project_id'], \
+                                              webhook_data['object_attributes']['id'], \
+                                              metadados_msg) 
+
         # realisar verificação de topicos base do artigo
         if app.debug: print "\nRealisando verificação de topicos base do artigo...\n"
 
@@ -388,7 +409,8 @@ def index():
           app.gitlab.addcommenttomergerequest(webhook_data['object_attributes']['target_project_id'], \
                                               webhook_data['object_attributes']['id'], \
                                               topicos_base_msg) 
-        else:
+
+        if (has_topicos_base) and (has_dados_autor) and (has_dados_referencias): 
             # realisar a conversao de artigo para PDF
             if app.debug: print "\nRealisando a conversao de artigo para PDF...\n"
             if artigoPandocParser(webhook_data['object_attributes']['target_project_id'], \
