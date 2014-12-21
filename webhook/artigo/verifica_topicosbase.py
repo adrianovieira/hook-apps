@@ -1,7 +1,7 @@
 # coding: utf-8
 
 '''
-Class: Verifica
+Class: VerificaTopicosBase
 description: realizar a verificação de artigos produzidos observando sua estrutura base definida
 author: Adriano dos Santos Vieira <adriano.vieira@dataprev.gov.br>
 character encoding: UTF-8
@@ -14,7 +14,7 @@ Estrutura base:
 
 @params: (opcional) file_name = nome de arquivo markdown a ser verificado
 '''
-class Verifica:
+class VerificaTopicosBase:
 
     def __init__(self, __file_name=''):
         self.__has_introducao = False
