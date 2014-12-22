@@ -370,12 +370,12 @@ def index():
         artigo_verifica_metadados = artigo.VerificaMetadados(app.artigo_path+app.artigo_name+'.md')
         if not artigo_verifica_metadados.hasDadosAutor():
           has_dados_autor = False
-          metadados_msg += '- **Metadados de autor**: Grupo de dados a ser usado para identificar o artigo' 
+          metadados_msg += '- **Metadados de autor**: Grupo de dados a ser usado para identificar o artigo  \n' 
 
         has_dados_referencias = True
         if not artigo_verifica_metadados.hasDadosReferencias():
           has_dados_referencias = False
-          metadados_msg += '- **Metadados de referências**: Grupo de dados a ser usado em citações e referências bibliográficas. Detalhes no uso de citações em: <http://www-git/documentos/artigos    /blob/master/estrutura-para-criar-artigos-tecnicos/Estrutura_e_metodo_padrao_para_criar_artigos.md#>' 
+          metadados_msg += '- **Metadados de referências**: Grupo de dados a ser usado em citações e referências bibliográficas. Detalhes no uso de citações em: <http://www-git/documentos/artigos/blob/master/crie-conteudo-nao-leiaute/crie-conteudo-nao-leiaute.md#cita-es-de-autores-refer-ncias-bibliogr-ficas>  \n'
 
         if (not has_dados_autor) or (not has_dados_referencias): 
           status = '{"status": "notOK"}'
