@@ -7,12 +7,12 @@ Repositório do código fonte:
 
 origin:
 
-- prenet <http://www-git.prevnet/documentos/hook-apps>
+- **prevnet**: <http://www-git.prevnet/documentos/hook-apps>
 
 Alternatives:
 
-- Bitbucket <https://bitbucket.org/adriano_svieira/hook-apps>
-- GitHub <https://github.com/adrianovieira/hook-apps/>
+- **Bitbucket**: <https://bitbucket.org/adriano_svieira/hook-apps>
+- **GitHub**: <https://github.com/adrianovieira/hook-apps/>
 
 A fazer
 -------
