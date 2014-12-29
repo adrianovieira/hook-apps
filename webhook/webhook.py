@@ -5,7 +5,7 @@ description: permitir hook de conversão pandoc em "documentos/artigos"
 author: Adriano dos Santos Vieira <adriano.vieira@dataprev.gov.br>
 character encoding: UTF-8
 '''
-from flask import Flask, request, json
+from flask import Flask, render_template, request, json
 import requests
 import ConfigParser
 import gitlab
@@ -429,6 +429,13 @@ def index():
 def internal_error(error):
 
     return '{"status": "500 error"}'
+
+@app.route('/about',methods=['GET'])
+def about():
+
+    __version = '1.5.1'
+
+    return render_template('about.html')
 
 '''
 Inicia aplicação em modo interativo (ex: python webhook.py)
