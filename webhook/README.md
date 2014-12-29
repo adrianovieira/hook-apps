@@ -3,7 +3,16 @@ WebHook
 
 ***Gitlab***^[http://www.gitlab.com/] *Web Hook* para realizar conversão automatizada de documentos/artigos para PDF.
 
-Repositório do código fonte: Bitbucket http://bitbucket.org/adriano_svieira/pandoc-webhook
+Repositório do código fonte: 
+
+origin:
+
+- **prevnet**: <http://www-git.prevnet/documentos/hook-apps>
+
+Alternatives:
+
+- **Bitbucket**: <https://bitbucket.org/adriano_svieira/hook-apps>
+- **GitHub**: <https://github.com/adrianovieira/hook-apps/>
 
 A fazer
 -------
