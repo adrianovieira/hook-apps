@@ -433,9 +433,30 @@ def internal_error(error):
 @app.route('/about',methods=['GET'])
 def about():
 
-    __version = '1.5.1'
+    webhook_version = 'VERSION'
+    try:
+       f = open(os.path.dirname(os.path.abspath(__file__))+'/VERSION')
+       webhook_version = f.readline()
+       f.close()
+    except IOError as e:
+       webhook_version = 'VERSION undefined'
 
-    return render_template('about.html')
+    try:
+       pandoc_version=subprocess.Popen(["pandoc", "--version"], \
+                    stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+       pandoc_version=pandoc_version.communicate()[0]
+    except OSError as e:
+       pandoc_version = u'Pandoc não encontrado - erro [%s]' % e
+
+    try:
+       pandocciteproc_version=subprocess.Popen(["pandoc-citeproc", "--version"], \
+                    stdout=subprocess.PIPE, stderr=subprocess.STDOUT).communicate()[0]
+    except OSError as e:
+       pandocciteproc_version = u'Pandoc-citeproc não encontrado - erro [%s]' % e
+
+    return render_template('about.html', webhook_version=webhook_version, \
+                                         pandoc_version=pandoc_version, \
+                                         pandocciteproc_version=pandocciteproc_version )
 
 '''
 Inicia aplicação em modo interativo (ex: python webhook.py)
