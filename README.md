@@ -7,7 +7,7 @@ Repositório do código fonte:
 
 origin:
 
-- **prevnet**: <http://www-git.prevnet/documentos/hook-apps>
+- **prevnet**: <http://www-git.prevnet/hook-apps/webhook-pandoc-artigos>
 
 Alternatives:
 
