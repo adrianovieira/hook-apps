@@ -223,3 +223,13 @@ pip-log.txt
 # presentation with reveal.js
 reveal.js
 index.html
+
+# python virtualenv
+.Python
+bin
+include
+lib
+share
+
+# webhook env config
+webhook.cfg
