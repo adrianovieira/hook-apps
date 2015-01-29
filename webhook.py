@@ -254,7 +254,8 @@ GL_STATE = {
 GL_STATUS = {
    'merge_request':'merge_request',
    'cannot_be_merged':'cannot_be_merged',
-   'can_be_merged':'can_be_merged'
+   'can_be_merged':'can_be_merged',
+   'unchecked':'unchecked'
    }
 
 '''
@@ -331,6 +332,11 @@ def index():
                         webhook_data['object_attributes']['id'], \
                         '***merge request* não aceito**. Verique *branch* e solicite novamente!')
               raise # caso nao possa ser feito merge via gitlab "merge request invalido"
+
+            if webhook_data['object_attributes']['merge_status'] == GL_STATUS['unchecked']:
+              app.log_message = "merge request "+webhook_data['object_attributes']['state']+\
+                               " - "+webhook_data['object_attributes']['merge_status']
+              # raise
           else:
             app.log_message = "merge request "+webhook_data['object_attributes']['state']+\
                              " - "+webhook_data['object_attributes']['merge_status']
@@ -346,7 +352,8 @@ def index():
     status = '{"status": "nOK"}'
     app.log_message = '{"type": "WARNING", "message": "processing"}'
     if webhook_data['object_attributes']['state'] == GL_STATE['OPENED'] and \
-       webhook_data['object_attributes']['merge_status'] == GL_STATUS['can_be_merged']:
+       (webhook_data['object_attributes']['merge_status'] == GL_STATUS['can_be_merged'] or \
+       webhook_data['object_attributes']['merge_status'] == GL_STATUS['unchecked']):
       if app.debug: print "\nProcessing merge request to build PDF...\n"
       if app.debug: print app.log_message
 
@@ -465,8 +472,6 @@ if __name__ == '__main__':
    if app.setup['production'] == 'False': # para devel ou testes
      if app.setup['DEBUG'] == 'True':
        app.debug = True
-       if app.setup['DEBUG'] == 'True' and int(app.setup['DEBUG_LEVEL']) == DEBUG_INTERATIVO:
-          import ipdb; ipdb.set_trace() # ativação de debug interativo
 
      app.run(host=app.setup['DEBUG_HOST'], port=app.setup['DEBUG_PORT'])
    else:
