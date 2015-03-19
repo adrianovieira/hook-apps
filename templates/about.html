@@ -3,17 +3,52 @@
 <head>
   <meta charset="utf-8" />
   <title>Sobre o Web Hook!</title>
+  <style>
+    table {
+      width:100%;
+      border-collapse: collapse;
+      border:solid black 1px;
+      vertical-align: top;
+    }
+    th {
+      background-color: #EDEDED;
+    }
+    th, td {
+      border:solid black 1px;
+      vertical-align: top;
+    }
+  </style>
 </head>
+
 <body>
 
-<h1>Sobre o Web Hook!</h1>
+  <h1>Sobre o Web Hook!</h1>
+  <p>
+    <strong><i>Web Hook</i></strong>
+    para realizar conversão automatizada de documentos/artigos para PDF.
+  </p>
 
-<p><strong><i>Web Hook</i></strong> para realizar conversão automatizada de documentos/artigos para PDF.</p>
-<hr>
-<br />Versão do <i>Web Hook</i>: <strong>{{webhook_version}}</strong>
-<hr>
-<br />Pandoc version: <pre>{{pandoc_version}}</pre>
-<br />Pandoc-citeproc version: <pre>{{ pandocciteproc_version }}</pre>
-<hr>
+  <hr />
+
+  <h2>Dados gerais</h2>
+  <table>
+      <tr>
+          <th>Versões</th>
+          <th>Parâmetros base</th>
+      </tr>
+      <tr>
+        <td>
+          <strong>Versão do <i>Web Hook</i></strong>: <strong>{{ webhook_version }}</strong>
+          <br /> <br />
+          <strong>Pandoc</strong>: <pre>{{ pandoc_version }}</pre>
+          <strong>Pandoc-citeproc</strong>: <pre>{{ pandocciteproc_version }}</pre>
+        </td>
+        <td>
+          <strong>Ambiente - produção</strong>: <i>{{ enviroment_production }}</i> <br />
+          <strong>Gitlab - servidor de acesso</strong>: <i>{{ gitlab_host }}</i> <br />
+          <strong>Gitlab - url do repositório</strong>: <i>{{ gitlab_url }}</i> <br />
+        </td>
+      </tr>
+  </table>
 </body>
 </html>
