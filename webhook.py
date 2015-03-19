@@ -365,52 +365,52 @@ def index():
         # realisar verificação de metadados de autor e referencias bibliograficas
         if app.debug: print "\nRealisando verificação de metadados de autor e referencias bibliograficas do artigo...\n"
 
-        metadados_msg = 'Na estrutura base há grupos de dados (metadados) que contêm atributos para facilitar a formatação do artigo. Esta estrutura está disponível em <http://www-git/documentos/artigos/blob/master/estrutura-para-criar-artigos-tecnicos/Estrutura_e_metodo_padrao_para_criar_artigos.md#estrutura-padr-o-para-criar-artigos>. Foi percebida a ausência do(s) grupo(s) de dado(s) a seguir:  \n' 
+        metadados_msg = 'Na estrutura base há grupos de dados (metadados) que contêm atributos para facilitar a formatação do artigo. Esta estrutura está disponível em <http://www-git/documentos/artigos/blob/master/estrutura-para-criar-artigos-tecnicos/Estrutura_e_metodo_padrao_para_criar_artigos.md#estrutura-padr-o-para-criar-artigos>. Foi percebida a ausência do(s) grupo(s) de dado(s) a seguir:  \n'
         has_dados_autor = True
         artigo_verifica_metadados = artigo.VerificaMetadados(app.artigo_path+app.artigo_name+'.md')
         if not artigo_verifica_metadados.hasDadosAutor():
           has_dados_autor = False
-          metadados_msg += '- **Metadados de autor**: Grupo de dados a ser usado para identificar o artigo  \n' 
+          metadados_msg += '- **Metadados de autor**: Grupo de dados a ser usado para identificar o artigo  \n'
 
         has_dados_referencias = True
         if not artigo_verifica_metadados.hasDadosReferencias():
           has_dados_referencias = False
           metadados_msg += '- **Metadados de referências**: Grupo de dados a ser usado em citações e referências bibliográficas. Detalhes no uso de citações em: <http://www-git/documentos/artigos/blob/master/crie-conteudo-nao-leiaute/crie-conteudo-nao-leiaute.md#cita-es-de-autores-refer-ncias-bibliogr-ficas>  \n'
 
-        if (not has_dados_autor) or (not has_dados_referencias): 
+        if (not has_dados_autor) or (not has_dados_referencias):
           status = '{"status": "notOK"}'
           app.gitlab.addcommenttomergerequest(webhook_data['object_attributes']['target_project_id'], \
                                               webhook_data['object_attributes']['id'], \
-                                              metadados_msg) 
+                                              metadados_msg)
 
         # realisar verificação de topicos base do artigo
         if app.debug: print "\nRealisando verificação de topicos base do artigo...\n"
 
-        topicos_base_msg = 'Uma estrutura base facilita ao leitor se localizar na leitura dos artigos. Neste sentido, foi definida uma estrutura base para os artigos que está disponível em <http://www-git/documentos/artigos/blob/master/estrutura-para-criar-artigos-tecnicos/Estrutura_e_metodo_padrao_para_criar_artigos.md#estrutura-padr-o-para-criar-artigos>. Foi percebida a ausência do(s) tópico(s) a seguir:  \n' 
+        topicos_base_msg = 'Uma estrutura base facilita ao leitor se localizar na leitura dos artigos. Neste sentido, foi definida uma estrutura base para os artigos que está disponível em <http://www-git/documentos/artigos/blob/master/estrutura-para-criar-artigos-tecnicos/Estrutura_e_metodo_padrao_para_criar_artigos.md#estrutura-padr-o-para-criar-artigos>. Foi percebida a ausência do(s) tópico(s) a seguir:  \n'
         has_topicos_base = True
         artigo_verifica_topicosbase = artigo.VerificaTopicosBase(app.artigo_path+app.artigo_name+'.md')
         if not artigo_verifica_topicosbase.hasIntroducao():
           has_topicos_base = False
-          topicos_base_msg += '- **Introdução**: Descreve e contextualiza o conteúdo que o artigo irá abordar atraindo a sua leitura  \n' 
+          topicos_base_msg += '- **Introdução**: Descreve e contextualiza o conteúdo que o artigo irá abordar atraindo a sua leitura  \n'
         if not artigo_verifica_topicosbase.hasDesafios():
           has_topicos_base = False
-          topicos_base_msg += '- **Desafios**: Descreve desafios e/ou problemas que o artigo irá abordar e buscar resolver  \n' 
+          topicos_base_msg += '- **Desafios**: Descreve desafios e/ou problemas que o artigo irá abordar e buscar resolver  \n'
         if not artigo_verifica_topicosbase.hasBeneficios():
           has_topicos_base = False
-          topicos_base_msg += '- **Benefícios e/ou recomendações**: Descreve os principais ganhos propostos pelo artigo, como melhoria de indicadores, processo de trabalho, etc  \n' 
+          topicos_base_msg += '- **Benefícios e/ou recomendações**: Descreve os principais ganhos propostos pelo artigo, como melhoria de indicadores, processo de trabalho, etc  \n'
         if not artigo_verifica_topicosbase.hasConclusao():
           has_topicos_base = False
-          topicos_base_msg += '- **Conclusão**: Apresenta o fechamento do artigo  \n' 
+          topicos_base_msg += '- **Conclusão**: Apresenta o fechamento do artigo  \n'
         if not artigo_verifica_topicosbase.hasReferencias():
           has_topicos_base = False
-          topicos_base_msg += '- **Referências**: Lista de referências bibliográficas, matérias na intranet, documentos ou ferramentas internas etc  \n' 
-        if not has_topicos_base: 
+          topicos_base_msg += '- **Referências**: Lista de referências bibliográficas, matérias na intranet, documentos ou ferramentas internas etc  \n'
+        if not has_topicos_base:
           status = '{"status": "notOK"}'
           app.gitlab.addcommenttomergerequest(webhook_data['object_attributes']['target_project_id'], \
                                               webhook_data['object_attributes']['id'], \
-                                              topicos_base_msg) 
+                                              topicos_base_msg)
 
-        if (has_topicos_base) and (has_dados_autor) and (has_dados_referencias): 
+        if (has_topicos_base) and (has_dados_autor) and (has_dados_referencias):
             # realisar a conversao de artigo para PDF
             if app.debug: print "\nRealisando a conversao de artigo para PDF...\n"
             if artigoPandocParser(webhook_data['object_attributes']['target_project_id'], \
@@ -456,7 +456,10 @@ def about():
 
     return render_template('about.html', webhook_version=webhook_version, \
                                          pandoc_version=pandoc_version, \
-                                         pandocciteproc_version=pandocciteproc_version )
+                                         pandocciteproc_version=pandocciteproc_version, \
+                                         enviroment_production=app.setup['production'], \
+                                         gitlab_host=app.setup['gitlab_host'], \
+                                         gitlab_url=app.setup['gitlab_url'] )
 
 '''
 Inicia aplicação em modo interativo (ex: python webhook.py)
@@ -471,4 +474,3 @@ if __name__ == '__main__':
      app.run(host=app.setup['DEBUG_HOST'], port=app.setup['DEBUG_PORT'])
    else:
      app.run(host='0.0.0.0', port=5000)
-
