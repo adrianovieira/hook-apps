@@ -59,7 +59,7 @@ def artigoPandocParser(p_target_project_id, p_mergerequest_id,\
     download = os.popen("cp "+p_app_artigo_path+p_app_artigo_name+'.pdf'+" "\
                              +download_path)
     link = app.setup['webhook_host_url']+'/'+app.setup['gitlab_url_download']+'/'+app.artigo_branch_id+'/'+p_app_artigo_name+'.pdf'
-    app.log_message = 'O artigo (%s) foi convertido para ***[PDF](%s) ***!' % (p_app_artigo_name, link)
+    app.log_message = 'O artigo (%s) foi convertido para ***[PDF](%s)***!' % (p_app_artigo_name, link)
     result = True
   else:
     app.log_message = u'Ocorreu erro ( ***pandoc*** ) na conversao do arquivo (%s) para ***PDF***!' % p_app_artigo_name
