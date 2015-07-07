@@ -59,7 +59,7 @@ def artigoPandocParser(p_target_project_id, p_mergerequest_id,\
     download = os.popen("cp "+p_app_artigo_path+p_app_artigo_name+'.pdf'+" "\
                              +download_path)
     link = app.setup['webhook_host_url']+'/'+app.setup['gitlab_url_download']+'/'+app.artigo_branch_id+'/'+p_app_artigo_name+'.pdf'
-    app.log_message = 'O artigo (%s) foi convertido para ***[PDF](%s) ***!' % (p_app_artigo_name, link)
+    app.log_message = 'O artigo (%s) foi convertido para ***[PDF (clique aqui)](%s)***!' % (p_app_artigo_name, link)
     result = True
   else:
     app.log_message = u'Ocorreu erro ( ***pandoc*** ) na conversao do arquivo (%s) para ***PDF***!' % p_app_artigo_name
@@ -111,6 +111,7 @@ def artigoDownload_zip(p_target_project_id, p_mergerequest_id, p_mergerequest_br
 
     # obtem conteúdo do arquivo zip obtido
     zip_content = zipfile.ZipFile(StringIO.StringIO(zip_file_req_branch.content))
+    if app.debug: zip_content.debug = 3
 
     try:
       # diretorio e nome de artigo == branch (do merge request)
@@ -137,20 +138,29 @@ def artigoDownload_zip(p_target_project_id, p_mergerequest_id, p_mergerequest_br
       if app.debug: print app.log_message
 
       # extrai o zip para um diretório temporário
-      zip_content.extractall(path_zip_extract)
+      if app.debug: app.log_message = u"Extrai o zip para um diretorio temporario"
+      resp = zip_content.extractall(path_zip_extract)
+      if app.debug: app.log_message = u"Extraiu o zip para um diretorio temporario (resp: %s)" % resp
 
       # dados para parser de artigo
+      if app.debug: app.log_message = u"Obtem app.artigo_branch_id"
       app.artigo_branch_id = branch_info['commit']['id']
+      if app.debug: app.log_message = u"Obtem app.artigo_path"
       app.artigo_path = path_zip_extract +'/'+ zip_member_artigo_dir
+      if app.debug: app.log_message = u"Obtem app.artigo_name"
       app.artigo_name = p_mergerequest_branch
 
       result = True
 
-    except:
+    except Exception as e:
+      app.log_message = app.log_message + ' | Erro ao tentar extrair arquivos: %s' % e
+      app.log_message = app.log_message + ' | dados: %s' % e.args[0]
+      app.log_message = app.log_message + ' | Erro %s - ' % type(e)
       app.gitlab.addcommenttomergerequest(p_target_project_id, \
                                           p_mergerequest_id, app.log_message)
+      app.gitlab.addcommenttomergerequest(p_target_project_id, \
+                                          p_mergerequest_id, e.args[1])
       if app.debug: print app.log_message
-
 
   return result
 
@@ -254,7 +264,8 @@ GL_STATE = {
 GL_STATUS = {
    'merge_request':'merge_request',
    'cannot_be_merged':'cannot_be_merged',
-   'can_be_merged':'can_be_merged'
+   'can_be_merged':'can_be_merged',
+   'unchecked':'unchecked'
    }
 
 '''
@@ -331,6 +342,11 @@ def index():
                         webhook_data['object_attributes']['id'], \
                         '***merge request* não aceito**. Verique *branch* e solicite novamente!')
               raise # caso nao possa ser feito merge via gitlab "merge request invalido"
+
+            if webhook_data['object_attributes']['merge_status'] == GL_STATUS['unchecked']:
+              app.log_message = "merge request "+webhook_data['object_attributes']['state']+\
+                               " - "+webhook_data['object_attributes']['merge_status']
+              # raise
           else:
             app.log_message = "merge request "+webhook_data['object_attributes']['state']+\
                              " - "+webhook_data['object_attributes']['merge_status']
@@ -346,7 +362,8 @@ def index():
     status = '{"status": "nOK"}'
     app.log_message = '{"type": "WARNING", "message": "processing"}'
     if webhook_data['object_attributes']['state'] == GL_STATE['OPENED'] and \
-       webhook_data['object_attributes']['merge_status'] == GL_STATUS['can_be_merged']:
+       (webhook_data['object_attributes']['merge_status'] == GL_STATUS['can_be_merged'] or \
+       webhook_data['object_attributes']['merge_status'] == GL_STATUS['unchecked']):
       if app.debug: print "\nProcessing merge request to build PDF...\n"
       if app.debug: print app.log_message
 
@@ -468,8 +485,6 @@ if __name__ == '__main__':
    if app.setup['production'] == 'False': # para devel ou testes
      if app.setup['DEBUG'] == 'True':
        app.debug = True
-       if app.setup['DEBUG'] == 'True' and int(app.setup['DEBUG_LEVEL']) == DEBUG_INTERATIVO:
-          import ipdb; ipdb.set_trace() # ativação de debug interativo
 
      app.run(host=app.setup['DEBUG_HOST'], port=app.setup['DEBUG_PORT'])
    else:
