@@ -111,6 +111,7 @@ def artigoDownload_zip(p_target_project_id, p_mergerequest_id, p_mergerequest_br
 
     # obtem conteúdo do arquivo zip obtido
     zip_content = zipfile.ZipFile(StringIO.StringIO(zip_file_req_branch.content))
+    if app.debug: zip_content.debug = 3
 
     try:
       # diretorio e nome de artigo == branch (do merge request)
@@ -137,20 +138,29 @@ def artigoDownload_zip(p_target_project_id, p_mergerequest_id, p_mergerequest_br
       if app.debug: print app.log_message
 
       # extrai o zip para um diretório temporário
-      zip_content.extractall(path_zip_extract)
+      if app.debug: app.log_message = u"Extrai o zip para um diretorio temporario"
+      resp = zip_content.extractall(path_zip_extract)
+      if app.debug: app.log_message = u"Extraiu o zip para um diretorio temporario (resp: %s)" % resp
 
       # dados para parser de artigo
+      if app.debug: app.log_message = u"Obtem app.artigo_branch_id"
       app.artigo_branch_id = branch_info['commit']['id']
+      if app.debug: app.log_message = u"Obtem app.artigo_path"
       app.artigo_path = path_zip_extract +'/'+ zip_member_artigo_dir
+      if app.debug: app.log_message = u"Obtem app.artigo_name"
       app.artigo_name = p_mergerequest_branch
 
       result = True
 
-    except:
+    except Exception as e:
+      app.log_message = app.log_message + ' | Erro ao tentar extrair arquivos: %s' % e
+      app.log_message = app.log_message + ' | dados: %s' % e.args[0]
+      app.log_message = app.log_message + ' | Erro %s - ' % type(e)
       app.gitlab.addcommenttomergerequest(p_target_project_id, \
                                           p_mergerequest_id, app.log_message)
+      app.gitlab.addcommenttomergerequest(p_target_project_id, \
+                                          p_mergerequest_id, e.args[1])
       if app.debug: print app.log_message
-
 
   return result
 
