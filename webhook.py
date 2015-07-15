@@ -459,6 +459,15 @@ def about():
        webhook_version = 'VERSION undefined'
 
     try:
+       f = open(os.path.dirname(os.path.abspath(__file__))+'/CHANGELOG')
+       webhook_version_changelog = f.read()
+       if len(webhook_version_changelog) == 0:
+           webhook_version_changelog = 'CHANGELog undefined'
+       f.close()
+    except IOError as e:
+       webhook_version_changelog = 'CHANGELog undefined'
+
+    try:
        pandoc_version=subprocess.Popen(["pandoc", "--version"], \
                     stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
        pandoc_version=pandoc_version.communicate()[0]
@@ -472,6 +481,7 @@ def about():
        pandocciteproc_version = u'Pandoc-citeproc não encontrado - erro [%s]' % e
 
     return render_template('about.html', webhook_version=webhook_version, \
+                                         webhook_version_changelog=webhook_version_changelog, \
                                          pandoc_version=pandoc_version, \
                                          pandocciteproc_version=pandocciteproc_version, \
                                          enviroment_production=app.setup['production'], \
