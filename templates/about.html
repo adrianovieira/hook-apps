@@ -33,21 +33,32 @@
   <h2>Dados gerais</h2>
   <table>
       <tr>
-          <th>Versões</th>
+          <th>Versões de software básico</th>
           <th>Parâmetros base</th>
       </tr>
       <tr>
         <td>
-          <strong>Versão do <i>Web Hook</i></strong>: <strong>{{ webhook_version }}</strong>
-          <br /> <br />
-          <strong>Pandoc</strong>: <pre>{{ pandoc_version }}</pre>
-          <strong>Pandoc-citeproc</strong>: <pre>{{ pandocciteproc_version }}</pre>
+          <strong>Pandoc</strong>: 
+            <pre><small>{{ pandoc_version }}</small></pre>
+          <strong>Pandoc-citeproc</strong>: 
+            <pre><small>{{ pandocciteproc_version }}</small></pre>
         </td>
         <td>
           <strong>Ambiente - produção</strong>: <i>{{ enviroment_production }}</i> <br />
           <strong>Gitlab - servidor de acesso</strong>: <i>{{ gitlab_host }}</i> <br />
           <strong>Gitlab - url do repositório</strong>: <i>{{ gitlab_url }}</i> <br />
         </td>
+      </tr>
+      <tr>
+          <th colspan="2" align="left">
+            <strong><i>Web Hook</i></strong> - versão: <strong>{{ webhook_version }}</strong>
+          </th>
+      </tr>
+      <tr>
+          <td colspan="2">
+            <strong>Principais destaques da versão</strong>
+            <pre>{{ webhook_version_changelog }}</pre>
+          </td>
       </tr>
   </table>
 </body>
