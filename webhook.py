@@ -461,6 +461,8 @@ def about():
     try:
        f = open(os.path.dirname(os.path.abspath(__file__))+'/CHANGELOG')
        webhook_version_changelog = f.read()
+       if len(webhook_version_changelog) == 0:
+           webhook_version_changelog = 'CHANGELog undefined'
        f.close()
     except IOError as e:
        webhook_version_changelog = 'CHANGELog undefined'
