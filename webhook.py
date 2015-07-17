@@ -99,13 +99,17 @@ def artigoDownload_zip(p_target_project_id, p_mergerequest_id, p_mergerequest_br
   zip_file_req_branch_url = app.setup['gitlab_url']+'/repository/archive.zip?ref='\
                                             +p_mergerequest_branch
   app.log_message = "Obtendo **branch** do artigo %s.md" % p_mergerequest_branch
-  if app.debug: print app.log_message
+  if app.debug: print app.log_message + " | " + zip_file_req_branch_url
 
-  zip_file_req_branch = requests.get(zip_file_req_branch_url)
+  zip_file_req_branch = requests.get(zip_file_req_branch_url, auth=(app.setup['gitlab_webhook_user'], app.setup['gitlab_webhook_pass']))
   if not zip_file_req_branch.ok:
-    app.log_message = u"**branch [%s]** não obtida - status: [%s]" \
-                      % (p_mergerequest_branch, zip_file_req_branch.status_code)
+    app.log_message = u"***branch* [%s]** não obtida<br /> | status: [*%s - %s (user: %s)*]" \
+                      % (p_mergerequest_branch, zip_file_req_branch.status_code, zip_file_req_branch.text, app.setup['gitlab_webhook_user'])
     if app.debug: print app.log_message
+
+    # insere comentário no merge request
+    app.gitlab.addcommenttomergerequest(p_target_project_id, \
+                                      p_mergerequest_id, app.log_message)
 
   if zip_file_req_branch.ok:
 
@@ -153,13 +157,14 @@ def artigoDownload_zip(p_target_project_id, p_mergerequest_id, p_mergerequest_br
       result = True
 
     except Exception as e:
-      app.log_message = app.log_message + ' | Erro ao tentar extrair arquivos: %s' % e
-      app.log_message = app.log_message + ' | dados: %s' % e.args[0]
-      app.log_message = app.log_message + ' | Erro %s - ' % type(e)
+      app.log_message = app.log_message + '<br /> | Erro ao tentar extrair arquivos: %s' % e
+      app.log_message = app.log_message + '<br /> | Dados: %s' % e.args[0]
+      app.log_message = app.log_message + '<br /> | Erro: %s - ' % type(e)
+      array = e.args[1].split('/')
+      arquivo = '```'+array[len(array)-1]+'```'
+      app.log_message = app.log_message + arquivo
       app.gitlab.addcommenttomergerequest(p_target_project_id, \
                                           p_mergerequest_id, app.log_message)
-      app.gitlab.addcommenttomergerequest(p_target_project_id, \
-                                          p_mergerequest_id, e.args[1])
       if app.debug: print app.log_message
 
   return result
