@@ -153,13 +153,14 @@ def artigoDownload_zip(p_target_project_id, p_mergerequest_id, p_mergerequest_br
       result = True
 
     except Exception as e:
-      app.log_message = app.log_message + ' | Erro ao tentar extrair arquivos: %s' % e
-      app.log_message = app.log_message + ' | dados: %s' % e.args[0]
-      app.log_message = app.log_message + ' | Erro %s - ' % type(e)
+      app.log_message = app.log_message + '<br /> | Erro ao tentar extrair arquivos: %s' % e
+      app.log_message = app.log_message + '<br /> | Dados: %s' % e.args[0]
+      app.log_message = app.log_message + '<br /> | Erro: %s - ' % type(e)
+      array = e.args[1].split('/')
+      arquivo = '```'+array[len(array)-1]+'```'
+      app.log_message = app.log_message + arquivo
       app.gitlab.addcommenttomergerequest(p_target_project_id, \
                                           p_mergerequest_id, app.log_message)
-      app.gitlab.addcommenttomergerequest(p_target_project_id, \
-                                          p_mergerequest_id, e.args[1])
       if app.debug: print app.log_message
 
   return result
