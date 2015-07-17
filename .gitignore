@@ -233,3 +233,4 @@ share
 
 # webhook env config
 webhook.cfg
+webhook.wsgi
