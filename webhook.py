@@ -103,8 +103,8 @@ def artigoDownload_zip(p_target_project_id, p_mergerequest_id, p_mergerequest_br
 
   zip_file_req_branch = requests.get(zip_file_req_branch_url, auth=(app.setup['gitlab_webhook_user'], app.setup['gitlab_webhook_pass']))
   if not zip_file_req_branch.ok:
-    app.log_message = u"***branch* [%s]** não obtida | status: [%s - %s]" \
-                      % (p_mergerequest_branch, zip_file_req_branch.status_code, zip_file_req_branch.text)
+    app.log_message = u"***branch* [%s]** não obtida<br /> | status: [*%s - %s (user: %s)*]" \
+                      % (p_mergerequest_branch, zip_file_req_branch.status_code, zip_file_req_branch.text, app.setup['gitlab_webhook_user'])
     if app.debug: print app.log_message
 
     # insere comentário no merge request
