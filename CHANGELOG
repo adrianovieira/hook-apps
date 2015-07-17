@@ -1,3 +1,6 @@
+v1.6.4
+- fix issue #10
+
 v1.6.3
 - add gitlab-7.7 support [#7]
 - fix encoding error exception when unziping files [#9]
