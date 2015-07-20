@@ -76,7 +76,7 @@ class PandocParser:
             else: __has_dados_parser = False
 
         if not __has_dados_parser:
-            raise AttributeError('all parameters are needed', 'APP_WEBHOOK', 'PCT_artigo', 'pandocParser')
+            raise AttributeError('pandocParser: all parameters are needed', 'APP_WEBHOOK', 'PCT_artigo', 'pandocParser')
 
         return __result
         # end pandocParser
