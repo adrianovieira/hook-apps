@@ -13,7 +13,7 @@ propague "Exceptions" específicas que mais se adeque à exceção em questão
 <https://docs.python.org/3/library/exceptions.html#exception-hierarchy>.
 Propague-a com pelo menos quatro parâmetros,
 sintaxe:
-  raise <built-in exceptions>('<mensagem>', '<app>', '<pacote/modulo>', '<metodo>' [, outros [,...]])
+  raise <exception-hierarchy>('<mensagem>', '<app>', '<pacote/modulo>', '<metodo>' [, outros [,...]])
 exemplo:
   raise AttributeError('all parameters are needed', 'APP_WEBHOOK', 'PCT_artigo', 'pandocParser')
 
