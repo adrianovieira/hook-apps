@@ -1,6 +1,5 @@
 # coding: utf-8
 import os, subprocess
-import requests
 import gitlab
 
 '''
@@ -12,25 +11,22 @@ raising Exception: evite propagar uma "Exception" genérica, ao contrário,
 propague "Exceptions" específicas que mais se adeque à exceção em questão
 <https://docs.python.org/3/library/exceptions.html#exception-hierarchy>.
 Propague-a com pelo menos quatro parâmetros,
-sintaxe:
   raise <built-in exceptions>('<mensagem>', '<app>', '<pacote/modulo>', '<metodo>' [, outros [,...]])
+sintaxe:
 exemplo:
   raise AttributeError('all parameters are needed', 'APP_WEBHOOK', 'PCT_artigo', 'pandocParser')
 
-@params: (opcional) debug = habilitar/desabilitar (True/False) modo de depuração
+@params:
+  <app_gitlab>: ponteiro para objeto gitlab
+  [debug]: habilitar/desabilitar (True/False) modo de depuração
 '''
 class PandocParser:
 
-    '''
-    PandocParser: realizar a conversão do artigo para PDF
+    def __init__(self, __app_gitlab, __debug=False):
+        if not isinstance(__app_gitlab, gitlab.Gitlab):
+            raise AttributeError('PandocParser: argument gitlab object needed', 'APP_WEBHOOK', 'PCT_artigo', 'PandocParser')
 
-    @params:
-      target_project_id: ID do projeto (necessário)
-      mergerequest_id: ID do merge request (necessário)
-      app_artigo_path: path para o artigo (necessário)
-      app_artigo_name: nome do artigo (necessário)
-    '''
-    def __init__(self, __debug=False):
+        self.__app_gitlab = __app_gitlab
         self.__debug = __debug
 
         self.__target_project_id = ''
