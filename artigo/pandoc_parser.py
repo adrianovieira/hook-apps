@@ -8,6 +8,14 @@ Class: PandocParser
 description: realizar a conversão do artigo para PDF
 author: Adriano dos Santos Vieira <adriano.vieira@dataprev.gov.br>
 character encoding: UTF-8
+raising Exception: evite propagar uma "Exception" genérica, ao contrário,
+propague "Exceptions" específicas que mais se adeque à exceção em questão
+<https://docs.python.org/3/library/exceptions.html#exception-hierarchy>.
+Propague-a com pelo menos quatro parâmetros,
+sintaxe:
+  raise AttributeError('<mensagem>', '<app>', '<pacote/modulo>', '<metodo>' [, outros [,...]])
+exemplo:
+  raise AttributeError('all parameters are needed', 'APP_WEBHOOK', 'PCT_artigo', 'pandocParser')
 
 @params: (opcional) debug = habilitar/desabilitar (True/False) modo de depuração
 '''
@@ -68,7 +76,7 @@ class PandocParser:
             else: __has_dados_parser = False
 
         if not __has_dados_parser:
-            raise AttributeError('pandocParser: all parameters are needed', 'WEBHOOK', 'pandocParser')
+            raise AttributeError('all parameters are needed', 'APP_WEBHOOK', 'PCT_artigo', 'pandocParser')
 
         return __result
         # end pandocParser
