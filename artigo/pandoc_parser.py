@@ -1,6 +1,7 @@
 # coding: utf-8
 import os, subprocess
 import gitlab
+import logging
 
 '''
 Class: PandocParser
@@ -17,17 +18,18 @@ exemplo:
   raise AttributeError('all parameters are needed', 'APP_WEBHOOK', 'PCT_artigo', 'pandocParser')
 
 @params:
-  <app_gitlab>: ponteiro para objeto gitlab
+  <app>: ponteiro para objeto app do Flask
   [debug]: habilitar/desabilitar (True/False) modo de depuração
 '''
 class PandocParser:
 
-    def __init__(self, __app_gitlab, __debug=False):
-        if not isinstance(__app_gitlab, gitlab.Gitlab):
+    def __init__(self, app):
+        if not isinstance(app.gitlab, gitlab.Gitlab):
+            app.logger.debug('PandocParser: argument gitlab object needed', 'APP_WEBHOOK', 'PCT_artigo', 'PandocParser')
             raise AttributeError('PandocParser: argument gitlab object needed', 'APP_WEBHOOK', 'PCT_artigo', 'PandocParser')
 
-        self.__app_gitlab = __app_gitlab
-        self.__debug = __debug
+        self.__app = app
+        self.__debug = app.debug
 
         self.__target_project_id = ''
         self.__mergerequest_id = ''
@@ -51,9 +53,7 @@ class PandocParser:
         __result = False
         __has_dados_parser = True
 
-        if self.__debug: print 'APP_Artigo_PandocParser:'
-        if self.__debug: print __app_artigo_path
-        if self.__debug: print __app_artigo_name
+        self.__app.logger.debug('APP_Artigo_PandocParser: \n artigo-path: %s\n artigo-nome: %s', __app_artigo_path, __app_artigo_name)
 
         if not self.__target_project_id:
             if __target_project_id: self.__target_project_id = __target_project_id
@@ -72,17 +72,20 @@ class PandocParser:
             else: __has_dados_parser = False
 
         if not __has_dados_parser:
+            self.__app.logger.debug('pandocParser: all parameters are needed', 'APP_WEBHOOK', 'PCT_artigo', 'pandocParser')
             raise AttributeError('pandocParser: all parameters are needed', 'APP_WEBHOOK', 'PCT_artigo', 'pandocParser')
+
+        __log_message = u'Iniciada conversão do artigo **%s** para ***PDF***!' % self.__app_artigo_name
+        self.__app.logger.warning(__log_message)
+
+        # insere comentário no merge request
+        try:
+            self.__app.gitlab.addcommenttomergerequest(self.__target_project_id, \
+                                        self.__mergerequest_id, __log_message)
+        except Exception as erro:
+            self.__app.logger.warning(erro)
 
         return __result
         # end pandocParser
 
-    '''
-    debug: des/habilitar modo de depuração
-
-    @params:
-      debug: boolean True/False (habilitar/desabilitar)
-    '''
-    def debug(__debug):
-        self.__debug = __debug
-        # end debug
+#end class PandocParser
