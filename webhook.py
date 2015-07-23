@@ -105,6 +105,7 @@ def artigoDownload_zip(p_target_project_id, p_mergerequest_id, p_mergerequest_br
   if not zip_file_req_branch.ok:
     app.log_message = u"***branch* [%s]** não obtida<br /> | status: [*%s - %s (user: %s)*]" \
                       % (p_mergerequest_branch, zip_file_req_branch.status_code, zip_file_req_branch.text, app.setup['gitlab_webhook_user'])
+    app.log_message = app.log_message + u'<br /> | O ***PDF*** não foi gerado pois foram encontrados problemas no artigo.'
     if app.debug: print app.log_message
 
     # insere comentário no merge request
@@ -157,6 +158,7 @@ def artigoDownload_zip(p_target_project_id, p_mergerequest_id, p_mergerequest_br
       result = True
 
     except Exception as e:
+      app.log_message = app.log_message + '<br /> | O ***PDF*** não foi gerado pois foram encontrados problemas no artigo.'
       app.log_message = app.log_message + '<br /> | Erro ao tentar extrair arquivos: %s' % e
       app.log_message = app.log_message + '<br /> | Dados: %s' % e.args[0]
       app.log_message = app.log_message + '<br /> | Erro: %s - ' % type(e)
@@ -387,7 +389,7 @@ def index():
         # realisar verificação de metadados de autor e referencias bibliograficas
         if app.debug: print "\nRealisando verificação de metadados de autor e referencias bibliograficas do artigo...\n"
 
-        metadados_msg = 'Na estrutura base há grupos de dados (metadados) que contêm atributos para facilitar a formatação do artigo. Esta estrutura está disponível em <http://www-git/documentos/artigos/blob/master/estrutura-para-criar-artigos-tecnicos/Estrutura_e_metodo_padrao_para_criar_artigos.md#estrutura-padr-o-para-criar-artigos>. Foi percebida a ausência do(s) grupo(s) de dado(s) a seguir:  \n'
+        metadados_msg = 'O ***PDF*** não foi gerado pois foram encontrados problemas no artigo. <br />Na estrutura base há grupos de dados (metadados) que contêm atributos para facilitar a formatação do artigo. Esta estrutura está disponível em <http://www-git/documentos/artigos/blob/master/estrutura-para-criar-artigos-tecnicos/Estrutura_e_metodo_padrao_para_criar_artigos.md#estrutura-padr-o-para-criar-artigos>. Foi percebida a ausência do(s) grupo(s) de dado(s) a seguir:  \n'
         has_dados_autor = True
         artigo_verifica_metadados = artigo.VerificaMetadados(app.artigo_path+app.artigo_name+'.md')
         if not artigo_verifica_metadados.hasDadosAutor():
@@ -408,7 +410,7 @@ def index():
         # realisar verificação de topicos base do artigo
         if app.debug: print "\nRealisando verificação de topicos base do artigo...\n"
 
-        topicos_base_msg = 'Uma estrutura base facilita ao leitor se localizar na leitura dos artigos. Neste sentido, foi definida uma estrutura base para os artigos que está disponível em <http://www-git/documentos/artigos/blob/master/estrutura-para-criar-artigos-tecnicos/Estrutura_e_metodo_padrao_para_criar_artigos.md#estrutura-padr-o-para-criar-artigos>. Foi percebida a ausência do(s) tópico(s) a seguir:  \n'
+        topicos_base_msg = 'O ***PDF*** não foi gerado pois foram encontrados problemas no artigo. <br />Uma estrutura base facilita ao leitor se localizar na leitura dos artigos. Neste sentido, foi definida uma estrutura base para os artigos que está disponível em <http://www-git/documentos/artigos/blob/master/estrutura-para-criar-artigos-tecnicos/Estrutura_e_metodo_padrao_para_criar_artigos.md#estrutura-padr-o-para-criar-artigos>. Foi percebida a ausência do(s) tópico(s) a seguir:  \n'
         has_topicos_base = True
         artigo_verifica_topicosbase = artigo.VerificaTopicosBase(app.artigo_path+app.artigo_name+'.md')
         if not artigo_verifica_topicosbase.hasIntroducao():
