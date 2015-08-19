@@ -1,5 +1,10 @@
+# -*- coding: UTF-8 -*-
 import sys
-sys.path.insert(0, '/path/to/webhook')
+
+reload(sys)
+sys.setdefaultencoding('UTF-8')
+
+sys.path.insert(0, '/var/www/webhook')
 
 from webhook import app as application
 
