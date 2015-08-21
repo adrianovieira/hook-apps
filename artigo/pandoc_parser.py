@@ -98,6 +98,24 @@ class PandocParser:
         except Exception as erro:
             raise EnvironmentError(erro)
 
+        # DIRETORIOS TEMPORARIOS E DIRETORIO DE TEMPLATE PANDOC-PARSER
+        root_dir = os.popen("pwd").read()[:-1]
+        try:
+            path_ok = os.chdir(self.__artigo_path)
+            print 'path_ok %s'%path_ok
+        except Exception as erro:
+            if self.__debug:
+                self.__app.logger.error(erro)
+
+        parse=subprocess.Popen(["make", "-f", self.__template_path+"/makefile", "pdf", \
+                                "artigo="+self.__artigo_name],\
+                                stdout=subprocess.PIPE,
+                                stderr=subprocess.STDOUT).communicate()[0]
+        os.chdir(root_dir)
+
+        print parse
+        print __result
+
         return __result
         # end pandocParser
 
