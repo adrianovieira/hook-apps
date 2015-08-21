@@ -5,6 +5,8 @@ from flask import Flask, request, json
 import logging
 
 import artigo
+import pandoc
+
 import gitlab
 
 app = Flask(__name__)
@@ -50,7 +52,7 @@ def artigo_parser():
     artigo_name='estrutura.md'
 
     try:
-        artigo_parser = artigo.PandocParser(app)
+        artigo_parser = pandoc.PandocParser(app)
         artigo_parser.pandocParser(project_id, mergerequest_id,
                                     artigo_path, artigo_name)
     except Exception as e:
