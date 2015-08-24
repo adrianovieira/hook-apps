@@ -117,7 +117,6 @@ class PandocParser:
                                 stdout=subprocess.PIPE,
                                 stderr=subprocess.STDOUT).communicate()[0]
         os.chdir(root_dir)
-
         if "[ OK ]" in parse_result:
             download_path = self._download_path+"/"+_artigo_branch_id+"/"
             download = os.popen("mkdir -p "+download_path).read()
@@ -136,12 +135,17 @@ class PandocParser:
             _log_message = _log_message + '<br /> | O ***PDF*** não foi gerado pois foram encontrados problemas no artigo.  '
             _log_message = _log_message + '<br /> | Ocorreu erro ( ***pandoc*** ) na conversao do arquivo (%s) para ***PDF***!  ' % self._artigo_name
             _log_message = _log_message + '<br /> | ```<erro>'+parse_result+'</erro>```'
+            if "Erro 83" in parse_result or "pandoc-citeproc" in parse_result:
+                _log_message = _log_message + '<br /> | Acesse o **item 10** da [FAQ - Perguntas e respostas frequentes ](http://www-git/documentos/artigos/wikis/faq) para detalhes.'
+            else:
+                _log_message = _log_message + '<br /> | Temos algumas respostas na [FAQ - Perguntas e respostas frequentes](http://www-git/documentos/artigos/wikis/faq).'
 
             if self._debug: self._logger.error(parse_result)
 
         # parser finalizado e comentários serão adicionados ao MR
         self._gitlab.addcommenttomergerequest(self._target_project_id,
-                                              self._mergerequest_id, _log_message)
+                                              self._mergerequest_id,
+                                              _log_message)
 
         return result
         # end pandocParser
