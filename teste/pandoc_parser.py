@@ -20,8 +20,14 @@ app.debug = True
 app.setup={}
 app.setup['DEBUG_LEVEL'] = logging.ERROR
 app.setup['template_path'] = '/opt/share/markdown-template'
-artigo_path='/home/users/adriano.vieira/devel/dev-gitlab-hook/webhook/artigo/'
-artigo_name='estrutura.md'
+app.setup['download_path'] = '/tmp'
+app.setup['webhook_host_url'] = 'http://vbox-webhook'
+app.setup['gitlab_url_download'] = 'artigos-download'
+artigo_branch_id = ''
+artigo_path='/var/tmp/artigos/gestao_risco_projeto'
+artigo_name='gestao_risco_projeto'
+#artigo_path='/var/tmp/artigos/crie-conteudo-nao-leiaute'
+#artigo_name='crie-conteudo-nao-leiaute'
 
 #app.logger.setLevel(logging.INFO)
 
@@ -58,11 +64,15 @@ def artigo_parser():
 
     try:
         artigo_parser = pandoc.PandocParser(app.setup['template_path'],
+                                            app.setup['download_path'],
+                                            app.setup['webhook_host_url'],
+                                            app.setup['gitlab_url_download'],
                                             app.gitlab, app.logger,
                                             app.debug)
 
         artigo_parser.pandocParser(project_id, mergerequest_id,
-                                    artigo_path, artigo_name)
+                                   artigo_branch_id,
+                                   artigo_path, artigo_name)
     except WebhookError as erro:
         app.logger.warning(erro.logging())
         return 'artigo PandocParser! Erro em parser: "%s".'%erro+'\n'
