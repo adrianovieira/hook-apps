@@ -1,13 +1,19 @@
 #!/usr/bin/python
-# coding: utf-8
+# -*- coding: utf-8 -*-
+import sys, os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+reload(sys)  # Reload does the trick!
+sys.setdefaultencoding('UTF-8')
 
 from flask import Flask, request, json
 import logging
+import gitlab
 
+# Webhook packages
 import artigo
 import pandoc
-
-import gitlab
+from webhookerror import WebhookError
 
 app = Flask(__name__)
 app.debug = True
@@ -34,7 +40,6 @@ FORMAT = '%(asctime)-15s %(clientip)s %(user)-8s %(message)s'
 def artigo_parser():
 
     artigo_parser_data = json.loads(request.data)
-    #print json.dumps(artigo_parser_data)
 
     try:
         project_id=artigo_parser_data['object_attributes']['target_project_id']
@@ -55,9 +60,9 @@ def artigo_parser():
         artigo_parser = pandoc.PandocParser(app)
         artigo_parser.pandocParser(project_id, mergerequest_id,
                                     artigo_path, artigo_name)
-    except Exception as e:
-        #app.logger.warning(e)
-        return 'artigo PandocParser! Erro em parser: "%s".'%e+'\n'
+    except WebhookError as erro:
+        app.logger.warning(erro.logging())
+        return 'artigo PandocParser! Erro em parser: "%s".'%erro+'\n'
 
     return 'artigo PandocParser! Com sucesso!!!\n'
 
@@ -72,3 +77,5 @@ def index():
 
 if __name__ == '__main__':
     app.run('0.0.0.0')
+
+application = app
