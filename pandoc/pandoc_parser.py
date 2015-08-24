@@ -24,7 +24,9 @@ exemplo:
 '''
 class PandocParser:
 
-    def __init__(self, _template_path, _gitlab, _logger, _debug=False, _debug_level=0):
+    def __init__(self, _template_path, _download_path,
+                       _webhook_host_url, _gitlab_url_download,
+                       _gitlab, _logger, _debug=False, _debug_level=0):
         if not isinstance(_gitlab, gitlab.Gitlab):
             if _debug:
                 _logger.debug('PandocParser: argument gitlab object needed', 'APP_WEBHOOK', 'PCT_artigo', 'PandocParser')
@@ -35,6 +37,9 @@ class PandocParser:
         self._debug = _debug
         self._debug_level = _debug_level
         self._template_path = _template_path
+        self._download_path = _download_path
+        self._webhook_host_url = _webhook_host_url
+        self._gitlab_url_download = _gitlab_url_download
         self._target_project_id = ''
         self._mergerequest_id = ''
         self._artigo_path = ''
@@ -51,10 +56,11 @@ class PandocParser:
       artigo_path: <string> path para o artigo (necessário)
       artigo_name: <string> nome do artigo (necessário)
     '''
-    def pandocParser(self, _target_project_id, _mergerequest_id,\
+    def pandocParser(self, _target_project_id, _mergerequest_id,
+                           _artigo_branch_id,
                            _artigo_path, _artigo_name):
 
-        _result = False
+        result = False
         _has_dados_parser = True
 
         if self._debug:
@@ -106,16 +112,13 @@ class PandocParser:
             self._logger.error(erro)
             raise WebhookError(erro)
 
-        parse=subprocess.Popen(["make", "-f", self._template_path+"/makefile", "pdf", \
-                                "artigo="+self._artigo_name],\
+        parse_result=subprocess.Popen(["make", "-f", self._template_path+"/makefile", "pdf",
+                                "artigo="+self._artigo_name],
                                 stdout=subprocess.PIPE,
                                 stderr=subprocess.STDOUT).communicate()[0]
         os.chdir(root_dir)
 
-        print parse
-        print _result
-
-        return _result
+        return result
         # end pandocParser
 
 #end class PandocParser
