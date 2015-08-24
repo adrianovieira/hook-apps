@@ -2,6 +2,7 @@
 import os, subprocess
 import gitlab
 import logging
+from webhookerror import WebhookError
 
 '''
 Class: PandocParser
@@ -102,10 +103,9 @@ class PandocParser:
         root_dir = os.popen("pwd").read()[:-1]
         try:
             path_ok = os.chdir(self.__artigo_path)
-            print 'path_ok %s'%path_ok
         except Exception as erro:
-            if self.__debug:
-                self.__app.logger.error(erro)
+            self.__app.logger.error(erro)
+            raise WebhookError(erro)
 
         parse=subprocess.Popen(["make", "-f", self.__template_path+"/makefile", "pdf", \
                                 "artigo="+self.__artigo_name],\
