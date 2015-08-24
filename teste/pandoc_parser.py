@@ -48,7 +48,11 @@ FORMAT = '%(asctime)-15s %(clientip)s %(user)-8s %(message)s'
 @app.route('/',methods=['POST'])
 def artigo_parser():
 
-    artigo_parser_data = json.loads(request.data)
+    try:
+        artigo_parser_data = json.loads(request.data)
+    except Exception as e:
+        app.logger.warning(e)
+        return 'artigo PandocParser! Erro na formatação dos dados informados "%s".'%e.message+'\n'
 
     try:
         project_id=artigo_parser_data['object_attributes']['target_project_id']
