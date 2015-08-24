@@ -19,7 +19,10 @@ app = Flask(__name__)
 app.debug = True
 app.setup={}
 app.setup['DEBUG_LEVEL'] = logging.ERROR
-app.setup['path_template'] = ''
+app.setup['template_path'] = '/opt/share/markdown-template'
+artigo_path='/home/users/adriano.vieira/devel/dev-gitlab-hook/webhook/artigo/'
+artigo_name='estrutura.md'
+
 #app.logger.setLevel(logging.INFO)
 
 app.gitlab = gitlab.Gitlab('http://bsad229625-vbox-gitlab')
@@ -53,11 +56,11 @@ def artigo_parser():
         app.logger.warning(e)
         return 'artigo PandocParser! Falta parâmetro "%s".'%e.message+'\n'
 
-    artigo_path='/home/users/adriano.vieira/devel/dev-gitlab-hook/webhook/artigo/'
-    artigo_name='estrutura.md'
-
     try:
-        artigo_parser = pandoc.PandocParser(app)
+        artigo_parser = pandoc.PandocParser(app.setup['template_path'],
+                                            app.gitlab, app.logger,
+                                            app.debug)
+
         artigo_parser.pandocParser(project_id, mergerequest_id,
                                     artigo_path, artigo_name)
     except WebhookError as erro:
