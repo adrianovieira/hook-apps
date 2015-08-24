@@ -51,8 +51,8 @@ class PandocParser:
       artigo_path: <string> path para o artigo (necessário)
       artigo_name: <string> nome do artigo (necessário)
     '''
-    def pandocParser(self, _target_project_id='', _mergerequest_id='',\
-                     _artigo_path='', _artigo_name=''):
+    def pandocParser(self, _target_project_id, _mergerequest_id,\
+                           _artigo_path, _artigo_name):
 
         _result = False
         _has_dados_parser = True
