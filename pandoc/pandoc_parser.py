@@ -118,6 +118,31 @@ class PandocParser:
                                 stderr=subprocess.STDOUT).communicate()[0]
         os.chdir(root_dir)
 
+        if "[ OK ]" in parse_result:
+            download_path = self._download_path+"/"+_artigo_branch_id+"/"
+            download = os.popen("mkdir -p "+download_path).read()
+            download = os.popen("cp "+self._artigo_path+"/"+self._artigo_name+'.pdf'+" "
+                                     +download_path)
+
+            link = self._artigo_name+'.pdf'
+            #_link = app.setup['webhook_host_url']+'/'+app.setup['gitlab_url_download']+'/'+_artigo_branch_id+'/'+self._artigo_name+'.pdf'
+            link = self._webhook_host_url+'/'+self._gitlab_url_download+'/'+_artigo_branch_id+'/'+self._artigo_name+'.pdf'
+            print link
+            _log_message = 'O artigo (%s) foi convertido para ***[PDF (clique aqui)](%s)***!' % (self._artigo_name, link)
+            result = True
+        else:
+            _log_message = 'Ocorreu erro ( ***make*** ) na conversao do arquivo (%s) para ***PDF***!'\
+                              % self._artigo_name
+            _log_message = _log_message + '<br /> | O ***PDF*** não foi gerado pois foram encontrados problemas no artigo.  '
+            _log_message = _log_message + '<br /> | Ocorreu erro ( ***pandoc*** ) na conversao do arquivo (%s) para ***PDF***!  ' % self._artigo_name
+            _log_message = _log_message + '<br /> | ```<erro>'+parse_result+'</erro>```'
+
+            if self._debug: self._logger.error(parse_result)
+
+        # parser finalizado e comentários serão adicionados ao MR
+        self._gitlab.addcommenttomergerequest(self._target_project_id,
+                                              self._mergerequest_id, _log_message)
+
         return result
         # end pandocParser
 
