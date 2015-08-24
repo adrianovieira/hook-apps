@@ -19,8 +19,14 @@ exemplo:
   raise AttributeError('all parameters are needed', 'APP_WEBHOOK', 'PCT_artigo', 'pandocParser')
 
 @params:
-  <app>: ponteiro para objeto app do Flask
   <template_path>: caminho para o template "markdown-template"
+  <download_path>: caminho para onde serão colocados para download os PDF gerados
+  <webhook_host_url>: servidor onde será realizado o download
+  <gitlab_url_download>: URL de download no servidor de download
+  <gitlab>: objeto Gitlab para realizar comentário no merge request (MR)
+  <logger>: objeto para logging
+  [debug]: (opcional, parão=False)
+  [debug_level]: (opcional, padrão=0)
 '''
 class PandocParser:
 
@@ -53,6 +59,7 @@ class PandocParser:
     @params:
       target_project_id: <string> ID do projeto (necessário)
       mergerequest_id: <string> ID do merge request (necessário)
+      artigo_branch_id: <string> ID da branch do artigo a converter para PDF
       artigo_path: <string> path para o artigo (necessário)
       artigo_name: <string> nome do artigo (necessário)
     '''
