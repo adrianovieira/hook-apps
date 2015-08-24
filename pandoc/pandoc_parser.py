@@ -31,7 +31,7 @@ class PandocParser:
             raise AttributeError('PandocParser: argument gitlab object needed', 'APP_WEBHOOK', 'PCT_artigo', 'PandocParser')
 
         self.__app = app
-        self.__logging = app.logger
+        self.__logger = app.logger
         self.__gitlab = app.gitlab
         self.__debug = app.debug
         self.__debug_level = app.setup['DEBUG_LEVEL']
@@ -59,7 +59,7 @@ class PandocParser:
         __has_dados_parser = True
 
         if self.__debug:
-            self.__app.logger.debug('APP_Artigo_PandocParser: \n artigo-path: %s\n artigo-nome: %s', __artigo_path, __artigo_name)
+            self.__logger.debug('APP_Artigo_PandocParser: \n artigo-path: %s\n artigo-nome: %s', __artigo_path, __artigo_name)
 
         if not self.__target_project_id:
             if __target_project_id: self.__target_project_id = __target_project_id
@@ -79,22 +79,22 @@ class PandocParser:
 
         if not __has_dados_parser:
             if self.__debug:
-                self.__app.logger.debug('pandocParser: all parameters are needed', 'APP_WEBHOOK', 'PCT_artigo', 'pandocParser')
+                self.__logger.debug('pandocParser: all parameters are needed', 'APP_WEBHOOK', 'PCT_artigo', 'pandocParser')
             raise AttributeError('pandocParser: all parameters are needed', 'APP_WEBHOOK', 'PCT_artigo', 'pandocParser')
 
         __log_message = u'Iniciada conversão do artigo **%s** para ***PDF***!' % self.__artigo_name
         if self.__debug and self.__debug_level <= logging.INFO:
-            self.__app.logger.info("projID: %s | MR: %s | Msg: %s" % (self.__target_project_id, self.__mergerequest_id, __log_message))
+            self.__logger.info("projID: %s | MR: %s | Msg: %s" % (self.__target_project_id, self.__mergerequest_id, __log_message))
 
         # insere comentário no merge request
         try:
-            ok = self.__app.gitlab.addcommenttomergerequest(self.__target_project_id,
+            ok = self.__gitlab.addcommenttomergerequest(self.__target_project_id,
                                             self.__mergerequest_id, __log_message)
             if not ok:
                 __log_message = 'projID: %s | MR: %s | Msg: %s' % \
                         (self.__target_project_id, self.__mergerequest_id, \
                          'Erro ao tentar comentar no merge request')
-                self.__app.logger.error(__log_message)
+                self.__logger.error(__log_message)
                 raise EnvironmentError('pandocParser: %s'%__log_message, 'APP_WEBHOOK', 'PCT_artigo', 'pandocParser')
         except Exception as erro:
             raise EnvironmentError(erro)
@@ -104,7 +104,7 @@ class PandocParser:
         try:
             path_ok = os.chdir(self.__artigo_path)
         except Exception as erro:
-            self.__app.logger.error(erro)
+            self.__logger.error(erro)
             raise WebhookError(erro)
 
         parse=subprocess.Popen(["make", "-f", self.__template_path+"/makefile", "pdf", \
