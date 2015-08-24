@@ -12,7 +12,6 @@ import gitlab
 
 # Webhook packages
 import artigo
-import pandoc
 from webhookerror import WebhookError
 
 app = Flask(__name__)
@@ -67,7 +66,7 @@ def artigo_parser():
         return 'artigo PandocParser! Falta parâmetro "%s".'%e.message+'\n'
 
     try:
-        artigo_parser = pandoc.PandocParser(app.setup['template_path'],
+        artigo_parser = artigo.PandocParser(app.setup['template_path'],
                                             app.setup['download_path'],
                                             app.setup['webhook_host_url'],
                                             app.setup['gitlab_url_download'],
