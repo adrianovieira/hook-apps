@@ -2,6 +2,7 @@
 import os, subprocess
 import gitlab
 import logging
+import requests
 from webhookerror import WebhookError
 
 '''
@@ -65,11 +66,30 @@ class BranchDownloadZip:
     '''
     def branchDownload_zip(self, _target_project_id, _mergerequest_id, _mergerequest_branch):
         result = False
-        _log_message = 'A ***branch* [%s]** e artigo serao obtidos do repositorio!'\
+        _log_message = 'A ***branch* [%s]** e artigo serão obtidos do repositório!'\
                         % _mergerequest_branch
 
+        if self._debug:
+            self._logger.debug(_log_message)
+
+        # url para download do repositório como arquivo zip
+        zip_file_req_branch_url = self._gitlab_url+'/repository/archive.ziap?ref='+_mergerequest_branch
+        if self._debug:
+            _log_message = _log_message + '\n<br /> | URL para download: '+zip_file_req_branch_url
+
+        # insere comentário no merge request
         if self._debug and self._debug_level <= logging.INFO:
-            self._logger.info(_log_message)
+            self._logger.debug(_log_message)
+            self._gitlab.addcommenttomergerequest(_target_project_id, _mergerequest_id, _log_message)
+
+        zip_file_req_branch = requests.get(zip_file_req_branch_url, auth=(self._gitlab_webhook_user, self._gitlab_webhook_pass))
+        if not zip_file_req_branch.ok:
+            _log_message = 'O ***PDF*** não foi gerado pois foram encontrados ao tentar obter o artigo.'
+            _log_message = _log_message + '\n<br /> | Erro no download: ***branch* [%s]** não obtida<br /> | status: [*%s - %s (user: %s)*]' \
+                              % (_mergerequest_branch, zip_file_req_branch.status_code, zip_file_req_branch.text, self._gitlab_webhook_user)
+            self._logger.debug(_log_message)
+            self._gitlab.addcommenttomergerequest(_target_project_id, _mergerequest_id, _log_message)
+            raise WebhookError(_log_message, 'BranchDownloadZip')
 
         raise WebhookError(NotImplementedError('branchDownload_zip: método ainda não implementado completamente'), 'BranchDownloadZip')
 
