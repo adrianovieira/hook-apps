@@ -32,10 +32,14 @@ class BranchDownloadZip:
     def __init__(self, _gitlab_url, _gitlab_webhook_user, _gitlab_webhook_pass,
                        _gitlab, _logger, _debug=False, _debug_level=0):
 
+        if not isinstance(_logger, logging.Logger):
+            if _debug:
+                logging.debug('BranchDownloadZip: argument logger object needed', 'webhook', 'artigo', 'BranchDownloadZip')
+            raise WebhookError('BranchDownloadZip: argument logger object needed', 'webhook', 'artigo', 'BranchDownloadZip')
         if not isinstance(_gitlab, gitlab.Gitlab):
             if _debug:
-                _logger.debug('BranchDownloadZip: argument gitlab object needed', 'APP_WEBHOOK', 'PCT_artigo', 'PandocParser')
-            raise AttributeError('BranchDownloadZip: argument gitlab object needed', 'APP_WEBHOOK', 'PCT_artigo', 'PandocParser')
+                _logger.debug('BranchDownloadZip: argument gitlab object needed', 'webhook', 'artigo', 'BranchDownloadZip')
+            raise WebhookError('BranchDownloadZip: argument gitlab object needed', 'webhook', 'artigo', 'BranchDownloadZip')
 
         self._logger = _logger
         self._gitlab = _gitlab
