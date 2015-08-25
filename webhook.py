@@ -12,67 +12,9 @@ import gitlab
 import zipfile, StringIO
 import os, subprocess
 
-# classes e metodos relacionados a verificações em artigos
+# Webhook packages: classes e metodos relacionados a verificações em artigos
 import artigo
-
-'''
-artigoPandocParser: realizara a conversão do artigo para PDF
-
-@params:
-  p_target_project_id: The ID of a project (necessário)
-  p_mergerequest_id: ID of merge request (necessário)
-  p_app_artigo_path: path para o artigo (necessário)
-  p_app_artigo_name: nome do artigo (necessário)
-'''
-def artigoPandocParser(p_target_project_id, p_mergerequest_id,\
-                 p_app_artigo_path, p_app_artigo_name):
-
-  result = False
-
-  if app.debug: print 'APP_Artigo:'
-  if app.debug: print p_app_artigo_path
-  if app.debug: print p_app_artigo_name
-
-  app.log_message = u'O artigo **%s** esta sendo convertido para ***PDF***!' % p_app_artigo_name
-  if app.debug: print app.log_message
-
-  # insere comentário no merge request
-  app.gitlab.addcommenttomergerequest(p_target_project_id, \
-                                      p_mergerequest_id, app.log_message)
-
-  # DIRETORIOS TEMPORARIOS E DIRETORIO DE TEMPLATE PANDOC-PARSER
-
-  root_dir=os.popen("pwd").read()[:-1]
-  os.chdir(p_app_artigo_path)
-  parse=subprocess.Popen(["make", "-f", app.setup['path_template']+"/makefile", "pdf", \
-                    "artigo="+p_app_artigo_name],\
-                    stdout=subprocess.PIPE, stderr=subprocess.STDOUT).communicate()[0]
-  os.chdir(root_dir)
-
-  if parse == '':
-      app.log_message = 'Ocorreu erro ( ***make*** ) na conversao do arquivo (%s) para ***PDF***!'\
-                        % p_app_artigo_name
-
-  if "[ OK ]" in parse:
-    download_path = app.setup['path_tmp']+"/"+app.artigo_branch_id
-    download = os.popen("mkdir -p "+download_path).read()
-    download = os.popen("cp "+p_app_artigo_path+p_app_artigo_name+'.pdf'+" "\
-                             +download_path)
-    link = app.setup['webhook_host_url']+'/'+app.setup['gitlab_url_download']+'/'+app.artigo_branch_id+'/'+p_app_artigo_name+'.pdf'
-    app.log_message = 'O artigo (%s) foi convertido para ***[PDF (clique aqui)](%s)***!' % (p_app_artigo_name, link)
-    result = True
-  else:
-    app.log_message = u'Ocorreu erro ( ***pandoc*** ) na conversao do arquivo (%s) para ***PDF***!' % p_app_artigo_name
-    if app.debug: print parse
-    app.gitlab.addcommenttomergerequest(p_target_project_id, \
-                                        p_mergerequest_id, parse)
-
-  if app.debug: print app.log_message
-
-  app.gitlab.addcommenttomergerequest(p_target_project_id, \
-                                      p_mergerequest_id, app.log_message)
-
-  return result
+from webhookerror import WebhookError
 
 '''
 artigoDownload_zip: obtem "branch" de repositorio de "documentos/artigos"
@@ -437,12 +379,26 @@ def index():
         if (has_topicos_base) and (has_dados_autor) and (has_dados_referencias):
             # realisar a conversao de artigo para PDF
             if app.debug: print "\nRealisando a conversao de artigo para PDF...\n"
-            if artigoPandocParser(webhook_data['object_attributes']['target_project_id'], \
-                            webhook_data['object_attributes']['id'], \
-                            app.artigo_path, app.artigo_name):
-              status = '{"status": "OK"}'
-            else:
-              status = '{"status": "notOK"}'
+            try:
+                artigo_parser = artigo.PandocParser(app.setup['path_template'],
+                                                    app.setup['path_tmp'],
+                                                    app.setup['webhook_host_url'],
+                                                    app.setup['gitlab_url_download'],
+                                                    app.gitlab, app.logger,
+                                                    app.debug)
+
+                if artigo_parser.pandocParser(webhook_data['object_attributes']['target_project_id'],
+                                              webhook_data['object_attributes']['id'],
+                                              app.artigo_branch_id,
+                                              app.artigo_path, app.artigo_name):
+                  status = '{"status": "OK"}'
+                else:
+                  status = '{"status": "notOK"}'
+
+            except WebhookError as erro:
+                app.logger.warning(erro.logging())
+                return 'artigo PandocParser! Erro em parser: "%s".'%erro+'\n'
+
       else:
         status = '{"status": "notOK"}'
 
