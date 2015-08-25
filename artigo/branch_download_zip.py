@@ -34,12 +34,12 @@ class BranchDownloadZip:
 
         if not isinstance(_logger, logging.Logger):
             if _debug:
-                logging.debug('BranchDownloadZip: argument logger object needed', 'webhook', 'artigo', 'BranchDownloadZip')
-            raise WebhookError('BranchDownloadZip: argument logger object needed', 'webhook', 'artigo', 'BranchDownloadZip')
+                logging.debug('BranchDownloadZip: argument logger object needed')
+            raise WebhookError('BranchDownloadZip: argument logger object needed', 'BranchDownloadZip')
         if not isinstance(_gitlab, gitlab.Gitlab):
             if _debug:
-                _logger.debug('BranchDownloadZip: argument gitlab object needed', 'webhook', 'artigo', 'BranchDownloadZip')
-            raise WebhookError('BranchDownloadZip: argument gitlab object needed', 'webhook', 'artigo', 'BranchDownloadZip')
+                _logger.debug('BranchDownloadZip: argument gitlab object needed')
+            raise WebhookError('BranchDownloadZip: argument gitlab object needed', 'BranchDownloadZip')
 
         self._logger = _logger
         self._gitlab = _gitlab
@@ -63,8 +63,17 @@ class BranchDownloadZip:
       mergerequest_id: ID of merge request (required)
       mergerequest_branch: "branch" do artigo para conversão em PDF (required)
     '''
-    def branchDownload_zip(_target_project_id, _mergerequest_id, _mergerequest_branch):
+    def branchDownload_zip(self, _target_project_id, _mergerequest_id, _mergerequest_branch):
+        result = False
+        _log_message = 'A ***branch* [%s]** e artigo serao obtidos do repositorio!'\
+                        % _mergerequest_branch
 
+        if self._debug and self._debug_level <= logging.INFO:
+            self._logger.info(_log_message)
+
+        raise WebhookError(NotImplementedError('branchDownload_zip: método ainda não implementado completamente'), 'BranchDownloadZip')
+
+        return result
         # end branchDownload_zip
 
 # end BranchDownloadZip
