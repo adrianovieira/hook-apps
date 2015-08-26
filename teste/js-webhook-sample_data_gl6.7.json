@@ -1,4 +1,6 @@
 {
+  "_remark": "Simples dados para teste do webhook",
+  "_comment": "Necessário customizar para ambiente de desenvolvimento",
   "object_kind": "merge_request",
   "object_attributes": {
     "id": 1,
