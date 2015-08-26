@@ -227,11 +227,43 @@ def index():
                                           webhook_data['object_attributes']['merge_status']+'*]')
 
       # obtem do repositório a branch a converter para PDF
-      if artigoDownload_zip(webhook_data['object_attributes']['target_project_id'], \
-                     webhook_data['object_attributes']['id'], \
-                     webhook_data['object_attributes']['source_branch']):
+      try:
+          # instancia BranchDownloadZip
+          artigo_downloadzip = artigo.BranchDownloadZip(
+                                          app.setup['gitlab_url'],
+                                          app.setup['gitlab_webhook_user'],
+                                          app.setup['gitlab_webhook_pass'],
+                                          app.setup['path_tmp'],
+                                          app.gitlab, app.logger, app.debug)
+
+          artigoDownload_zip_OK = artigo_downloadzip.branchDownload_zip(
+                                webhook_data['object_attributes']['target_project_id'],
+                                webhook_data['object_attributes']['id'],
+                                webhook_data['object_attributes']['source_branch'])
+          artigoDownload_unzip_OK = True
+
+      except WebhookError as erro:
+          artigoDownload_unzip_OK = False
+          app.logger.warning(erro.logging())
+          return 'artigo BranchDownloadZip! Erro: %s.'%erro+'\n'
+
+      if artigoDownload_unzip_OK:
 
         # realisar verificação de metadados de autor e referencias bibliograficas
+        # dados para parser de artigo
+        # diretorio e nome de artigo == branch (do merge request)
+        repo_name = str.split(app.setup['gitlab_url'], '/')
+        repo_name = str.split(app.setup['gitlab_url'], '/')[len(repo_name)-1]
+        zip_member_artigo_dir = repo_name+'.git/'+webhook_data['object_attributes']['source_branch']+'/'
+        zip_member_artigo_name = zip_member_artigo_dir+webhook_data['object_attributes']['source_branch']+'.md'
+
+        branch_info = app.gitlab.getrepositorybranch(webhook_data['object_attributes']['target_project_id'], webhook_data['object_attributes']['source_branch'])
+        path_zip_extract = '%s/%s'%(app.setup['path_tmp'], branch_info['commit']['id'])
+
+        app.artigo_branch_id = branch_info['commit']['id']
+        app.artigo_path = path_zip_extract +'/'+ zip_member_artigo_dir
+        app.artigo_name = webhook_data['object_attributes']['source_branch']
+
         if app.debug: print "\nRealisando verificação de metadados de autor e referencias bibliograficas do artigo...\n"
 
         metadados_msg = 'O ***PDF*** não foi gerado pois foram encontrados problemas no artigo. <br />Na estrutura base há grupos de dados (metadados) que contêm atributos para facilitar a formatação do artigo. Esta estrutura está disponível em <http://www-git/documentos/artigos/blob/master/estrutura-para-criar-artigos-tecnicos/Estrutura_e_metodo_padrao_para_criar_artigos.md#estrutura-padr-o-para-criar-artigos>. Foi percebida a ausência do(s) grupo(s) de dado(s) a seguir:  \n'
