@@ -97,8 +97,56 @@ class BranchDownloadZip:
 
             raise WebhookError(_log_message, 'BranchDownloadZip')
 
-        raise WebhookError(NotImplementedError('branchDownload_zip: método ainda não implementado completamente'), 'BranchDownloadZip')
+        # obtem conteúdo do arquivo zip obtido
+        zip_content = zipfile.ZipFile(StringIO.StringIO(zip_file_req_branch.content))
+        if self._debug: zip_content.debug = 3
 
+        try:
+          # diretorio e nome de artigo == branch (do merge request)
+          repo_name = str.split(self._gitlab_url, '/')
+          repo_name = str.split(self._gitlab_url, '/')[len(repo_name)-1]
+          zip_member_artigo_dir = repo_name+'.git/'+_mergerequest_branch+'/'
+          zip_member_artigo_name = zip_member_artigo_dir+_mergerequest_branch+'.md'
+
+          _log_message = u"***branch*** não contem diretório **[%s]** do artigo" % _mergerequest_branch
+          zip_content.getinfo(zip_member_artigo_dir) # verifica se diretorio de artigo existe
+
+          _log_message = u"***branch*** não contem arquivo **[%s.md]** do artigo" % _mergerequest_branch
+          zip_content.getinfo(zip_member_artigo_name) # verifica se artigo existe
+
+          _log_message = u"Extraindo **branch** do artigo %s.md" % _mergerequest_branch
+          if self._debug: self._logger.debug(_log_message)
+
+          # obtem informacões da branch branch_info['commit']['id']
+          branch_info = self._gitlab.getrepositorybranch(_target_project_id, _mergerequest_branch)
+          branch_info_commit_id = branch_info['commit']['id']
+
+          # local para extrair arquivos (conforme ID do último commit)
+          path_zip_extract = '%s/%s'%(self._download_path, branch_info_commit_id)
+          _log_message = u"Extraindo **branch** em %s" % path_zip_extract
+          if self._debug: self._logger.debug(_log_message)
+
+          # extrai o zip para um diretório temporário
+          if self._debug: _log_message = u"Extrai o zip para um diretorio temporario"
+          resp = zip_content.extractall(path_zip_extract)
+          if self._debug: _log_message = u"Extraiu o zip para um diretorio temporario (resp: %s)" % resp
+
+        except Exception as e:
+          _log_message = _log_message + '\n<br /> | O ***PDF*** não foi gerado pois foram encontrados problemas no artigo.'
+          _log_message = _log_message + '\n<br /> | Erro ao tentar extrair arquivos: %s' % e
+          _log_message = _log_message + '\n<br /> | Dados: %s' % e.args[0]
+          _log_message = _log_message + '\n<br /> | Erro: %s - ' % type(e)
+
+          array = e.args[1].split('/')
+          arquivo = '```'+array[len(array)-1]+'```'
+          _log_message = _log_message + arquivo
+
+          self._logger.debug(_log_message)
+          self._gitlab.addcommenttomergerequest(_target_project_id, _mergerequest_id, _log_message)
+
+          raise WebhookError(_log_message, 'BranchDownloadZip')
+
+        # se não gerou exceção retorna com sucesso
         result = True
 
         return result
