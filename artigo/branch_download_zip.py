@@ -119,10 +119,8 @@ class BranchDownloadZip:
 
           # obtem informacões da branch branch_info['commit']['id']
           branch_info = self._gitlab.getrepositorybranch(_target_project_id, _mergerequest_branch)
-          branch_info_commit_id = branch_info['commit']['id']
-
           # local para extrair arquivos (conforme ID do último commit)
-          path_zip_extract = '%s/%s'%(self._download_path, branch_info_commit_id)
+          path_zip_extract = '%s/%s'%(self._download_path, branch_info['commit']['id'])
           _log_message = u"Extraindo **branch** em %s" % path_zip_extract
           if self._debug: self._logger.debug(_log_message)
 
@@ -133,15 +131,9 @@ class BranchDownloadZip:
 
         except Exception as e:
           _log_message = _log_message + '\n<br /> | O ***PDF*** não foi gerado pois foram encontrados problemas no artigo.'
-          _log_message = _log_message + '\n<br /> | Erro ao tentar extrair arquivos: %s' % e
-          _log_message = _log_message + '\n<br /> | Dados: %s' % e.args[0]
-          _log_message = _log_message + '\n<br /> | Erro: %s - ' % type(e)
+          _log_message = _log_message + '\n<br /> | Erro ao tentar extrair arquivos: ```%s```' % e
 
-          array = e.args[1].split('/')
-          arquivo = '```'+array[len(array)-1]+'```'
-          _log_message = _log_message + arquivo
-
-          self._logger.debug(_log_message)
+          self._logger.error(_log_message)
           self._gitlab.addcommenttomergerequest(_target_project_id, _mergerequest_id, _log_message)
 
           raise WebhookError(_log_message, 'BranchDownloadZip')
