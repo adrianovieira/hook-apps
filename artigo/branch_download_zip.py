@@ -2,7 +2,7 @@
 import os, subprocess
 import gitlab
 import logging
-import requests
+import requests, zipfile, StringIO
 from webhookerror import WebhookError
 
 '''
@@ -31,6 +31,7 @@ exemplo:
 class BranchDownloadZip:
 
     def __init__(self, _gitlab_url, _gitlab_webhook_user, _gitlab_webhook_pass,
+                       _download_path,
                        _gitlab, _logger, _debug=False, _debug_level=0):
 
         if not isinstance(_logger, logging.Logger):
@@ -49,10 +50,7 @@ class BranchDownloadZip:
         self._gitlab_url = _gitlab_url
         self._gitlab_webhook_user = _gitlab_webhook_user
         self._gitlab_webhook_pass = _gitlab_webhook_pass
-
-        self._target_project_id = ''
-        self._mergerequest_id = ''
-        self._mergerequest_branch = ''
+        self._download_path = _download_path
 
         # end __init__
 
@@ -73,7 +71,7 @@ class BranchDownloadZip:
             self._logger.debug(_log_message)
 
         # url para download do repositório como arquivo zip
-        zip_file_req_branch_url = self._gitlab_url+'/repository/archive.ziap?ref='+_mergerequest_branch
+        zip_file_req_branch_url = self._gitlab_url+'/repository/archive.zip?ref='+_mergerequest_branch
         if self._debug:
             _log_message = _log_message + '\n<br /> | URL para download: '+zip_file_req_branch_url
 
@@ -83,15 +81,25 @@ class BranchDownloadZip:
             self._gitlab.addcommenttomergerequest(_target_project_id, _mergerequest_id, _log_message)
 
         zip_file_req_branch = requests.get(zip_file_req_branch_url, auth=(self._gitlab_webhook_user, self._gitlab_webhook_pass))
-        if not zip_file_req_branch.ok:
-            _log_message = 'O ***PDF*** não foi gerado pois foram encontrados ao tentar obter o artigo.'
-            _log_message = _log_message + '\n<br /> | Erro no download: ***branch* [%s]** não obtida<br /> | status: [*%s - %s (user: %s)*]' \
-                              % (_mergerequest_branch, zip_file_req_branch.status_code, zip_file_req_branch.text, self._gitlab_webhook_user)
+        if not zip_file_req_branch.ok or not zip_file_req_branch.headers['content-type'] == 'application/zip':
+            # erro de conexão ou se o conteúdo não for aquivo zip
+            _log_message = 'O ***PDF*** não foi gerado pois foram encontrados erros ao tentar obter a *branch* do artigo.'
+            _log_message = _log_message + '\n<br /> | Erro no download: ***branch* [%s]** não obtida' % _mergerequest_branch
+            if self._debug:
+                _log_message = _log_message + '\n<br /> | URL para download: '+zip_file_req_branch_url
+                _log_message = _log_message + '\n<br /> | request status: [%s (user: %s)]' \
+                                % (zip_file_req_branch.status_code, self._gitlab_webhook_user)
+                _log_message = _log_message + '\n<br /> | header content-type: [*%s*]' \
+                                % (zip_file_req_branch.headers['content-type'])
+
             self._logger.debug(_log_message)
             self._gitlab.addcommenttomergerequest(_target_project_id, _mergerequest_id, _log_message)
+
             raise WebhookError(_log_message, 'BranchDownloadZip')
 
         raise WebhookError(NotImplementedError('branchDownload_zip: método ainda não implementado completamente'), 'BranchDownloadZip')
+
+        result = True
 
         return result
         # end branchDownload_zip
