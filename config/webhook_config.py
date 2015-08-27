@@ -48,11 +48,6 @@ class WebhookConfig:
 
         self._config = self._loadWebhookConfig()
 
-        if self._debug:
-            self._logger.debug(self._config)
-
-        raise WebhookError('Módulo WebhookConfig ainda não implementado', 'WebhookConfig', 'config')
-
         # end __init__
 
     '''
