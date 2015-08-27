@@ -45,26 +45,59 @@ class WebhookConfig:
         self._debug = _debug
         self._debug_level = _debug_level
         self._application_path = _application_path
-        raise WebhookError('WebhookConfig ainda não implementado', 'WebhookConfig', 'config')
+
+        self._config = self._loadWebhookConfig()
+
+        raise WebhookError('Módulo WebhookConfig ainda não implementado', 'WebhookConfig', 'config')
+
+        return True
 
         # end __init__
 
     '''
-    getWebhookConfig: obtem dados de configuracao do ambiente da aplicação
+    _loadWebhookConfig: obtem dados de configuracao do ambiente da aplicação
 
     dados a serem obtidos dos arquivos:
         - 'webhook-dist.cfg' - padrão para o "webhook" (obrigatório)
         - 'webhook.cfg' - personalizado para o ambiente de trabalho/produção (opcional)
     '''
-    def getWebhookConfig(self):
-        result = False
+    def _loadWebhookConfig(self):
+        config_parser = ConfigParser.ConfigParser()
+        arquivo_nome_webhook_dist_cfg = self._application_path+'/webhook-dist.cfg'
 
-        raise WebhookError('Método getWebhookConfig ainda não implementado', 'WebhookConfig', 'config')
+        '''
+        obtem dados de configuracao padrao
+        '''
+        try:
+            ok = config_parser.read(arquivo_nome_webhook_dist_cfg)
+            if not ok: raise
+        except:
+            _log_message = 'Erro ao tentar ler o arquivo de configurações padrão (%s)'\
+                            % arquivo_nome_webhook_dist_cfg
+            self._logger.error(_log_message)
+            raise WebhookError(_log_message, 'WebhookConfig', 'config')
 
-        # se não gerou exceção retorna com sucesso
-        result = True
+        config = {}
+        config['production'] = config_parser.get('enviroment', 'production')
+        config['gitlab_host'] = config_parser.get('enviroment', 'gitlab_host')
+        config['gitlab_url'] = config_parser.get('enviroment', 'gitlab_url')
+        config['gitlab_url_download'] = config_parser.get('enviroment', 'gitlab_url_download')
+        config['gitlab_target_branch'] = config_parser.get('enviroment', 'gitlab_target_branch')
+        config['gitlab_webhook_user'] = config_parser.get('enviroment', 'gitlab_webhook_user')
+        config['gitlab_webhook_pass'] = config_parser.get('enviroment', 'gitlab_webhook_pass')
+        config['path_template'] = config_parser.get('enviroment', 'path_template')
+        config['path_tmp'] = config_parser.get('enviroment', 'path_tmp')
+        config['pandoc'] = config_parser.get('enviroment', 'pandoc')
+        config['make'] = config_parser.get('enviroment', 'make')
+        config['DEBUG'] = config_parser.get('enviroment', 'DEBUG')
+        config['DEBUG_LEVEL'] = config_parser.get('enviroment', 'DEBUG_LEVEL')
+        config['DEBUG_HOST'] = config_parser.get('enviroment', 'DEBUG_HOST')
+        config['DEBUG_PORT'] = int(config_parser.get('enviroment', 'DEBUG_PORT'))
 
-        return result
+        raise WebhookError('Método _loadWebhookConfig ainda não finalizado', 'WebhookConfig', 'config')
+
+        # se não gerou exceção retorna dados de configuração
+        return config
         # end getWebhookConfig
 
 # end WebhookConfig
