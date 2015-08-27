@@ -49,25 +49,20 @@ def __app_init():
     global app
     app = Flask(__name__)
     app.setup = {} # global de configuracao
-    '''
-    if not getConfig(): # obtem dados de configuracao inicial
-       print app.log_message #"ERROR: trying to read dist-config file."
-    '''
     try:
-        path = os.path.dirname(os.path.abspath(__file__))
-        
-        config_parser = WebhookConfig(path, app.logger, app.debug)
+        config_parser = WebhookConfig(os.path.dirname(os.path.abspath(__file__)), app.logger, app.debug)
         app.setup = config_parser.getWebhookConfig()
         if app.debug: app.logger.debug(app.setup)
     except WebhookError as erro:
-        _log_message = 'Aplicação Webhook interrompida! Erro em parser: "%s".'%erro+'\n'
+        _log_message = 'Aplicação Webhook interrompida! Erro ao ler configuração inicial: "%s".'%erro+'\n'
         app.logger.error(_log_message)
         app.logger.error(erro.logging())
-        return _log_message
+        raise Exception('Webhook-artigos: Erro [%s]'%_log_message, 'Webhook init', 'webhook')
 
-    if app.setup['production'] == 'False': # para devel ou testes
-       if app.setup['DEBUG'] == 'True':
-          app.debug = True
+    if 'production' in app.setup:
+        if app.setup['production'] == 'False': # para devel ou testes
+            if app.setup['DEBUG'] == 'True':
+                app.debug = True
 
     return app
 
@@ -77,7 +72,7 @@ app = __app_init()
 def index():
 
   if request.method == 'GET':
-    return 'Aplicacao para webhook! \n Use adequadamente!'
+    return '\nWebhook-artigos: Aplicacao para webhook em parser de artigos! \n<br /><b>Use adequadamente!</b>\n'
 
   elif request.method == 'POST':
 
@@ -277,8 +272,10 @@ def index():
 # trata erro http/500, mesmo quando em modo debug=true
 @app.errorhandler(500)
 def internal_error(error):
+    _log_message = 'Webhook-artigos: status 500 - Aplicação Webhook interrompida ["%s"].'%error+'\n'
+    app.logger.error(_log_message)
 
-    return '{"status": "500 error"}'
+    return _log_message
 
 @app.route('/about',methods=['GET'])
 def about():
