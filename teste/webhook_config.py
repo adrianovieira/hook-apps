@@ -39,7 +39,7 @@ def index_post():
         return 'config WebhookConfig! Erro na formatação dos dados informados "%s".'%e.message+'\n'
 
     try:
-        config_parser = WebhookConfig(application_path, app.gitlab, app.logger)
+        config_parser = WebhookConfig(application_path, app.gitlab, app.logger, True)
 
     except WebhookError as erro:
         app.logger.warning(erro.logging())

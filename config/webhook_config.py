@@ -48,6 +48,9 @@ class WebhookConfig:
 
         self._config = self._loadWebhookConfig()
 
+        if self._debug:
+            self._logger.debug(self._config)
+
         raise WebhookError('Módulo WebhookConfig ainda não implementado', 'WebhookConfig', 'config')
 
         return True
@@ -64,6 +67,7 @@ class WebhookConfig:
     def _loadWebhookConfig(self):
         config_parser = ConfigParser.ConfigParser()
         arquivo_nome_webhook_dist_cfg = self._application_path+'/webhook-dist.cfg'
+        arquivo_nome_webhook_custom_cfg = self._application_path+'/webhook.cfg'
 
         '''
         obtem dados de configuracao padrao
@@ -94,9 +98,51 @@ class WebhookConfig:
         config['DEBUG_HOST'] = config_parser.get('enviroment', 'DEBUG_HOST')
         config['DEBUG_PORT'] = int(config_parser.get('enviroment', 'DEBUG_PORT'))
 
-        raise WebhookError('Método _loadWebhookConfig ainda não finalizado', 'WebhookConfig', 'config')
+        '''
+        obtem dados de configuracao personalizados
+        '''
+        try:
+            ok = config_parser.read(arquivo_nome_webhook_custom_cfg)
+            if not ok: raise
 
-        # se não gerou exceção retorna dados de configuração
+            if config_parser.get('enviroment', 'production'):
+              config['production'] = config_parser.get('enviroment', 'production')
+            if config_parser.get('enviroment', 'gitlab_host'):
+              config['gitlab_host'] = config_parser.get('enviroment', 'gitlab_host')
+            if config_parser.get('enviroment', 'gitlab_webhook_user'):
+              config['gitlab_webhook_user'] = config_parser.get('enviroment', 'gitlab_webhook_user')
+            if config_parser.get('enviroment', 'gitlab_webhook_pass'):
+              config['gitlab_webhook_pass'] = config_parser.get('enviroment', 'gitlab_webhook_pass')
+            if config_parser.get('enviroment', 'gitlab_url'):
+              config['gitlab_url'] = config_parser.get('enviroment', 'gitlab_url')
+            if config_parser.get('enviroment', 'gitlab_url_download'):
+              config['gitlab_url_download'] = config_parser.get('enviroment', 'gitlab_url_download')
+            if config_parser.get('enviroment', 'gitlab_target_branch'):
+              config['gitlab_target_branch'] = config_parser.get('enviroment', 'gitlab_target_branch')
+            if config_parser.get('enviroment', 'path_template'):
+              config['path_template'] = config_parser.get('enviroment', 'path_template')
+            if config_parser.get('enviroment', 'path_tmp'):
+              config['path_tmp'] = config_parser.get('enviroment', 'path_tmp')
+            if config_parser.get('enviroment', 'pandoc'):
+              config['pandoc'] = config_parser.get('enviroment', 'pandoc')
+            if config_parser.get('enviroment', 'make'):
+              config['make'] = config_parser.get('enviroment', 'make')
+            if config_parser.get('enviroment', 'DEBUG'):
+              config['DEBUG'] = config_parser.get('enviroment', 'DEBUG')
+            if config_parser.get('enviroment', 'DEBUG_LEVEL'):
+              config['DEBUG_LEVEL'] = config_parser.get('enviroment', 'DEBUG_LEVEL')
+            if config_parser.get('enviroment', 'DEBUG_HOST'):
+              config['DEBUG_HOST'] = config_parser.get('enviroment', 'DEBUG_HOST')
+            if config_parser.get('enviroment', 'DEBUG_PORT'):
+              config['DEBUG_PORT'] = int(config_parser.get('enviroment', 'DEBUG_PORT'))
+
+        except:
+            _log_message = 'Arquivo de configurações personalizadas (%s) não encontrado'\
+                            % arquivo_nome_webhook_custom_cfg
+            self._logger.warning(_log_message)
+            pass
+
+        # se não gerou exceção retorna dados de configuração obtidos
         return config
         # end getWebhookConfig
 
