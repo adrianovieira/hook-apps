@@ -14,86 +14,8 @@ import os, subprocess
 
 # Webhook packages: classes e metodos relacionados a verificações em artigos
 import artigo
+from config import WebhookConfig
 from webhookerror import WebhookError
-
-'''
-getConfig: obtem dados de configuracao do ambiente
-
-abtidos dos arquivos:
-webhook-dist.cfg - padrão para o "webhook" (obrigatório)
-webhook.cfg - personalizado para o ambiente de trabalho/produção (opcional)
-'''
-def getConfig():
-  Config = ConfigParser.ConfigParser()
-
-  '''
-  # obtem dados de configuracao padrao
-  '''
-  try:
-    ok = Config.read(os.path.dirname(os.path.abspath(__file__))+'/webhook-dist.cfg')
-    if not ok: raise
-  except:
-    app.log_message = "ERROR: trying to read dist-config file."
-    return False
-
-  app.setup['production'] = Config.get('enviroment', 'production')
-  app.setup['gitlab_host'] = Config.get('enviroment', 'gitlab_host')
-  app.setup['gitlab_url'] = Config.get('enviroment', 'gitlab_url')
-  app.setup['gitlab_url_download'] = Config.get('enviroment', 'gitlab_url_download')
-  app.setup['gitlab_target_branch'] = Config.get('enviroment', 'gitlab_target_branch')
-  app.setup['gitlab_webhook_user'] = Config.get('enviroment', 'gitlab_webhook_user')
-  app.setup['gitlab_webhook_pass'] = Config.get('enviroment', 'gitlab_webhook_pass')
-  app.setup['path_template'] = Config.get('enviroment', 'path_template')
-  app.setup['path_tmp'] = Config.get('enviroment', 'path_tmp')
-  app.setup['pandoc'] = Config.get('enviroment', 'pandoc')
-  app.setup['make'] = Config.get('enviroment', 'make')
-  app.setup['DEBUG'] = Config.get('enviroment', 'DEBUG')
-  app.setup['DEBUG_LEVEL'] = Config.get('enviroment', 'DEBUG_LEVEL')
-  app.setup['DEBUG_HOST'] = Config.get('enviroment', 'DEBUG_HOST')
-  app.setup['DEBUG_PORT'] = int(Config.get('enviroment', 'DEBUG_PORT'))
-
-  '''
-  obtem dados de configuracao personalizados
-  '''
-  try:
-    ok = Config.read(os.path.dirname(os.path.abspath(__file__))+'/webhook.cfg')
-    if not ok: raise
-    if Config.get('enviroment', 'production'):
-      app.setup['production'] = Config.get('enviroment', 'production')
-    if Config.get('enviroment', 'gitlab_host'):
-      app.setup['gitlab_host'] = Config.get('enviroment', 'gitlab_host')
-    if Config.get('enviroment', 'gitlab_webhook_user'):
-      app.setup['gitlab_webhook_user'] = Config.get('enviroment', 'gitlab_webhook_user')
-    if Config.get('enviroment', 'gitlab_webhook_pass'):
-      app.setup['gitlab_webhook_pass'] = Config.get('enviroment', 'gitlab_webhook_pass')
-    if Config.get('enviroment', 'gitlab_url'):
-      app.setup['gitlab_url'] = Config.get('enviroment', 'gitlab_url')
-    if Config.get('enviroment', 'gitlab_url_download'):
-      app.setup['gitlab_url_download'] = Config.get('enviroment', 'gitlab_url_download')
-    if Config.get('enviroment', 'gitlab_target_branch'):
-      app.setup['gitlab_target_branch'] = Config.get('enviroment', 'gitlab_target_branch')
-    if Config.get('enviroment', 'path_template'):
-      app.setup['path_template'] = Config.get('enviroment', 'path_template')
-    if Config.get('enviroment', 'path_tmp'):
-      app.setup['path_tmp'] = Config.get('enviroment', 'path_tmp')
-    if Config.get('enviroment', 'pandoc'):
-      app.setup['pandoc'] = Config.get('enviroment', 'pandoc')
-    if Config.get('enviroment', 'make'):
-      app.setup['make'] = Config.get('enviroment', 'make')
-    if Config.get('enviroment', 'DEBUG'):
-      app.setup['DEBUG'] = Config.get('enviroment', 'DEBUG')
-    if Config.get('enviroment', 'DEBUG_LEVEL'):
-      app.setup['DEBUG_LEVEL'] = Config.get('enviroment', 'DEBUG_LEVEL')
-    if Config.get('enviroment', 'DEBUG_HOST'):
-      app.setup['DEBUG_HOST'] = Config.get('enviroment', 'DEBUG_HOST')
-    if Config.get('enviroment', 'DEBUG_PORT'):
-      app.setup['DEBUG_PORT'] = int(Config.get('enviroment', 'DEBUG_PORT'))
-  except:
-    app.log_message = "WARNING: can't read custom-config file."
-    print app.log_message
-    pass
-
-  return True
 
 '''
 CONTANTES
@@ -127,12 +49,20 @@ def __app_init():
     global app
     app = Flask(__name__)
     app.setup = {} # global de configuracao
-    if not getConfig(): # obtem dados de configuracao inicial
-       print app.log_message #"ERROR: trying to read dist-config file."
+    try:
+        config_parser = WebhookConfig(os.path.dirname(os.path.abspath(__file__)), app.logger, app.debug)
+        app.setup = config_parser.getWebhookConfig()
+        if app.debug: app.logger.debug(app.setup)
+    except WebhookError as erro:
+        _log_message = 'Aplicação Webhook interrompida! Erro ao ler configuração inicial: "%s".'%erro+'\n'
+        app.logger.error(_log_message)
+        app.logger.error(erro.logging())
+        raise Exception('Webhook-artigos: Erro [%s]'%_log_message, 'Webhook init', 'webhook')
 
-    if app.setup['production'] == 'False': # para devel ou testes
-       if app.setup['DEBUG'] == 'True':
-          app.debug = True
+    if 'production' in app.setup:
+        if app.setup['production'] == 'False': # para devel ou testes
+            if app.setup['DEBUG'] == 'True':
+                app.debug = True
 
     return app
 
@@ -142,7 +72,7 @@ app = __app_init()
 def index():
 
   if request.method == 'GET':
-    return 'Aplicacao para webhook! \n Use adequadamente!'
+    return '\nWebhook-artigos: Aplicacao para webhook em parser de artigos! \n<br /><b>Use adequadamente!</b>\n'
 
   elif request.method == 'POST':
 
@@ -342,8 +272,10 @@ def index():
 # trata erro http/500, mesmo quando em modo debug=true
 @app.errorhandler(500)
 def internal_error(error):
+    _log_message = 'Webhook-artigos: status 500 - Aplicação Webhook interrompida ["%s"].'%error+'\n'
+    app.logger.error(_log_message)
 
-    return '{"status": "500 error"}'
+    return _log_message
 
 @app.route('/about',methods=['GET'])
 def about():
