@@ -17,103 +17,6 @@ import artigo
 from webhookerror import WebhookError
 
 '''
-artigoDownload_zip: obtem "branch" de repositorio de "documentos/artigos"
-
-@params:
-  p_target_project_id: The ID of a project (required)
-  p_mergerequest_id: ID of merge request (required)
-  p_mergerequest_branch: "branch" do artigo para conversão em PDF (required)
-'''
-def artigoDownload_zip(p_target_project_id, p_mergerequest_id, p_mergerequest_branch):
-
-  result = False
-
-  app.log_message = u"A ***branch* [%s]** e artigo serao obtidos do repositorio!" \
-                            % p_mergerequest_branch
-
-  if app.debug: print app.log_message
-
-  # insere comentário no merge request
-  if app.debug: app.gitlab.addcommenttomergerequest(p_target_project_id, \
-                                      p_mergerequest_id, app.log_message)
-
-  # url para download do repositório como arquivo zip
-  zip_file_req_branch_url = app.setup['gitlab_url']+'/repository/archive.zip?ref='\
-                                            +p_mergerequest_branch
-  app.log_message = "Obtendo **branch** do artigo %s.md" % p_mergerequest_branch
-  if app.debug: print app.log_message + " | " + zip_file_req_branch_url
-
-  zip_file_req_branch = requests.get(zip_file_req_branch_url, auth=(app.setup['gitlab_webhook_user'], app.setup['gitlab_webhook_pass']))
-  if not zip_file_req_branch.ok:
-    app.log_message = u"***branch* [%s]** não obtida<br /> | status: [*%s - %s (user: %s)*]" \
-                      % (p_mergerequest_branch, zip_file_req_branch.status_code, zip_file_req_branch.text, app.setup['gitlab_webhook_user'])
-    app.log_message = app.log_message + u'<br /> | O ***PDF*** não foi gerado pois foram encontrados problemas no artigo.'
-    if app.debug: print app.log_message
-
-    # insere comentário no merge request
-    app.gitlab.addcommenttomergerequest(p_target_project_id, \
-                                      p_mergerequest_id, app.log_message)
-
-  if zip_file_req_branch.ok:
-
-    # obtem conteúdo do arquivo zip obtido
-    zip_content = zipfile.ZipFile(StringIO.StringIO(zip_file_req_branch.content))
-    if app.debug: zip_content.debug = 3
-
-    try:
-      # diretorio e nome de artigo == branch (do merge request)
-      repo_name = str.split(app.setup['gitlab_url'], '/')
-      repo_name = str.split(app.setup['gitlab_url'], '/')[len(repo_name)-1]
-      zip_member_artigo_dir = repo_name+'.git/'+p_mergerequest_branch+'/'
-      zip_member_artigo_name = zip_member_artigo_dir+p_mergerequest_branch+'.md'
-
-      app.log_message = u"***branch*** não contem diretório **[%s]** do artigo" % p_mergerequest_branch
-      zip_content.getinfo(zip_member_artigo_dir) # verifica se diretorio de artigo existe
-
-      app.log_message = u"***branch*** não contem arquivo **[%s.md]** do artigo" % p_mergerequest_branch
-      zip_content.getinfo(zip_member_artigo_name) # verifica se artigo existe
-
-      app.log_message = u"Extraindo **branch** do artigo %s.md" % p_mergerequest_branch
-      if app.debug: print app.log_message
-
-      # obtem informacões da branch
-      branch_info = app.gitlab.getrepositorybranch(p_target_project_id, p_mergerequest_branch)
-
-      # local para extrair arquivos (conforme ID do último commit)
-      path_zip_extract = app.setup['path_tmp']+'/'+branch_info['commit']['id']
-      app.log_message = u"Extraindo **branch** em %s" % path_zip_extract
-      if app.debug: print app.log_message
-
-      # extrai o zip para um diretório temporário
-      if app.debug: app.log_message = u"Extrai o zip para um diretorio temporario"
-      resp = zip_content.extractall(path_zip_extract)
-      if app.debug: app.log_message = u"Extraiu o zip para um diretorio temporario (resp: %s)" % resp
-
-      # dados para parser de artigo
-      if app.debug: app.log_message = u"Obtem app.artigo_branch_id"
-      app.artigo_branch_id = branch_info['commit']['id']
-      if app.debug: app.log_message = u"Obtem app.artigo_path"
-      app.artigo_path = path_zip_extract +'/'+ zip_member_artigo_dir
-      if app.debug: app.log_message = u"Obtem app.artigo_name"
-      app.artigo_name = p_mergerequest_branch
-
-      result = True
-
-    except Exception as e:
-      app.log_message = app.log_message + '<br /> | O ***PDF*** não foi gerado pois foram encontrados problemas no artigo.'
-      app.log_message = app.log_message + '<br /> | Erro ao tentar extrair arquivos: %s' % e
-      app.log_message = app.log_message + '<br /> | Dados: %s' % e.args[0]
-      app.log_message = app.log_message + '<br /> | Erro: %s - ' % type(e)
-      array = e.args[1].split('/')
-      arquivo = '```'+array[len(array)-1]+'```'
-      app.log_message = app.log_message + arquivo
-      app.gitlab.addcommenttomergerequest(p_target_project_id, \
-                                          p_mergerequest_id, app.log_message)
-      if app.debug: print app.log_message
-
-  return result
-
-'''
 getConfig: obtem dados de configuracao do ambiente
 
 abtidos dos arquivos:
@@ -324,11 +227,43 @@ def index():
                                           webhook_data['object_attributes']['merge_status']+'*]')
 
       # obtem do repositório a branch a converter para PDF
-      if artigoDownload_zip(webhook_data['object_attributes']['target_project_id'], \
-                     webhook_data['object_attributes']['id'], \
-                     webhook_data['object_attributes']['source_branch']):
+      try:
+          # instancia BranchDownloadZip
+          artigo_downloadzip = artigo.BranchDownloadZip(
+                                          app.setup['gitlab_url'],
+                                          app.setup['gitlab_webhook_user'],
+                                          app.setup['gitlab_webhook_pass'],
+                                          app.setup['path_tmp'],
+                                          app.gitlab, app.logger, app.debug)
+
+          artigoDownload_zip_OK = artigo_downloadzip.branchDownload_zip(
+                                webhook_data['object_attributes']['target_project_id'],
+                                webhook_data['object_attributes']['id'],
+                                webhook_data['object_attributes']['source_branch'])
+          artigoDownload_unzip_OK = True
+
+      except WebhookError as erro:
+          artigoDownload_unzip_OK = False
+          app.logger.warning(erro.logging())
+          return 'artigo BranchDownloadZip! Erro: %s.'%erro+'\n'
+
+      if artigoDownload_unzip_OK:
 
         # realisar verificação de metadados de autor e referencias bibliograficas
+        # dados para parser de artigo
+        # diretorio e nome de artigo == branch (do merge request)
+        repo_name = str.split(app.setup['gitlab_url'], '/')
+        repo_name = str.split(app.setup['gitlab_url'], '/')[len(repo_name)-1]
+        zip_member_artigo_dir = repo_name+'.git/'+webhook_data['object_attributes']['source_branch']+'/'
+        zip_member_artigo_name = zip_member_artigo_dir+webhook_data['object_attributes']['source_branch']+'.md'
+
+        branch_info = app.gitlab.getrepositorybranch(webhook_data['object_attributes']['target_project_id'], webhook_data['object_attributes']['source_branch'])
+        path_zip_extract = '%s/%s'%(app.setup['path_tmp'], branch_info['commit']['id'])
+
+        app.artigo_branch_id = branch_info['commit']['id']
+        app.artigo_path = path_zip_extract +'/'+ zip_member_artigo_dir
+        app.artigo_name = webhook_data['object_attributes']['source_branch']
+
         if app.debug: print "\nRealisando verificação de metadados de autor e referencias bibliograficas do artigo...\n"
 
         metadados_msg = 'O ***PDF*** não foi gerado pois foram encontrados problemas no artigo. <br />Na estrutura base há grupos de dados (metadados) que contêm atributos para facilitar a formatação do artigo. Esta estrutura está disponível em <http://www-git/documentos/artigos/blob/master/estrutura-para-criar-artigos-tecnicos/Estrutura_e_metodo_padrao_para_criar_artigos.md#estrutura-padr-o-para-criar-artigos>. Foi percebida a ausência do(s) grupo(s) de dado(s) a seguir:  \n'
