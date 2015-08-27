@@ -1,3 +1,10 @@
+v1.7.0 (ainda não liberada)
+- reestrutura métodos e classes
+- cria módulo de parser pandoc de artigos
+- cria módulo para download de branch
+- cria módulo de carga de configurações iniciais da aplicação
+- fix: Contorno de erro de encoding devido a apache não configurado em UTF-8
+
 v1.6.5
 - melhora mensagens de problemas em conversão de arquivos
 
