@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-import gitlab
 import logging
 import ConfigParser
 
@@ -29,19 +28,14 @@ exemplo:
 class WebhookConfig:
 
     def __init__(self, _application_path,
-                       _gitlab, _logger, _debug=False, _debug_level=0):
+                       _logger, _debug=False, _debug_level=0):
 
         if not isinstance(_logger, logging.Logger):
             if _debug:
                 logging.debug('WebhookConfig: argument logger object needed')
             raise WebhookError('WebhookConfig: argument logger object needed', 'WebhookConfig', 'config')
-        if not isinstance(_gitlab, gitlab.Gitlab):
-            if _debug:
-                _logger.debug('WebhookConfig: argument gitlab object needed')
-            raise WebhookError('WebhookConfig: argument gitlab object needed', 'WebhookConfig', 'config')
 
         self._logger = _logger
-        self._gitlab = _gitlab
         self._debug = _debug
         self._debug_level = _debug_level
         self._application_path = _application_path
