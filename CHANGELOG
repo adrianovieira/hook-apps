@@ -1,4 +1,4 @@
-v1.7.0 (ainda não liberada)
+v1.7.0
 - reestrutura métodos e classes
 - cria módulo de parser pandoc de artigos
 - cria módulo para download de branch
