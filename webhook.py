@@ -14,6 +14,7 @@ import os, subprocess
 
 # Webhook packages: classes e metodos relacionados a verificações em artigos
 import artigo
+from config import WebhookConfig
 from webhookerror import WebhookError
 
 '''
@@ -48,8 +49,21 @@ def __app_init():
     global app
     app = Flask(__name__)
     app.setup = {} # global de configuracao
+    '''
     if not getConfig(): # obtem dados de configuracao inicial
        print app.log_message #"ERROR: trying to read dist-config file."
+    '''
+    try:
+        path = os.path.dirname(os.path.abspath(__file__))
+        
+        config_parser = WebhookConfig(path, app.logger, app.debug)
+        app.setup = config_parser.getWebhookConfig()
+        if app.debug: app.logger.debug(app.setup)
+    except WebhookError as erro:
+        _log_message = 'Aplicação Webhook interrompida! Erro em parser: "%s".'%erro+'\n'
+        app.logger.error(_log_message)
+        app.logger.error(erro.logging())
+        return _log_message
 
     if app.setup['production'] == 'False': # para devel ou testes
        if app.setup['DEBUG'] == 'True':
