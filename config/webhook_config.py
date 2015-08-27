@@ -53,12 +53,21 @@ class WebhookConfig:
 
         raise WebhookError('Módulo WebhookConfig ainda não implementado', 'WebhookConfig', 'config')
 
-        return True
-
         # end __init__
 
     '''
-    _loadWebhookConfig: obtem dados de configuracao do ambiente da aplicação
+    getWebhookConfig: obter dados de configuracao do ambiente da aplicação
+
+    dados a serem obtidos dos arquivos:
+        - 'webhook-dist.cfg' - padrão para o "webhook" (obrigatório)
+        - 'webhook.cfg' - personalizado para o ambiente de trabalho/produção (opcional)
+    '''
+    def getWebhookConfig(self):
+        return self._config
+        # end getWebhookConfig
+
+    '''
+    _loadWebhookConfig: carregar dados de configuracao do ambiente da aplicação
 
     dados a serem obtidos dos arquivos:
         - 'webhook-dist.cfg' - padrão para o "webhook" (obrigatório)
