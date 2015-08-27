@@ -148,6 +148,6 @@ class WebhookConfig:
 
         # se não gerou exceção retorna dados de configuração obtidos
         return config
-        # end getWebhookConfig
+        # end _loadWebhookConfig
 
 # end WebhookConfig
