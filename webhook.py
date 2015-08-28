@@ -1,4 +1,9 @@
 # coding: utf-8
+import sys, os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+reload(sys)  # Reload does the trick!
+sys.setdefaultencoding('UTF-8')
 '''
 App: Webhook
 description: permitir hook de conversão pandoc em "documentos/artigos"
@@ -79,8 +84,9 @@ def index():
     # abtem dados do webhook gitlab
     webhook_data = json.loads(request.data)
     app.setup['webhook_host_url'] = request.host_url
+    app.log_message = 'Inicia webhook de artigos'
 
-    if app.debug: print webhook_data
+    if app.debug: app.logger.info('Webhook MR data: %s'% webhook_data)
 
     # abre conexao com servidor gitlab
     try:
@@ -119,11 +125,16 @@ def index():
           if webhook_data['object_attributes']['state'] == GL_STATE['OPENED']:
             if webhook_data['object_attributes']['merge_status'] == GL_STATUS['cannot_be_merged']:
               app.log_message = "cannot be merged"
+              _log_message = '**ATENÇÃO: *merge request* não pode ser aceito**.'
+              _log_message = _log_message + '\n<br /> | Erro na verificação de ***merge request* automático.'
+              _log_message = _log_message + '\n<br /> | Verique e corrija a *branch* [%s] e faça nova solicitação!'\
+                                                        % webhook_data['object_attributes']['source_branch']
 
               app.gitlab.addcommenttomergerequest(webhook_data['object_attributes']['target_project_id'], \
                         webhook_data['object_attributes']['id'], \
-                        '***merge request* não aceito**. Verique *branch* e solicite novamente!')
-              raise # caso nao possa ser feito merge via gitlab "merge request invalido"
+                        _log_message)
+               # caso nao possa ser feito merge via gitlab "merge request invalido"
+              raise WebhookError('Webhook-artigos: Erro [%s]'%_log_message, 'Webhook index', 'webhook')
 
             if webhook_data['object_attributes']['merge_status'] == GL_STATUS['unchecked']:
               app.log_message = "merge request "+webhook_data['object_attributes']['state']+\
@@ -144,8 +155,7 @@ def index():
     status = '{"status": "nOK"}'
     app.log_message = '{"type": "WARNING", "message": "processing"}'
     if webhook_data['object_attributes']['state'] == GL_STATE['OPENED'] and \
-       (webhook_data['object_attributes']['merge_status'] == GL_STATUS['can_be_merged'] or \
-       webhook_data['object_attributes']['merge_status'] == GL_STATUS['unchecked']):
+       (webhook_data['object_attributes']['merge_status'] == GL_STATUS['unchecked']):
       if app.debug: print "\nProcessing merge request to build PDF...\n"
       if app.debug: print app.log_message
 
