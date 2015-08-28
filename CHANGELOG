@@ -1,3 +1,6 @@
+v1.7.1
+- fix: Trata double submit do gitlab-6.7.2
+
 v1.7.0
 - reestrutura métodos e classes
 - cria módulo de parser pandoc de artigos
